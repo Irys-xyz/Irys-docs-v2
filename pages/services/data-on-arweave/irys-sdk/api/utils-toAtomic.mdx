@@ -1,0 +1,32 @@
+---
+description: Converts from standard to atomic units
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `irys.utils.toAtomic(value)`
+
+Converts from standard to atomic units.
+
+**Parameters**
+
+<div className="-mt-6" />- `value`: The value to be converted
+
+**Returns**
+
+<div className="-mt-6" />
+- `atomicValue`: The value in atomic units
+
+**Example**
+```js
+const irys = await getIrys();
+
+const amountAtomic = irys.utils.toAtomic(amountStandard);
+```
+
+<Callout type="info" emoji="ℹ️">
+	Atomic units refer to the smallest possible unit of a given cryptocurrency. In Ethereum, atomic units are called
+	Wei, and they represent the smallest unit of Ether. Similar to how 1 dollar can be broken down into 100 cents, 1
+	Ether can be broken down into 10^18 Wei. In Solana, atomic units are called Lamports, 1 SOL can be broken down into
+	10^9 Lamports.
+</Callout>

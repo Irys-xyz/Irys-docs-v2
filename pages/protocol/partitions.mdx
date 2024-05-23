@@ -1,0 +1,25 @@
+# Partitions
+
+Onchain data is split up into a sequence of slots, each one 16 TIB.
+
+1. Data is stored in **storage partitions**.
+2. Additional **capacity partitions** are online and available to be converted into storage partitions as needed.
+
+## Storage partitions
+
+- Miners provide storage partitions. Data posted to the network is written to these partitions.
+- Before data can be written to a partition, it must be [packed](./packing).
+- When data is saved, it is XOR'd into the chunks of the capacity partition. This is a computationally simple operation.
+
+### Fault tolerance
+
+- Each slot is assigned multiple partitions serving as backups of its data.
+- By having these backup partitions stored by a geographically diverse set of miners, the protocol minimizes the chances of data loss.
+
+## Capacity partitions
+
+- The protocol allocates a second type of partition called "capacity partitions". These are empty partitions that can be mined to earn rewards.
+- The protocol manages supply and demand by allocating a number of capacity partitions based on anticipated demand.
+- To prove that they are providing a full 16 TiB of storage the protocol requires miners pack these partitions using their mining address as a digital fingerprint.
+- To mine partitions, miners must first stake \_\_\_ tokens.
+- The protocol allocates new capacity partitions to miners based on their number of staked tokens.

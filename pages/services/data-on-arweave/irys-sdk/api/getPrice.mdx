@@ -1,0 +1,32 @@
+---
+description: Returns the cost to upload the specified number of bytes
+---
+
+# `irys.getPrice(numBytes)`
+
+Returns the cost to upload the specified number of bytes.
+
+**Parameters**
+
+<div className="-mt-6" />- `numBytes`: The number of bytes to check the price for
+
+**Returns**
+
+<div className="-mt-6" />
+
+-   `price`: Cost to upload `numBytes`, unit is the token specified when instantiating the `Irys` object
+    Return value is in atomic units, to convert to standard units use [`irys.utils.fromAtomic()`](./utils-fromAtomic)
+
+**Example**
+
+```js
+const irys = await getIrys();
+
+const numBytes = 1048576; // Number of bytes to check
+const priceAtomic = await irys.getPrice(numBytes);
+
+// Convert from atomic units to standard units
+const priceConverted = irys.utils.fromAtomic(numBytes);
+
+console.log(`Uploading ${numBytes} bytes costs ${priceConverted}`);
+```

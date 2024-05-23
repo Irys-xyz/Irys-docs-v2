@@ -1,0 +1,21 @@
+---
+description: Searches by token used for payment
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `token(tokenName)`
+
+Queries by token used for payment. Accepts [any token supported by Irys](/overview/supported-tokens).
+
+<div className="" />
+**Parameters**
+
+<div className="-mt-6" />
+- `tokenName`: The name of the [token](/overview/supported-tokens)
+
+```js
+const results = await myQuery
+	.search("irys:transactions")
+	.token("solana");
+```

@@ -1,0 +1,134 @@
+---
+description: Create an app
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# Balance approvals
+
+Use balance approvals to share balances between multiple addresses. This helps to onboard users without requiring them to own tokens.
+
+With balance approvals:
+
+- You pay for transactions.
+- Users sign transactions.
+
+Balance approvals:
+
+- Are based on the token set when connecting to an Irys node. Both approver and approvee must use the same
+  token.
+- Are registered instantly upon upload completion.
+- Are non-transferable.
+- Can be configured to expire automatically.
+
+## Create an approval
+
+To update an existing approval, create a new approval with the same address (it will overwrite the existing approval).
+
+```ts
+const receipt = await irys.approval.createApproval({
+	amount: irys.utils.toAtomic(1), // Amount in atomic units
+	approvedAddress: "<address>",
+	expiresInSeconds: 100, // Expires in 100 seconds. Delete to remove expiration.
+});
+```
+
+## Upload using an approval
+
+```ts
+const receipt = await irys.upload("GM World", { upload: { paidBy: "<address>" } });
+```
+
+Combine approvals and tags:
+
+```ts
+const uploadOptions = {
+	upload: {
+		paidBy: "<address>",
+	},
+	tags: [{ name: "Content-Type", value: "text/plain" }],
+};
+const receipt = await irys.upload(dataToUpload, uploadOptions);
+```
+
+## Revoke an approval
+
+```ts
+const receipt = await irys.approval.revokeApproval({ approvedAddress: "<address>" });
+```
+
+## Get balances you're approved to use
+
+Get approvals from the array of addresses provided:
+
+```ts
+const approvals = await irys.approval.getApprovals({
+	payingAddresses: ["<address>"],
+});
+```
+
+Get the first 100 approvals:
+
+```ts
+const approvals = await irys.approval.getApprovals({});
+```
+
+Return type:
+
+```ts
+{
+	amount: string; // Amount approved in atomic units
+	payingAddress: string; // Address of the payer's wallet
+	approvedAddress: string; // Address of the wallet that received the approval
+	expiresBy: number; // Timestamp (in milliseconds) when approval expires
+	timestamp: number; // Timestamp (in milliseconds) when the approval was created
+	token: string; // Approved token
+}
+[];
+```
+
+## Get approvals you've created
+
+Get approvals for the array of addresses provided:
+
+```ts
+const createdApprovals = irys.approval.getCreatedApprovals({
+	approvedAddresses: ["<address>"],
+});
+```
+
+Get the first 100 approvals you've created:
+
+```ts
+const createdApprovals = irys.approval.getCreatedApprovals({});
+```
+
+Return type:
+
+```ts
+{
+	amount: string; // Amount approved in atomic units
+	payingAddress: string; // Address of the payer's wallet
+	approvedAddress: string; // Address of the wallet that received the approval
+	expiresBy: number; // Timestamp (in milliseconds) when approval expires
+	timestamp: number; // Timestamp (in milliseconds) when the approval was created
+	token: string; // Approved token
+}
+[];
+```
+
+## Get balance approvals via HTTP
+
+You can also request balance approvals via HTTP:
+
+**Devnet**:
+
+```
+https://arweave.devnet.irys.xyz/account/approval?payingAddress=<...>&token=<...>&approvedAddress=<...>
+```
+
+**Mainnet**:
+
+```
+https://arweave.mainnet.irys.xyz/account/approval?payingAddress=<...>&token=<...>&approvedAddress=<...>
+```

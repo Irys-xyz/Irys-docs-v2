@@ -1,0 +1,43 @@
+# Programmable data
+
+### Programmable Data
+
+- The merging of data and compute/programmability, where compute is closely coupled to data.
+- Allows creation of verifiable data applications built directly onchain at internet scale.
+- Enables access to uploaded transaction data within the VM.
+- Allows creation of logic aware of individual transactions, such as proving verifiable compute done onchain.
+
+**Two phases**
+
+1. Smart contracts being able to access transaction metadata
+2. Start contracts actually getting the data
+   - The more data you use, the more gas you spend
+   - There will probably be limits as to the amount of data you can bring in
+   - Probably can only get data on Publish Ledger (Permanent data)
+   - We'll add opcodes like READDATA
+     - We'll add some sort of abstraction on top of this
+
+**Use Cases**
+
+- **SMTP Bridge Nodes**
+
+  - Build an onchain message replacement compatible with the legacy SMTP email protocol.
+  - Develop inbox experience, account management, message sending, and storing all onchain with Irys.
+  - Run a decentralized SMTP mail server to send and receive messages from a Gmail inbox.
+  - Token incentivization for SMTP servers using an ERC-20 token secured by the EVM.
+  - Manage SMTP servers through indexed data stored onchain, operated by smart contracts.
+  - Programmatically distribute rewards based on onchain activity of SMTP servers.
+
+- **DA Sampling Layer**
+
+  - Challenge participating peers with availability proofs and evaluate DA proofs.
+  - Slash offending peer/validator when necessary.
+  - Manage DA for different client applications through smart contracts.
+  - Use smart contract state and onchain data to manage what data is supposed to be onchain and available.
+  - Validate erasure coding for DA data with Irys smart contracts.
+  - Light clients read data from participants and post fraud or availability proofs as needed.
+
+- **Verifiable Compute on Large Datasets within a Single Chain**
+  - Store large datasets onchain and host AI datasets and compute within a single chain.
+  - Provide liquidity for the ecosystem through a DeFi endowment.
+  - Power AI agent systems with onchain storage and compute.

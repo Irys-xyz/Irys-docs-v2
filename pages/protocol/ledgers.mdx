@@ -1,0 +1,33 @@
+# Publish and Submit Ledgers
+
+A transaction consists of a header and a data payload.
+
+When a user uploads data to Irys:
+
+1. The headers are immediately included in a block
+2. The data is then uploaded and streamed to miners
+
+- Irys has a blocktime of \_\_\_ seconds, and an upper bound on data transfer speeds means there's a limit to how much data can be transferred in that time.
+- Breaking uploads into two steps helps Irys support unconstrained uploads of any size.
+
+* The problem is the protocol can't force users to upload transaction data, so what can it do?
+
+How the protocol handles this dilemma is to implement two slot sequences:
+
+- A permanent "published ledger" to store data uploaded to the network
+- A "submit ledger" for transaction data that may or may not be uploaded yet
+
+## Submit Ledger
+
+- When Users post transactions to the network, initially, it reserves space in the submit ledger for their data.
+- Partitions in the submit ledger expire on a regular interval known as the storage term. This removes the protocol's obligation to permanently reserve partition space for data that was never uploaded.
+
+## Publish Ledger
+
+- When data is uploaded to the submit ledger is it a candidate for inclusion in the publish ledger.
+- Once a block producer has collected enough storage proofs they can repost the users submit transaction as published transaction in the new block, ~~with confidence that the data has been uploaded to the network and replicated amongst miners.~~
+- They receive a reward for doing so, as do the other miners whose proofs are used to promote the transaction.
+- They receive a reward for doing so, as do the other miners whose proofs are used to promote the transaction.
+- The miners who store the publish ledger partitions can retrieve the data from the miners who signed storage proofs if they don't have the data already.
+- This creates a published ledger without gaps where the expectation is...that all data is stored and replicated. No missing chunks.
+- To incentivize miners to publish submit data as quickly as possible, users may include priority fees with their transaction that get split amongst the miners who cooperate to store and publish the data.

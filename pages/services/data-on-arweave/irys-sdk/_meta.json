@@ -1,0 +1,14 @@
+{
+	"installing-the-sdk": "Installing the SDK",
+	"troubleshooting": "Troubleshooting",
+	"community-sdk": "Community SDKs",
+	"migration-guide": {
+		"display": "hidden"
+	},
+	"irys-in-the-browser": "Irys in the browser",
+	"api": "API Docs",
+	"chunked-uploader": "Chunked uploader",
+	"ipfs-cid": "Using IPFS CIDs",
+	"manual-transaction": "Manually creating a Tx",
+	"balance-approvals": "Balance approvals"
+}

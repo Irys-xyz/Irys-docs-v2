@@ -1,0 +1,43 @@
+---
+description: Returns the receipt associated with the supplied transaction id
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `irys.funder.submitFundTransaction(txID)`
+
+Tells a node to re-evaluate a funding transaction.
+
+**Parameters**
+
+<div className="-mt-6" />- `txID`: The ID of the funding transaction to re-evaluate.
+
+
+**Returns**
+
+<div className="-mt-6" />
+
+- `response`: A JSON object with the following values
+
+```json
+response = {
+	id, // The transaction id of the fund transfer
+	quantity, // How much is being transferred
+	reward, // The amount taken by the network as a fee
+	target, // The address the funds were sent to
+};
+```
+
+**Example**
+```js
+const irys = await getIrys();
+
+try {
+	// First get a receipt
+	const fundTx = await irys.fund(irys.utils.toAtomic(0.05));
+	const response = await irys.funder.submitFundTransaction(fundTx.id);
+
+} catch (e) {
+	console.log("Error funding ", e);
+}
+```
