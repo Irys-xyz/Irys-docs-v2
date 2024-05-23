@@ -1,15 +1,16 @@
 # Partitions
 
-Onchain data is split up into a sequence of slots, each one 16 TIB.
+Onchain data is split up into a sequence of slots, each one 16 TIB. Partitions come in two varieties, **data partitions** and **capacity partitions**.
 
-1. Data is stored in **storage partitions**.
-2. Additional **capacity partitions** are online and available to be converted into storage partitions as needed.
+1. **Data partitions** store the data posted to the network.
+1. **Capacity partitions** reserve empty drive space to be converted to **data partitions** as data is added to the network.. 
 
 ## Storage partitions
 
 - Miners provide storage partitions. Data posted to the network is written to these partitions.
-- Before data can be written to a partition, it must be [packed](./packing).
-- When data is saved, it is XOR'd into the chunks of the capacity partition. This is a computationally simple operation.
+- Before data can be written to a partition, it must be [packed](./packing) with entropy chunks.
+- When data is posted to the chain it is XOR'd into the entropy chunks.
+- This makes each miners copy of the data (stored in packed entropy chunks) unique and cryptographically verifiable.
 
 ### Fault tolerance
 
@@ -20,6 +21,6 @@ Onchain data is split up into a sequence of slots, each one 16 TIB.
 
 - The protocol allocates a second type of partition called "capacity partitions". These are empty partitions that can be mined to earn rewards.
 - The protocol manages supply and demand by allocating a number of capacity partitions based on anticipated demand.
-- To prove that they are providing a full 16 TiB of storage the protocol requires miners pack these partitions using their mining address as a digital fingerprint.
-- To mine partitions, miners must first stake \_\_\_ tokens.
+- To prove that they are providing a full 16 TiB of storage the protocol requires miners pack these partitions with entropy chunks using their mining address as a digital fingerprint.
+- To mine partitions, miners must first stake their mining address. Once staked they can pledge to mine specific partitions allocated by the protocol.
 - The protocol allocates new capacity partitions to miners based on their number of staked tokens.
