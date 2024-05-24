@@ -9,21 +9,15 @@ const Info: React.FC = () => {
 					<p>We’re launching the fastest PoW chain in existence enabling both performant onchain storage and DeFi.</p>
 					<p>We introduce two novel concepts:</p>
 					<ul className="list-disc list-inside">
-						<li>
-							A new consensus mechanism called XYZ that enables the most efficient storage sampling seen across all
-							storage networks
-						</li>
-						<li>A finality gadget for fast finality and block times.</li>
+						<li>XYZ Consensus.</li>
+						<li>Lightening fast finality and block times.</li>
 					</ul>
 				</div>
 			</div>
 			<div className="flex justify-end">
 				<div className="w-2/3 space-y-4 text-right">
 					<h2 className="text-3xl font-bold">IrysVM</h2>
-					<p>
-						Irys enables programmable data by introducing IrysVM – a fork of the EVM. Long term, most logic will be
-						pushed into IrysVM.
-					</p>
+					<p>Programmable data by introducing IrysVM – a fork of the EVM.</p>
 					<p>
 						IrysVM unlocks a new DeFi ecosystem for data including a new primitive to Irys – a programmable
 						protocol-owned treasury (POT) used to fund future storage costs and generate yield for miners.

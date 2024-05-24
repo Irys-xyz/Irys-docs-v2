@@ -1,7 +1,7 @@
 {
-	"consensus": "Consensus mechanism",
+	"provable-storage": "Provable storage",
 	"partitions": "Partitions",
-	"tx-lifecycle" : "Transactions",
+	"tx-lifecycle": "Transactions",
 	"packing": "Packing",
 	"ledgers": "Publish & submit ledgers"
 }
