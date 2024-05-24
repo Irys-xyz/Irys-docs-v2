@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Button from "../Button";
-import ConfettiExplosion from "react-confetti-explosion";
 // import { Web3Button } from "@thirdweb-dev/react";
 
 interface ButtonBarProps {
@@ -16,11 +15,9 @@ const ButtonBar: React.FC<ButtonBarProps> = ({ submitUrl, contractAddress, token
 
 	const [message, setMessage] = useState<string>("");
 	const [claimButtonText, setClaimButtonText] = useState<string>("Claim NFT!");
-	const [isExploding, setIsExploding] = React.useState(false);
 
 	return (
 		<div className="flex flex-col">
-			{isExploding && <ConfettiExplosion />}
 			<div className="flex flex-row gap-4 mt-2">
 				{submitUrl && <Button onClick={() => window.open(submitUrl)}>Submit Quest</Button>}
 				{/* <Web3Button

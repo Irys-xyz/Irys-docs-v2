@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar";
 
 import { Metadata } from "next";
-import { ReactLenis } from "@/libs/react-lenis";
+import { ReactLenis } from "@/lib/react-lenis";
 
 import ScrollSpyWrapper from "@/components/scroll-spy/scroll-spy";
 import SplineHeader from "@/components/spline-header";

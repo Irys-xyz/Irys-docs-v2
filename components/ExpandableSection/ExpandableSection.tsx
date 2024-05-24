@@ -23,10 +23,10 @@ const CODE_SECTIONS: CodeSections = {
 			style={{ fontSize: ".9em", lineHeight: "1.25rem" }}
 		>
 			<span className="text-[#eb707d]">const</span> <span className="text-[#79b8ff]">irys</span>{" "}
-			<span className="text-[#eb707d]">= new</span> <span className="text-[#b392f0]">Irys</span>({"{ url: "}
-			<span className="text-[#44a447]">"https://node1.irys.network"</span>,{" token: "}
-			<span className="text-[#44a447]">"matic"</span>,{" key: "}
-			<span className="text-[#44a447]">"polygon-private-key"</span>
+			<span className="text-[#eb707d]">= new</span> <span className="text-[#b392f0]">Irys</span>({"{"} url:{" "}
+			<span className="text-[#44a447]">&quot;https://node1.irys.network&quot;</span>, token:{" "}
+			<span className="text-[#44a447]">&quot;matic&quot;</span>, key:{" "}
+			<span className="text-[#44a447]">&quot;polygon-private-key&quot;</span>
 			{" });"}
 		</code>
 	),
@@ -37,7 +37,7 @@ const CODE_SECTIONS: CodeSections = {
 		>
 			<span className="text-[#eb707d]">const</span> <span className="text-[#79b8ff]">response</span>{" "}
 			<span className="text-[#eb707d]">= await</span> <span className="text-[#79b8ff]">irys</span>.
-			<span className="text-[#b392f0]">fund</span>(irys.utils.toAtomic("1"));
+			<span className="text-[#b392f0]">fund</span>(irys.utils.toAtomic(&quot;1&quot;));
 		</code>
 	),
 	3: (
@@ -46,10 +46,10 @@ const CODE_SECTIONS: CodeSections = {
 			style={{ fontSize: ".9em", lineHeight: "1.25rem" }}
 		>
 			<span className="text-[#eb707d]">const</span> <span className="text-[#79b8ff]">dataToUpload</span>{" "}
-			<span className="text-[#eb707d]">=</span> <span className="text-[#44a447]">"GM world."</span>;
+			<span className="text-[#eb707d]">=</span> <span className="text-[#44a447]">&quot;GM world.&quot;</span>;
 			<br />
 			<span className="text-[#eb707d]">const</span> <span className="text-[#79b8ff]">response</span>{" "}
-			<span className="text-[#b392f0">= await</span> <span className="text-[#79b8ff]">irys</span>.
+			<span className="text-[#b392f0]">= await</span> <span className="text-[#79b8ff]">irys</span>.
 			<span className="text-[#b392f0]">provenance</span>.<span className="text-[#b392f0]">upload</span>
 			(dataToUpload);
 		</div>
@@ -74,12 +74,14 @@ const ExpandableSection = ({ subtitle, items }: ExpandableSectionProps) => {
 						className="flex cursor-pointer flex-col items-center justify-center gap-2 md:items-start lg:gap-9"
 					>
 						<h2
-							className={`flex items-center gap-3 text-center text-3xl text-white md:text-left lg:text-5xl ${currentlyOpen !== id && "text-onyx hover:text-onyx/90"
-								}`}
+							className={`flex items-center gap-3 text-center text-3xl text-white md:text-left lg:text-5xl ${
+								currentlyOpen !== id && "text-onyx hover:text-onyx/90"
+							}`}
 						>
 							<span
-								className={`hidden h-6 w-6 items-center justify-center rounded-full bg-white text-base text-black lg:flex ${currentlyOpen !== id && "bg-onyx hover:bg-onyx/90"
-									}`}
+								className={`hidden h-6 w-6 items-center justify-center rounded-full bg-white text-base text-black lg:flex ${
+									currentlyOpen !== id && "bg-onyx hover:bg-onyx/90"
+								}`}
 							>
 								{id}
 							</span>{" "}

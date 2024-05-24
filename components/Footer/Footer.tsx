@@ -1,37 +1,158 @@
-// components/Footer.tsx
-"use client";
+import { DiscordIcon, GitIcon, MediumIcon, TelegramIcon, TwitterIcon, YoutubeIcon } from "../svg";
 
-import React from "react";
-import { useRouter } from "next/navigation";
+import FooterDesktop from "../NewFooter/FooterDesktop";
+import FooterMobile from "../NewFooter/FooterMobile";
 
-const Footer: React.FC = () => {
-	const router = useRouter();
-
-	const handleDocsClick = () => {
-		router.push("/overview/irys-architecture");
-	};
+const Footer = ({ noPadding }: { noPadding?: boolean }) => {
+	const DEFINITIONS = [
+		{
+			title: "DEVELOPER 101",
+			options: [
+				{
+					name: "About Irys",
+					href: "/overview/about",
+					newTab: false,
+				},
+				{
+					name: "Permanent Data",
+					href: "/overview/permanent-data",
+					newTab: false,
+				},
+				{
+					name: "Ordering",
+					href: "/overview/ordering",
+					newTab: false,
+				},
+				{
+					name: "Tools",
+					href: "/overview/tools",
+					newTab: false,
+				},
+				{
+					name: "Developer FAQs",
+					href: "/faqs/dev-faq",
+					newTab: false,
+				},
+			],
+		},
+		{
+			title: "DEVELOPER DOCS",
+			options: [
+				{
+					name: "SDK",
+					href: "/developer-docs/irys-sdk",
+					newTab: false,
+				},
+				{
+					name: "Query package",
+					href: "/developer-docs/querying/query-package",
+					newTab: false,
+				},
+				{
+					name: "Provenance Toolkit",
+					href: "/developer-docs/provenance-toolkit",
+					newTab: false,
+				},
+				{
+					name: "CLI",
+					href: "/developer-docs/cli",
+					newTab: false,
+				},
+				{
+					name: "Tutorials",
+					href: "/hands-on/tutorials",
+				},
+			],
+		},
+		{
+			title: "ABOUT IRYS",
+			options: [
+				{
+					name: "What is Irys?",
+					href: "https://irys.xyz/what-is-irys",
+				},
+				{
+					name: "Blog",
+					href: "https://irys.xyz/blog",
+				},
+				{
+					name: "Careers",
+					href: "https://irys-xyz.notion.site/Careers-4c9e42d84d7d4740a293c07c1f057ca4?pvs=4",
+				},
+				{
+					name: "Media Kit",
+					href: "https://irys.xyz/media-kit",
+				},
+			],
+			footer: (
+				<div className="mt-auto flex items-center gap-[21px] pb-[40px]">
+					<a
+						href="https://youtube.irys.xyz/"
+						target="_blank"
+						rel="nofollow noreferrer"
+						className="transition-all hover:rotate-6 hover:scale-105"
+						aria-label="Telegram"
+					>
+						<YoutubeIcon />
+					</a>
+					{/* <a
+						href="https://medium.com/bundlr-network"
+						target={"_blank"}
+						rel="nofollow noreferrer"
+						className="transition-all hover:rotate-6 hover:scale-105 text-black hover:text-black"
+					>
+						<MediumIcon />
+					</a> */}
+					{/* <a
+						href="https://mirror.xyz/0x9AbB09BF9F58E72A532E859d798eB4E8e10A35e1"
+						target={"_blank"}
+						rel="nofollow noreferrer"
+						className="transition-all hover:rotate-6 hover:scale-105 text-black hover:text-black"
+					>
+						<MirrorIcon className="w-6 h-6 text-black" />
+					</a> */}
+					<a
+						href="https://twitter.irys.xyz"
+						target={"_blank"}
+						rel="nofollow noreferrer"
+						className="transition-all hover:rotate-6 hover:scale-105 text-black hover:text-black"
+					>
+						<TwitterIcon />
+					</a>
+					<a
+						href="https://discord.irys.xyz"
+						target={"_blank"}
+						rel="nofollow noreferrer"
+						className="transition-all hover:rotate-6 hover:scale-105 text-black hover:text-black"
+					>
+						<DiscordIcon />
+					</a>
+					<a
+						href="https://github.com/Irys-xyz/"
+						target={"_blank"}
+						rel="nofollow noreferrer"
+						className="transition-all hover:rotate-6 hover:scale-105 text-black hover:text-black"
+					>
+						<GitIcon />
+					</a>
+					<a
+						href="https://telegram.irys.xyz/"
+						target={"_blank"}
+						rel="nofollow noreferrer"
+						className="transition-all hover:rotate-6 hover:scale-105 text-black hover:text-black"
+					>
+						<TelegramIcon />
+					</a>
+				</div>
+			),
+		},
+	];
 
 	return (
-		<footer
-			className="fixed bottom-0 w-full bg-black text-white py-4 z-10 rounded-t-2xl shadow-2lg"
-			style={{ boxShadow: "0 -10px 10px -10px rgba(255, 255, 0, 0.5)" }}
-		>
-			<div className="container mx-auto flex justify-between items-center">
-				<div className="w-2/3 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
-					<div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 px-10">
-						<span>Want the alpha? Join our mailing list.</span>
-						<input type="email" placeholder="Your email" className="px-4 py-2 rounded-full text-black" />
-						<button className="px-4 py-2 bg-blue-500 rounded-full hover:bg-blue-700">Submit</button>
-					</div>
-				</div>
-				<div className="w-1/3 flex justify-end">
-					<button className="px-4 py-2 bg-blue-500 rounded-full hover:bg-blue-700 mr-3">Discord</button>
-					<button onClick={handleDocsClick} className="px-4 py-2 bg-blue-500 rounded-full hover:bg-blue-700 ml-5 mr-8">
-						Docs
-					</button>
-				</div>
-			</div>
-		</footer>
+		<>
+			<FooterMobile data={DEFINITIONS} />
+			<FooterDesktop data={DEFINITIONS} noPadding={noPadding} />
+		</>
 	);
 };
 

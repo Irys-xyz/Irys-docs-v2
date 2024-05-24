@@ -1,8 +1,8 @@
 {
 	"irys-architecture": "Architecture",
 	"programmable-data": "Programmable data",
-	"treasury": "Treasury",
 	"onchain-data": "Onchain data",
+	"treasury": "Treasury",
 	"scaling": "Scaling",
 	"mining": "Mining"
 }
