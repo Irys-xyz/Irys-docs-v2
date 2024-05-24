@@ -1,8 +1,0 @@
-{
-	"build": {
-		"env": {
-			"VERCEL_GIT_COMMIT_REF": "structure"
-		}
-	},
-	"ignoreCommand": "if [[ $VERCEL_GIT_COMMIT_REF != 'structure' ]]; then exit 0; fi"
-}
