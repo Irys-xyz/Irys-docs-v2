@@ -313,5 +313,3 @@ const UploadFeeCalculator: React.FC = () => {
 };
 
 export default UploadFeeCalculator;
-
-//
