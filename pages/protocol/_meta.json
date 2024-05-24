@@ -1,6 +1,7 @@
 {
 	"consensus": "Consensus mechanism",
 	"partitions": "Partitions",
+	"tx-lifecycle" : "Transactions",
 	"packing": "Packing",
 	"ledgers": "Publish & submit ledgers"
 }

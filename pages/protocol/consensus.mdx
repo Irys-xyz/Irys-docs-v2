@@ -1,23 +1,15 @@
-# Consensus Mechanism
+# Provable Storage
 
-Irys uses the \_\_\_ consensus mechanism
+Irys uses the Proof of Unique Storage (PoUS) to ensures the integrity and possession of data and capacity on the network.
 
-- The protocol selects a random 200MB recall range once a second.
-- Each recall range is split up into 256KiB chunks that can be read and mined.
-- Miners race to create storage proofs proving they hold chunks from the recall range.
+* Storage (both empty capacity and stored data) on Irys is split into 16TiB partitions.
+* These partitions are packed with a miners unique address and cryptographic entropy.
+* This uniquely identifies the partition as belonging to a specific miner.
+* Every second the protocol selects a random 200MB recall range from each partition.
+* These recall ranges are split up into 256KiB chunks that can be read and mined.
+* Miners read the chunks and compute a solution from each one.
+* If the solution exceeds the difficulty setting of the network they win the right to produce a block and earn rewards.
+* Any transactions they include in the block will reward the miner with a small fee.
+* If the rest of the network accepts the block, it will be added to the head of the chain and miners will build on top of it.
 
-- If a miner finds a winning chunk, they earn the right to produce a block and earn block rewards, along with a small reward for each user transaction they include in the block.
-- This block is added to the head of the chain where the miners contributions are permanently recorded.
-
-## Mempools
-
-- Users post transaction headers to miners who store them in memory.
-- Miners share pending transactions with one another because cooperating is the best way to maximize their block rewards. The more transactions they include in a block, the larger the rewards.
-- If a miner stops sharing pending transactions with other miners, those miners would also stop sharing with them. This would mean they would only know about pending transactions uploaded directly to them, which would lower their rewards when they produce a block.
-- This results in a shared set of pending transactions across miners which is often referred to as the mempool.
-- When a miner produces a block it adds the pending transactions from the mempool into the new block.
-- The other miners see this block and know its safe to remove the included transactions from their copy of the mempool.
-- Once transaction headers are included in a block, they reserve space for their data in the most recent partition slot.
-- Users upload their transaction data to miners storing the partitions with this reserved space and the miners share this data with one another.
-- Just like before miners are incentivized to cooperate and share data to earn greater rewards.
-- This is because blocks mined from data chunks produce greater rewards than ones mined from empty capacity chunks.
+TODO: PoW/PoS hybrid

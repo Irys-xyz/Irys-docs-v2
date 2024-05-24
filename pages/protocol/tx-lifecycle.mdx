@@ -1,0 +1,19 @@
+## Mempools
+
+- Users post transaction headers to miners who store them in memory.
+- Miners share pending transactions with one another because cooperating is the best way to maximize their block rewards. The more transactions they include in a block, the larger the rewards.
+- If a miner stops sharing pending transactions with other miners, those miners would also stop sharing with them. This would mean they would only know about pending transactions uploaded directly to them, which would lower their rewards when they produce a block.
+- This results in a shared set of pending transactions across miners which is often referred to as the mempool.
+- When a miner produces a block it adds the pending transactions from the mempool into the new block.
+- The other miners see this block and know its safe to remove the included transactions from their copy of the mempool.
+- Once transaction headers are included in a block, they reserve space for their data in the most recent partition slot.
+- Users upload their transaction data to miners storing the partitions with this reserved space and the miners share this data with one another.
+- Just like before miners are incentivized to cooperate and share data to earn greater rewards.
+- This is because blocks mined from data chunks produce greater rewards than ones mined from empty capacity chunks.
+
+
+## Seeding
+TODO
+
+## Verifiability
+TODO
