@@ -1,13 +1,24 @@
 import ArchitectureBento from "/components/ArchitectureBento";
 import ComponentBento from "/components/ComponentBento";
+import { Tooltip } from "react-tooltip";
+import Heading from "/components/Heading";
 
-## **Welcome to Irys** — the chain for programmable data
+<Tooltip anchorSelect=".my-anchor-element" place="top">
+	Hello world!
+</Tooltip>
+
+<div className="mt-7">
+	<Heading level={1} className="">
+		Welcome to Irys
+	</Heading>
+	The chain for programmable data
+</div>
 
 Irys combines high performance with robust verification, providing a secure execution layer for on-chain data. Traditional storage protocols often sacrificed one for the other, hampering secure execution integration. Irys overcomes this tradeoff by uniting Proof of Work (PoW) with staking and slashing mechanisms. This enables efficient data handling alongside robust security for fully on-chain applications.
 
 We call this integration of secure storage and execution layers in a single protocol Programmable Data.
 
-<ArchitectureBento />
+<ArchitectureBento />{" "}
 
 ## Components
 

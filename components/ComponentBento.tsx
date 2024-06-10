@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { FaLocationArrow } from "react-icons/fa6";
 
 const componentBentoData: {
 	title: string;
 	description: string;
 	details: string[];
+	image?: string;
 	href?: string;
 }[] = [
 	{
@@ -16,6 +18,7 @@ const componentBentoData: {
 	{
 		title: "Submit + Publish Ledgers",
 		description: "Allows the protocol to:",
+		image: "/diagrams/ledgers.png",
 		details: [
 			"Make commitments about published data",
 			"Provide reliable access for the execution layer by managing data upload and storage proofs",
@@ -45,13 +48,20 @@ const ComponentBento: React.FC = () => {
 						key={component.title}
 						className="col-span-12 md:col-span-6 animated-border cursor-pointer p-5 h-auto rounded-xl flex items-start justify-end flex-col bg-gradient-to-b from-[#171717]/50 to-[#171717]/20"
 					>
-						<h3 className="text-lg font-bold tracking-tight text-white">
-							{component.href ? (
-								<Link className="underline" href={component.href}>
-									{component.title}
+						{component.image && (
+							<img
+								src={component.image}
+								alt={component.title}
+								className="w-full h-full object-cover rounded-t-lg mb-4"
+							/>
+						)}
+						<h3 className="text-lg flex flex-row font-bold tracking-tight text-white">
+							{component.title}
+
+							{component.href && (
+								<Link className="underline ml-5 mt-1" href={component.href}>
+									<FaLocationArrow className="transform transition-transform duration-300 ease-out hover:scale-105 hover:text-[#FF8451]" />
 								</Link>
-							) : (
-								component.title
 							)}
 						</h3>
 						<p className="text-base font-light text-[#B7B7B7]">{component.description}</p>

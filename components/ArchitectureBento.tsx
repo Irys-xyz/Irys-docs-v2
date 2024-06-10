@@ -23,6 +23,7 @@ const bentoData: {
 	{
 		title: "Fast 2D Packing",
 		href: "/protocol/packing",
+		image: "/diagrams/packing.png",
 		description:
 			"Combined with staked mining addresses, enables incentive-compatible packing that scales horizontally, reduces packing costs, and increases the network's ability to ingest data.",
 		properties: {
@@ -32,6 +33,7 @@ const bentoData: {
 	{
 		title: "Capacity Mining",
 		href: "/overview/mining",
+		image: "/diagrams/capacity-mining.png",
 		description: "Allows pre-packing of empty capacity partitions for efficient data ingress.",
 		properties: {
 			className: "col-span-12 md:col-span-4",
@@ -51,9 +53,6 @@ const bentoData: {
 const ArchitectureBento: React.FC = () => {
 	return (
 		<div className="overflow-clip mt-5">
-			<div className="absolute inset-0">
-				<Image src={HeaderFog} alt="header fog" layout="fill" />
-			</div>
 			<section className="container px-5 md:px-0 mx-auto">
 				<div className="grid grid-cols-12 gap-x-4 gap-y-4">
 					{bentoData.map((bento) => (
@@ -68,7 +67,7 @@ const ArchitectureBento: React.FC = () => {
 								{bento.title}
 								{bento.href && (
 									<Link className="underline ml-5 mt-1" href={bento.href}>
-										<FaLocationArrow />
+										<FaLocationArrow className="transform transition-transform duration-300 ease-out hover:scale-105 hover:text-[#FF8451]" />
 									</Link>
 								)}
 							</h3>
