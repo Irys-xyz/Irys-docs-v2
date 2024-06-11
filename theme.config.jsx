@@ -1,11 +1,12 @@
 // import Footer from "./components/Footer";
 import IrysLogoText from "./components/svg/IrysLogoText";
+import Footer from "./components/footer/footer";
 import { useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 
 const FooterWrapper = () => {
 	const router = useRouter();
-	return ""; //<Footer noPadding={router.asPath !== "/"} />;
+	return <Footer />
 };
 
 export default {
