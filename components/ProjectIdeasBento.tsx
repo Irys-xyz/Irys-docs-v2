@@ -6,8 +6,10 @@ const ProjectIdeasBento: React.FC = () => {
 	return (
 		<section className="container px-5 md:px-0 mx-auto mt-5 flex flex-col gap-y-8">
 			<div className="animated-border cursor-pointer p-10 h-auto rounded-xl flex flex-col items-start justify-end bg-gradient-to-b from-[#171717]/50 to-[#171717]/20">
-				<h3 className="text-3xl flex flex-row font-bold tracking-tight text-white">SMTP Bridge Nodes</h3>
-				<Image src="/diagrams/smtp.png" width="500" height="500" />
+				<h3 className="text-4xl w-full font-bold text-white text-center">SMTP Bridge Nodes</h3>
+				<div className="w-full mt-3">
+					<Image src="/diagrams/smtp.png" layout="responsive" width={1470} height={792} className="w-full h-auto" />
+				</div>
 
 				<p className="text-base font-light text-[#B7B7B7] mt-2">
 					Imagine building an onchain message replacement to email but in order to bootstrap it you need to make it
