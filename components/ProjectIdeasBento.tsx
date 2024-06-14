@@ -8,7 +8,14 @@ const ProjectIdeasBento: React.FC = () => {
 			<div className="animated-border cursor-pointer p-10 h-auto rounded-xl flex flex-col items-start justify-end bg-gradient-to-b from-[#171717]/50 to-[#171717]/20">
 				<h3 className="text-4xl w-full font-bold text-white text-center">SMTP Bridge Nodes</h3>
 				<div className="w-full mt-3">
-					<Image src="/diagrams/smtp.png" layout="responsive" width={1470} height={792} className="w-full h-auto" />
+					<Image
+						alt="smtp email"
+						src="/diagrams/smtp.png"
+						layout="responsive"
+						width={1470}
+						height={792}
+						className="w-full h-auto"
+					/>
 				</div>
 
 				<p className="text-base font-light text-[#B7B7B7] mt-2">
@@ -31,7 +38,7 @@ const ProjectIdeasBento: React.FC = () => {
 			<div className="animated-border cursor-pointer p-10 h-auto rounded-xl flex flex-col items-start justify-end bg-gradient-to-b from-[#171717]/50 to-[#171717]/20">
 				<h3 className="text-3xl flex flex-row font-bold tracking-tight text-white text-center">DA Sampling Layer</h3>
 				<div className="flex flex-col">
-					<Image src="/diagrams/da.png" width="500" height="500" />
+					<Image alt="da" src="/diagrams/da.png" width="500" height="500" />
 					<div>
 						<p className="text-base font-light text-[#B7B7B7]">
 							Irys smart contracts could challenge participating peers with availability proofs and later evaluate
