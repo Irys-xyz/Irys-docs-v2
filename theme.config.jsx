@@ -1,11 +1,12 @@
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import IrysLogoText from "./components/svg/IrysLogoText";
+import Footer from "./components/footer/footer";
 import { useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 
 const FooterWrapper = () => {
 	const router = useRouter();
-	return <Footer noPadding={router.asPath !== "/"} />;
+	return <Footer />
 };
 
 export default {
@@ -35,14 +36,7 @@ export default {
 	footer: {
 		component: FooterWrapper,
 	},
-	banner: {
-		key: "dev-quest2",
-		text: (
-			<a href="/developer-docs/network-merge-guide" target="_blank">
-				Irys merged our mainnet nodes. Migration guide →
-			</a>
-		),
-	},
+	banner: {},
 	useNextSeoProps() {
 		const { asPath } = useRouter();
 		if (asPath !== "/") {
