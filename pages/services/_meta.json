@@ -1,5 +1,4 @@
 {
 	"bundlers": "Bundlers",
-	"gateway": "Gateway",
-	"data-on-arweave": "Data on Arweave"
+	"gateway": "Gateway"
 }

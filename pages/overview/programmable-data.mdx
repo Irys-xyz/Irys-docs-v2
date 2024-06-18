@@ -1,11 +1,12 @@
-import ProjectIdeasBento from "/components/ProjectIdeasBento";
+import SingleBento from "/components/SingleBento";
 
 # Programmable data
 
 ## Overview
 
+**NICK: Diagram of onchain data flowing into smart contracts**
+
 Programmable Data is a simple yet powerful concept: the ability for smart contracts to access any data provably stored on the network. Irys’s advancements give smart contracts access to the entirety of onchain data during execution. With Programmable Data, decentralized applications are free to explore a new frontier, fueled by computation meeting data at scale.
-Key Features
 
 ## Key Features
 
@@ -26,3 +27,31 @@ Irys's Programmable Data allows smart contracts to access transaction informatio
 Programmable Data enables new execution models beyond direct interaction with Irys's VM. This includes lazy evaluation, where state interactions are executed only when read, and secure rollups, where execution environments publish their state to Irys’s data layer.
 
 ## Use Cases
+
+### Onchain Incentive Protocols
+
+Irys allows users to submit proofs of their actions to the storage layer. Smart contracts can read these proofs and automatically distribute rewards, enabling decentralized incentive protocols. For example, social media engagement can be incentivized by recording actions onchain and rewarding users based on their activity.
+
+### Decentralized incentives for physical infrastructure (DePINs)
+
+DePIN protocols can use Programmable Data to reward node operators based on their contributions, incentivizing a robust decentralized network without centralized control. Proofs of infrastructure deployment can be recorded to the storage layer and validated by smart contracts.
+
+### Crowdsourced valuable datasets
+
+Data providers can submit proofs of their contributions to the storage layer. Smart contracts can verify and reward these contributions, creating new models for crowdsourcing high-quality data. This approach aligns incentives and ensures data integrity.
+
+### Growth/engagement campaigns
+
+Projects can use Programmable Data to incentivize user engagement by recording proofs of desired activities and distributing rewards automatically. This model supports growth, adoption, and user interaction in a decentralized manner.
+
+### Data Availability sampling rewards
+
+Irys supports a seamless deployment for a Data Availability (DA) layer. Users can encode their data, post it to Irys's storage layer, and receive rewards through a DA contract that processes sampling proofs. This ensures data is retrievable globally and participants are fairly compensated.
+
+### Bridging to legacy systems like email
+
+Irys makes building a decentralized SMTP service straightforward. Tokens can be used to incentivize SMTP servers, with management and rewards distribution handled onchain. This integration supports communication systems compatible with legacy email protocols while operating on a decentralized network.
+
+### Real-Time Multiplayer Gaming
+
+Irys’ Programmable Data enables high-performance game state management off-chain while using smart contracts for conflict resolution and maintaining the authoritative game state. Game clients submit move and action data to the storage layer, and smart contracts periodically batch process these moves, validating and updating the game state. This provides a secure platform for real-time multiplayer games, enhancing the gaming experience without sacrificing decentralization.
