@@ -2,15 +2,27 @@ import ProjectIdeasBento from "/components/ProjectIdeasBento";
 
 # Programmable data
 
-## Programmable Data
+## Overview
 
-- The merging of data and compute/programmability, where compute is closely coupled to data.
-- Allows creation of verifiable data applications built directly onchain at internet scale.
-- Enables access to uploaded transaction data within the VM.
-- Allows creation of logic aware of individual transactions, such as proving verifiable compute done onchain.
+Programmable Data is a simple yet powerful concept: the ability for smart contracts to access any data provably stored on the network. Irys’s advancements give smart contracts access to the entirety of onchain data during execution. With Programmable Data, decentralized applications are free to explore a new frontier, fueled by computation meeting data at scale.
+Key Features
 
-## Project ideas
+## Key Features
 
-With programmable data, builders are able to build a new class of decentralized applications that were previously impossible. Including:
+### Cheap Cross-Contract Composability
 
-<ProjectIdeasBento />
+Traditionally, sharing state between contracts is expensive due to stringent security requirements. Programmable Data offers a cheaper method by allowing contracts to record data onchain and store the byte offset in their state. Other contracts can access this data by referencing the offset, eliminating costly cross-contract calls.
+
+### Onchain Discoverability
+
+Previously, developers had to rely on external tools to discover onchain programs. Programmable Data brings discoverability to the execution layer. Smart contracts can now access onchain registries directly, enhancing composability and reducing friction.
+
+### Transaction Information Awareness
+
+Irys's Programmable Data allows smart contracts to access transaction information like headers and interactions. This enables developers to create protocols that observe onchain activity, unlocking new possibilities for automation and interaction.
+
+### Flexible Execution
+
+Programmable Data enables new execution models beyond direct interaction with Irys's VM. This includes lazy evaluation, where state interactions are executed only when read, and secure rollups, where execution environments publish their state to Irys’s data layer.
+
+## Use Cases
