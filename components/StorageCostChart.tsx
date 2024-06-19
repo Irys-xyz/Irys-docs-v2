@@ -17,10 +17,10 @@ const StorageCostChart: React.FC = () => {
 	const labels = Array.from({ length: 201 }, (_, i) => i); // n values from 0 to 200
 	const decayRate1 = 0.01;
 	const decayRate28 = 0.28;
-	const C0 = 1;
+	const C0 = 100;
 
-	const calculateCost = (decayRate: number, n: number) => {
-		return 100 - C0 * ((1 - Math.pow(1 - decayRate, n)) / decayRate);
+	const calculateCost = (decayRate: number, year: number) => {
+		return C0 *  Math.pow(1 - decayRate, year);
 	};
 
 	const data1 = labels.map((n) => calculateCost(decayRate1, n));
