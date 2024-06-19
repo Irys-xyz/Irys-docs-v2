@@ -283,3 +283,17 @@ details[open] .faq-expand::before {
 		max-width: 1536px;
 	}
 }
+
+.katex {
+	font-family: "Inter", sans-serif;
+	font-size: 0.95em;
+}
+
+.katex .mathnormal {
+	font-family: "Inter", sans-serif;
+}
+
+.break-words {
+	word-break: keep-all;
+	white-space: normal;
+}
