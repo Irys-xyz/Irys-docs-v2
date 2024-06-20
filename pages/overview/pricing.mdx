@@ -20,89 +20,82 @@ For the purpose of this specification, we will consider a representative 16TB dr
 
 To calculate the annual power consumption, we take into account the mining workload, the expected time the drive spends reading data versus idling, its power efficiency in converting AC to DC power, and the hours of operation in a year.
 
-<div class="mt-5">
-	<div class="overflow-x-auto">
-		<div class="w-5/6 ">
-			<div class="border border-gray-400 text-xs">
-				<div class="grid grid-cols-10 gap-2 border-gray-400 bg-slate-800">
-					<div class="col-span-1 border-r px-1">Operation</div>
-					<div class="col-span-1 border-r px-1">Operation Power Consumption</div>
-					<div class="col-span-1 border-r px-1">Power Efficiency</div>
-					<div class="col-span-1 border-r px-1">Transfer Rate (Reads)</div>
-					<div class="col-span-1 border-r px-1">AC Power Consumption</div>
-					<div class="col-span-1 border-r px-1">Operation Annual Share</div>
-					<div class="col-span-1 border-r px-1">Hours in a Year</div>
-					<div class="col-span-1 border-r px-1">Hours of Operation per year</div>
-					<div class="col-span-1 border-r px-1">Hours Per Day</div>
-					<div class="col-span-1 border-r px-1">Annual HDD AC Power consumption</div>
-				</div>
-				<div class="grid grid-cols-10 gap-2 border border-gray-400">
-					<div class="col-span-1 border-r ml-2">R/W</div>
-					<div class="col-span-1 border-r">6.50W</div>
-					<div class="col-span-1 border-r">0.7</div>
-					<div class="col-span-1 border-r">269MB/s</div>
-					<div class="col-span-1 border-r">9.29W</div>
-					<div class="col-span-1 border-r">80%</div>
-					<div class="col-span-1 border-r">8760</div>
-					<div class="col-span-1 border-r">7008</div>
-					<div class="col-span-1 border-r">19.20 hours</div>
-					<div class="col-span-1 border-r">65.07kWh</div>
-				</div>
-				<div class="grid grid-cols-10 gap-2 border-b border-gray-400">
-					<div class="col-span-1 border-r ml-2">Idle</div>
-					<div class="col-span-1 border-r">5.60W</div>
-					<div class="col-span-1 border-r">0.7</div>
-					<div class="col-span-1 border-r">-</div>
-					<div class="col-span-1 border-r">8.00W</div>
-					<div class="col-span-1 border-r">20%</div>
-					<div class="col-span-1 border-r">8760</div>
-					<div class="col-span-1 border-r">1752</div>
-					<div class="col-span-1 border-r">4.80 hours</div>
-					<div class="col-span-1 border-r">14.02kWh</div>
-				</div>
-				<div class="grid grid-cols-10 gap-2 border-b border-gray-400">
-					<div class="col-span-7"></div>
-					<div class="col-span-2 border-r text-right pr-2">Total Annual AC Consumption</div>
-					<div class="col-span-1 border-r">79.09kWh</div>
-				</div>
-				<div class="grid grid-cols-10 gap-2 border-b border-gray-400">
-					<div class="col-span-7"></div>
-					<div class="col-span-2 border-r text-right pr-2">Total Annual Data Transferred</div>
-					<div class="col-span-1 border-r">6,472TiB</div>
-				</div>
-				<div class="grid grid-cols-10 gap-2 border-gray-400 bg-slate-800">
-					<div class="col-span-1 border-r px-1"></div>
-					<div class="col-span-1 border-r px-1">Annualized Failure Rate</div>
-					<div class="col-span-1 border-r px-1">Drive Price</div>
-					<div class="col-span-1 border-r px-1">Drives In Datacenter</div>
-					<div class="col-span-1 border-r px-1">Drives Replaced</div>
-					<div class="col-span-1 border-r px-1">Replacement Costs</div>
-					<div class="col-span-1 border-r px-1">Annual kWh Consumed</div>
-					<div class="col-span-1 border-r px-1">Annual Energy Cost</div>
-					<div class="col-span-1 border-r px-1">Annual Operation Expenses</div>
-					<div class="col-span-1 border-r px-1">Annual Cost Per Drive</div>
-				</div>
-				<div class="grid grid-cols-10 gap-2 border-b border-t border-gray-400">
-					<div class="col-span-1 border-r ml-2 break-words">Annualized cost</div>
-					<div class="col-span-1 border-r">1.40%</div>
-					<div class="col-span-1 border-r">$169.99</div>
-					<div class="col-span-1 border-r">100</div>
-					<div class="col-span-1 border-r">1.4</div>
-					<div class="col-span-1 border-r">$237.99</div>
-					<div class="col-span-1 border-r">7,909kWh</div>
-					<div class="col-span-1 border-r">$1,001</div>
-					<div class="col-span-1 border-r">$18,238</div>
-					<div class="col-span-1 border-r">$182</div>
-				</div>
-				<div class="grid grid-cols-10 gap-2 border-gray-400">
-						<div class="col-span-8"></div>
-						<div class="col-span-1 border-r text-right pr-2">Cost of Power</div>
-    				<div class="col-span-1">12.66 ¢/kWh</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
-
+<div className="mt-5 break-normal w-full text-xs border border-gray-400">
+	<div className="grid grid-cols-10 border-b bg-slate-800">
+		<div className="col-span-1 border-r">Operation</div>
+		<div className="col-span-1 border-r">Operation Power Consumpt- ion</div>
+		<div className="col-span-1 border-r">Power Efficiency</div>
+		<div className="col-span-1 border-r">Transfer Rate (Reads)</div>
+		<div className="col-span-1 border-r">AC Power Consumpt- ion</div>
+		<div className="col-span-1 border-r">Operation Annual Share</div>
+		<div className="col-span-1 border-r">Hours in a Year</div>
+		<div className="col-span-1 border-r">Hours of Operation per year</div>
+		<div className="col-span-1 border-r">Hours Per Day</div>
+		<div className="col-span-1 border-r">Annual HDD AC Power Consumpt- ion</div>
+	</div>
+	<div className="grid grid-cols-10 border-b">
+		<div className="col-span-1 border-r">R/W</div>
+		<div className="col-span-1 border-r">6.50W</div>
+		<div className="col-span-1 border-r">0.7</div>
+		<div className="col-span-1 border-r">269MB/s</div>
+		<div className="col-span-1 border-r">9.29W</div>
+		<div className="col-span-1 border-r">80%</div>
+		<div className="col-span-1 border-r">8760</div>
+		<div className="col-span-1 border-r">7008</div>
+		<div className="col-span-1 border-r">19.20 hr</div>
+		<div className="col-span-1 border-r">65.07kWh</div>
+	</div>
+	<div className="grid grid-cols-10 border-b">
+		<div className="col-span-1 border-r">Idle</div>
+		<div className="col-span-1 border-r">5.60W</div>
+		<div className="col-span-1 border-r">0.7</div>
+		<div className="col-span-1 border-r">-</div>
+		<div className="col-span-1 border-r">8.00W</div>
+		<div className="col-span-1 border-r">20%</div>
+		<div className="col-span-1 border-r">8760</div>
+		<div className="col-span-1 border-r">1752</div>
+		<div className="col-span-1 border-r">4.80 hr</div>
+		<div className="col-span-1 border-r">14.02kWh</div>
+	</div>
+	<div className="grid grid-cols-10 border-b">
+		<div className="col-span-7"></div>
+		<div className="col-span-2 border-r text-right pr-2">Total Annual AC Consumption</div>
+		<div className="col-span-1 border-r">79.09kWh</div>
+	</div>
+	<div className="grid grid-cols-10 border-b border-gray-400">
+		<div className="col-span-7"></div>
+		<div className="col-span-2 border-r text-right pr-2">Total Annual Data Transferred</div>
+		<div className="col-span-1 border-r">6,472TiB</div>
+	</div>
+	<div className="grid grid-cols-10 border-gray-400 bg-slate-800">
+		<div className="col-span-1 border-r"></div>
+		<div className="col-span-1 border-r">Annualized Failure Rate</div>
+		<div className="col-span-1 border-r">Drive Price</div>
+		<div className="col-span-1 border-r">Drives In Datacenter</div>
+		<div className="col-span-1 border-r">Drives Replaced</div>
+		<div className="col-span-1 border-r">Replace- ment Costs</div>
+		<div className="col-span-1 border-r">Annual kWh Consumed</div>
+		<div className="col-span-1 border-r">Annual Energy Cost</div>
+		<div className="col-span-1 border-r">Annual Operation Expenses</div>
+		<div className="col-span-1 border-r">Annual Cost Per Drive</div>
+	</div>
+	<div className="grid grid-cols-10 border-b border-t border-gray-400">
+		<div className="col-span-1 border-r">Annualized cost</div>
+		<div className="col-span-1 border-r">1.40%</div>
+		<div className="col-span-1 border-r">$169.99</div>
+		<div className="col-span-1 border-r">100</div>
+		<div className="col-span-1 border-r">1.4</div>
+		<div className="col-span-1 border-r">$237.99</div>
+		<div className="col-span-1 border-r">7,909kWh</div>
+		<div className="col-span-1 border-r">$1,001</div>
+		<div className="col-span-1 border-r">$18,238</div>
+		<div className="col-span-1 border-r">$182</div>
+	</div>
+	<div className="grid grid-cols-10 border-gray-400">
+		<div className="col-span-8"></div>
+		<div className="col-span-1 border-r text-right pr-2">Cost of Power</div>
+		<div className="col-span-1">12.66 ¢/kWh</div>
+	</div>
 </div>
 
 By combining the annualized power consumption with the annualized HDD failure rate (as reported by [BackBlaze](https://www.backblaze.com/blog/backblaze-drive-stats-for-q1-2023/)), the current drive price, and the cost of power (which is readily available in most developed countries), we arrive at the annualized cost of operating a representative HDD storing data on the network.
@@ -126,7 +119,7 @@ To ensure the pricing model is both accessible and sustainable, Irys assumes a c
 This leads to the following exponential decay formula to determine the cost of storing a single copy of 1GB of data over the next 200 years.
 
 <div className="mt-5">
-	<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4 w-5/6">
+	<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4 ">
 		<div className="col-span-3  px-4 py-2 bg-slate-800 rounded-xl text-white">
 			<Latex>{`$$\\text{Total Cost} = C_0 \\times \\left( \\frac{1 - (1 - \\text{decay rate})^n}{\\text{decay rate}} \\right)$$`}</Latex>
 		</div>
@@ -166,7 +159,7 @@ Given the following pricing parameters:
 This is how to calculate the price of storage in USD:
 
 <div className="mt-5 ">
-  <div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4 w-5/6">
+  <div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4">
     <div className="col-span-3  px-4 py-2 bg-slate-800 rounded-xl text-white">
       <Latex>{`$$\\text{Total cost} = \\text{Initial annual cost} \\times \\left( \\frac{1 - (1 - r)^n}{r} \\right)$$`}</Latex>
     </div>
@@ -219,9 +212,9 @@ This results in a storage cost of **$8.65** per GB of permanent data.
 Let's say a user would like to store 200MB at time t with the following parameters.
 
 <div className="mt-5">
-  <div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4 w-5/6">
+  <div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4">
     <div className="col-span-3 flex justify-center px-4 py-2 bg-slate-800 rounded-xl text-white">
-      <table className="table-auto w-5/6 border border-gray-400">
+      <table className="table-auto border border-gray-400">
         <thead>
           <tr className="bg-slate-800">
             <th className="border px-4 py-2">Parameter</th>
