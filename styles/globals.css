@@ -289,11 +289,28 @@ details[open] .faq-expand::before {
 	font-size: 0.95em;
 }
 
+.katex:last-child {
+	margin-bottom: 0;
+}
+
+.katex-display {
+	/* overflow: auto hidden; */
+	margin: 0.3em 0;
+}
+
+.katex-display > .katex {
+	white-space: normal;
+}
+
+.katex-display > .base {
+	margin: 0.25em 0;
+}
+
 .katex .mathnormal {
 	font-family: "Inter", sans-serif;
 }
 
-.break-words {
-	word-break: keep-all;
-	white-space: normal;
+.irys-tooltip-styles {
+	background-color: #ff8451;
+	color: #000000;
 }

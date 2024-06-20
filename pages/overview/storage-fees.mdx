@@ -1,8 +1,34 @@
 import Formula from "@/components/Formula";
 import Latex from "react-latex-next";
 import StorageCostChart from "@/components/StorageCostChart";
+import { Tooltip } from "react-tooltip";
+
+<Tooltip
+	id="kryders-law"
+	className="irys-tooltip-styles"
+	anchorSelect="#kryders-law"
+	html="Kryder's Law states that the storage density of hard drives<br/>increases exponentially over time, similar to Moore's Law."
+	style={{ backgroundColor: "#FF8451", color: "#000000" }}
+/>
+
+<Tooltip
+	id="moores-law"
+	className="irys-tooltip-styles"
+	anchorSelect="#moores-law"
+	html="Moore's Law observes that the number of transistors<br/>on a microchip doubles approximately every two years."
+	style={{ backgroundColor: "#FF8451", color: "#000000" }}
+/>
 
 # Irys Pricing Model
+
+## TL; DR
+
+- Accurate storage pricing is crucial for decentralized networks, requiring detailed cost analysis across multiple factors.
+- **Annualized Storage Cost**: Includes drive cost, capacity, failure rate, power consumption, and power cost.
+- **Power Consumption**: Factors in workload, read vs. idle time, power efficiency, and annual operation hours.
+- **Cost per GB**: $0.011 per GB annually based on a 16TB drive costing $182 per year.
+- **Decay Rate**: Assumes 1% annual decline in storage costs due to technological advancements.
+- **Safe Minimum Time**: Ensures long-term storage viability, considering replicas, years of storage, safety margins, and cost declines.
 
 ## Annualized Storage Cost
 
@@ -102,17 +128,20 @@ By combining the annualized power consumption with the annualized HDD failure ra
 
 Based on these factors, the annualized cost of mining and operating a 16TB drive is estimated to be $182. Given that a 16TB drive contains 16,384GB, the annualized cost of storing 1GB is calculated as follows:
 
-Annualized cost per GB
-
-<div className="flex justify-start">
-	<Latex>{`$$\\$182 \\div 16,384 = \\$0.01110839844$$`}</Latex>
+<div className="flex flex-col justify-center items-center mt-5">
+	<div className="flex flex-col justify-center border border-gray-400 px-10">
+		<p className="px-4 py-2 bg-slate-800 rounded-xl w-full flex justify-center"> Annualized cost per GB</p>
+		<Latex className="-mb-2">{`$$\\text{Cost to store 16TB} = \\$182$$`}</Latex>
+		<Latex className="-mb-2">{`$$16TB = 16,384GB$$`}</Latex>
+		<Latex>{`$$\\$182 \\div 16,384 = \\$0.01110839844$$`}</Latex>
+	</div>
 </div>
 
-This annualized cost per GB will serve as a key input for the permanent storage pricing model
+This annualized cost per GB will serve as a key input for the permanent storage pricing model.
 
 ## Annualized Decay Rate
 
-The **decay rate** represents the annual decrease in storage costs due to technological advancements. Historically, storage density improvements have followed an exponential trend, as described by Kryder's Law, which outpaced Moore's Law in the early 2000s. Although the rate of improvement has slowed in recent years, it still remains significant at around 28% annually.
+The **decay rate** represents the annual decrease in storage costs due to technological advancements. Historically, storage density improvements have followed an exponential trend, as described by <a className="underline decoration-dashed" id="kryders-law">Kryder's Law</a>, which outpaced <a className="underline decoration-dashed" id="moores-law">Moore's Law</a> in the early 2000s. Although the rate of improvement has slowed in recent years, it still remains significant at around 28% annually.
 
 To ensure the pricing model is both accessible and sustainable, Irys assumes a conservative 1% average annual decline in storage costs over the next 200 years. This approach allows for the extension of the purchasing power of the upfront payment in the event that observed (actual) storage cost declines exceed the assumed rate.
 
@@ -120,7 +149,7 @@ This leads to the following exponential decay formula to determine the cost of s
 
 <div className="mt-5">
 	<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4 ">
-		<div className="col-span-3  px-4 py-2 bg-slate-800 rounded-xl text-white">
+		<div className="col-span-3 px-4 py-2 bg-slate-800 rounded-xl text-white">
 			<Latex>{`$$\\text{Total Cost} = C_0 \\times \\left( \\frac{1 - (1 - \\text{decay rate})^n}{\\text{decay rate}} \\right)$$`}</Latex>
 		</div>
 		<div className="col-span-3 px-4 py-2 text-white ">
@@ -199,13 +228,7 @@ This is how to calculate the price of storage in USD:
 
 Therefore, the total cost of storing a single replica of 1GB for 200 years, with a continuous annual decay rate of 1%, is approximately $0.8647.
 
-To determine the cost the protocol will charge, multiply the 1 GB cost by the number of replicas:
-
-<div className="flex justify-start">
-	<Latex>{`$$\\$0.8647 \\times 10 \\approx \\$8.65$$`}</Latex>
-</div>
-
-This results in a storage cost of **$8.65** per GB of permanent data.
+This results in a storage cost of **$8.65** per GB of permanent data ($0.8647×10≈$8.65).
 
 ### Compute User Fee
 
