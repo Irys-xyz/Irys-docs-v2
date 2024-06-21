@@ -1,7 +1,7 @@
-import Formula from "@/components/Formula";
 import Latex from "react-latex-next";
 import StorageCostChart from "@/components/StorageCostChart";
 import { Tooltip } from "react-tooltip";
+import Formula from "@/components/Formula";
 
 <Tooltip
 	id="kryders-law"
@@ -187,44 +187,7 @@ Given the following pricing parameters:
 
 This is how to calculate the price of storage in USD:
 
-<div className="mt-5 ">
-  <div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4">
-    <div className="col-span-3  px-4 py-2 bg-slate-800 rounded-xl text-white">
-      <Latex>{`$$\\text{Total cost} = \\text{Initial annual cost} \\times \\left( \\frac{1 - (1 - r)^n}{r} \\right)$$`}</Latex>
-    </div>
-    <div className="col-span-3 px-4 py-2 text-white ">
-      <div className="mt-2">r = 0.01 - decay rate of 1%</div>
-      <div>n = 200 - years to pay for storage</div>
-    </div>
-
-    <div className="flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10">1</div>
-    <div className="flex items-center">
-      Calculate (1 - r)<sup>n</sup>
-    </div>
-    <div className="flex items-center">
-      <Formula latexString={`$$(1 - 0.01)^{200} \\approx 0.1353$$`} />
-    </div>
-
-    <div className="flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10">2</div>
-    <div className="flex items-center">Subtract the result from 1</div>
-    <div className="flex items-center">
-      <Formula latexString={`$$1 - 0.1353 = 0.8647$$`} />
-    </div>
-
-    <div className="flex items-center justify-center bg-[#FF8451] rounded-full text-xl  m-2 text-white w-10 h-10">3</div>
-    <div className="flex items-center">Divide the result by r</div>
-    <div className="flex items-center">
-      <Formula latexString={`$$\\frac{0.8647}{0.01} = 86.47$$`} />
-    </div>
-
-    <div className="flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10">4</div>
-    <div className="flex items-center">Multiply by the initial annual cost</div>
-    <div className="flex items-center">
-      <Formula latexString={`$$\\$0.01 \\times 86.47 = \\$0.8647$$`} />
-    </div>
-
-  </div>
-</div>
+<Formula />
 
 Therefore, the total cost of storing a single replica of 1GB for 200 years, with a continuous annual decay rate of 1%, is approximately $0.8647.
 
