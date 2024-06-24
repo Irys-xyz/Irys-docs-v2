@@ -35,74 +35,59 @@ const Irys2dPacking: React.FC = () => {
 	};
 
 	return (
-		<div className="flex flex-col border w-full mt-5">
+		<div className="flex flex-col border w-full mt-5 mb-5">
 			<div className="w-full h-[200px] flex justify-center">
 				<RiveComponent />
 			</div>
 			<div className="flex flex-row">
-				<button
-					className="relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
-					onClick={() => setStep(1)}
-				>
-					<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
-					<span className="absolute text-xs font-bold">1</span>
-				</button>
-				<div className="flex items-center ml-5">
-					Combine mining address, partition id, and chunk id using SHA-256 to form seed hash
+				<div className="w-20">
+					<button
+						className="px-3 relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
+						onClick={() => setStep(1)}
+					>
+						<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
+						<span className="absolute text-xs font-bold">1</span>
+					</button>
+				</div>
+				<div className="flex flex-col items-start ml-5">
+					<p className="font-bold">Partitions</p>
+					The foundational building block of storage on Irys is the 16TB partition. Irys partitions data logically into
+					these partitions which can then be stored on individual 16TB HDDs. SSDs do not provide a mining advantage for
+					reasons that will be discussed later.
 				</div>
 			</div>
-			<div className="flex flex-row">
-				<button
-					className="relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
-					onClick={() => setStep(2)}
-				>
-					<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
-					<span className="absolute text-xs font-bold">2</span>
-				</button>
-				<div className="flex items-center ml-5">Hash the seed hash using SHA-256 to form the initial segment</div>
-			</div>
-			<div className="flex flex-row">
-				<button
-					className="relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
-					onClick={() => setStep(3)}
-				>
-					<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
-					<span className="absolute text-xs font-bold">3</span>
-				</button>
-				<div className="flex items-center ml-5">The segment bytes are appended at the start of the empty chunk.</div>
-			</div>
-			<div className="flex flex-row">
-				<button
-					className="relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
-					onClick={() => setStep(4)}
-				>
-					<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
-					<span className="absolute text-xs font-bold">4</span>
-				</button>
-				<div className="flex items-center ml-5">Segment is also used as input for the next SHA-256.</div>
-			</div>
-			<div className="flex flex-row">
-				<button
-					className="relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
-					onClick={() => setStep(5)}
-				>
-					<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
-					<span className="absolute text-xs font-bold">5</span>
-				</button>
-				<div className="flex items-center ml-5">
-					Resulting segment is appended following the previous segment{"'"}s bytes.
+
+			<div className="flex flex-row mt-5">
+				<div className="w-20">
+					<button
+						className="px-3 relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
+						onClick={() => setStep(2)}
+					>
+						<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
+						<span className="absolute text-xs font-bold">2</span>
+					</button>
+				</div>
+				<div className="flex flex-col items-start ml-5">
+					<p className="font-bold">Chunks</p>
+					Each partition is further divided into 256KiB chunks which are read during the mining process to produce
+					hashes which have the potential to be a mining solution and enable the miner to announce a block to the
+					network and earn rewards.
 				</div>
 			</div>
-			<div className="flex flex-row">
-				<button
-					className="relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
-					onClick={() => setStep(6)}
-				>
-					<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
-					<span className="absolute text-xs font-bold">6</span>
-				</button>
-				<div className="flex items-center ml-5">
-					Steps 4 and 5 are repeated until the empty chunk is full of segments.
+			<div className="flex flex-row mt-5">
+				<div className="w-20">
+					<button
+						className="px-3 relative flex items-center justify-center bg-[#FF8451] rounded-full text-xl m-2 text-white w-10 h-10 transform transition-transform duration-500 ease-in-out hover:scale-105"
+						onClick={() => setStep(3)}
+					>
+						<CiPlay1 className="absolute text-4xl ml-1" style={{ fill: "white" }} />
+						<span className="absolute text-xs font-bold">3</span>
+					</button>
+				</div>
+				<div className="flex flex-col items-start ml-5">
+					<p className="font-bold">Segments</p>
+					Each chunk is further divided into segments 32 bytes in size. These segments contain the packing entropy that
+					is the result of a SHA-256 hash.
 				</div>
 			</div>
 		</div>
