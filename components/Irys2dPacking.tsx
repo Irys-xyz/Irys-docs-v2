@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { CiPlay1 } from "react-icons/ci";
 import { useRive, useStateMachineInput } from "@rive-app/react-canvas";
 
-const SequentialHashing: React.FC = () => {
+const Irys2dPacking: React.FC = () => {
 	const { rive, RiveComponent } = useRive({
 		src: "/packing/sequentialhashing.riv",
 		autoplay: true,
@@ -109,4 +109,4 @@ const SequentialHashing: React.FC = () => {
 	);
 };
 
-export default SequentialHashing;
+export default Irys2dPacking;

@@ -40,27 +40,30 @@ const Formula: React.FC = () => {
 	const [showDetails, setShowDetails] = useState(false);
 
 	return (
-		<div className="mt-5">
+		<div className="mt-5 w-full">
 			<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4">
 				<div className="col-span-3 px-4 py-2 bg-slate-800 rounded-xl text-white">
 					<Latex>{formula}</Latex>
 				</div>
-				<div className="col-span-3 px-4 py-2 text-white">
-					{givens.map((given, index) => (
-						<div key={index} className="mt-2">
-							{given}
-						</div>
-					))}
+				<div className="col-span-3 px-4 py-2 text-white flex flex-row items-end">
+					<div className="w-2/3">
+						{givens.map((given, index) => (
+							<div key={index} className="mt-2">
+								{given}
+							</div>
+						))}
+					</div>
+					<div className="w-1/3">
+						<button
+							onClick={() => setShowDetails(!showDetails)}
+							className="flex items-center bg-[#FF8451] text-white px-4 py-2 rounded-full"
+						>
+							<FaArrowTurnDown className={`transition-transform ${showDetails ? "rotate-180" : ""}`} />
+							{showDetails ? <span className="ml-2">Hide Details</span> : <span className="ml-2">More Details</span>}
+						</button>
+					</div>
 				</div>
-				<div className="col-span-3 flex justify-end">
-					<button
-						onClick={() => setShowDetails(!showDetails)}
-						className="flex items-center bg-[#FF8451] text-white px-4 py-2 rounded-full"
-					>
-						<FaArrowTurnDown className={`transition-transform ${showDetails ? "rotate-180" : ""}`} />
-						<span className="ml-2">More Details</span>
-					</button>
-				</div>
+
 				{showDetails &&
 					steps.map((step) => (
 						<React.Fragment key={step.stepNumber}>
