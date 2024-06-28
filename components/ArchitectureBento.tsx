@@ -43,13 +43,13 @@ const ArchitectureBento: React.FC = () => {
 			{bentoData.map((bento) => (
 				<div
 					key={bento.title}
-					className="border border-gray-700 cursor-pointer p-4 h-auto rounded-xl flex flex-col bg-gradient-to-b from-[#171717]/50 to-[#171717]/20 relative"
+					className="border border-gray-700 cursor-pointer p-3 h-auto rounded-xl flex flex-col bg-gradient-to-b from-[#171717]/50 to-[#171717]/20"
 				>
 					{bento.image && (
 						<div className="relative w-full h-60">
 							{" "}
 							{/* Adjust height as necessary */}
-							<Image src={bento.image} alt={bento.title} layout="fill" className="rounded-t-lg p-2" />
+							<Image src={bento.image} alt={bento.title} layout="fill" className="rounded-xl" />
 						</div>
 					)}
 					<h3 className="text-lg font-bold tracking-tight text-white mt-4">

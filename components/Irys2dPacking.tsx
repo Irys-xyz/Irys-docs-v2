@@ -66,13 +66,11 @@ const Irys2dPacking: React.FC = () => {
 			// Are we progressing logically through the flow
 			if (curStep + 1 === newStep) {
 				if (newStep === 1 || newStep === 2 || newStep === 3) {
-					console.log("setting value t0 ", newStep - 0.5);
 					levelInput.value = newStep - 0.5; // Play exit
 					await delay(600);
 				}
 			}
 
-			console.log("setting value t1 ", newStep);
 			levelInput.value = newStep; // Play new step
 			setCurStep(newStep);
 		}
