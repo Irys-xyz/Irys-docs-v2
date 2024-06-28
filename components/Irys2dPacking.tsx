@@ -6,7 +6,7 @@ const Irys2dPacking: React.FC = () => {
 	const { rive, RiveComponent } = useRive({
 		src: "/packing/2dpacking.riv",
 		autoplay: true,
-		stateMachines: "State Machine 1",
+		stateMachines: "packing-machine",
 		layout: new Layout({
 			fit: Fit.Fill,
 			alignment: Alignment.TopCenter,
@@ -15,6 +15,7 @@ const Irys2dPacking: React.FC = () => {
 
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [componentDimensions, setComponentDimensions] = useState({ width: 0, height: 0 });
+	const [curStep, setCurStep] = useState<number>(0);
 
 	useEffect(() => {
 		const updateDimensions = () => {
@@ -48,8 +49,7 @@ const Irys2dPacking: React.FC = () => {
 		};
 	}, []);
 
-	const levelInput = useStateMachineInput(rive, "State Machine 1", "step", 0);
-	const exitInput = useStateMachineInput(rive, "State Machine 1", "exit");
+	const levelInput = useStateMachineInput(rive, "packing-machine", "step", 0);
 
 	useEffect(() => {
 		if (levelInput) {
@@ -61,11 +61,20 @@ const Irys2dPacking: React.FC = () => {
 		return new Promise((resolve) => setTimeout(resolve, ms));
 	};
 
-	const setStep = async (step: number) => {
-		if (levelInput && exitInput) {
-			exitInput.fire();
-			await delay(600);
-			levelInput.value = step; // Change level when button is clicked
+	const setStep = async (newStep: number) => {
+		if (levelInput) {
+			// Are we progressing logically through the flow
+			if (curStep + 1 === newStep) {
+				if (newStep === 1 || newStep === 2 || newStep === 3) {
+					console.log("setting value t0 ", newStep - 0.5);
+					levelInput.value = newStep - 0.5; // Play exit
+					await delay(600);
+				}
+			}
+
+			console.log("setting value t1 ", newStep);
+			levelInput.value = newStep; // Play new step
+			setCurStep(newStep);
 		}
 	};
 
