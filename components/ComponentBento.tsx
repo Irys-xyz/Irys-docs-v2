@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import SimpleRiveViewer from "./SimpleRiveViewer";
 
 interface ComponentBento {
 	title: string;
@@ -31,6 +32,7 @@ const componentBentoData: ComponentBento[] = [
 		title: "IrysVM",
 		description:
 			"The virtual machine enabling Programmable Data — the execution of onchain programs with full access to the data layer.",
+		image: "/diagrams/components/irys_docs_protocol_treasury.riv",
 		details: [],
 	},
 	{
@@ -40,6 +42,12 @@ const componentBentoData: ComponentBento[] = [
 		href: "/overview/treasury",
 	},
 ];
+
+const isImageFile = (fileName: string) => {
+	const imageExtensions = ["jpg", "jpeg", "png", "gif"];
+	const fileExtension = fileName.split(".").pop();
+	return imageExtensions.includes(fileExtension!);
+};
 
 const ComponentBento: React.FC = () => {
 	return (
@@ -51,9 +59,11 @@ const ComponentBento: React.FC = () => {
 				>
 					{component.image && (
 						<div className="relative w-full h-60">
-							{" "}
-							{/* Adjust height as necessary */}
-							<Image src={component.image} alt={component.title} layout="fill" className="rounded-xl" />
+							{isImageFile(component.image) ? (
+								<Image src={component.image} alt={component.title} layout="fill" className="rounded-xl" />
+							) : (
+								<SimpleRiveViewer src={component.image} width={1920} height={1080} />
+							)}
 						</div>
 					)}
 					<h3 className="text-lg font-bold tracking-tight text-white mt-4">
