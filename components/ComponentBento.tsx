@@ -8,6 +8,7 @@ interface ComponentBento {
 	description: string;
 	details: string[];
 	image?: string;
+	stateMachine?: string;
 	href?: string;
 }
 
@@ -17,11 +18,13 @@ const componentBentoData: ComponentBento[] = [
 		description:
 			"Combines efficient sampling of PoW with economic deterrents inherent in staking and slashing, to ensure secure and scalable data storage and execution.",
 		details: [],
+		image: "/diagrams/components/irys-docs-proof-of-work-staking.riv",
+		stateMachine: "Proof-Of-Work",
 	},
 	{
 		title: "Submit + Publish Ledgers",
 		description: "Allows the protocol to:",
-		image: "/diagrams/submit-publish-ledgers.jpg",
+		image: "",
 		details: [
 			"Make commitments about published data",
 			"Provide reliable access for the execution layer by managing data upload and storage proofs",
@@ -32,13 +35,15 @@ const componentBentoData: ComponentBento[] = [
 		title: "IrysVM",
 		description:
 			"The virtual machine enabling Programmable Data — the execution of onchain programs with full access to the data layer.",
-		image: "/diagrams/components/irys_docs_protocol_treasury.riv",
+		// image: "/diagrams/components/irys_docs_protocol_treasury.riv",
 		details: [],
 	},
 	{
 		title: "Protocol Treasury",
 		description: "More than just an endowment, Irys's treasury:",
 		details: ["Covers storage liabilities", "Participates in yield-bearing activities"],
+		image: "/diagrams/components/irys-docs-protocol-treasury.riv",
+		stateMachine: "Protocol-Treasury",
 		href: "/overview/treasury",
 	},
 ];
@@ -62,7 +67,12 @@ const ComponentBento: React.FC = () => {
 							{isImageFile(component.image) ? (
 								<Image src={component.image} alt={component.title} layout="fill" className="rounded-xl" />
 							) : (
-								<SimpleRiveViewer src={component.image} width={1920} height={1080} />
+								<SimpleRiveViewer
+									src={component.image}
+									width={1920}
+									height={1080}
+									stateMachine={component.stateMachine}
+								/>
 							)}
 						</div>
 					)}

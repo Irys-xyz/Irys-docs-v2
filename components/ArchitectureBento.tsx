@@ -6,6 +6,7 @@ import SimpleRiveViewer from "./SimpleRiveViewer";
 interface Bento {
 	title: string;
 	description: string;
+	stateMachine?: string;
 	image?: string;
 	href?: string;
 }
@@ -14,7 +15,8 @@ const bentoData: Bento[] = [
 	{
 		title: "Efficient Sampling",
 		description: "Enables economical storage scaling with a 24-hour sampling window for 16TB HDDs.",
-		image: "/diagrams/efficient-sampling.jpg",
+		image: "",
+		stateMachine: "",
 		href: "/efficiency",
 	},
 	{
@@ -22,12 +24,14 @@ const bentoData: Bento[] = [
 		description:
 			"Combined with staked mining addresses, enables incentive-compatible packing that scales horizontally, reduces packing costs, and increases the network's ability to ingest data.",
 		image: "/diagrams/architecture/irys-docs-fast-2d-packing.riv",
+		stateMachine: "2D-Packing",
 		href: "/protocol/packing",
 	},
 	{
 		title: "Capacity Mining",
 		description: "Allows pre-packing of empty capacity partitions for efficient data ingress.",
 		image: "/diagrams/architecture/irys-docs-capacity-mining.riv",
+		stateMachine: "Capacity-Mining",
 		href: "/overview/mining",
 	},
 	{
@@ -35,6 +39,7 @@ const bentoData: Bento[] = [
 		description:
 			"End users can easily verify onchain which mining addresses are storing their data. 2D Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
 		image: "/diagrams/architecture/irys-docs-verifiability.riv",
+		stateMachine: "Verifiability",
 		href: "/verifiability",
 	},
 ];
@@ -58,7 +63,7 @@ const ArchitectureBento: React.FC = () => {
 							{isImageFile(bento.image) ? (
 								<Image src={bento.image} alt={bento.title} layout="fill" className="rounded-xl" />
 							) : (
-								<SimpleRiveViewer src={bento.image} width={1920} height={1080} />
+								<SimpleRiveViewer src={bento.image} width={1920} height={1080} stateMachine={bento.stateMachine} />
 							)}
 						</div>
 					)}

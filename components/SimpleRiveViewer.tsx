@@ -5,12 +5,14 @@ interface SimpleRiveViewerProps {
 	src: string;
 	width: number;
 	height: number;
+	stateMachine?: string;
 }
 
-const SimpleRiveViewer: React.FC<SimpleRiveViewerProps> = ({ src, width, height }) => {
+const SimpleRiveViewer: React.FC<SimpleRiveViewerProps> = ({ src, width, height, stateMachine }) => {
 	const { rive, RiveComponent } = useRive({
 		src,
 		autoplay: true,
+		stateMachines: stateMachine,
 		layout: new Layout({
 			fit: Fit.Fill,
 			alignment: Alignment.Center,
