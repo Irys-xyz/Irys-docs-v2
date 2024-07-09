@@ -21,17 +21,21 @@ const Irys2dPacking: React.FC = () => {
 		const updateDimensions = () => {
 			if (containerRef.current) {
 				const { clientWidth, clientHeight } = containerRef.current;
+				console.log(containerRef.current);
+				console.log({ clientWidth });
 				const aspectRatio = 650 / 200; // Original canvas aspect ratio (650x200)
 
 				// Calculate dimensions while maintaining aspect ratio
 				let newWidth = clientWidth;
 				let newHeight = clientWidth / aspectRatio;
 
-				// Adjust height if it exceeds container height
-				if (newHeight > clientHeight) {
-					newHeight = clientHeight;
-					newWidth = clientHeight * aspectRatio;
-				}
+				// // Adjust height if it exceeds container height
+				// if (newHeight > clientHeight) {
+				// 	newHeight = clientHeight;
+				// 	newWidth = clientHeight * aspectRatio;
+				// }
+				console.log({ newWidth });
+				console.log({ newHeight });
 
 				setComponentDimensions({ width: newWidth, height: newHeight });
 			}
@@ -63,21 +67,13 @@ const Irys2dPacking: React.FC = () => {
 
 	const setStep = async (newStep: number) => {
 		if (levelInput) {
-			// Are we progressing logically through the flow
-			if (curStep + 1 === newStep) {
-				if (newStep === 1 || newStep === 2 || newStep === 3) {
-					levelInput.value = newStep - 0.5; // Play exit
-					await delay(600);
-				}
-			}
-
 			levelInput.value = newStep; // Play new step
 			setCurStep(newStep);
 		}
 	};
 
 	return (
-		<div className="flex flex-col border w-full mt-5 mb-5">
+		<div className="flex flex-col border rounded-xl w-full mt-5 mb-5 ">
 			<div
 				ref={containerRef}
 				className="w-full flex justify-center"
