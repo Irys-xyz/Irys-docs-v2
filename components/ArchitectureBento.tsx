@@ -67,15 +67,15 @@ const ArchitectureBento: React.FC = () => {
 							)}
 						</div>
 					)}
-					<h3 className="text-lg font-bold tracking-tight text-white mt-4">
-						{bento.href ? (
-							<Link href={bento.href} className="underline">
-								{bento.title}
-							</Link>
-						) : (
-							bento.title
-						)}
-					</h3>
+
+					{bento.href ? (
+						<Link href={bento.href} className="underline text-lg font-bold tracking-tight text-white mt-4 z-20">
+							{bento.title}
+						</Link>
+					) : (
+						<span className="text-lg font-bold tracking-tight text-white mt-4">bento.title</span>
+					)}
+
 					<p className="text-base font-light text-[#B7B7B7]">{bento.description}</p>
 				</div>
 			))}

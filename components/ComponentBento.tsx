@@ -57,34 +57,29 @@ const isImageFile = (fileName: string) => {
 const ComponentBento: React.FC = () => {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-			{componentBentoData.map((component) => (
+			{componentBentoData.map((bento) => (
 				<div
-					key={component.title}
+					key={bento.title}
 					className="border border-gray-700 cursor-pointer p-3 h-auto rounded-xl flex flex-col bg-gradient-to-b from-[#171717]/50 to-[#171717]/20"
 				>
-					{component.image && (
+					{bento.image && (
 						<div className="relative w-full h-60">
-							{isImageFile(component.image) ? (
-								<Image src={component.image} alt={component.title} layout="fill" className="rounded-xl" />
+							{isImageFile(bento.image) ? (
+								<Image src={bento.image} alt={bento.title} layout="fill" className="rounded-xl" />
 							) : (
-								<SimpleRiveViewer
-									src={component.image}
-									width={1920}
-									height={1080}
-									stateMachine={component.stateMachine}
-								/>
+								<SimpleRiveViewer src={bento.image} width={1920} height={1080} stateMachine={bento.stateMachine} />
 							)}
 						</div>
 					)}
 					<h3 className="text-lg font-bold tracking-tight text-white mt-4">
-						<Link className="underline" href={component.href || "#"}>
-							{component.title}
+						<Link className="underline z-20" href={bento.href || "#"}>
+							{bento.title}
 						</Link>
 					</h3>
-					<p className="text-base font-light text-[#B7B7B7]">{component.description}</p>
-					{component.details.length > 0 && (
+					<p className="text-base font-light text-[#B7B7B7]">{bento.description}</p>
+					{bento.details.length > 0 && (
 						<ul className="list-disc list-inside text-base font-light text-[#B7B7B7] mt-2">
-							{component.details.map((detail, index) => (
+							{bento.details.map((detail, index) => (
 								<li key={index}>{detail}</li>
 							))}
 						</ul>
