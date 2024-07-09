@@ -1,7 +1,7 @@
 {
 	"provable-storage": "Provable storage",
 	"partitions": "Partitions",
-	"tx-lifecycle": "Transactions",
+	"transactions": "Transactions",
 	"packing": "Packing",
-	"ledgers": "Publish & submit ledgers"
+	"ledgers": "Ledgers"
 }

@@ -1,10 +1,9 @@
 {
 	"irys-architecture": "Architecture",
 	"programmable-data": "Programmable data",
-	"onchain-data": "Onchain data",
-	"pricing-mechanism": "Pricing Mechanism",
-	"storage-fees": "Storage Fees",
+	"pricing-model": "Pricing Model",
+	"storage-pricing-model": "Storage Pricing Model",
+	"storage-incentives": "Storage Incentives",
 	"treasury": "Treasury",
-	"scaling": "Scaling",
 	"mining": "Mining"
 }
