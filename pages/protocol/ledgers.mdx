@@ -1,35 +1,58 @@
-# Publish and Submit Ledgers
+import { Tooltip } from "react-tooltip";
+import { Callout } from "nextra-theme-docs";
 
-![](/diagrams/submit-publish-ledgers.jpg)
+<Tooltip
+	id="ema"
+	className="irys-tooltip-styles"
+	anchorSelect="#ledger"
+	html="A digital record of all the data or transactions that have been posted to the network.<br/> The ledger is synchronized across the miners in the network to ensure fault-tolerance, immutability, and security."
+	style={{ backgroundColor: "#FF8451", color: "#000000" }}
+/>
 
-A transaction consists of a header and a data payload.
+<Tooltip
+	id="blocklane"
+	className="irys-tooltip-styles"
+	anchorSelect="#blocklane"
+	html="A portion of a block reserved for a certain type of transaction."
+	style={{ backgroundColor: "#FF8451", color: "#000000" }}
+/>
 
-When a user uploads data to Irys:
+# Ledgers
 
-1. The headers are immediately included in a block
-2. The data is then uploaded and streamed to miners
+Classically the transaction history of a blockchain is called its ledger. Irys innovates by managing multiple <a className="underline decoration-dashed" id="ledger">ledgers</a> on a single blockchain, departing from the traditional single-ledger model. Alongside these ledgers, Irys’ blocks maintain two <a className="underline decoration-dashed" id="blocklane">blocklanes</a>:
 
-- Irys has a blocktime of \_\_\_ seconds, and an upper bound on data transfer speeds means there's a limit to how much data can be transferred in that time.
-- Breaking uploads into two steps helps Irys support unconstrained uploads of any size.
+- An execution blocklane for value transfers and smart contract interactions
+- A storage blocklane for data storage transactions.
 
-* The problem is the protocol can't force users to upload transaction data, so what can it do?
+![](/diagrams/protocol/ledgers.png)
 
-How the protocol handles this dilemma is to implement two slot sequences:
+## Transaction History
 
-- A permanent "published ledger" to store data uploaded to the network
-- A "submit ledger" for transaction data that may or may not be uploaded yet
+While Irys maintains a transaction history in its blocks, the associated data is recorded in different ledgers.
 
-## Submit Ledger
+<Callout type="info" emoji="💡">
+	The separation of transactions from their data enables Irys to scale and store large amounts of data. The network
+	produces blocks at a regular cadence, containing storage transactions that include digital fingerprints of their data
+	and reserve space for it. The data itself can be uploaded over the course of the next few blocks, using the
+	fingerprint in the transaction to validate the upload.
+</Callout>
 
-- When Users post transactions to the network, initially, it reserves space in the submit ledger for their data.
-- Partitions in the submit ledger expire on a regular interval known as the storage term. This removes the protocol's obligation to permanently reserve partition space for data that was never uploaded.
+These ledgers have different storage terms, and users specify their intended ledger when posting a data transaction.
 
-## Publish Ledger
+## Permanent Data (Publish Ledger)
 
-- When data is uploaded to the submit ledger is it a candidate for inclusion in the publish ledger.
-- Once a block producer has collected enough storage proofs they can repost the users submit transaction as published transaction in the new block, ~~with confidence that the data has been uploaded to the network and replicated amongst miners.~~
-- They receive a reward for doing so, as do the other miners whose proofs are used to promote the transaction.
-- They receive a reward for doing so, as do the other miners whose proofs are used to promote the transaction.
-- The miners who store the publish ledger partitions can retrieve the data from the miners who signed storage proofs if they don't have the data already.
-- This creates a published ledger without gaps where the expectation is...that all data is stored and replicated. No missing chunks.
-- To incentivize miners to publish submit data as quickly as possible, users may include priority fees with their transaction that get split amongst the miners who cooperate to store and publish the data.
+This flagship ledger maintains 10 replicas across geographically distributed miners who have made economic commitments through staking and pledging. Irys is a PoW chain where miners compete for the right to produce a new block by performing storage proofs on their data. Unlike classic PoW, miners on Irys also make economic commitments to specific mining addresses and make pledges to the portions of the ledger they store. Miners face slashing penalties for inappropriate behavior, creating stronger disincentives for adversarial actions compared to pure PoW networks.
+
+The Publish Ledger contains only data provably uploaded to the network, backed through the Submit Ledger system. **This results in a Publish Ledger without holes, enabling reliable data retrieval for use within Irys’s programmable data smart contract computations.**
+
+## Term Data Ledgers
+
+These ledgers store "temporary" data with defined expiration periods. Irys uses the word “term” to describe these ledgers as it makes a commitment to store the data for a specific storage term. At launch, Irys will implement a single term ledger called the Submit Ledger, with plans to offer more term options based on community feedback.
+
+### Submit Ledger
+
+This special Term Data Ledger addresses the challenge of verifying data publishing for smart contract execution. Transactions are first posted here, giving users a 5 epoch window to upload associated data. If the data isn’t posted during that time the space reserved for it expires, the transaction itself is recorded forever in the block history. If the data is posted, miners provide receipt proofs, and once enough are collected, the data is promoted to the Publish Ledger.
+
+This system allows Irys to make commitments about uploaded data and fairly apply slashing penalties to miners who fail to store assigned data.
+
+The combination of Submit and Publish ledgers enables Irys to offer high-quality, verifiable onchain data suitable for smart contract operations.

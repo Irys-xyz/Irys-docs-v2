@@ -22,7 +22,7 @@ const componentBentoData: ComponentBento[] = [
 		stateMachine: "Proof-Of-Work",
 	},
 	{
-		title: "Submit + Publish Ledgers",
+		title: "Multiple Ledgers",
 		description: "Allows the protocol to:",
 		image: "",
 		details: [
@@ -71,11 +71,13 @@ const ComponentBento: React.FC = () => {
 							)}
 						</div>
 					)}
-					<h3 className="text-lg font-bold tracking-tight text-white mt-4">
-						<Link className="underline z-20" href={bento.href || "#"}>
+					{bento.href ? (
+						<Link href={bento.href} className="underline text-lg font-bold tracking-tight text-white mt-4 z-20">
 							{bento.title}
 						</Link>
-					</h3>
+					) : (
+						<span className="text-lg font-bold tracking-tight text-white mt-4">bento.title</span>
+					)}
 					<p className="text-base font-light text-[#B7B7B7]">{bento.description}</p>
 					{bento.details.length > 0 && (
 						<ul className="list-disc list-inside text-base font-light text-[#B7B7B7] mt-2">
