@@ -1,4 +1,7 @@
 {
 	"overview": "Overview",
-	"protocol": "Protocol"
+	"protocol": "Protocol",
+	"sdk": {
+		"display": "hidden"
+	}
 }

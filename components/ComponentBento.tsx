@@ -76,7 +76,7 @@ const ComponentBento: React.FC = () => {
 							{bento.title}
 						</Link>
 					) : (
-						<span className="text-lg font-bold tracking-tight text-white mt-4">bento.title</span>
+						<span className="text-lg font-bold tracking-tight text-white mt-4">{bento.title}</span>
 					)}
 					<p className="text-base font-light text-[#B7B7B7]">{bento.description}</p>
 					{bento.details.length > 0 && (
