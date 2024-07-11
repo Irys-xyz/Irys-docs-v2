@@ -22,8 +22,6 @@ const Irys2dPacking: React.FC = () => {
 		const updateDimensions = () => {
 			if (containerRef.current) {
 				const { clientWidth, clientHeight } = containerRef.current;
-				console.log(containerRef.current);
-				console.log({ clientWidth });
 				const aspectRatio = 650 / 200; // Original canvas aspect ratio (650x200)
 
 				// Calculate dimensions while maintaining aspect ratio
@@ -35,8 +33,6 @@ const Irys2dPacking: React.FC = () => {
 				// 	newHeight = clientHeight;
 				// 	newWidth = clientHeight * aspectRatio;
 				// }
-				console.log({ newWidth });
-				console.log({ newHeight });
 
 				setComponentDimensions({ width: newWidth, height: newHeight });
 			}

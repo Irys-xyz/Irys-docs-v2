@@ -41,7 +41,6 @@ const SequentialHashing: React.FC = () => {
 	const levelInput = useStateMachineInput(rive, "sequentialHashingStateMachine", "step", 0);
 
 	const setStep = async (step: number) => {
-		console.log({ levelInput });
 		if (levelInput) {
 			levelInput.value = step;
 		}
