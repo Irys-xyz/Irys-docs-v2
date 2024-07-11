@@ -1,21 +1,9 @@
 import { Tooltip } from "react-tooltip";
 import { Callout } from "nextra-theme-docs";
+import { LedgerTooltip, BlocklaneTooltip } from "@/tooltips/Tooltips";
 
-<Tooltip
-	id="ema"
-	className="irys-tooltip-styles"
-	anchorSelect="#ledger"
-	html="A digital record of all the data or transactions that have been posted to the network.<br/> The ledger is synchronized across the miners in the network to ensure fault-tolerance, immutability, and security."
-	style={{ backgroundColor: "#FF8451", color: "#000000" }}
-/>
-
-<Tooltip
-	id="blocklane"
-	className="irys-tooltip-styles"
-	anchorSelect="#blocklane"
-	html="A portion of a block reserved for a certain type of transaction."
-	style={{ backgroundColor: "#FF8451", color: "#000000" }}
-/>
+<LedgerTooltip />
+<BlocklaneTooltip />
 
 # Ledgers
 

@@ -310,7 +310,15 @@ details[open] .faq-expand::before {
 	font-family: "Inter", sans-serif;
 }
 
+.tooltip {
+	padding: 8px 16px;
+	border-radius: 3px;
+	font-size: 90%;
+	width: max-content;
+}
+
 .irys-tooltip-styles {
 	background-color: #ff8451;
 	color: #000000;
+	width: 100px;
 }
