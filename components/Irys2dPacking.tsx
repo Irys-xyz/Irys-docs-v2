@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CiPlay1 } from "react-icons/ci";
 import { useRive, Fit, Alignment, Layout, useStateMachineInput } from "@rive-app/react-canvas";
+import { event } from "@/lib/gtag";
 
 const Irys2dPacking: React.FC = () => {
 	const { rive, RiveComponent } = useRive({
@@ -69,6 +70,14 @@ const Irys2dPacking: React.FC = () => {
 		if (levelInput) {
 			levelInput.value = newStep; // Play new step
 			setCurStep(newStep);
+
+			// Track a Google Event
+			event({
+				action: "click",
+				category: "Irys2DPacking",
+				label: `Step ${newStep}`,
+				value: newStep,
+			});
 		}
 	};
 
