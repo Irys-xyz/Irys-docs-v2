@@ -72,6 +72,7 @@ const Irys2dPacking: React.FC = () => {
 			setCurStep(newStep);
 
 			// Track a Google Event
+			console.log(`firing event Irys2DPacking:Step ${newStep}`);
 			event({
 				action: "click",
 				category: "Irys2DPacking",
