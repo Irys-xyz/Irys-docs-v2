@@ -1,24 +1,33 @@
-# Transaction lifecycle
+# Transaction Types
 
-TODO
+Irys supports three main transaction types:
 
-## Mempools
+- Value transfers
+- Data transactions
+- Execution transactions
 
-- Users post transaction headers to miners who store them in memory.
-- Miners share pending transactions with one another because cooperating is the best way to maximize their block rewards. The more transactions they include in a block, the larger the rewards.
-- If a miner stops sharing pending transactions with other miners, those miners would also stop sharing with them. This would mean they would only know about pending transactions uploaded directly to them, which would lower their rewards when they produce a block.
-- This results in a shared set of pending transactions across miners which is often referred to as the mempool.
-- When a miner produces a block it adds the pending transactions from the mempool into the new block.
-- The other miners see this block and know its safe to remove the included transactions from their copy of the mempool.
-- Once transaction headers are included in a block, they reserve space for their data in the most recent partition slot.
-- Users upload their transaction data to miners storing the partitions with this reserved space and the miners share this data with one another.
-- Just like before miners are incentivized to cooperate and share data to earn greater rewards.
-- This is because blocks mined from data chunks produce greater rewards than ones mined from empty capacity chunks.
+## Value Transfers
 
-## Seeding
+The simplest form of transaction on Irys is a value transfer, which transfers native tokens from one wallet to another. These transactions are very similar to those you would see on Bitcoin or Ethereum and are a fundamental part of any blockchain and its economic incentives.
 
-TODO
+## Data transactions
 
-## Verifiability
+Because Irys is a datachain, it can store data using data transactions. These transactions include properties about the data to be stored, and a single upfront payment covering the storage term.
 
-TODO
+### Permanent Data
+
+Irys’ premium data ledger stores data permanently. Users pay for 10 replicas of their data stored for 200 years (with a wide safety margin).
+
+Transactions and data are first posted to Irys’ [Submit Ledger](/protocol/ledgers#submit-ledger), and once the network is able to prove the data has been uploaded, the transaction is promoted to the [Publish Ledger](/protocol/ledgers#permanent-data-publish-ledger), where it is stored permanently.
+
+### Term Data
+
+Because data ledgers on Irys are built from storage building blocks called [partitions](/protocol/partitions), the protocol is able to manage multiple data ledgers. Some of these ledgers are configured to store data for a specific term after which the partitions are recycled. This gives Irys’ users flexibility in their storage needs and allows them to specify what term ledger they want to store their data. Since users only pay for the storage term they need, this approach offers greater financial flexibility
+
+## Execution Transactions
+
+Alongside its data ledgers, Irys also supports onchain execution of programs in the form of smart contracts, secured by its VM. To interact with smart contracts on Irys users post execution transactions. Much like Ethereum, there is a maximum amount of compute that can be performed in each block. Users pay gas fees to purchase this compute from the network, which also protects the network from spam attacks.
+
+### Programmable Data
+
+Execution transactions on Irys access onchain data stored by data transactions. The verifiable nature of Irys' data allows it to be read and used in smart contract calls, providing developers with "cheap state." This lowers on-chain interaction costs and enables new use cases previously inaccessible due to high state storage costs.
