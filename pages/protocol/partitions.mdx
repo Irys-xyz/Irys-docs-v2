@@ -15,7 +15,7 @@ By having miners commit to partitions and the protocol arranging those partition
 
 ## Partition Lifecycle
 
-<div className="max-h-[100px]">
+<div className="w-full ">
 	<SimpleRiveViewer
 		src="/diagrams/architecture/irys-docs-capacity-mining.riv"
 		width={1920}
@@ -24,7 +24,7 @@ By having miners commit to partitions and the protocol arranging those partition
 	/>
 </div>
 
-Where do partitions come from, and how are they associated with a ledger?
+**Where do partitions come from, and how are they associated with a ledger?**
 
 Irys measures the amount of data uploaded and then uses it to project the number of partitions needed on standby. These standby partitions do not contain any data (yet) and are referred to as Capacity Partitions.
 
