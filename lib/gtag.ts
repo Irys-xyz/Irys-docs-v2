@@ -19,7 +19,7 @@ export const event = ({
 	label: string;
 	value: number;
 }) => {
-	console.log("GA event:", { action, category, label, value }); // Debugging line
+	console.log("GA event:", { action, category, label, value });
 
 	(window as any).gtag("event", action, {
 		event_category: category,

@@ -67,12 +67,20 @@ const ComponentBento: React.FC = () => {
 							{isImageFile(bento.image) ? (
 								<Image src={bento.image} alt={bento.title} layout="fill" className="rounded-xl" />
 							) : (
-								<SimpleRiveViewer src={bento.image} width={1920} height={1080} stateMachine={bento.stateMachine} />
+								<SimpleRiveViewer
+									src={bento.image}
+									width={1920}
+									height={1080}
+									stateMachine={bento.stateMachine}
+								/>
 							)}
 						</div>
 					)}
 					{bento.href ? (
-						<Link href={bento.href} className="underline text-lg font-bold tracking-tight text-white mt-4 z-20">
+						<Link
+							href={bento.href}
+							className="underline text-lg font-bold tracking-tight text-white mt-4 z-20"
+						>
 							{bento.title}
 						</Link>
 					) : (

@@ -35,6 +35,8 @@ const SimpleRiveViewer: React.FC<SimpleRiveViewerProps> = ({ src, width, height,
 					newHeight = clientHeight;
 					newWidth = clientHeight * aspectRatio;
 				}
+				console.log({ newWidth });
+				console.log({ newHeight });
 
 				setComponentDimensions({ width: newWidth, height: newHeight });
 			}
@@ -47,11 +49,15 @@ const SimpleRiveViewer: React.FC<SimpleRiveViewerProps> = ({ src, width, height,
 	}, [width, height]);
 
 	return (
-		<div className="flex flex-col ">
+		<div className="flex flex-col">
 			<div
 				ref={containerRef}
 				className="w-full flex justify-center"
-				style={{ height: "auto", minHeight: `${height}px`, position: "relative" }}
+				style={{
+					height: "auto",
+					minHeight: `${componentDimensions.height || height}px`,
+					position: "relative",
+				}}
 			>
 				{RiveComponent && (
 					<RiveComponent
