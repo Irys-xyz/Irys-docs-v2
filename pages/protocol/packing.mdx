@@ -1,8 +1,20 @@
 import SequentialHashing from "@/components/SequentialHashing";
 import Irys2dPacking from "@/components/Irys2dPacking";
 
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
 # Packing
 
+<div className="w-full flex justify-center">
+	<div className="w-full md:w-2/3">
+		<SimpleRiveViewer
+			src="/diagrams/architecture/irys-docs-fast-2d-packing.riv"
+			width={1920}
+			height={1080}
+			stateMachine="2D-Packing"
+		/>
+	</div>
+</div>
 ## The Problem
 
 Decentralized storage networks incentivize miners with economic rewards to ensure data reliability and fault tolerance. Since blockchain-based storage protocols are decentralized, they must validate storage on the network without relying on a central authority. To achieve this, the protocols employ the following mechanisms:
@@ -47,18 +59,86 @@ Irys’ approach balances the need for cryptographic verifiability with the prac
 
 ## Adversarial Mining
 
-The reason storage networks employ an expensive packing process, rather than using a cheaper fingerprinting method, is to ensure that computational mining strategies become uneconomical. These strategies, sometimes called "degenerate strategies," are approaches to mining that deviate from the protocol's intended behavior. In storage networks, the desired behavior is storing data and providing storage capacity. A degenerate strategy would involve using a GPU farm to earn mining rewards while storing very little data.
+Storage networks opt for an expensive packing process over cheaper fingerprinting methods to deter computational mining strategies, known as “degenerate strategies.” These involve exploiting mining rewards without storing adequate data, contrary to network goals or providing storage capacity. Traditionally, networks used computationally intensive strategies like Zero Knowledge and RandomX to prevent such tactics.
 
-To render compute-intensive strategies uneconomical, storage networks have relied on computationally intensive packing strategies like Zero Knowledge and RandomX. However, Irys revolutionizes this approach with 2D Packing, which focuses on making the packing of each individual chunk require a specific amount of time rather than high levels of computation. This shift from a compute-focused to a time-focused approach in the packing requirements sets Irys apart from other storage networks.
+Irys revolutionizes this approach with 2D packing, which emphasizes time-based requirements for packing individual data chunks rather than heavy computation. This shift distinguishes Irys from other storage networks by focusing on efficient packing verification without relying on computer-intensive methods.
 
 ## Irys 2D Packing
 
 Irys implements its own data model which impacts the overall process of packing and proving storage.
 
-<Irys2dPacking />
+    	<Irys2dPacking />
 
-## Phase 1 - Sequential Hashing
+## Packing Time
 
-Instead of making packing computationally intense so as to drive up its cost. Iry’s packing mechanism instead optimizes for making packing take a safe amount of time on a single CPU core. It achieves this by having the input to every segments’ SHA-256 hash be the output bytes of the previous segment in sequence. This means that computing all of the segments in a chunk must be done sequentially, giving them no advantage to being spread over multiple cores and computed in parallel.
+Rather than increasing packing costs through computational intensity, Irys’ packing mechanism prioritizes ensuring packing takes a consistent amount of time on a single CPU core. It achieves this by restructuring each segment’s SHA-256 hash input as the previous segment’s output bytes in sequence. This sequential computation prevents segments from being processed in parallel across multiple cores, maintaining fairness and security.
+
+### Phase 1: Sequential Hashing
 
 <SequentialHashing />
+
+Sequential hashing ensures single-core chunk packing since each segment depends on the one before it, establishing a minimum packing time. This method allows mining of data-less "capacity" chunks that are verifiable by other miners deterministically.
+
+With 32-byte segments and a 256KiB chunk, one pass of sequential hashing requires 8,192 hashes. The challenge is that a Ryzen 5900X can compute ~15 million SHA-256 hashes per second, making this amount of packing delay take a tiny fraction of a second. To deter adversarial miners from packing “on demand” we increase the packing length, to something on the order of ~1500ms.
+
+For that, we’ll need more layers of sequential segments.
+
+### Phase 2: Sequential Hashing + Parameterized Packing Time
+
+To lengthen chunk packing time, sequential hashing loops from the chunk's last to its first segment, overwriting it. This process repeats for multiple passes until reaching the desired packing solution.
+
+![](/packing/sequential-hashing-plus.png)
+
+Repeated sequential hashing of the chunk creates layers of segments, with the final layer stored in the chunk. This process succeeds in allowing the packing to achieve a specific minimum packing time, but it also exposes a potential vulnerability to adversarial miners.
+
+## Vulnerability of 1D Packing
+
+There is, however, a weakness in this kind of packing that can be exploited. While it will take the full minimum packing time to compute all the segment layers, upon packing once the miner can store a single segment of the final layer of segments and use it to recreate the full packing. This means on subsequent attempts the miner would only need to compute the 8,192 hashes of the final layer of segments.
+
+![](/packing/1d-packing-vulnerability.png)
+
+If a miner only needed to store 1 hash for each mining address and that would allow them to quickly pack a chunk below the minimum safe packing time, an adversarial miner might try to mine with multiple addresses while only storing one copy of the data.
+
+This is an example of using compute instead of storage to satisfy the consensus rules of the protocol and is considered a degenerate mining strategy (not accomplishing the protocol's goal of provably replicating partition data).
+
+## Packing Time in 2D
+
+There is a mechanism to overcome this vulnerability.
+
+To stop "on-demand" packing, the protocol requires miners to store all chunk segments of the previous layer when computing a new one. This makes computing the final layer possible only by recomputing all prior layers through two-dimensional sequential packing: breadth and depth. Each layer depends on the previous one, starting with Phase 1 - Sequential Packing.
+
+- 1
+  - a: The last segment of the previous layer becomes an input to the first sequential hash of the new layer.
+  - b: The segment on the previous layer at the same location of the segment we are computing becomes
+    input entropy to the current segment.
+- 2: The segment produced by hashing the previous segment and the entropy segment is appended to the new layer.
+- 3:
+  - a: As in step 1a, the segment computed in step 2 is used as input to the next sequential SHA-256 hash.
+  - b: As in step 1b, the segment from the previous packing layer at the same location as the segment
+    currently being computed is used as entropy.
+- 4: The resulting segment is then appended to the chunk after the previous segment.
+- 5: Repeat until the required number of packing layers have been achieved to satisfy the packing duration requirement.
+
+![](/packing/hash-packing.png)
+
+The result of packing in two dimensions this way is that every segment of a new placking layer requires the segments of the packing layer immediately beneath it. There is no way to compute the final packing layer without first computing every packing layer beneath it. This ensures that adversarial miners wishing to pack "on demand" will have to pack for the full packing duration every time they pack a chunk.
+
+![](/packing/hash-packing2.png)
+
+Because this mechanism requires a full layer of hashes to be stored which are all seeded with a specific mining address (and partition id), an adversarial miner must repack all the layers for every mining address it wishes to use on-demand packing for. As this repacking is orders of magnitude slower than just reading the packed chunk from disk there is no economic advantage to computational approaches.
+
+## Advantages
+
+2D Packing has a few key advantages over Arweave’s RandomX and Filecoin’s sealing. By requiring sequential packing, each chunk of data has a minimum packing time enforced, but many chunks can be packed in parallel. The more cores, the more chunks can be packed.
+
+Parallel packing enables many chunks to be packed at the same time (advantage over RrandomX) scaling horizontally. Because 2D Packing is time-consuming but also computationally simple it carries a small fraction of the cost of generating the zk-SNARKs required for Filecoin Sealing.
+
+Individual chunks always take a safe amount of time to pack so reading packed data is always vastly more economical than packing it on demand.
+
+Other advantages of 2D Packing include not needing to re-pack capacity once data is assigned. The 2D Packing fingerprint can be applied to empty capacity. This allows Irys to reward miners for packing empty capacity, when that capacity is needed for data it doesn’t have to be repacked. Instead, data is XOR’d into the existing packing making ingress of data to packed capacity cheap and fast.
+
+By comparison, Arweave doesn’t have the concept of mining empty capacity and filecoin requires that committed capacity be re-sealed when data is stored in it.
+
+## TradeOffs
+
+A side effect of having 2D Packing (and unpacking) take a safe amount of time is that this safe time is also the minimum amount of time miners will need to fully validate a new block. This means that the network's block time cannot be shorter than the “safe minimum time” encoded in 2D Packing. This is not expected to be an issue as the safe minimum time is ~3s and PoW block times tend to be 3-4x that long due to other factors.

@@ -1,15 +1,73 @@
 # Provable Storage
 
-Irys uses the Proof of Unique Storage (PoUS) to ensures the integrity and possession of data and capacity on the network.
+## Objectives & Problem
 
-- Storage (both empty capacity and stored data) on Irys is split into 16TiB partitions.
-- These partitions are packed with a miners unique address and cryptographic entropy.
-- This uniquely identifies the partition as belonging to a specific miner.
-- Every second the protocol selects a random 200MB recall range from each partition.
-- These recall ranges are split up into 256KiB chunks that can be read and mined.
-- Miners read the chunks and compute a solution from each one.
-- If the solution exceeds the difficulty setting of the network they win the right to produce a block and earn rewards.
-- Any transactions they include in the block will reward the miner with a small fee.
-- If the rest of the network accepts the block, it will be added to the head of the chain and miners will build on top of it.
+This document outlines the challenges of storing data permanently onchain and how Irys addresses them where other storage networks failed.
 
-TODO: PoW/PoS hybrid
+Scaling onchain data storage requires separating transaction data from block headers while maintaining strong incentives for data storage. Irys achieves this through a mining process that demands recalling stored data for each computed hash, enabling large-scale storage capacity.
+
+However, this approach presents an obstacle: users might post transaction headers without uploading the associated data, compromising the integrity and reliability of data on the network.
+
+## A Dataset with Holes
+
+While separating headers from data unlocks large scale onchain data, it can lead to permanent gaps in the ledger when promised data never materializes. This creates cascading issues throughout the system.
+
+### Private Mining
+
+One such issue is "private mining," where miners include transaction headers that reserve large amounts of data but keep the data private. This grants them a hashpower advantage when mining this exclusive data that none of their peers have. During high-reward periods, the increased earnings from mining private data can outweigh the upload cost of posting it, making it a profitable but unfair approach.
+Miners earn more rewards mining parts of the dataset with fewer holes, making some parts of the dataset less desirable to store than others. This leads to uneven data distribution across the network.
+
+### Incentive Constraints
+
+When data is unretrievable, the protocol has no way of knowing whether the miner or the user is at fault. This ambiguity limits the protocol's ability to punish data loss or make firm commitments about stored data.
+These challenges underscore the need for careful protocol design to maintain data integrity on the network and fairness between miners.
+
+## Irys’ Solution
+
+Irys' design addresses these challenges through a combination of innovations:
+
+1. Multiple Data Ledgers: Irys supports both permanent and temporary data storage ledgers, giving it flexibility in the commitments it can make around stored data.
+2. Staking and Slashing: Incentivize good behavior and penalizes malicious actions, enhancing network security and reliability of data replication.
+3. Proofs of Custody for Permanent Data: Ensures miners are actually storing the data they claim to have.
+4. Empty Capacity Mining: Allows miners to participate in the network by mining empty storage capacity.
+
+### Capacity Packing & Mining
+
+Irys’ packing mechanism differs significantly from Arweave's approach. The system divides both storage capacity and data into 16TB partitions, allowing the protocol to project specific amounts of storage capacity for miners to mine. Crucially, Irys limits the funded capacity partitions based on the rate data is being uploaded to the network. This strategic limitation protects the protocol from overpaying for excess capacity, while ensuring it supports the current demand for onchain data. By implementing this balanced approach, Irys maintains an efficient and cost-effective storage ecosystem.
+
+Miners pack data and empty capacity partitions, enabling them to mine, produce blocks, and earn rewards. Each data and capacity partition is divided into 256KB chunks. Blocks mined from empty capacity chunks yield smaller rewards relative to those mined with data chunks, incentivizing miners to store data for maximum rewards. More importantly, this feature mitigates the effectiveness of private mining.
+
+Even if a miner attempts to keep large amounts of data private, they won't gain a significant hashpower advantage. Other miners can continue mining the empty "capacity chunks" that the private miner didn't upload. This gives them the same hashpower regardless of whether they have the data or not. Furthermore, if a miner produces a block using private data chunks but refuses to share the data with peers, they risk being blacklisted or slashed.
+
+This approach effectively balances network participation, data storage incentives, and security against exploitative strategies.
+
+### Multiple Ledgers
+
+While the ability to mine empty capacity chunks along with data chunks mitigates the hashpower advantages from private mining, there’s still the issue of the integrity of the dataset as a whole. If some data cannot be retrieved from the network, it undermines the reliability of the storage system. Irys takes the stance that a storage protocol that can make commitments about the data uploaded to it is more useful than one that can’t.
+To accomplish this objective, Irys implements multiple data ledgers that support both permanent and temporary data. Splitting up the ledgers in this way makes it possible for the protocol to make different commitments for each ledger and produce more reliable and verifiable permanent data.
+
+#### Publish Ledger - Permanent Data
+
+![](/diagrams/protocol/publish-ledger.png)
+There is a single ledger for permanent data on Irys, called the Publish Ledger. The data stored in this ledger is sometimes referred to as “Perm Data” in contrast to temporary data which is stored in “Term Data” ledgers. Permanent data in the Publish Ledger is special because the protocol only adds data to the publish ledger when it’s been provably uploaded to the network.
+
+How does it do this when the protocol has no way of forcing users to upload the data associated with their transaction headers?
+
+The answer is the use of term data and the Submit Ledger.
+
+#### Submit Ledger - Term Data
+
+![](/diagrams/protocol/submit-ledger.png)
+Irys uses the term "Term Data" to describe temporary data storage, as it refers to data that is committed to be available for a specific period, known as a storage term. This differs from IPFS, where files may disappear after an unspecified amount of time if they are not actively pinned. The Irys testnet will launch with one Term Data ledger, the Submit ledger, but it is capable of supporting multiple Term Data ledgers with different storage terms.
+
+The Submit ledger is crucial because it enables Irys to make commitments about the permanent Publish ledger. When a user wants to store data permanently, they post their transaction headers to the Submit ledger. They then have until the Submit ledger expires to upload the associated data. Once the data is uploaded, miners share it and post proofs to each other to confirm receipt. After enough proofs have been collected, the miner creating the next block will promote the transaction from the Submit ledger to the Publish ledger. This promotion includes the collected proofs of storage, allowing miners to retrieve the permanent data if they do not already have it.
+
+If the user fails to upload their data, it leaves a gap in the active portion of the Submit ledger until it ages out and the responsible partitions expire. In this case, the unpromoted data transaction is dropped, and the user is refunded the portion of their fee that would have gone to permanent storage had they uploaded the data.
+
+#### Storage Commitments
+
+The Submit and Publish ledgers enable Irys to make strong commitments about its permanent data. This dual-ledger system allows the protocol to verify both the receipt and publishing of data, while also clearly identifying which peers are responsible for storing specific data. This transparency makes it easy for clients to verify data availability and storage commitments.
+
+A crucial benefit of this system is its impact on smart contract execution. When smart contracts on Irys reference data in the permanent ledger, they can reasonably expect that data to be available. If data is missing, the protocol's verifiability allows for the slashing of miners who fail to store data that was likely uploaded to the network. This is critical for aligning miner incentives around storage and execution and is what makes programmable data possible.
+
+These storage commitments and verifiability mechanisms validate the economic pledges miners make to store data. Moreover, the ability to expect data to be available and know where to retrieve it enables the use of that data in smart contract execution. This capability unlocks the potential for programmable data, significantly expanding the functionality and usecases possible on the Irys network.
