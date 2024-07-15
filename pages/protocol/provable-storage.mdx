@@ -43,12 +43,16 @@ This approach effectively balances network participation, data storage incentive
 
 ### Multiple Ledgers
 
-While the ability to mine empty capacity chunks along with data chunks mitigates the hashpower advantages from private mining, there’s still the issue of the integrity of the dataset as a whole. If some data cannot be retrieved from the network, it undermines the reliability of the storage system. Irys takes the stance that a storage protocol that can make commitments about the data uploaded to it is more useful than one that can’t.
+While the ability to mine empty capacity chunks along with data chunks mitigates the hashpower advantages from private mining, there’s still the issue of the integrity of the dataset as a whole. If some data cannot be retrieved from the network, it undermines the reliability of the storage system.
+
+> Irys takes the stance that a storage protocol that can make commitments about the data uploaded to it is more useful than one that can’t.
+
 To accomplish this objective, Irys implements multiple data ledgers that support both permanent and temporary data. Splitting up the ledgers in this way makes it possible for the protocol to make different commitments for each ledger and produce more reliable and verifiable permanent data.
 
 #### Publish Ledger - Permanent Data
 
 ![](/diagrams/protocol/publish-ledger.png)
+
 There is a single ledger for permanent data on Irys, called the Publish Ledger. The data stored in this ledger is sometimes referred to as “Perm Data” in contrast to temporary data which is stored in “Term Data” ledgers. Permanent data in the Publish Ledger is special because the protocol only adds data to the publish ledger when it’s been provably uploaded to the network.
 
 How does it do this when the protocol has no way of forcing users to upload the data associated with their transaction headers?

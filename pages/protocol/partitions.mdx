@@ -1,6 +1,9 @@
 import { LedgerTooltip, BlocklaneTooltip } from "@/tooltips/Tooltips";
 import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
+<LedgerTooltip />
+<BlocklaneTooltip />
+
 # Partitions
 
 The fundamental building blocks of Irys’ <a className="underline decoration-dashed" id="ledger">data ledgers</a> are partitions. These partitions are like lego bricks which can be assembled to build more complicated objects.
@@ -69,12 +72,12 @@ This is an undesirable departure as the network will have to assign new capacity
 
 ## Conclusion
 
-Partitions represent the fundamental building block of Irys’s flexible data ledgers. With them, the protocol can control many factors:
+Partitions represent the fundamental building block of Irys’ flexible data ledgers. With them, the protocol can control many factors, including:
 
-Controlling the number of replicas incentivized for every ledger index
-Controlling the total number of mineable partitions (both data and capacity)
-Managing data distribution in a way that is verifiable
-Rewarding miners for storing data reliably
-Onboarding a specific amount of capacity to meet the near future needs of the network.
+- Controlling the number of replicas incentivized for every ledger index.
+- Controlling the total number of mineable partitions (both data and capacity).
+- Managing data distribution in a way that is verifiable.
+- Rewarding miners for storing data reliably.
+- Onboarding a specific amount of capacity to meet the near future needs of the network.
 
 All of these are efficiencies that allow Irys to account for and control it’s storage liabilities. This then leads to efficient pricing that is passed on to users.
