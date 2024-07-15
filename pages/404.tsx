@@ -119,7 +119,7 @@ const NotFound = (props: Props) => {
           </div>
           <div className="grid grid-cols-12 m-6 md:m-0 w-full px-7 md:px-0 md:w-auto">
             <h2 className="rounded-tl-lg rounded-tr-lg text-white col-span-12 py-3 px-4 font-bold text-lg tracking-tight bg-[#FF8451]">
-              Irys Developer Tools For Arweave Docs
+              Irys protocol
             </h2>
             <div className="grid grid-cols-12 col-span-12 grid-rows-6 border border-white/10 rounded-md">
               {second_section_items.map((option, i) => (
