@@ -1,9 +1,7 @@
 {
 	"irys-architecture": "Architecture",
 	"programmable-data": "Programmable data",
-	"pricing-model": "Pricing Model",
-	"storage-pricing": "Storage Pricing",
-	"token-price-adjustments": "Token Price Adjustments",
+	"pricing": "Pricing",
 	"treasury": "Treasury",
 	"mining": "Mining"
 }
