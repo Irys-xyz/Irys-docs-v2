@@ -1,5 +1,35 @@
-# Mining
+# Mining Guide
 
-Do we need a mining guide for L1 announcement?
+Mining Irys is a combination of useful Proof of Work, where every computed hash is actually proving storage of a random part of Irys’ overall storage, and staking a mining address and pledging individual partitions.
 
-Maybe a form to collect email addresses of people who might be interested?
+## Staking a Mining Address
+
+1. Create a wallet
+2. Mint some tokens to it
+3. Post a staking transaction to the network
+4. Wait for the transaction to be confirmed.
+
+## Pledging a Partition
+
+Once you have a staked mining address you can pledge one or more partitions.
+
+1. Post a pledge transaction, wait until the end of the epoch
+2. Your node will tell you if the protocol assigned you a partition ID
+3. If it did, the node will begin packing it
+4. Regardless if you finish packing in time or not, the node will begin mining your partition in the next epoch.
+
+## System Requirements
+
+The minimum system requirements will be established based on the real-world performance observed during testnet.
+
+### VDF Requirement
+
+One fast CPU core to compute the VDF. Ideally with SHA-256 extensions. It’s possible to subscribe to a remote VDF server if you have trouble keeping up with the network.
+
+### Packing Requirement
+
+Before mining a [partition](/protocol/partitions) it must be packed. Irys’ 2D packing is time -based and can be parallelized. With a modern gaming GPU, a 16TB partition can be packed in a few hours.
+
+### Storage Requirements
+
+Each [partition](/protocol/partitions) is approximately 16TB in size and is intended to be mined on an HDD. Irys’ VDF limits the amount of data that can be mined per partition to 200MB/s. This is well within the transfer rate of enterprise/data center HDD drives.
