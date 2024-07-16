@@ -2,6 +2,7 @@ import Latex from "react-latex-next";
 import StorageCostChart from "@/components/StorageCostChart";
 import { Tooltip } from "react-tooltip";
 import Formula from "@/components/Formula";
+import UserFeeFormula from "@/components/UserFeeFormula";
 
 <Tooltip
 	id="kryders-law"
@@ -18,6 +19,35 @@ import Formula from "@/components/Formula";
 	html="Moore's Law observes that the number of transistors<br/>on a microchip doubles approximately every two years."
 	style={{ backgroundColor: "#FF8451", color: "#000000" }}
 />
+
+# Token Price Adjustments
+
+## Example Pricing Model Calculations
+
+Given the following pricing parameters:
+
+| Parameter                        | Value     |
+| -------------------------------- | --------- |
+| Annualized Storage Cost (per GB) | $0.01     |
+| Number of Replicas               | 10        |
+| Safe Minimum Time                | 200 years |
+| Decay Rate                       | 1%        |
+
+This is how to calculate the price of storage in USD:
+
+<Formula />
+
+Therefore, the total cost of storing a single replica of 1GB for 200 years, with a continuous annual decay rate of 1%, is approximately $0.8647.
+
+This results in a storage cost of **$8.65** per GB of permanent data ($0.8647×10≈$8.65).
+
+### Compute User Fee
+
+Let's say a user would like to store 200MB at time t with the following parameters.
+
+<UserFeeFormula />
+
+# OLD
 
 # Irys Pricing Model
 

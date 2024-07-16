@@ -1,0 +1,154 @@
+import React, { useState } from "react";
+import Latex from "react-latex-next";
+
+const UserFeeFormula: React.FC = () => {
+	const [storageCost, setStorageCost] = useState<number>(8.65);
+	const [storageRequested, setStorageRequested] = useState<number>(200);
+	const [tokenPrice, setTokenPrice] = useState<number>(1.09);
+
+	const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+		if (e.target.value.startsWith("$")) {
+			e.target.value = e.target.value.substring(1);
+		}
+	};
+
+	const handleBlur = (
+		e: React.FocusEvent<HTMLInputElement>,
+		setter: React.Dispatch<React.SetStateAction<number>>,
+	) => {
+		if (!e.target.value.startsWith("$")) {
+			e.target.value = `$${e.target.value}`;
+		}
+		setter(parseFloat(e.target.value.substring(1)));
+	};
+
+	return (
+		<div className="mt-5">
+			<div className="flex flex-col borderp-4">
+				<div className="flex justify-center px-4 py-2 rounded-xl text-white mb-4 ">
+					<table className="table-auto border border-gray-400 w-full">
+						<thead>
+							<tr className="bg-slate-800">
+								<th className="border px-4 py-2">Parameter</th>
+								<th className="border px-4 py-2">Value</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td className="border px-4 py-2">Cost to store 1GB (10 replicas, 200y)</td>
+								<td className="border px-4 py-2">
+									<input
+										type="text"
+										value={`$${storageCost}`}
+										onFocus={handleFocus}
+										onBlur={(e) => handleBlur(e, setStorageCost)}
+										onChange={(e) => setStorageCost(parseFloat(e.target.value))}
+										className="bg-slate-800 text-white p-1 rounded"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td className="border px-4 py-2">Storage Requested (MB)</td>
+								<td className="border px-4 py-2">
+									<input
+										type="number"
+										value={storageRequested}
+										onChange={(e) => setStorageRequested(parseFloat(e.target.value))}
+										className="bg-slate-800 text-white p-1 rounded"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td className="border px-4 py-2">$IRYS Token Price</td>
+								<td className="border px-4 py-2">
+									<input
+										type="text"
+										value={`$${tokenPrice}`}
+										onFocus={handleFocus}
+										onBlur={(e) => handleBlur(e, setTokenPrice)}
+										onChange={(e) => setTokenPrice(parseFloat(e.target.value))}
+										className="bg-slate-800 text-white p-1 rounded"
+									/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div className="flex items-start mb-2 gap-2 mt-5 px-5">
+					<div className="px-5 flex items-center justify-center bg-[#FF8451] rounded-full text-xl text-white">
+						1
+					</div>
+					<div className="w-3/6 flex-1 ml-2 items-start">
+						Determine the Ratio of Storage Requested to 1GB of Storage
+					</div>
+					<div className="w-2/6 flex flex-col items-start">
+						<Latex>{`$$= \\frac{\\text{Storage requested}}{\\text{1 GB}}$$`}</Latex>
+						<Latex>{`$$= \\frac{${storageRequested}}{1024}$$`}</Latex>
+						<Latex>{`$$= ${(storageRequested / 1024).toFixed(7)}$$`}</Latex>
+					</div>
+				</div>
+
+				<div className="flex items-start mb-2 gap-2 mt-5 px-5">
+					<div className="px-5 flex items-center justify-center bg-[#FF8451] rounded-full text-xl text-white">
+						2
+					</div>
+					<div className="w-3/6 flex-1 ml-2 items-start">
+						Determine the USD fee for Storage Requested using the Storage Ratio
+					</div>
+					<div className="w-2/6 flex flex-col items-start">
+						<Latex>{`$$= \\text{cost to store 1GB} \\times \\text{Storage Ratio}$$`}</Latex>
+						<Latex>{`$$= ${storageCost} \\times ${(storageRequested / 1024).toFixed(7)}$$`}</Latex>
+						<Latex>{`$$= ${(storageCost * (storageRequested / 1024)).toFixed(7)} = ${(
+							storageCost *
+							(storageRequested / 1024)
+						).toFixed(2)}$$`}</Latex>
+					</div>
+				</div>
+
+				<div className="flex items-start mb-2 gap-2 mt-5 px-5">
+					<div className="px-5 flex items-center justify-center bg-[#FF8451] rounded-full text-xl text-white">
+						3
+					</div>
+					<div className="w-3/6 flex-1 ml-2 items-start">
+						Denominate the USD fee in $IRYS using the $IRYS Token
+					</div>
+					<div className="w-2/6 flex flex-col items-start">
+						<Latex>{`$$= \\frac{\\text{USD fee}}{\\text{\\$IRYS Token Price}}$$`}</Latex>
+						<Latex>{`$$= ${(storageCost * (storageRequested / 1024)).toFixed(
+							2,
+						)} \\div ${tokenPrice}$$`}</Latex>
+						<Latex>{`$$= ${((storageCost * (storageRequested / 1024)) / tokenPrice).toFixed(7)} = ${(
+							(storageCost * (storageRequested / 1024)) /
+							tokenPrice
+						).toFixed(2)} \\text{ \\$IRYS}$$`}</Latex>
+					</div>
+				</div>
+
+				<div className="flex items-start mb-2 gap-2 mt-5 px-5">
+					<div className="px-5 flex items-center justify-center bg-[#FF8451] rounded-full text-xl text-white">
+						4
+					</div>
+					<div className="w-3/6 flex-1 ml-2 items-start">
+						The protocol adds an additional 5% to the network fee for the reward paid to the miner that
+						includes the transaction in a block.
+					</div>
+					<div className="w-2/6 flex flex-col items-start">
+						<Latex>{`$$= \\text{Network fee} + 5\\%$$`}</Latex>
+						<Latex>{`$$= ${((storageCost * (storageRequested / 1024)) / tokenPrice).toFixed(
+							2,
+						)} \\times 1.05$$`}</Latex>
+						<Latex>{`$$= ${(((storageCost * (storageRequested / 1024)) / tokenPrice) * 1.05).toFixed(
+							7,
+						)}$$`}</Latex>
+						<Latex>{`$$= ${(((storageCost * (storageRequested / 1024)) / tokenPrice) * 1.05).toFixed(
+							2,
+						)} \\text{ \\$IRYS}$$`}</Latex>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default UserFeeFormula;

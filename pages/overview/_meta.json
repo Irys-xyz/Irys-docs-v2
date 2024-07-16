@@ -2,8 +2,8 @@
 	"irys-architecture": "Architecture",
 	"programmable-data": "Programmable data",
 	"pricing-model": "Pricing Model",
-	"storage-pricing-model": "Storage Pricing Model",
-	"storage-incentives": "Storage Incentives",
+	"storage-pricing": "Storage Pricing",
+	"token-price-adjustments": "Token Price Adjustments",
 	"treasury": "Treasury",
 	"mining": "Mining"
 }
