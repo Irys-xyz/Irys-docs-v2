@@ -1,5 +1,41 @@
-# Treasury
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
-```ts
-const foo = Bar();
-```
+# Irys’ Protocol Treasury
+
+<div className="w-full flex justify-center">
+	<div className="w-full md:w-2/3">
+		<SimpleRiveViewer
+			src="/diagrams/components/irys-docs-protocol-treasury.riv"
+			width={1920}
+			height={1080}
+			stateMachine="Protocol-Treasury"
+		/>
+	</div>
+</div>
+
+## Overview
+
+All datachains need a mechanism to cover future storage costs. In a decentralized system, this involves paying storage providers over time, creating economic incentives for them to maintain data storage for the duration the uploader has paid for.
+Different datachains handle this in various ways, such as through a single incrementing value in each block header or smart contracts managing individual storage deals. Irys uses a protocol-level treasury to account for future storage costs.
+
+## Payment for Storage
+
+When users pay for storage in Irys’ data ledgers, they make a single upfront payment. This payment is based on the amount of data and the cost of storing a [Partition](/protocol/partitions) (a storage unit provided by miners on Irys) for a year. Users posting data to Irys’ permanent ledger pay for 200 years in advance, assuming a 1% annual decline in storage costs. Historically, storage costs have decreased by approximately 30% annually over the last 40 years. If storage costs decline faster than 1% annually, the duration the treasury can pay for future storage is extended, providing a safety margin against fluctuations in the $IRYS token price.
+
+## Inflation
+
+Irys has an inflationary token emission schedule, similar to Bitcoin. A fixed amount is emitted each year through block rewards. Unlike Bitcoin's specific halving events, the inflation rate on Irys gradually decreases with each block.
+
+## Block Rewards
+
+Block rewards on Irys are tracked per Partition and linked to the storage pricing model. The rewards are designed to cover the cost of storing a partition for a year. If block rewards fall below the necessary amount, tokens from the treasury will cover the shortfall to ensure miners can maintain their operations, which is crucial for the network's fault tolerance.
+Initially, inflationary rewards might be excessively high, causing unfair dilution of token holders in favor of miners. When per-partition rewards exceed a certain fiat value (as determined by Irys’s Price Adjustment Mechanism), excess tokens are added to the treasury. This increases the treasury's purchasing power and applies deflationary pressure on the circulating supply of the token.
+
+## Anti-Dilution Measures
+
+Inflation increases the token supply over time, slowly diluting the value of tokens currently in circulation and in the treasury. Since the treasury's token value is used to pay for future data storage, maintaining its value is crucial. To combat dilution, the treasury receives a proportional amount of new tokens equivalent to the annual inflation rate, ensuring its purchasing power is maintained relative to the overall supply.
+
+## Summary
+
+Irys' protocol treasury ensures the sustainability of storage costs through upfront payments, an inflationary schedule, and mechanisms to maintain the value of the treasury. These measures protect against token dilution and ensure that storage providers are incentivized to maintain data storage over long periods.
+These features make Irys’ protocol treasury a robust system for managing decentralized storage costs, aligning incentives for storage providers, and safeguarding the network's economic stability.

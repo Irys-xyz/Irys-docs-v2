@@ -49,13 +49,22 @@ export const LedgerTooltip: React.FC = () => (
 		style={tooltipStyles}
 	/>
 );
-
 export const BlocklaneTooltip: React.FC = () => (
 	<Tooltip
 		id="blocklane"
 		className="irys-tooltip-styles"
 		anchorSelect="#blocklane"
 		content="A portion of a block reserved for a certain type of transaction."
+		style={tooltipStyles}
+	/>
+);
+
+export const TermDataTooltip: React.FC = () => (
+	<Tooltip
+		id="termdata"
+		className="irys-tooltip-styles"
+		anchorSelect="#termdata"
+		content="Data that is committed to be available for a specific period of time."
 		style={tooltipStyles}
 	/>
 );

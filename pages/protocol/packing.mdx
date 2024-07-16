@@ -1,64 +1,94 @@
 import SequentialHashing from "@/components/SequentialHashing";
 import Irys2dPacking from "@/components/Irys2dPacking";
 
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
 # Packing
+
+<div className="w-full flex justify-center">
+	<div className="w-full md:w-2/3">
+		<SimpleRiveViewer
+			src="/diagrams/architecture/irys-docs-fast-2d-packing.riv"
+			width={1920}
+			height={1080}
+			stateMachine="2D-Packing"
+		/>
+	</div>
+</div>
+
+## Overview
+
+Irys uses 2D Packing to enhance storage verification efficiency and security. Our method:
+
+- Scales horizontally across GPUs and ASICs without sacrificing security.
+- Allows data to be unpacked on various devices (desktop, mobile, browser).
+- Reduces the cost of onboarding miners and posting data, leading to lower storage fees.
+- Combines with staking and slashing mechanisms to deter adversarial miners.
+- Maintains cryptographic verifiability while prioritizing accessibility and cost-efficiency.
+- Ensures a consistent packing time on a single CPU core, preventing parallel processing.
+- Avoids computationally intensive methods like Zero Knowledge proofs and RandomX.
 
 ## The Problem
 
 Decentralized storage networks incentivize miners with economic rewards to ensure data reliability and fault tolerance. Since blockchain-based storage protocols are decentralized, they must validate storage on the network without relying on a central authority. To achieve this, the protocols employ the following mechanisms:
 
-### Cryptographic Proofs
+1. Cryptographic Proofs:
 
-- Miners prove they are storing data via cryptographic methods.
-- These proofs validate mining outputs and incentivize storage.
+   - Miners prove they are storing data via cryptographic methods.
+   - These proofs validate mining outputs and incentivize storage.
 
-### Economic Incentives
+2. Economic Incentives:
 
-- Storage-based solutions must be more economical than compute-based approaches.
-- A compute-intensive packing process ensures that storing packed data is more efficient than creating mining solutions on-demand.
+   - Storage-based solutions must be more economical than compute-based approaches.
+   - A compute-intensive packing process ensures that storing packed data is more efficient than creating mining solutions on-demand.
 
-### Security Measures
+3. Security Measures:
+   - Cryptographic verifiability prevents miners from impersonating multiple miners.
+   - Cryptographic verifiability prevents the multiplication of rewards for a single unit of storage.
 
-Cryptographic verifiability:
+Storage networks like Arweave and Filecoin using Packing or Sealing to verify storage. These methods require miners to add a unique cryptographic fingerprint to their storage, proving they're providing unique resources to the network. This approach prevents adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
 
-- Prevents miners from impersonating multiple miners.
-- Prevents the multiplication of rewards for a single unit of storage.
-
-Storage networks like Arweave and Filecoin employ processes called Packing or Sealing to verify storage. These methods require miners to add a unique cryptographic fingerprint to their storage, proving they're providing unique resources to the network. This approach prevents adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
-
-Irys introduces a novel approach to packing called 2D Packing, combined with staking and slashing mechanisms. This innovative approach allows faster and more efficient storage verification compared to Arweave or Filecoin. It effectively reduces the risk of adversarial miners attempting computational exploits.
+Irys introduces a novel approach to packing called 2D Packing and combines it with staking and slashing mechanisms. This leads to faster and more efficient storage verification compared to Arweave or Filecoin. It effectively reduces the risk of adversarial miners attempting computational exploits.
 
 ## Proving Storage Cryptographically
 
-After storage capacity has been packed, miners must repeatedly prove to the protocol that the packed resources are available. There are two primary approaches in decentralized storage:
+After storage capacity has been packed, miners must repeatedly prove to the protocol that the packed resources are available. There are two primary approaches:
 
-| **Protocol**                           | **Mechanism**                                                                                                                                                                                                                                      | **Consequence**                                                                                                  | **Drawbacks**                                                                                                                                                                                                                                                                                                                   |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Filecoin: Proof of Space-Time**      | Utilizes Zero-Knowledge (ZK) proofs where miners periodically provide random proofs compressed using ZK cryptography and post them on-chain.                                                                                                       | Failure to generate these proofs results in slashing of the miner's stake.                                       | The computationally intensive sealing process needed to generate ZK proofs increases costs and introduces overhead when storing data.                                                                                                                                                                                           |
-| **Arweave: Succinct Proofs of Access** | Miners continuously generate storage proofs locally using less computationally intensive Merkle proofs until they find one that meets the network's difficulty setting. Successful proofs allow the miner to produce a new block and earn rewards. | Uses RandomX for packing, which is computationally expensive and resistant to acceleration though GPUs or ASICs. | As Arweave lacks staking, there are zero ways to penalize a miner who refuses to store data. The complexity of RandomX imposes constraints on the speed at which data can be added and requires running a full node, making it impractical to run from JavaScript. It also increases the expense of adding data to the network. |
+| Protocol                           | Mechanism                                                                                                                                                                                                                                          | Consequence                                                                                                       | Drawbacks                                                                                                                                                                                                                                                                                                                       |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Filecoin: Proof of Space-Time      | Utilizes Zero-Knowledge (ZK) proofs where miners periodically provide random proofs compressed using ZK cryptography and post them onchain.                                                                                                        | Failure to generate these proofs results in slashing of the miner's stake.                                        | The computationally intensive sealing process needed to generate ZK proofs increases costs and introduces overhead when storing data.                                                                                                                                                                                           |
+| Arweave: Succinct Proofs of Access | Miners continuously generate storage proofs locally using less computationally intensive Merkle proofs until they find one that meets the network's difficulty setting. Successful proofs allow the miner to produce a new block and earn rewards. | Uses RandomX for packing, which is computationally expensive and resistant to acceleration through GPUs or ASICs. | As Arweave lacks staking, there are zero ways to penalize a miner who refuses to store data. The complexity of RandomX imposes constraints on the speed at which data can be added and requires running a full node, making it impractical to run from JavaScript. It also increases the expense of adding data to the network. |
 
-### Irys' 2D Packing:
+## Irys' 2D Packing:
 
-Irys’ 2D packing is similar to Arweave's, but scales up the packing process with 2D Packing technology instead of RandomX. 2D Packing enforces a minimum amount of time to pack but allows it to scale horizontally across GPU and/or ASICS without sacrificing security.
+Irys’ 2D packing is similar to Arweave’s approach but scales up the packing process with 2D Packing technology instead of RandomX. 2D Packing enforces a minimum amount of time to pack but allows it to scale horizontally across GPU and/or ASICS without sacrificing security.
 
-This approach's advantage is that it enables data to be unpacked from virtually any computing device (desktop, mobile, browser) while reducing the cost of onboarding miners to the network. It also reduces the cost of posting data on the network, which is passed on to users in the form of lower storage fees.
+The advantage is that it enables data to be unpacked from virtually any computing device (desktop, mobile, browser) while reducing the cost of onboarding miners to the network. It also reduces the cost of posting data on the network, which is passed on to users through lower storage fees.
 
 Irys’ approach balances the need for cryptographic verifiability with the practical considerations of accessibility and computational & cost efficiency.
 
-## Adversarial Mining
+Here’s how it works:
 
-The reason storage networks employ an expensive packing process, rather than using a cheaper fingerprinting method, is to ensure that computational mining strategies become uneconomical. These strategies, sometimes called "degenerate strategies," are approaches to mining that deviate from the protocol's intended behavior. In storage networks, the desired behavior is storing data and providing storage capacity. A degenerate strategy would involve using a GPU farm to earn mining rewards while storing very little data.
+| Step | Name               | Description                                                                                                                                                                                   |
+| ---- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Data Partitioning  | Data is logically partitioned into 16TB partitions, suitable for individual 16TB HDDs.                                                                                                        |
+| 2    | Chunk Division     | Each partition is divided into 256KiB chunks, which are used during mining to produce hashes.                                                                                                 |
+| 3    | Segment Creation   | Each 256KiB chunk is further divided into 32-byte segments containing packing entropy from a SHA-256 hash.                                                                                    |
+| 4    | Sequential Hashing | Segments are hashed sequentially; each segment's hash input is the output of the previous segment. Sequential hashing establishes a minimum packing time by requiring 8,192 hashes per chunk. |
+| 5    | Layered Hashing    | Repeated sequential hashing creates multiple layers of segments, storing the final layer in the chunk.                                                                                        |
 
-To render compute-intensive strategies uneconomical, storage networks have relied on computationally intensive packing strategies like Zero Knowledge and RandomX. However, Irys revolutionizes this approach with 2D Packing, which focuses on making the packing of each individual chunk require a specific amount of time rather than high levels of computation. This shift from a compute-focused to a time-focused approach in the packing requirements sets Irys apart from other storage networks.
+## Advantages
 
-## Irys 2D Packing
+2D Packing has several advantages over Arweave’s RandomX and Filecoin’s sealing. By requiring sequential packing, each chunk of data has a minimum packing time enforced, but many chunks can be packed in parallel. The more cores, the more chunks can be packed.
 
-Irys implements its own data model which impacts the overall process of packing and proving storage.
+Parallel packing enables many chunks to be packed simultaneously, a form of horizontal scaling (advantage over RandomX). Because 2D Packing is time-consuming and also computationally simple, it carries a small fraction of the cost of generating the zk-SNARKs required for Filecoin Sealing.
 
-<Irys2dPacking />
+Individual chunks always take a safe amount of time to pack; reading packed data is always vastly more economical than packing it on demand.
 
-## Phase 1 - Sequential Hashing
+Other advantages of 2D Packing include not needing to re-pack capacity once data is assigned. The 2D Packing fingerprint can be applied to empty capacity. This allows Irys to reward miners for packing empty capacity, when that capacity is needed for data it doesn’t have to be repacked. Instead, data is XOR’d into the existing packing making ingress of data to packed capacity cheap and fast.
 
-Instead of making packing computationally intense so as to drive up its cost. Iry’s packing mechanism instead optimizes for making packing take a safe amount of time on a single CPU core. It achieves this by having the input to every segments’ SHA-256 hash be the output bytes of the previous segment in sequence. This means that computing all of the segments in a chunk must be done sequentially, giving them no advantage to being spread over multiple cores and computed in parallel.
+By comparison, Arweave doesn’t have the concept of mining empty capacity, and Filecoin requires that committed capacity be re-sealed when data is stored in it.
 
-<SequentialHashing />
+## Trade-Offs
+
+A side effect of having 2D Packing (and unpacking) take a safe amount of time is that this safe time is also the minimum amount of time miners will need to fully validate a new block. This means the network's block time cannot be shorter than the “safe minimum time” encoded in 2D Packing. This is not expected to be an issue as the safe minimum time is ~3s and PoW block times tend to be 3-4x that long due to other factors.
