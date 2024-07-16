@@ -8,64 +8,118 @@ const NotFound = (props: Props) => {
       title: "Overview",
       css: "row-span-6",
       items: [
-        { title: "Networks", href: "#" },
-        { title: "Downloading data", href: "#" },
-        { title: "Cost to upload", href: "#" },
-        { title: "Supported tokens", href: "#" },
+        {
+          title: "About Irys",
+          href: "https://docs.irys.xyz/overview/about",
+        },
+        { title: "Tools", href: "https://docs.irys.xyz/overview/tools" },
+        { title: "Networks", href: "https://docs.irys.xyz/overview/networks" },
+        { title: "Gateways", href: "https://docs.irys.xyz/overview/gateways" },
+        {
+          title: "Permanent data",
+          href: "https://docs.irys.xyz/overview/permanent-data",
+        },
+        { title: "Ordering", href: "https://docs.irys.xyz/overview/ordering" },
+        {
+          title: "Querying & tagging",
+          href: "https://docs.irys.xyz/overview/querying-tagging",
+        },
+        {
+          title: "Cost to upload",
+          href: "https://docs.irys.xyz/overview/cost-to-upload",
+        },
+        {
+          title: "Supported tokens",
+          href: "https://docs.irys.xyz/overview/supported-tokens",
+        },
       ],
     },
     {
-      title: "SDK",
+      title: "Developer Docs",
       css: "row-span-6",
       items: [
-        { title: "Installing", href: "#" },
-        { title: "Commands", href: "#" },
+        {
+          title: "Irys SDK",
+          href: "https://docs.irys.xyz/developer-docs/irys-sdk",
+        },
+        {
+          title: "Querying",
+          href: "https://docs.irys.xyz/developer-docs/querying",
+        },
+        { title: "CLI", href: "https://docs.irys.xyz/developer-docs/cli" },
+        {
+          title: "Provenance Toolkit",
+          href: "https://docs.irys.xyz/developer-docs/provenance-toolkit",
+        },
+        {
+          title: "Using Devnet",
+          href: "https://docs.irys.xyz/developer-docs/using-devnet",
+        },
+        {
+          title: "Path manifests",
+          href: "https://docs.irys.xyz/developer-docs/path-manifests",
+        },
+        { title: "Tags", href: "https://docs.irys.xyz/developer-docs/tags" },
+        {
+          title: "Mutable references",
+          href: "https://docs.irys.xyz/developer-docs/mutable-references",
+        },
+        {
+          title: "Network merge guide",
+          href: "https://docs.irys.xyz/developer-docs/network-merge-guide",
+        },
+        {
+          title: "Downloading",
+          href: "https://docs.irys.xyz/developer-docs/downloading",
+        },
       ],
     },
     {
-      title: "CLI",
+      title: "Hands-on",
       css: "row-span-12",
       items: [
-        { title: "Installing", href: "#" },
-        { title: "Troubleshooting", href: "#" },
-        { title: "Browser-based dev", href: "#" },
-        { title: "API docs", href: "#" },
-        { title: "Chunked uploader", href: "#" },
-        { title: "IPFS CIDs", href: "#" },
-        { title: "Balance approvals", href: "#" },
-        { title: "Mutable references", href: "#" },
-        { title: "Path manifests", href: "#" },
-        { title: "Tags", href: "#" },
-        { title: "Devnet", href: "#" },
+        {
+          title: "Tutorials",
+          href: "https://docs.irys.xyz/hands-on/tutorials",
+        },
+        {
+          title: "Repositories",
+          href: "https://docs.irys.xyz/hands-on/repositories",
+        },
       ],
     },
     {
-      title: "Querying",
+      title: "Irys 101",
       css: "row-span-6",
       items: [
-        { title: "Query package", href: "#" },
-        { title: "API docs", href: "#" },
-        { title: "Graph QL", href: "#" },
-      ],
-    },
-    {
-      title: "Guides and tutorial",
-      css: "row-span-6",
-      items: [
-        { title: "Basics", href: "#" },
-        { title: "NFTs", href: "#" },
-        { title: "Lens Dev", href: "#" },
-        { title: "Encryption", href: "#" },
-      ],
-    },
-    {
-      title: "Repositories",
-      css: "row-span-6",
-      items: [
-        { title: "Gasless uploader", href: "#" },
-        { title: "Mobile PWA with Privy", href: "#" },
-        { title: "Encryption", href: "#" },
-        { title: "Solana NFT marketplace", href: "#" },
+        {
+          title: "Strong provenance",
+          href: "https://docs.irys.xyz/learn/strong-provenance",
+        },
+        { title: "Bundles", href: "https://docs.irys.xyz/learn/bundles" },
+        { title: "Bundling", href: "https://docs.irys.xyz/learn/bundling" },
+        { title: "Receipts", href: "https://docs.irys.xyz/learn/receipts" },
+        {
+          title: "Optimistic cache",
+          href: "https://docs.irys.xyz/learn/optimistic-cache",
+        },
+        {
+          title: "Funding & withdrawing",
+          href: "https://docs.irys.xyz/learn/funding-withdrawing",
+        },
+        {
+          title: "Transaction lifecycle",
+          href: "https://docs.irys.xyz/learn/transaction-lifecycle",
+        },
+        {
+          title: "Irys & Arweave",
+          href: "https://docs.irys.xyz/learn/irys-arweave",
+        },
+        {
+          title: "Volumetric scaling",
+          href: "https://docs.irys.xyz/learn/volumetric-scaling",
+        },
+        { title: "UDL and builders", href: "https://docs.irys.xyz/learn/udl" },
       ],
     },
   ];
@@ -75,45 +129,41 @@ const NotFound = (props: Props) => {
       title: "Overview",
       css: "row-span-6",
       items: [
-        { title: "Architecture", href: "#" },
-        { title: "Programable data", href: "#" },
-        { title: "Onchain data", href: "#" },
-        { title: "Treasury", href: "#" },
-        { title: "Scaling", href: "#" },
-        { title: "Mining", href: "#" },
+        { title: "Architecture", href: "/overview/irys-architecture" },
+        { title: "Programmable data", href: "/overview/programmable-data" },
+        { title: "Pricing Model", href: "/overview/pricing-model" },
+        {
+          title: "Storage Pricing Model",
+          href: "/overview/storage-pricing-model",
+        },
+        { title: "Storage Incentives", href: "/overview/storage-incentives" },
+        { title: "Treasury", href: "/overview/treasury" },
+        { title: "Mining", href: "/overview/mining" },
       ],
     },
     {
       title: "Protocol",
       css: "row-span-6",
       items: [
-        { title: "Provable storage", href: "#" },
-        { title: "Partitions", href: "#" },
-        { title: "Transactions", href: "#" },
-        { title: "Packing", href: "#" },
-        { title: "Publish & submit ledgers", href: "#" },
-      ],
-    },
-    {
-      title: "Services",
-      css: "row-span-6",
-      items: [
-        { title: "Bundlers", href: "#" },
-        { title: "Gateway", href: "#" },
+        { title: "Provable storage", href: "/protocol/provable-storage" },
+        { title: "Partitions", href: "/protocol/partitions" },
+        { title: "Transactions", href: "/protocol/transactions" },
+        { title: "Packing", href: "/protocol/packing" },
+        { title: "Ledgers", href: "/protocol/ledgers" },
       ],
     },
   ];
 
   return (
     <>
-      <div className="py-44">
-        <div className="flex items-center justify-center text-center">
-          <h1 className="text-6xl text-white tracking-tight font-bold col-span-12">
+      <div className="py-20 lg:py-36">
+        <div className="flex items-center justify-center text-center px-7">
+          <h1 className="text-4xl lg:text-6xl text-white tracking-tight font-bold col-span-12">
             We recently re-organized things. <br />
             But don&apos;t worry, we got you.
           </h1>
         </div>
-        <div className="relative flex md:flex-row flex-col gap-10 mx-auto container md:items-start items-center justify-center py-36">
+        <div className="relative flex md:flex-row flex-col gap-10 mx-auto container md:items-start items-center justify-center py-20 lg:py-36">
           <div className="hidden xl:block top-0 md:sticky ">
             <img src="https://i.imgur.com/j1pLgwx.png" alt="" className="" />
           </div>
@@ -153,10 +203,10 @@ const NotFound = (props: Props) => {
               ))}
             </div>
 
-            <h2 className="rounded-tl-lg rounded-tr-lg text-white col-span-12 py-3 px-4 font-bold text-lg tracking-tight bg-[#FF8451] mt-4">
+            <h2 className="rounded-tl-lg rounded-tr-lg text-white col-span-12 py-3 px-4 font-bold text-lg tracking-tight bg-[#FF8451] mt-10">
               Irys Developer Tools For Arweave Docs
             </h2>
-            <div className="grid grid-cols-12 col-span-12 grid-rows-12 border border-white/10 rounded-md">
+            <div className="grid grid-cols-12 col-span-12 border border-white/10 rounded-md">
               {first_section_items.map((option, i) => (
                 <div
                   key={option.title}
