@@ -177,10 +177,7 @@ const NotFound = (props: Props) => {
                   key={option.title}
                   className={`w-full col-span-12 md:col-span-4 lg:col-span-3 text-base flex flex-col ${
                     option.css
-                  } ${i === 2 ? "border-x border-white/10" : ""}
-      ${i === 1 ? "border-l border-white/10" : ""}
-      ${i === 5 ? "border-x border-white/10" : ""}
-            
+                  } ${i === 1 ? "border-x border-white/10" : ""}
                   `}
                 >
                   <div className="font-bold text-white flex gap-2 items-center px-5 py-[13.4px] bg-[#0B0B0B] border-t border-white/10">
