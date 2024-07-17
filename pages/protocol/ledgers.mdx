@@ -1,9 +1,11 @@
 import { Tooltip } from "react-tooltip";
 import { Callout } from "nextra-theme-docs";
 import { LedgerTooltip, BlocklaneTooltip } from "@/tooltips/Tooltips";
+import { EpochTooltip } from "@/tooltips/Tooltips";
 
 <LedgerTooltip />
 <BlocklaneTooltip />
+<EpochTooltip />
 
 # Ledgers
 
@@ -39,7 +41,7 @@ These ledgers store "temporary" data with defined expiration periods. Irys uses 
 
 ### Submit Ledger
 
-This special Term Data Ledger addresses the challenge of verifying data publishing for smart contract execution. Transactions are first posted here, giving users a 5 epoch window to upload associated data. If the data isn’t posted during that time the space reserved for it expires, the transaction itself is recorded forever in the block history. If the data is posted, miners provide receipt proofs, and once enough are collected, the data is promoted to the Publish Ledger.
+This special Term Data Ledger addresses the challenge of verifying data publishing for smart contract execution. Transactions are first posted here, giving users a 5 <a className="underline decoration-dashed" id="epoch">epoch</a> window to upload associated data. If the data isn’t posted during that time the space reserved for it expires, the transaction itself is recorded forever in the block history. If the data is posted, miners provide receipt proofs, and once enough are collected, the data is promoted to the Publish Ledger.
 
 This system allows Irys to make commitments about uploaded data and fairly apply slashing penalties to miners who fail to store assigned data.
 

@@ -49,6 +49,7 @@ export const LedgerTooltip: React.FC = () => (
 		style={tooltipStyles}
 	/>
 );
+
 export const BlocklaneTooltip: React.FC = () => (
 	<Tooltip
 		id="blocklane"
@@ -65,6 +66,16 @@ export const TermDataTooltip: React.FC = () => (
 		className="irys-tooltip-styles"
 		anchorSelect="#termdata"
 		content="Data that is committed to be available for a specific period of time."
+		style={tooltipStyles}
+	/>
+);
+
+export const EpochTooltip: React.FC = () => (
+	<Tooltip
+		id="epoch"
+		className="irys-tooltip-styles"
+		anchorSelect="#epoch"
+		content="A measurement of time used in blockchains. On Irys one epoch is approximately one day."
 		style={tooltipStyles}
 	/>
 );

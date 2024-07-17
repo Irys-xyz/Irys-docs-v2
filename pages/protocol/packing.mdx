@@ -46,22 +46,15 @@ Decentralized storage networks incentivize miners with economic rewards to ensur
    - Cryptographic verifiability prevents miners from impersonating multiple miners.
    - Cryptographic verifiability prevents the multiplication of rewards for a single unit of storage.
 
-Storage networks like Arweave and Filecoin using Packing or Sealing to verify storage. These methods require miners to add a unique cryptographic fingerprint to their storage, proving they're providing unique resources to the network. This approach prevents adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
+Packing involves adding a unique cryptographic fingerprint to stored data, proving that miners provide unique resources to the network. This method is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
 
-Irys introduces a novel approach to packing called 2D Packing and combines it with staking and slashing mechanisms. This leads to faster and more efficient storage verification compared to Arweave or Filecoin. It effectively reduces the risk of adversarial miners attempting computational exploits.
+Irys introduces a novel approach to packing called 2D Packing, combined with staking and slashing mechanisms, resulting in fast and efficient storage verification. Irys' innovative approach reduces the risk of computational exploits by adversarial miners.
 
-## Proving Storage Cryptographically
+## Irys' 2D Packing
 
-After storage capacity has been packed, miners must repeatedly prove to the protocol that the packed resources are available. There are two primary approaches:
+After storage capacity has been packed, miners must repeatedly prove to the protocol that the packed resources are available. On Irys, this is done using highly scalable 2D packing.
 
-| Protocol                           | Mechanism                                                                                                                                                                                                                                          | Consequence                                                                                                       | Drawbacks                                                                                                                                                                                                                                                                                                                       |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Filecoin: Proof of Space-Time      | Utilizes Zero-Knowledge (ZK) proofs where miners periodically provide random proofs compressed using ZK cryptography and post them onchain.                                                                                                        | Failure to generate these proofs results in slashing of the miner's stake.                                        | The computationally intensive sealing process needed to generate ZK proofs increases costs and introduces overhead when storing data.                                                                                                                                                                                           |
-| Arweave: Succinct Proofs of Access | Miners continuously generate storage proofs locally using less computationally intensive Merkle proofs until they find one that meets the network's difficulty setting. Successful proofs allow the miner to produce a new block and earn rewards. | Uses RandomX for packing, which is computationally expensive and resistant to acceleration through GPUs or ASICs. | As Arweave lacks staking, there are zero ways to penalize a miner who refuses to store data. The complexity of RandomX imposes constraints on the speed at which data can be added and requires running a full node, making it impractical to run from JavaScript. It also increases the expense of adding data to the network. |
-
-## Irys' 2D Packing:
-
-Irys’ 2D packing is similar to Arweave’s approach but scales up the packing process with 2D Packing technology instead of RandomX. 2D Packing enforces a minimum amount of time to pack but allows it to scale horizontally across GPU and/or ASICS without sacrificing security.
+2D Packing enforces a minimum amount of time to pack but allows it to scale horizontally across GPU and/or ASICS without sacrificing security.
 
 The advantage is that it enables data to be unpacked from virtually any computing device (desktop, mobile, browser) while reducing the cost of onboarding miners to the network. It also reduces the cost of posting data on the network, which is passed on to users through lower storage fees.
 
@@ -79,15 +72,11 @@ Here’s how it works:
 
 ## Advantages
 
-2D Packing has several advantages over Arweave’s RandomX and Filecoin’s sealing. By requiring sequential packing, each chunk of data has a minimum packing time enforced, but many chunks can be packed in parallel. The more cores, the more chunks can be packed.
-
-Parallel packing enables many chunks to be packed simultaneously, a form of horizontal scaling (advantage over RandomX). Because 2D Packing is time-consuming and also computationally simple, it carries a small fraction of the cost of generating the zk-SNARKs required for Filecoin Sealing.
+Irys' 2D packing runs in parallel, enabling many chunks to be packed simultaneously.
 
 Individual chunks always take a safe amount of time to pack; reading packed data is always vastly more economical than packing it on demand.
 
 Other advantages of 2D Packing include not needing to re-pack capacity once data is assigned. The 2D Packing fingerprint can be applied to empty capacity. This allows Irys to reward miners for packing empty capacity, when that capacity is needed for data it doesn’t have to be repacked. Instead, data is XOR’d into the existing packing making ingress of data to packed capacity cheap and fast.
-
-By comparison, Arweave doesn’t have the concept of mining empty capacity, and Filecoin requires that committed capacity be re-sealed when data is stored in it.
 
 ## Trade-Offs
 

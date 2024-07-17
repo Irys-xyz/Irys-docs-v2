@@ -1,3 +1,7 @@
+import { EpochTooltip } from "@/tooltips/Tooltips";
+
+<EpochTooltip />
+
 # Mining Guide
 
 Mining Irys is a combination of useful Proof of Work, where every computed hash is actually proving storage of a random part of Irys’ overall storage, and staking a mining address and pledging individual partitions.
@@ -13,9 +17,9 @@ Mining Irys is a combination of useful Proof of Work, where every computed hash 
 
 Once you have a staked mining address you can pledge one or more partitions.
 
-1. Post a pledge transaction, wait until the end of the epoch
-2. Your node will tell you if the protocol assigned you a partition ID
-3. If it did, the node will begin packing it
+1. Post a pledge transaction, wait until the end of the <a className="underline decoration-dashed" id="epoch">epoch.</a>
+2. Your node will tell you if the protocol assigned you a partition ID.
+3. If it did, the node will begin packing it.
 4. Regardless if you finish packing in time or not, the node will begin mining your partition in the next epoch.
 
 ## System Requirements
