@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 const FooterWrapper = () => {
 	const router = useRouter();
-	return <Footer />
+	return <Footer />;
 };
 
 export default {
@@ -55,7 +55,7 @@ export default {
 				<meta property="og:site_name" content="Irys" />
 				<meta property="og:url" content="https://docs.irys.xyz" />
 				<meta property="og:type" content="website" />
-				<meta property="og:image" content="https://irys.xyz/new/assets/shared/open-graph.png" />
+				<meta property="og:image" content="/irys-open-graph.jpg" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<script type="application/ld+json">
 					{`{

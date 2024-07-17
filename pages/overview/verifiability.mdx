@@ -1,0 +1,29 @@
+# Verifiability
+
+## Overview
+
+Verifiability is a cornerstone of the blockchain and decentralization space, epitomized by the phrase "Don’t trust, verify." For Irys, verifiability is not just a principle but a critical aspect of its core functionality. The focus is on ensuring that data verification is fast, efficient, and accessible to all users. This documentation outlines the importance of verifiability in Irys, the challenges faced, and Irys’ solutions to enhance data verification.
+
+## The Challenge of Verifiability
+
+In traditional datachains, there is often a trade-off between verifiability and performance. Increased verifiability typically leads to slower data access because the verification process is computationally intensive. Miners must prepare data uniquely for verification purposes, involving encryption or other complex processes to prove they are storing unique copies of the data. These preparation and verification processes require significant computational power, often necessitating high-performance CPUs or GPUs. This complexity makes it difficult to perform these operations on standard devices like browsers or mobile phones, limiting the accessibility of verification for everyday users.
+
+## Irys’ Efficient Data Verification
+
+### Optimized Data Preparation
+
+Irys addresses these challenges through optimized and scalable data preparation. The 2D Packing used in Irys ensures that data preparation is consistent and efficient. If a miner tries to mine unpacked data on demand, they face a 40x performance penalty compared to miners who store pre-packed data. This system incentivizes miners to store data properly and ensures that actors cannot abuse the system, maintaining the integrity and efficiency of the network.
+
+### Accessibility
+
+The 2D Packing method relies on simple multiplications, making it computationally feasible to verify data using browsers or mobile devices. This inclusivity allows anyone participating in the Irys protocol to verify onchain data, democratizing access to verifiability beyond those with specialized hardware.
+
+## Unlocking Programmable Data
+
+### Fast Verification for Smart Contracts
+
+Efficient data verification is crucial for enabling programmable data on Irys. For smart contracts to access onchain data during execution, all network participants must agree on the computation outcomes. Rapidly detecting invalid computations by adversarial miners is essential for maintaining network integrity. Fast and efficient data verification ensures that smart contract execution remains swift without compromising security.
+
+## Summary
+
+Irys prioritizes verifiability to enhance the efficiency and practicality of its protocol. By addressing traditional trade-offs and optimizing data preparation, Irys ensures that data verification is accessible to all users, regardless of their hardware capabilities. This approach not only supports individual users but also unlocks advanced functionality like programmable data, ensuring the Irys network remains robust, secure, and inclusive.

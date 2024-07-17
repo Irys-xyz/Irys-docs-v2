@@ -40,7 +40,7 @@ const bentoData: Bento[] = [
 			"End users can easily verify onchain which mining addresses are storing their data. 2D Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
 		image: "/diagrams/architecture/irys-docs-verifiability.riv",
 		stateMachine: "Verifiability",
-		href: "/verifiability",
+		href: "/overview/verifiability",
 	},
 ];
 
