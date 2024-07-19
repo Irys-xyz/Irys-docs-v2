@@ -47,7 +47,7 @@ To accomplish this objective, Irys implements multiple data ledgers that support
 
 #### Publish Ledger - Permanent Data
 
-![](/diagrams/protocol/publish-ledger.png)
+![](/diagrams/protocol/publish-ledger.jpg)
 
 There is a single ledger for permanent data on Irys, called the Publish Ledger. The data stored in this ledger is sometimes referred to as “Perm Data” in contrast to temporary data which is stored in “Term Data” ledgers. Permanent data in the Publish Ledger is special because the protocol only adds data to the publish ledger when it’s been provably uploaded to the network.
 
@@ -57,7 +57,8 @@ The answer is the use of term data and the Submit Ledger.
 
 #### Submit Ledger - Term Data
 
-![](/diagrams/protocol/submit-ledger.png)
+![](/diagrams/protocol/submit-ledger.jpg)
+
 Irys uses the term "Term Data" to describe temporary data storage, as it refers to data that is committed to be available for a specific period, known as a storage term. This differs from IPFS, where files may disappear after an unspecified amount of time if they are not actively pinned. The Irys testnet will launch with one Term Data ledger, the Submit ledger, but it is capable of supporting multiple Term Data ledgers with different storage terms.
 
 The Submit ledger is crucial because it enables Irys to make commitments about the permanent Publish ledger. When a user wants to store data permanently, they post their transaction headers to the Submit ledger. They then have until the Submit ledger expires to upload the associated data. Once the data is uploaded, miners share it and post proofs to each other to confirm receipt. After enough proofs have been collected, the miner creating the next block will promote the transaction from the Submit ledger to the Publish ledger. This promotion includes the collected proofs of storage, allowing miners to retrieve the permanent data if they do not already have it.
