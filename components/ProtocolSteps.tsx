@@ -15,6 +15,12 @@ const steps: Step[] = [
 		href: "./protocol/provable-storage",
 	},
 	{
+		title: "Ledgers",
+		description:
+			"Irys manages multiple ledgers on a single blockchain, with separate blocklanes for execution and storage transactions. This system ensures reliable data retrieval and verifiable onchain data for smart contract execution.",
+		href: "./protocol/ledgers",
+	},
+	{
 		title: "Partitions",
 		description:
 			"Data on Irys is stored by miners in verifiably unique partitions. To ensure a constant supply of available storage for users, Irys employs a strategic partition lifecycle. Miners pledge and prepare Capacity Partitions, which are ready to be filled with data as needed. This ensures storage capacity is always available, and incentivizes miners by rewarding the packing and mining of these partitions.",
@@ -31,12 +37,6 @@ const steps: Step[] = [
 		description:
 			"Irys uses 2D Packing to enhance storage verification, ensuring security and efficiency. Packing involves adding a unique cryptographic fingerprint to stored data, proving that miners provide unique resources to the network. This is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.",
 		href: "./protocol/packing",
-	},
-	{
-		title: "Ledgers",
-		description:
-			"Irys manages multiple ledgers on a single blockchain, with separate blocklanes for execution and storage transactions. This system ensures reliable data retrieval and verifiable onchain data for smart contract execution.",
-		href: "./protocol/ledgers",
 	},
 ];
 

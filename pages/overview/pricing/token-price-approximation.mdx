@@ -3,7 +3,7 @@ import { EmaTooltip } from "@/tooltips/Tooltips";
 
 <EmaTooltip />
 
-# Token Price Adjustments
+# Token Price Approximation
 
 Given the following Token Price Adjustment parameters:
 
@@ -21,6 +21,14 @@ Given the following Token Price Adjustment parameters:
 4. From this point forward, at the end of each Adjustment Interval, the protocol continues the EMA calculation from the token price recorded in the last block of the preceding Adjustment Interval and records it in the block header. This computed EMA is used as the token price for fee calculations one Adjustment Interval into the future.
 
 ### EMA Formula
+
+The EMA is frequently used in financial applications. It smooths out price volatility while weighting recent prices with higher impact than older prices giving a nice blend of protection from volatility and accuracy.
+
+It is used instead of the average and median because:
+
+- **Average**: Is susceptible to having outlier prices introduce volatility into the price calculation. When an outlier price enters and exits the sampling range it can disproportionally adjust the average price up or down leading to sudden changes in price which leave a sawtooth shape on the price graph.
+
+- **Median**: More stable than average price but requires sorting of all the prices in the sampling range. It also decreases the accuracy of the price prediction as it looks at the range as a whole leading to a wider margin of error.
 
 The EMA can be calculated using the following formula:
 
@@ -100,9 +108,7 @@ This ability to know what the $IRYS token will be priced at in the next Adjustme
 
 Irys's pricing model is updated annually to account for improvements (declines) in storage costs. The genesis block instantiates a pricing model with an annualized cost of storage, which serves as the basis for paying the future cost of storage. As each year passes, the expectation is to observe an improvement in the annualized cost of storage. Approximately once a year (measured in block height), miners will have a 2-week window (also measured in block heights) to post their annualized cost of storing a partition in the headers of the blocks they produce. At the end of this two-week interval, the median cost is chosen as the basis for the pricing model in the upcoming year. These adjustments prevent the protocol from relying on the genesis block's pricing model, which may significantly overcharge in future years due to built-in safety margins.
 
-## FAQ
-
-### Why EMA and not Average or median?
+# Why EMA and not Average or median?
 
 - **Average**: Is susceptible to having outlier prices introduce volatility into the price calculation. When an outlier price enters and exits the sampling range it can disproportionally adjust the average price up or down leading to sudden changes in price which leave a sawtooth shape on the price graph.
 

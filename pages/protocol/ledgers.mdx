@@ -9,7 +9,13 @@ import { EpochTooltip } from "@/tooltips/Tooltips";
 
 # Ledgers
 
-Classically the transaction history of a blockchain is called its ledger. Irys innovates by managing multiple <a className="underline decoration-dashed" id="ledger">ledgers</a> on a single blockchain, departing from the traditional single-ledger model. Alongside these ledgers, Irys’ blocks maintain two <a className="underline decoration-dashed" id="blocklane">blocklanes</a>:
+The transaction history of a blockchain is called its ledger. Irys innovates by managing multiple <a className="underline decoration-dashed" id="ledger">ledgers</a> on a single blockchain, departing from the traditional single-ledger model.
+
+<Callout type="info" emoji="💡">
+	While there are multiple internal ledgers, the blockchain still maintains a single canonical state.
+</Callout>
+
+Alongside these ledgers, Irys’ blocks maintain two <a className="underline decoration-dashed" id="blocklane">blocklanes</a>:
 
 - An execution blocklane for value transfers and smart contract interactions
 - A storage blocklane for data storage transactions.
@@ -31,18 +37,30 @@ These ledgers have different storage terms, and users specify their intended led
 
 ## Permanent Data (Publish Ledger)
 
-This flagship ledger maintains 10 replicas across geographically distributed miners who have made economic commitments through staking and pledging. Irys is a PoW chain where miners compete for the right to produce a new block by performing storage proofs on their data. Unlike classic PoW, miners on Irys also make economic commitments to specific mining addresses and make pledges to the portions of the ledger they store. Miners face slashing penalties for inappropriate behavior, creating stronger disincentives for adversarial actions compared to pure PoW networks.
+This flagship ledger maintains 10 replicas across geographically distributed miners who have made economic commitments through staking and pledging.
+
+Irys is a Proof Of Work (PoW) blockchain where miners compete for the right to produce a new block by performing storage proofs on their data. Unlike classic PoW, miners on Irys also make economic commitments to specific mining addresses and make pledges to the portions of the ledger they store. Miners face slashing penalties for inappropriate behavior, creating stronger disincentives for adversarial actions compared to pure PoW networks.
 
 The Publish Ledger contains only data provably uploaded to the network, backed through the Submit Ledger system. **This results in a Publish Ledger without holes, enabling reliable data retrieval for use within Irys’s programmable data smart contract computations.**
 
 ## Term Data Ledgers
 
-These ledgers store "temporary" data with defined expiration periods. Irys uses the word “term” to describe these ledgers as it makes a commitment to store the data for a specific storage term. At launch, Irys will implement a single term ledger called the Submit Ledger, with plans to offer more term options based on community feedback.
+Term Daata ledgers store "temporary" data with defined expiration periods. Irys uses the word “term” to describe these ledgers as it makes a commitment to store the data for a specific storage term. At launch, Irys will implement a single term-ledger called the Submit Ledger, with plans to offer more term options based on community feedback.
 
 ### Submit Ledger
 
-This special Term Data Ledger addresses the challenge of verifying data publishing for smart contract execution. Transactions are first posted here, giving users a 5 <a className="underline decoration-dashed" id="epoch">epoch</a> window to upload associated data. If the data isn’t posted during that time the space reserved for it expires, the transaction itself is recorded forever in the block history. If the data is posted, miners provide receipt proofs, and once enough are collected, the data is promoted to the Publish Ledger.
+The Submit Ledger:
 
-This system allows Irys to make commitments about uploaded data and fairly apply slashing penalties to miners who fail to store assigned data.
+- Addresses the challenge of verifying data publishing for smart contract execution.
+- Is used to provide temporary onchain data.
 
-The combination of Submit and Publish ledgers enables Irys to offer high-quality, verifiable onchain data suitable for smart contract operations.
+Transactions are first posted to the Submit Ledger, giving users a 5 <a className="underline decoration-dashed" id="epoch">epoch</a> window to upload associated data. If the data isn’t posted during that time, the space reserved for it expires.
+
+<Callout type="info" emoji="💡">
+	Data expires after 5 epochs if not uploaded, however the associated transaction header is part of the
+	blockchain's immutable ledger.
+</Callout>
+
+If the data is posted, miners provide receipt proofs, and once enough are collected, the data is promoted to the Publish Ledger. Once data has been promoted to the Publish Ledger, smart contracts can access it.
+
+The combination of Submit and Publish ledgers enables Irys to make commitments about uploaded data and fairly apply slashing penalties to miners who fail to store assigned data. This leads to high-quality, verifiable onchain data suitable for smart contract operations.

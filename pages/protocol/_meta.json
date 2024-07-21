@@ -1,7 +1,7 @@
 {
 	"provable-storage": "Provable storage",
+	"ledgers": "Ledgers",
 	"partitions": "Partitions",
 	"transactions": "Transactions",
-	"packing": "Packing",
-	"ledgers": "Ledgers"
+	"packing": "Packing"
 }

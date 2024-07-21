@@ -18,7 +18,11 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 ## Overview
 
-Irys uses 2D Packing to enhance storage verification efficiency and security. Our method:
+Packing involves adding a unique cryptographic fingerprint to stored data, and is used to prove to the network that miners are providing unique resources. This is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
+
+Irys introduces a novel approach to packing called 2D Packing, combined with staking and slashing mechanisms, resulting in fast and efficient storage verification. Irys' innovative approach reduces the risk of computational exploits by adversarial miners.
+
+Our method:
 
 - Scales horizontally across GPUs and ASICs without sacrificing security.
 - Allows data to be unpacked on various devices (desktop, mobile, browser).
@@ -28,31 +32,9 @@ Irys uses 2D Packing to enhance storage verification efficiency and security. Ou
 - Ensures a consistent packing time on a single CPU core, preventing parallel processing.
 - Avoids computationally intensive methods like Zero Knowledge proofs and RandomX.
 
-## The Problem
-
-Decentralized storage networks incentivize miners with economic rewards to ensure data reliability and fault tolerance. Since blockchain-based storage protocols are decentralized, they must validate storage on the network without relying on a central authority. To achieve this, the protocols employ the following mechanisms:
-
-1. Cryptographic Proofs:
-
-   - Miners prove they are storing data via cryptographic methods.
-   - These proofs validate mining outputs and incentivize storage.
-
-2. Economic Incentives:
-
-   - Storage-based solutions must be more economical than compute-based approaches.
-   - A compute-intensive packing process ensures that storing packed data is more efficient than creating mining solutions on-demand.
-
-3. Security Measures:
-   - Cryptographic verifiability prevents miners from impersonating multiple miners.
-   - Cryptographic verifiability prevents the multiplication of rewards for a single unit of storage.
-
-Packing involves adding a unique cryptographic fingerprint to stored data, proving that miners provide unique resources to the network. This method is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
-
-Irys introduces a novel approach to packing called 2D Packing, combined with staking and slashing mechanisms, resulting in fast and efficient storage verification. Irys' innovative approach reduces the risk of computational exploits by adversarial miners.
-
 ## Irys' 2D Packing
 
-After storage capacity has been packed, miners must repeatedly prove to the protocol that the packed resources are available. On Irys, this is done using highly scalable 2D packing.
+After storage capacity has been packed, miners must repeatedly prove to the protocol that the packed resources are available. On Irys, this is done using highly scalable 2D Packing.
 
 2D Packing enforces a minimum amount of time to pack but allows it to scale horizontally across GPU and/or ASICS without sacrificing security.
 

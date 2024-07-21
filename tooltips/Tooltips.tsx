@@ -47,6 +47,7 @@ export const LedgerTooltip: React.FC = () => (
 		anchorSelect="#ledger"
 		content="A digital record of all the data or transactions that have been posted to the network. The ledger is synchronized across the miners in the network to ensure fault-tolerance, immutability, and security."
 		style={tooltipStyles}
+		place="bottom"
 	/>
 );
 
