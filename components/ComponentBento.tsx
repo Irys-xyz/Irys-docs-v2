@@ -20,7 +20,7 @@ const componentBentoData: ComponentBento[] = [
 		details: [],
 		image: "/diagrams/components/irys-docs-proof-of-work-staking.riv",
 		stateMachine: "Proof-Of-Work",
-		href: "/protocol/provable-storage#irys-solution",
+		href: "/protocol/ledgers#pow--staking",
 	},
 	{
 		title: "Multiple Ledgers",

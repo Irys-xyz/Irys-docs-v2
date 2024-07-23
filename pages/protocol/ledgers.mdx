@@ -35,11 +35,13 @@ While Irys maintains a transaction history in its blocks, the associated data is
 
 These ledgers have different storage terms, and users specify their intended ledger when posting a data transaction.
 
+## PoW + Staking
+
+Irys is a Proof Of Work (PoW) blockchain where miners compete for the right to produce a new block by performing storage proofs on their data. Unlike classic PoW, miners on Irys also make economic commitments to specific mining addresses and make pledges to the portions of the ledger they store. Miners face slashing penalties for inappropriate behavior, creating stronger disincentives for adversarial actions compared to pure PoW networks.
+
 ## Permanent Data (Publish Ledger)
 
 This flagship ledger maintains 10 replicas across geographically distributed miners who have made economic commitments through staking and pledging.
-
-Irys is a Proof Of Work (PoW) blockchain where miners compete for the right to produce a new block by performing storage proofs on their data. Unlike classic PoW, miners on Irys also make economic commitments to specific mining addresses and make pledges to the portions of the ledger they store. Miners face slashing penalties for inappropriate behavior, creating stronger disincentives for adversarial actions compared to pure PoW networks.
 
 The Publish Ledger contains only data provably uploaded to the network, backed through the Submit Ledger system. **This results in a Publish Ledger without holes, enabling reliable data retrieval for use within Irys’s programmable data smart contract computations.**
 

@@ -10,7 +10,7 @@ While separating headers from data unlocks large-scale onchain data, it can lead
 
 ### Private Mining
 
-One potential issue is "private mining," where miners include transaction headers that reserve large amounts of data but keep the data private. This grants them a hashpower advantage when mining this exclusive data that none of their peers have. During high-reward periods, the increased earnings from mining private data can outweigh the upload cost of posting it, making it a profitable but unfair approach.
+One potential issue is "private mining," where miners include transaction headers that reserve large amounts of data but keep the data private. This grants them a hashpower advantage when mining this exclusive data that none of their peers have. During high-reward periods, the increased earnings from mining private data can outweigh the upload cost of posting it, making it a profitable, but unfair, approach.
 
 Miners earn more rewards mining parts of the dataset with fewer holes, making some parts of the dataset less desirable to store than others. This leads to uneven data distribution across the network.
 
@@ -23,7 +23,7 @@ When data is unretrievable, the protocol has no way of knowing whether the miner
 Irys' design addresses these challenges through a combination of innovations:
 
 1. Multiple Data [Ledgers](./ledgers): Irys supports both [permanent](./ledgers#permanent-data-publish-ledger) and [temporary](./ledgers#submit-ledger) data storage ledgers, giving it flexibility in the commitments it can make around stored data.
-2. Staking and Slashing: Irys Incentivizes good behavior and penalizes malicious actions, enhancing network security and reliability of data replication.
+2. Staking and Slashing: Miners must stake $IRYS tokens when bringing a partition online. Irys incentivizes good behavior and penalizes malicious actions, enhancing network security and reliability of data replication.
 3. Proofs of Custody for Permanent Data: Irys uses proofs to ensure miners are actually storing the data they claim to have.
 4. Empty Capacity Mining: Irys plans for future storage needs by incentivizing miners to provide Capacity Partitions.
 
@@ -76,8 +76,8 @@ If the user fails to upload their data, it leaves a gap in the active portion of
 
 #### Storage Commitments
 
-The Submit and Publish Ledgers enable Irys to make strong commitments about its permanent data. This dual-ledger system allows the protocol to verify both the receipt and publishing of data, while also clearly identifying which peers are responsible for storing specific data. This transparency makes it easy for clients to verify data availability and storage commitments.
+The Submit and Publish Ledgers enable Irys to make strong commitments about its permanent data. This dual-ledger system allows Irys to verify both the receipt and publishing of data, while also clearly identifying which peers are responsible for storing specific data. This transparency makes it easy for clients to verify data availability and storage commitments.
 
-A crucial benefit of this system is its impact on smart contract execution. When smart contracts on Irys reference data in the permanent Publish Ledger, they can reasonably expect that data to be available. If data is missing, the protocol's verifiability allows for the slashing of miners who fail to store data that was likely uploaded to the network. This is critical for aligning miner incentives around storage and execution and is what makes programmable data possible.
+A crucial benefit of this system is its impact on smart contract execution. When smart contracts on Irys reference data in the permanent Publish Ledger, they can reasonably expect that data to be available. If data is missing, Irys' verifiability allows for the slashing of miners who fail to store data that was likely uploaded to the network. This is critical for aligning miner incentives around storage and execution and is what makes programmable data possible.
 
 These storage commitments and verifiability mechanisms validate the economic pledges miners make to store data. Moreover, the ability to expect data to be available and know where to retrieve it enables the use of that data in smart contract execution. This capability unlocks the potential for programmable data, significantly expanding the functionality and usecases possible on the Irys network.

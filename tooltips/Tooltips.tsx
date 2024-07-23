@@ -76,7 +76,7 @@ export const EpochTooltip: React.FC = () => (
 		id="epoch"
 		className="irys-tooltip-styles"
 		anchorSelect="#epoch"
-		content="A measurement of time used in blockchains. On Irys one epoch is approximately one day."
+		content="A measurement of time used in blockchains. On Irys, one epoch is approximately one day."
 		style={tooltipStyles}
 	/>
 );
