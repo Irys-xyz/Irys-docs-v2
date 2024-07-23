@@ -12,16 +12,16 @@ const UserFeeFormula: React.FC = () => {
 		}
 	};
 
-	const handleBlur = (
-		e: React.FocusEvent<HTMLInputElement>,
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement>,
 		setter: React.Dispatch<React.SetStateAction<number>>,
 	) => {
-		if (!e.target.value.startsWith("$")) {
-			e.target.value = `$${e.target.value}`;
+		const value = e.target.value.startsWith("$") ? e.target.value.substring(1) : e.target.value;
+		const parsedValue = parseFloat(value);
+		if (!isNaN(parsedValue) && parsedValue >= 0) {
+			setter(parsedValue);
 		}
-		setter(parseFloat(e.target.value.substring(1)));
 	};
-
 	return (
 		<div className="mt-5">
 			<div className="flex flex-col borderp-4">
@@ -41,8 +41,7 @@ const UserFeeFormula: React.FC = () => {
 										type="text"
 										value={`$${storageCost}`}
 										onFocus={handleFocus}
-										onBlur={(e) => handleBlur(e, setStorageCost)}
-										onChange={(e) => setStorageCost(parseFloat(e.target.value))}
+										onChange={(e) => handleChange(e, setStorageCost)}
 										className="bg-slate-800 text-white p-1 rounded"
 									/>
 								</td>
@@ -65,8 +64,7 @@ const UserFeeFormula: React.FC = () => {
 										type="text"
 										value={`$${tokenPrice}`}
 										onFocus={handleFocus}
-										onBlur={(e) => handleBlur(e, setTokenPrice)}
-										onChange={(e) => setTokenPrice(parseFloat(e.target.value))}
+										onChange={(e) => handleChange(e, setTokenPrice)}
 										className="bg-slate-800 text-white p-1 rounded"
 									/>
 								</td>

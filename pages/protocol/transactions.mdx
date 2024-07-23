@@ -1,6 +1,6 @@
 # Transaction Types
 
-Irys supports three main transaction types:
+Irys supports three transaction types:
 
 - Value transfers
 - Data transactions
@@ -8,15 +8,15 @@ Irys supports three main transaction types:
 
 ## Value Transfers
 
-The simplest form of transaction on Irys is a value transfer, which transfers native tokens from one wallet to another. These transactions are very similar to those you would see on Bitcoin or Ethereum and are a fundamental part of any blockchain and its economic incentives.
+The simplest form of transaction on Irys is a value transfer, it transfers native $IRYS tokens from one wallet to another. These transactions are very similar to those you would see on Bitcoin or Ethereum and are a fundamental part of any blockchain and its economic incentives.
 
-## Data transactions
+## Data Transactions
 
-Because Irys is a datachain, it can store data using data transactions. These transactions include properties about the data to be stored, and a single upfront payment covering the storage term.
+Irys stores data using data transactions. These transactions include properties about the data to be stored, and a single upfront payment covering the storage term.
 
 ### Permanent Data
 
-Irys’ premium data ledger stores data permanently. Users pay for 10 replicas of their data stored for 200 years (with a wide safety margin).
+Irys’ [Publish Ledger](/protocol/ledgers#permanent-data-publish-ledger) stores data permanently. Users pay for 10 replicas of their data stored for 200 years (with a wide safety margin).
 
 Transactions and data are first posted to Irys’ [Submit Ledger](/protocol/ledgers#submit-ledger), and once the network is able to prove the data has been uploaded, the transaction is promoted to the [Publish Ledger](/protocol/ledgers#permanent-data-publish-ledger), where it is stored permanently.
 
@@ -26,8 +26,8 @@ Because data ledgers on Irys are built from storage building blocks called [part
 
 ## Execution Transactions
 
-Alongside its data ledgers, Irys also supports onchain execution of programs in the form of smart contracts, secured by its VM. To interact with smart contracts on Irys users post execution transactions. Much like Ethereum, there is a maximum amount of compute that can be performed in each block. Users pay gas fees to purchase this compute from the network, which also protects the network from spam attacks.
+Alongside its data ledgers, Irys also supports onchain execution of programs in the form of smart contracts, secured by its VM. To interact with smart contracts on Irys, users post execution transactions. Much like Ethereum, there is a maximum amount of compute that can be performed in each block. Users pay gas fees to purchase this compute from the network, which also protects the network from spam attacks.
 
 ### Programmable Data
 
-Execution transactions on Irys access onchain data stored by data transactions. The verifiable nature of Irys' data allows it to be read and used in smart contract calls, providing developers with "cheap state." This lowers onchain interaction costs and enables new use cases previously inaccessible due to high state storage costs.
+Execution transactions can access onchain data stored by data transactions. The verifiable nature of Irys' data allows it to be read and used in smart contract calls, providing developers with "cheap state". This lowers onchain interaction costs and enables new usecases previously inaccessible due to high state storage costs.

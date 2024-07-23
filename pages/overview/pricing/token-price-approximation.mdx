@@ -28,7 +28,7 @@ It is used instead of the average and median because:
 
 - **Average**: Is susceptible to having outlier prices introduce volatility into the price calculation. When an outlier price enters and exits the sampling range it can disproportionally adjust the average price up or down leading to sudden changes in price which leave a sawtooth shape on the price graph.
 
-- **Median**: More stable than average price but requires sorting of all the prices in the sampling range. It also decreases the accuracy of the price prediction as it looks at the range as a whole leading to a wider margin of error.
+- **Median**: Decreases the accuracy of the price prediction as it looks at the range as a whole leading to a wider margin of error.
 
 The EMA can be calculated using the following formula:
 
@@ -96,22 +96,16 @@ The EMA can be calculated using the following formula:
 	</div>
 </div>
 
-This process continues for each subsequent block, using the block's price and the previous block's EMA as part of the calculation. Upon reaching EMA9 (E9 in the diagram), the calculated EMA9 is recorded in the block for use at block height = 30.
+This continues for each subsequent block, using the block's price and the previous block's EMA as part of the calculation. Upon reaching EMA9 (E9 in the diagram), the calculated EMA9 is recorded in the block for use at block height = 30.
 
-The Pricing Model gives a fixed feel for X amount of data in USD (based on the current Annualized Cost). The current USD/$IRYS token price is used to convert that USD fee to $IRYS tokens. This keeps the USD price for storing data relatively consistent, regardless of fluctuations in the $IRYS token price.
+The pricing model gives a fixed feel for X amount of data in USD (based on the current Annualized Cost). The current USD/$IRYS token price is used to convert that USD fee to $IRYS tokens. This keeps the USD price for storing data relatively consistent, regardless of fluctuations in the $IRYS token price.
 
-For miners quoting a price to users for storage during the 3rd Adjustment interval, they would take whatever price was higher the E9 token price or the E19, so that even if a data storage transaction was posted in the 3rd Adjustment Interval it could still be confirmed in the 4th.
+For miners quoting a price to users for storage during the 3rd adjustment interval, they would take whatever price was higher between the E9 token price or the E19, so that even if a data storage transaction was posted in the 3rd Adjustment Interval it could still be confirmed in the 4th.
 
-This ability to know what the $IRYS token will be priced at in the next Adjustment Interval is what allows for stable pricing. Without this mechanism, any time the price adjusted up all pending transactions would be dropped because they were now under funded.
+This ability to know what the $IRYS token will be priced at in the next adjustment interval is what allows for stable pricing. Without this mechanism, any time the price adjusted up all pending transactions would be dropped because they were now under-funded.
 
 ## Annualized Cost Adjustments
 
-Irys's pricing model is updated annually to account for improvements (declines) in storage costs. The genesis block instantiates a pricing model with an annualized cost of storage, which serves as the basis for paying the future cost of storage. As each year passes, the expectation is to observe an improvement in the annualized cost of storage. Approximately once a year (measured in block height), miners will have a 2-week window (also measured in block heights) to post their annualized cost of storing a partition in the headers of the blocks they produce. At the end of this two-week interval, the median cost is chosen as the basis for the pricing model in the upcoming year. These adjustments prevent the protocol from relying on the genesis block's pricing model, which may significantly overcharge in future years due to built-in safety margins.
+Irys's pricing model is updated annually to account for improvements (declines) in storage costs. The genesis block instantiates a pricing model with an annualized cost of storage, which serves as the basis for paying the future cost of storage. As each year passes, the expectation is to observe an improvement in the annualized cost of storage.
 
-# Why EMA and not Average or median?
-
-- **Average**: Is susceptible to having outlier prices introduce volatility into the price calculation. When an outlier price enters and exits the sampling range it can disproportionally adjust the average price up or down leading to sudden changes in price which leave a sawtooth shape on the price graph.
-
-- **Median**: More stable than average price but requires sorting of all the prices in the sampling range. It also decreases the accuracy of the price prediction as it looks at the range as a whole leading to a wider margin of error.
-
-- **EMA**: Is frequently used in financial applications. It smooths out price volatility while weighting recent prices with higher impact than older prices giving a nice blend of protection from volatility and accuracy.
+Approximately once a year (measured in block height), miners will have a 2-week window (also measured in block heights) to post their annualized cost of storing a partition in the headers of the blocks they produce. At the end of this two-week interval, the median cost is chosen as the basis for the pricing model in the upcoming year. These adjustments prevent the protocol from relying on the genesis block's pricing model, which may significantly overcharge in future years due to built-in safety margins.

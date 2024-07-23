@@ -20,16 +20,16 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 Packing involves adding a unique cryptographic fingerprint to stored data, and is used to prove to the network that miners are providing unique resources. This is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
 
-Irys introduces a novel approach to packing called 2D Packing, combined with staking and slashing mechanisms, resulting in fast and efficient storage verification. Irys' innovative approach reduces the risk of computational exploits by adversarial miners.
+Irys introduces a novel approach to packing called 2D Packing which, combined with staking and slashing mechanisms, results in fast and efficient storage verification. Irys' innovative approach reduces the risk of computational exploits by adversarial miners.
 
 Our method:
 
 - Scales horizontally across GPUs and ASICs without sacrificing security.
 - Allows data to be unpacked on various devices (desktop, mobile, browser).
-- Reduces the cost of onboarding miners and posting data, leading to lower storage fees.
+- Reduces the cost of onboarding miners and posting data (leading to lower storage fees).
 - Combines with staking and slashing mechanisms to deter adversarial miners.
 - Maintains cryptographic verifiability while prioritizing accessibility and cost-efficiency.
-- Ensures a consistent packing time on a single CPU core, preventing parallel processing.
+- Ensures a consistent packing time on a single CPU core.
 - Avoids computationally intensive methods like Zero Knowledge proofs and RandomX.
 
 ## Irys' 2D Packing
@@ -58,8 +58,8 @@ Irys' 2D packing runs in parallel, enabling many chunks to be packed simultaneou
 
 Individual chunks always take a safe amount of time to pack; reading packed data is always vastly more economical than packing it on demand.
 
-Other advantages of 2D Packing include not needing to re-pack capacity once data is assigned. The 2D Packing fingerprint can be applied to empty capacity. This allows Irys to reward miners for packing empty capacity, when that capacity is needed for data it doesn’t have to be repacked. Instead, data is XOR’d into the existing packing making ingress of data to packed capacity cheap and fast.
+Other advantages of 2D Packing include not needing to re-pack capacity once data is assigned. The 2D Packing fingerprint can be applied to empty capacity. This allows Irys to reward miners for packing empty capacity, when that capacity is needed for data it doesn’t have to be repacked. Instead, data is XOR’d into the existing packing, making ingress of data to packed capacity cheap and fast.
 
 ## Trade-Offs
 
-A side effect of having 2D Packing (and unpacking) take a safe amount of time is that this safe time is also the minimum amount of time miners will need to fully validate a new block. This means the network's block time cannot be shorter than the “safe minimum time” encoded in 2D Packing. This is not expected to be an issue as the safe minimum time is ~3s and PoW block times tend to be 3-4x that long due to other factors.
+A side effect of having 2D Packing (and unpacking) take a safe amount of time is that this safe time is also the minimum amount of time miners will need to fully validate a new block. This means the network's block time cannot be shorter than the “safe minimum time” encoded in 2D Packing. This is not expected to be an issue as the safe minimum time is ~3s and PoW block times tend to be 3-4x that long.

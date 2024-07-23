@@ -36,20 +36,22 @@ const steps: Step[] = [
 		title: "Packing",
 		description:
 			"Irys uses 2D Packing to enhance storage verification, ensuring security and efficiency. Packing involves adding a unique cryptographic fingerprint to stored data, proving that miners provide unique resources to the network. This is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.",
-		href: "./protocol/packing",
+		href: "./protocol/2d-packing",
 	},
 ];
 
 const ProtocolSteps: React.FC = () => {
 	return (
-		<div className="flex flex-col items-center my-8">
+		<div className="flex flex-col items-center my-8 md:pt-5">
 			{steps.map((step, index) => (
 				<div key={index} className="flex items-start mb-8 relative">
 					<div className="flex flex-col items-center mr-4">
 						<div className="w-10 h-10 flex items-center justify-center bg-[#ff8451] font-bold rounded-full">
 							{index + 1}
 						</div>
-						{index < steps.length - 1 && <div className="h-full w-px bg-[#ff8451] absolute top-10"></div>}
+						{index < steps.length - 1 && (
+							<div className="h-full w-px bg-[#ff8451] border-2 border-[#ff8451] absolute top-10"></div>
+						)}
 					</div>
 					<div className="flex flex-col">
 						<Link className="text-xl font-bold mb-2 block underline" href={step.href}>

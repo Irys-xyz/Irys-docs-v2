@@ -36,7 +36,7 @@ const steps: Step[] = [
 	},
 ];
 
-const Formula: React.FC = () => {
+const StoragePriceFormula: React.FC = () => {
 	const [showDetails, setShowDetails] = useState(false);
 
 	return (
@@ -59,7 +59,11 @@ const Formula: React.FC = () => {
 							className="flex items-center bg-[#FF8451] text-white px-4 py-2 rounded-full"
 						>
 							<FaArrowTurnDown className={`transition-transform ${showDetails ? "rotate-180" : ""}`} />
-							{showDetails ? <span className="ml-2">Hide Details</span> : <span className="ml-2">More Details</span>}
+							{showDetails ? (
+								<span className="ml-2">Hide Details</span>
+							) : (
+								<span className="ml-2">More Details</span>
+							)}
 						</button>
 					</div>
 				</div>
@@ -81,4 +85,4 @@ const Formula: React.FC = () => {
 	);
 };
 
-export default Formula;
+export default StoragePriceFormula;
