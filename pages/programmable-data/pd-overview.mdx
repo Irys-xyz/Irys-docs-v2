@@ -15,22 +15,17 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 	/>
 </div>
 
-Programmable Data is a powerful concept that allows smart contracts to access any data stored on the network. Irys makes this possible by giving smart contracts access to the entirety of onchain data during execution. With Programmable Data, decentralized applications can explore new possibilities, combining computation and data on a large scale.
+With Programmable Data, smart contracts can access the entirety of onchain data. This allows developers to break free from the limitations of traditional EVM environments, where state storage is expensive and execution models are rigid. By providing access to onchain data and offering flexible execution options, Programmable Data opens up new possibilities for developers and unleashes their creativity.
 
-## Key Features
+## Cheap State
 
-### Cheap Cross-Contract Composability
+In typical EVM environments, storing state within smart contracts is expensive, limiting developers' ability to build complex applications. Programmable Data provides a more cost-effective solution by allowing contracts to use onchain data for verifiable compute. This significantly reduces costs, making it possible to maintain extensive and dynamic datasets.
 
-Traditionally, information sharing between contracts is expensive due to stringent security requirements. Programmable Data offers a more cost-effective method by allowing contracts to record data onchain and store the location of that data in the contract. Other contracts can then access this data by referencing the location, eliminating the burden of storing information in costly smart contract state storage.
+## Flexible Execution Models
 
-### Onchain Discoverability
+Programmable Data enables new execution models beyond direct interaction with Irys's VM including:
 
-Previously, developers had to rely on external tools to discover onchain programs. Now, Programmable Data brings discoverability to the execution layer and smart contracts can now directly access onchain registries, enhancing composability and reducing friction.
+- Lazy evaluation, where actions are executed only when needed
+- Secure rollups, where execution results are published to the data layer.
 
-### Transaction Information Awareness
-
-Irys' Programmable Data allows smart contracts to access onchain transaction information like headers and interactions. This enables developers to create protocols that observe onchain activity, unlocking new possibilities for automation and interaction.
-
-### Flexible Execution
-
-Programmable Data enables new execution models beyond direct interaction with Irys's VM, including lazy evaluation (executing actions only when needed) and secure rollups (publishing execution results to the data layer). This flexibility allows for more efficient and secure operations with flexible performance based on developer use cases.
+This flexibility enables developers to optimize performance and security based on each specific use case.

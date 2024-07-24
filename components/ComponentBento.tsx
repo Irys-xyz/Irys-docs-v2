@@ -38,7 +38,7 @@ const componentBentoData: ComponentBento[] = [
 			"The virtual machine enabling Programmable Data — the execution of onchain programs with full access to the data layer.",
 		// image: "/diagrams/components/irys_docs_protocol_treasury.riv",
 		details: [],
-		href: "/overview/programmable-data",
+		href: "/programmable-data/pd-overview",
 	},
 	{
 		title: "Protocol Treasury",

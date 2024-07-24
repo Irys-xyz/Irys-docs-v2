@@ -5,7 +5,6 @@ import {
 	MdAutoAwesomeMosaic,
 	MdOutlineMonetizationOn,
 	MdOutlineAccountBalance,
-	MdOutlineMining,
 	MdOutlineDescription,
 	MdOutlineVerified,
 	MdOutlineStorage,
@@ -15,6 +14,7 @@ import {
 	MdOutlineViewQuilt,
 	Md360,
 	MdBlurLinear,
+	MdFlipToBack,
 } from "react-icons/md";
 
 const FooterWrapper = () => {
@@ -22,20 +22,21 @@ const FooterWrapper = () => {
 	return <Footer />;
 };
 
-// Create a mapping for the sub-items (using a single icon for now)
+// Create a mapping for the sub-items
 const iconMapping = {
-	architecture: <MdAutoAwesomeMosaic />,
-	pricing: <MdOutlineMonetizationOn />,
-	treasury: <MdOutlineAccountBalance />,
-	mining: <MdBlurLinear />,
-	overview: <Md360 />,
-	"use-cases": <MdOutlineDescription />,
-	verifiability: <MdOutlineVerified />,
-	"provable-storage": <MdOutlineStorage />,
-	ledgers: <MdOutlineMenuBook />,
-	partitions: <MdOutlineViewList />,
-	transactions: <MdOutlineSwapHoriz />,
-	"2d-packing": <MdOutlineViewQuilt />,
+	architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
+	pricing: <MdOutlineMonetizationOn color="#ff8451" />,
+	treasury: <MdOutlineAccountBalance color="#ff8451" />,
+	mining: <MdBlurLinear color="#ff8451" />,
+	overview: <Md360 color="#ff8451" />,
+	"use-cases": <MdOutlineDescription color="#ff8451" />,
+	verifiability: <MdOutlineVerified color="#ff8451" />,
+	"provable-storage": <MdOutlineStorage color="#ff8451" />,
+	ledgers: <MdOutlineMenuBook color="#ff8451" />,
+	partitions: <MdOutlineViewList color="#ff8451" />,
+	transactions: <MdOutlineSwapHoriz color="#ff8451" />,
+	"2d-packing": <MdOutlineViewQuilt color="#ff8451" />,
+	"efficient-sampling": <MdFlipToBack color="#ff8451" />,
 };
 
 export default {

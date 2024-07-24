@@ -17,7 +17,7 @@ const bentoData: Bento[] = [
 		description: "Enables economical storage scaling with a 24-hour sampling window for 16TB HDDs.",
 		image: "",
 		stateMachine: "",
-		href: "/efficiency",
+		href: "/protocol/efficient-sampling",
 	},
 	{
 		title: "Fast 2D Packing",
@@ -40,7 +40,7 @@ const bentoData: Bento[] = [
 			"End users can easily verify onchain which mining addresses are storing their data. 2D Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
 		image: "/diagrams/architecture/irys-docs-verifiability.riv",
 		stateMachine: "Verifiability",
-		href: "/overview/verifiability",
+		href: "/programmable-data/verifiability",
 	},
 ];
 
