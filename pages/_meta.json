@@ -1,7 +1,5 @@
 {
-	"overview": "Overview",
-	"protocol": "Protocol",
-	"sdk": {
-		"display": "hidden"
-	}
+	"basics": "BASICS",
+	"programmable-data": "PROGRAMMABLE DATA",
+	"protocol": "PROTOCOL"
 }

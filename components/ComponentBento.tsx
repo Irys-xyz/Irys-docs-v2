@@ -38,7 +38,7 @@ const componentBentoData: ComponentBento[] = [
 			"The virtual machine enabling Programmable Data — the execution of onchain programs with full access to the data layer.",
 		// image: "/diagrams/components/irys_docs_protocol_treasury.riv",
 		details: [],
-		href: "/overview/programmable-data",
+		href: "/programmable-data/pd-overview",
 	},
 	{
 		title: "Protocol Treasury",
@@ -46,7 +46,7 @@ const componentBentoData: ComponentBento[] = [
 		details: ["Covers storage liabilities", "Participates in yield-bearing activities"],
 		image: "/diagrams/components/irys-docs-protocol-treasury.riv",
 		stateMachine: "Protocol-Treasury",
-		href: "/overview/treasury",
+		href: "/basics/treasury",
 	},
 ];
 
@@ -62,7 +62,7 @@ const ComponentBento: React.FC = () => {
 			{componentBentoData.map((bento) => (
 				<div
 					key={bento.title}
-					className="border border-gray-700 cursor-pointer p-3 h-auto rounded-xl flex flex-col bg-gradient-to-b from-[#171717]/50 to-[#171717]/20"
+					className="border border-gray-700 cursor-pointer p-3 h-auto rounded-xl flex flex-col "
 				>
 					{bento.image && (
 						<div className="relative w-full h-60">
@@ -79,18 +79,15 @@ const ComponentBento: React.FC = () => {
 						</div>
 					)}
 					{bento.href ? (
-						<Link
-							href={bento.href}
-							className="underline text-lg font-bold tracking-tight text-white mt-4 z-20"
-						>
+						<Link href={bento.href} className="underline text-lg font-bold tracking-tight  mt-4 z-20">
 							{bento.title}
 						</Link>
 					) : (
-						<span className="text-lg font-bold tracking-tight text-white mt-4">{bento.title}</span>
+						<span className="text-lg font-bold tracking-tight  mt-4">{bento.title}</span>
 					)}
-					<p className="text-base font-light text-[#B7B7B7]">{bento.description}</p>
+					<p className="text-base font-light">{bento.description}</p>
 					{bento.details.length > 0 && (
-						<ul className="list-disc list-inside text-base font-light text-[#B7B7B7] mt-2">
+						<ul className="list-disc list-inside text-base font-light mt-2">
 							{bento.details.map((detail, index) => (
 								<li key={index}>{detail}</li>
 							))}

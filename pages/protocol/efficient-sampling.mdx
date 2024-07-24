@@ -1,0 +1,49 @@
+---
+description:
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+import { Callout } from "nextra-theme-docs";
+import Image from "next/image";
+
+# Efficient Sampling
+
+Efficient Sampling is Irys' method for reading data from packed partitions and generating proofs. It complements the [2D Packing](/protocol/2d-packing) used to prepare storage partitions.
+
+This approach offers several benefits:
+
+- Cost-effective mining
+- Low barriers to entry
+- Increased miner profitability
+- Lower fees for users
+
+Efficient Sampling allows the use of economical HDD hardware, maximizing the use of drive capacity. This makes mining accessible to a wider range of participants, lowering the barriers to entry. By making more efficient use of resources, miners experience increased profitability. Additionally, users benefit from lower fees due to reduced mining costs and benefit from a diverse network of miners.
+
+<Callout type="info" emoji="💡">
+	Efficient Sampling can sample a 16 TiB partition faster than Random Sampling which is plagued by
+	overlapping reads and inefficient coverage.
+</Callout>
+
+Efficient Sampling ensures complete coverage without overlaps, allowing for faster and more efficient sampling of large drives. Here’s how it works:
+
+<div className="flex flex-row gap-5 items-start justify-start mt-10">
+	<div>
+		<Image
+			src="/diagrams/protocol/efficient-sampling.png"
+			alt="Efficient Sampling Diagram"
+			width={800}
+			height={600}
+			className="w-full h-auto"
+		/>
+	</div>
+	<div className="mt-4">
+		<ol className="list-decimal list-inside text-base">
+			<li>Divides the partition into 200MB ranges.</li>
+			<li>Creates a list of "unsampled ranges".</li>
+			<li>Randomly selects a range from the unsampled list for mining.</li>
+			<li>Moves the sampled range to a "sampled ranges" list.</li>
+			<li>Repeats until all ranges are sampled.</li>
+			<li>Swaps the sampled and unsampled lists to restart the process.</li>
+		</ol>
+	</div>
+</div>

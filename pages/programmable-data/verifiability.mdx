@@ -1,0 +1,28 @@
+---
+description:
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
+# Verifiability
+
+<div className="w-full flex justify-center">
+	<div className="w-1/2">
+		<SimpleRiveViewer
+			src="/diagrams/architecture/irys-docs-verifiability.riv"
+			width={1920}
+			height={1080}
+			stateMachine="Verifiability"
+		/>
+	</div>
+</div>
+
+For smart contracts to access onchain data during execution, all network participants must agree on the computation outcomes. Rapidly detecting invalid computations by adversarial miners is essential for maintaining network integrity. Fast and efficient data verification ensures smart contract execution remains swift without compromising security.
+
+## Efficient Data Verification
+
+Irys democratizes verification by making it accessible to all users, regardless of their hardware.
+
+In traditional datachains, there is often a trade-off between verifiability and performance. Increased verifiability typically leads to slower data access because the verification process is computationally intensive.
+
+Irys optimizes data preparation with [2D Packing](/protocol/2d-packing), ensuring consistency and efficiency. This incentivizes miners to store data and prevents system abuse while maintaining network integrity by penalizing miners who try to mine unpacked data.

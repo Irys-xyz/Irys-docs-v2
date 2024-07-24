@@ -1,3 +1,7 @@
+---
+description:
+---
+
 import Latex from "react-latex-next";
 import { EmaTooltip } from "@/tooltips/Tooltips";
 
@@ -98,11 +102,11 @@ The EMA can be calculated using the following formula:
 
 This continues for each subsequent block, using the block's price and the previous block's EMA as part of the calculation. Upon reaching EMA9 (E9 in the diagram), the calculated EMA9 is recorded in the block for use at block height = 30.
 
-The pricing model gives a fixed feel for X amount of data in USD (based on the current Annualized Cost). The current USD/$IRYS token price is used to convert that USD fee to $IRYS tokens. This keeps the USD price for storing data relatively consistent, regardless of fluctuations in the $IRYS token price.
+The pricing model gives a fixed feel for X amount of data in USD (based on the current Annualized Cost). The current `USD/$IRYS` token price is used to convert that USD fee to `$IRYS` tokens. This keeps the USD price for storing data relatively consistent, regardless of fluctuations in the `$IRYS` token price.
 
 For miners quoting a price to users for storage during the 3rd adjustment interval, they would take whatever price was higher between the E9 token price or the E19, so that even if a data storage transaction was posted in the 3rd Adjustment Interval it could still be confirmed in the 4th.
 
-This ability to know what the $IRYS token will be priced at in the next adjustment interval is what allows for stable pricing. Without this mechanism, any time the price adjusted up all pending transactions would be dropped because they were now under-funded.
+This ability to know what the `$IRYS` token will be priced at in the next adjustment interval is what allows for stable pricing. Without this mechanism, any time the price adjusted up all pending transactions would be dropped because they were now under-funded.
 
 ## Annualized Cost Adjustments
 

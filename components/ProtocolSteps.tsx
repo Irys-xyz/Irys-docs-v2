@@ -33,9 +33,15 @@ const steps: Step[] = [
 		href: "./protocol/transactions",
 	},
 	{
-		title: "Packing",
+		title: "2D Packing",
 		description:
 			"Irys uses 2D Packing to enhance storage verification, ensuring security and efficiency. Packing involves adding a unique cryptographic fingerprint to stored data, proving that miners provide unique resources to the network. This is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.",
+		href: "./protocol/2d-packing",
+	},
+	{
+		title: "Efficient Sampling",
+		description:
+			"Efficient Sampling is Irys' method for reading data from packed partitions and generating proofs.",
 		href: "./protocol/2d-packing",
 	},
 ];

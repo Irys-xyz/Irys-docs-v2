@@ -1,8 +1,12 @@
+---
+description:
+---
+
 import { Callout } from "nextra-theme-docs";
 
 # Provable Storage
 
-Scaling onchain data storage requires separating transaction data from block headers while maintaining strong incentives for data storage. Irys achieves this through a mining process that demands recalling stored data for each computed hash, enabling large-scale storage capacity.
+Scaling onchain data storage requires separating transaction data from block headers while maintaining strong incentives for data storage. Irys achieves this through a mining process that demands recalling stored data for each computed hash.
 
 ## A Dataset with Holes
 
@@ -23,7 +27,7 @@ When data is unretrievable, the protocol has no way of knowing whether the miner
 Irys' design addresses these challenges through a combination of innovations:
 
 1. Multiple Data [Ledgers](./ledgers): Irys supports both [permanent](./ledgers#permanent-data-publish-ledger) and [temporary](./ledgers#submit-ledger) data storage ledgers, giving it flexibility in the commitments it can make around stored data.
-2. Staking and Slashing: Miners must stake $IRYS tokens when bringing a partition online. Irys incentivizes good behavior and penalizes malicious actions, enhancing network security and reliability of data replication.
+2. Staking and Slashing: Miners must stake `$IRYS` tokens when bringing a partition online. Irys incentivizes good behavior and penalizes malicious actions, enhancing network security and reliability of data replication.
 3. Proofs of Custody for Permanent Data: Irys uses proofs to ensure miners are actually storing the data they claim to have.
 4. Empty Capacity Mining: Irys plans for future storage needs by incentivizing miners to provide Capacity Partitions.
 

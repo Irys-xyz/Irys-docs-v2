@@ -17,7 +17,7 @@ const bentoData: Bento[] = [
 		description: "Enables economical storage scaling with a 24-hour sampling window for 16TB HDDs.",
 		image: "",
 		stateMachine: "",
-		href: "/efficiency",
+		href: "/protocol/efficient-sampling",
 	},
 	{
 		title: "Fast 2D Packing",
@@ -40,7 +40,7 @@ const bentoData: Bento[] = [
 			"End users can easily verify onchain which mining addresses are storing their data. 2D Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
 		image: "/diagrams/architecture/irys-docs-verifiability.riv",
 		stateMachine: "Verifiability",
-		href: "/overview/verifiability",
+		href: "/programmable-data/verifiability",
 	},
 ];
 
@@ -56,7 +56,7 @@ const ArchitectureBento: React.FC = () => {
 			{bentoData.map((bento) => (
 				<div
 					key={bento.title}
-					className="border border-gray-700 cursor-pointer p-3 h-auto rounded-xl flex flex-col bg-gradient-to-b from-[#171717]/50 to-[#171717]/20"
+					className="border border-gray-700 cursor-pointer p-3 h-auto rounded-xl flex flex-col "
 				>
 					{bento.image && (
 						<div className="relative w-full h-60">
@@ -74,17 +74,14 @@ const ArchitectureBento: React.FC = () => {
 					)}
 
 					{bento.href ? (
-						<Link
-							href={bento.href}
-							className="underline text-lg font-bold tracking-tight text-white mt-4 z-20"
-						>
+						<Link href={bento.href} className="underline text-lg font-bold tracking-tight  mt-4 z-20">
 							{bento.title}
 						</Link>
 					) : (
-						<span className="text-lg font-bold tracking-tight text-white mt-4">bento.title</span>
+						<span className="text-lg font-bold tracking-tight mt-4">bento.title</span>
 					)}
 
-					<p className="text-base font-light text-[#B7B7B7]">{bento.description}</p>
+					<p className="text-base font-light">{bento.description}</p>
 				</div>
 			))}
 		</div>
