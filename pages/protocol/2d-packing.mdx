@@ -4,7 +4,6 @@ description:
 
 import SequentialHashing from "@/components/SequentialHashing";
 import Irys2dPacking from "@/components/Irys2dPacking";
-
 import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 # Packing
@@ -20,31 +19,11 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 	</div>
 </div>
 
-## Overview
-
-Packing is the process of adding a unique cryptographic fingerprint to stored data, and is used to prove to the network that miners are providing unique resources. This is essential to prevent adversarial participants from claiming to store multiple copies of data or offering large storage capacities while only providing a fraction of the claimed resources.
-
-Irys introduces a novel approach to packing called 2D Packing which, combined with staking and slashing mechanisms, results in fast and efficient storage verification. Irys' innovative approach reduces the risk of computational exploits by adversarial miners.
-
-Our method:
-
-- Scales horizontally across GPUs and ASICs without sacrificing security.
-- Allows data to be unpacked on various devices (desktop, mobile, browser).
-- Reduces the cost of onboarding miners and posting data (leading to lower storage fees).
-- Combines with staking and slashing mechanisms to deter adversarial miners.
-- Maintains cryptographic verifiability while prioritizing accessibility and cost-efficiency.
-- Ensures a consistent packing time on a single CPU core.
-- Avoids computationally intensive methods like Zero Knowledge proofs and RandomX.
-
 ## Irys' 2D Packing
 
-After storage capacity has been packed, miners must repeatedly prove to the protocol that the packed resources are available. On Irys, this is done using highly scalable 2D Packing.
+Packing is the process of adding a unique cryptographic fingerprint to stored data. Miners use packing to prove to the network they're providing unique resources, this prevents adversarial claims of false storage capacity.
 
-2D Packing enforces a minimum amount of time to pack but allows it to scale horizontally across GPU and/or ASICS without sacrificing security.
-
-The advantage is that it enables data to be unpacked from virtually any computing device (desktop, mobile, browser) while reducing the cost of onboarding miners to the network. It also reduces the cost of posting data on the network, which is passed on to users through lower storage fees.
-
-Irys’ approach balances the need for cryptographic verifiability with the practical considerations of accessibility and computational & cost efficiency.
+Irys' 2D Packing ensures minimum packing time while allowing horizontal scaling across GPUs and ASICs. It enables unpacking on any device, from desktops to mobile browsers, while reducing miner onboarding and data posting costs. The result is lower storage fees for users.
 
 Here’s how it works:
 
@@ -58,12 +37,10 @@ Here’s how it works:
 
 ## Advantages
 
-Irys' 2D packing runs in parallel, enabling many chunks to be packed simultaneously.
+Irys' 2D packing operates in parallel, enabling simultaneous chunk processing while maintaining safe individual packing times. This ensures reading packed data is always more economical than packing. Uniquely, 2D Packing allows fingerprinting of empty capacity, rewarding miners for preparedness. When needed, data is swiftly XOR'd into existing packing, eliminating repacking and ensuring rapid, cost-effective data ingress.
 
-Individual chunks always take a safe amount of time to pack; reading packed data is always vastly more economical than packing it on demand.
+This innovative approach optimizes network efficiency and resource utilization
 
-Other advantages of 2D Packing include not needing to re-pack capacity once data is assigned. The 2D Packing fingerprint can be applied to empty capacity. This allows Irys to reward miners for packing empty capacity, when that capacity is needed for data it doesn’t have to be repacked. Instead, data is XOR’d into the existing packing, making ingress of data to packed capacity cheap and fast.
+## Blocktimes
 
-## Trade-Offs
-
-A side effect of having 2D Packing (and unpacking) take a safe amount of time is that this safe time is also the minimum amount of time miners will need to fully validate a new block. This means the network's block time cannot be shorter than the “safe minimum time” encoded in 2D Packing. This is not expected to be an issue as the safe minimum time is ~3s and PoW block times tend to be 3-4x that long.
+The safe minimum time for 2D Packing and unpacking sets a lower limit on block validation time for miners. This establishes a minimum block time for the network, approximately 3 seconds. However, as Proof of Work block times typically range from 9-12 seconds, this constraint doesn't negatively impact network performance.
