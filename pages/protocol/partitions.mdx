@@ -55,17 +55,15 @@ Miners post a pledge transaction to the network indicating their willingness to 
 
 ### Step 2: Partition Packing
 
-Once assigned a Capacity Partition, the miner packs it using [Irys’ 2D Packing](./2d-packing). This process fully encodes the miner’s fingerprint into the partition.
+The miner packs the Capacity Partition using [Irys’ 2D Packing](./2d-packing). This process fully encodes the miner’s fingerprint into the partition.
 
 ### Step 3: Partition Mining
 
-Once a capacity partition is packed, the protocol assigns a random 200MB sequential read to the miner every second. The miner takes these 200MB reads, splits them into 800 256KiB chunks, and proceeds to hash each chunk looking for a mining solution. If the miner finds a solution, that miner wins the right to produce a new block and announce it to the network, thus earning rewards.
+The protocol assigns a random 200MB sequential read every second. The miner takes these 200MB reads, splits them into 800 256KiB chunks, and proceeds to hash each chunk looking for a mining solution. If the miner finds a solution, that miner wins the right to produce a new block, thus earning rewards.
 
 ### Step 4: Ledger Assignment
 
 When it comes time to add more storage capacity to one of Irys’ data ledgers, the protocol will randomly select a Capacity Partition that is actively being mined. The randomness is weighted towards partitions that have been used to mine blocks, rewarding miners who have been participating longer and have been effective in mining.
-
-Being assigned to a data ledger and mining it has higher rewards than mining empty capacity partitions, so miners are incentivized to demonstrate their capability by mining capacity efficiently.
 
 ### Step 5: Partition Departure
 

@@ -11,7 +11,7 @@ const steps: Step[] = [
 	{
 		title: "Architecture",
 		description:
-			"Irys combines Proof of Work with staking and slashing mechanisms to achieve high performance and robust verification.",
+			"Irys seamlessly integrates high-performance storage and verifiable onchain execution in a single protocol.",
 		href: "./basics/irys-architecture",
 	},
 	{
@@ -60,16 +60,3 @@ const BasicsSteps: React.FC = () => {
 };
 
 export default BasicsSteps;
-
-// {
-// 	title: "Programmable Data",
-// 	description:
-// 		"Programmable Data allows smart contracts to access all onchain data. This enables a wide range of decentralized applications including onchain incentive protocols, decentralized incentives for Physical Infrastructure (DePINs), crowdsourced datasets, growth/engagement campaigns, data availability sampling rewards, bridging to legacy systems, real-time multiplayer gaming, and more.",
-// 	href: "./overview/programmable-data",
-// },
-// {
-// 	title: "Verifiability",
-// 	description:
-// 		"Verifiability ensures data integrity and security on Irys. Irys uses optimized 2D Packing to make data verification fast and efficient. This approach allows verification using standard devices, ensuring accessibility for all users and enabling secure programmable data functionality.",
-// 	href: "./overview/verifiability",
-// },
