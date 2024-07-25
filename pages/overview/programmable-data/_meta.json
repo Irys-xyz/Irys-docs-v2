@@ -1,5 +1,7 @@
 {
 	"pd-overview": "Overview",
-	"use-cases": "Use Cases",
+	"use-cases": {
+		"display": "hidden"
+	},
 	"verifiability": "Verifiability"
 }

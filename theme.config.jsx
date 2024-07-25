@@ -15,6 +15,11 @@ import {
 	Md360,
 	MdBlurLinear,
 	MdFlipToBack,
+	MdDataObject,
+	MdDataset,
+	MdAutoGraph,
+	MdCalculate,
+	MdOutlineQuestionMark,
 } from "react-icons/md";
 
 const FooterWrapper = () => {
@@ -24,8 +29,8 @@ const FooterWrapper = () => {
 
 // Create a mapping for the sub-items
 const iconMapping = {
+	"what-is-irys": <MdOutlineQuestionMark color="#ff8451" />,
 	architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
-	pricing: <MdOutlineMonetizationOn color="#ff8451" />,
 	treasury: <MdOutlineAccountBalance color="#ff8451" />,
 	mining: <MdBlurLinear color="#ff8451" />,
 	overview: <Md360 color="#ff8451" />,
@@ -37,6 +42,11 @@ const iconMapping = {
 	transactions: <MdOutlineSwapHoriz color="#ff8451" />,
 	"2d-packing": <MdOutlineViewQuilt color="#ff8451" />,
 	"efficient-sampling": <MdFlipToBack color="#ff8451" />,
+	storage: <MdDataset color="#ff8451" />,
+	"programmable-data": <MdDataObject color="#ff8451" />,
+	"pricing-model": <MdOutlineMonetizationOn color="#ff8451" />,
+	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
+	"token-price-approximation": <MdAutoGraph color="#ff8451" />,
 };
 
 export default {

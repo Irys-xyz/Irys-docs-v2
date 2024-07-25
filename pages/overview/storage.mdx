@@ -1,0 +1,21 @@
+---
+description:
+---
+
+# Storage
+
+Decentralized storage is a dual-faceted system, addressing both data and capacity needs. It securely encrypts and distributes data across multiple nodes, ensuring that only the owner can access it with a private key. This approach not only protects information from unauthorized access, including miners, but also expands storage capacity by utilizing a network of distributed nodes. Data sharding, further enhances security and efficiency by spreading data across locations.
+
+## PoW + Staking
+
+Irys introduces a hybrid consensus mechanism combining Proof of Work and Staking (PoW+S). This enhances network security and efficiency by requiring miners to not only compete through computational work but also stake economic commitments to their mining activities. By incorporating storage proofs and ledger pledges, Irys creates a robust system that incentivizes good behavior and deters bad actions, ensuring a more secure and reliable network.
+
+## Permanent Data (Publish Ledger)
+
+This flagship ledger maintains 10 replicas across geographically distributed miners who have made economic commitments through staking and pledging.
+
+The Publish Ledger contains only data provably uploaded to the network, backed through the Submit Ledger system. This results in a Publish Ledger without holes, enabling reliable data retrieval for use within Irys’s programmable data smart contract computations.
+
+## Term Data Ledgers
+
+Term Data ledgers store "temporary" data with defined expiration periods. Irys uses the word “term” to describe these ledgers as it makes a commitment to store the data for a specific storage term. At launch, Irys will implement a single term-ledger called the Submit Ledger, with plans to offer more term options based on community feedback.

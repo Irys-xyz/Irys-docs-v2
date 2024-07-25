@@ -3,5 +3,6 @@
 	"ledgers": "Ledgers",
 	"partitions": "Partitions",
 	"transactions": "Transactions",
-	"2d-packing": "2D Packing"
+	"2d-packing": "2D Packing",
+	"efficient-sampling": "Efficient Sampling"
 }
