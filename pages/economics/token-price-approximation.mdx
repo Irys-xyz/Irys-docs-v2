@@ -110,6 +110,6 @@ This ability to know what the `$IRYS` token will be priced at in the next adjust
 
 ## Annualized Cost Adjustments
 
-Irys's pricing model is updated annually to account for improvements (declines) in storage costs. The genesis block instantiates a pricing model with an annualized cost of storage, which serves as the basis for paying the future cost of storage. As each year passes, the expectation is to observe an improvement in the annualized cost of storage.
+Irys' pricing model is updated annually to account for improvements (declines) in storage costs. The genesis block instantiates a pricing model with an annualized cost of storage, which serves as the basis for paying the future cost of storage. As each year passes, the expectation is to observe an improvement in the annualized cost of storage.
 
 Approximately once a year (measured in block height), miners will have a 2-week window (also measured in block heights) to post their annualized cost of storing a partition in the headers of the blocks they produce. At the end of this two-week interval, the median cost is chosen as the basis for the pricing model in the upcoming year. These adjustments prevent the protocol from relying on the genesis block's pricing model, which may significantly overcharge in future years due to built-in safety margins.

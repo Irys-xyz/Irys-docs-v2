@@ -42,7 +42,7 @@ const componentBentoData: ComponentBento[] = [
 	},
 	{
 		title: "Protocol Treasury",
-		description: "More than just an endowment, Irys's treasury:",
+		description: "More than just an endowment, Irys' treasury:",
 		details: ["Covers storage liabilities", "Participates in yield-bearing activities"],
 		image: "/diagrams/components/irys-docs-protocol-treasury.riv",
 		stateMachine: "Protocol-Treasury",
