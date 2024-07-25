@@ -4,28 +4,28 @@ description:
 
 # Storage
 
-When you upload data to Irys, you pay a single fee at upload time, and your data is guaranteed to be retrievable for the specified storage term, which can be either permanent or temporary. The data is stored by a geographically diverse group of miners, ensuring fault tolerance and high availability. Cryptographic verification allows you to confirm that the data is stored onchain, ensuring its authenticity and integrity. Notably, Irys allows smart contracts to read stored data, enabling new creative opportunities for builders.
+Irys supports:
 
-## PoW + Staking
-
-Irys introduces a hybrid consensus mechanism combining Proof of Work and Staking (PoW+S). This enhances network security and efficiency by requiring miners to not only compete through computational work but also stake economic commitments to their mining activities. By incorporating storage proofs and ledger pledges, Irys creates a robust system that incentivizes good behavior and deters bad actions, ensuring a more secure and reliable network.
+- Permanent and temporary data.
+- Cryptographic verification of data to confirm onchain storage.
+- A single-payment model for data uploads.
+- Fault-tolerant data stored by a geographically diverse group of miners.
+- Seamless integration between data and smart contracts, enabling new creative opportunities for builders.
 
 ## Ledgers
 
 When you upload data to Irys, the transaction header is immediately included in the next block, while the associated data is uploaded by users afterward. This separation accommodates large file uploads that take longer than Irys’ blocktime.
 
-Irys manages data through the use of multiple ledgers, each designed to handle different storage needs.
+Irys manages data through the use of multiple [ledgers](/protocol/ledgers), each designed to handle different storage needs.
 
 ### Permanent Data (Publish Ledger)
 
-This flagship ledger maintains 10 replicas across geographically distributed miners who have made economic commitments through staking and pledging.
-
-The Publish Ledger contains only data provably uploaded to the network, backed through the Submit Ledger system. This results in a Publish Ledger without holes, enabling reliable data retrieval for use within Irys’ programmable data smart contract computations.
+The [Publish Ledger](/protocol/ledgers#permanent-data-publish-ledger) contains only data provably uploaded to the network, this results in a Publish Ledger without holes, enabling reliable data retrieval for use within Irys’ programmable data smart contracts.
 
 ### Term Data Ledgers
 
-Term Data ledgers store "temporary" data with defined expiration periods. Irys uses the word “term” to describe these ledgers as it makes a commitment to store the data for a specific storage term.
+[Term Data ledgers](/protocol/ledgers#term-data-ledgers) store temporary data with defined expiration periods.
 
-At launch, Irys will implement a single term-ledger called the Submit Ledger, with plans to offer more term options based on community feedback. Transactions are first posted to the Submit Ledger, giving users a 5 epoch window to upload associated data. If the data isn’t posted during that time, the space reserved for it expires. If the data is posted, miners provide receipt proofs, and once enough are collected, the data is promoted to the Publish Ledger.
+At launch, Irys will implement a single term-ledger called the Submit Ledger, with plans to offer more based on community feedback. Transactions are first posted to the Submit Ledger, and once the data has been provably uploaded, it is promoted to the Publish Ledger.
 
 Once data has been promoted to the Publish Ledger, smart contracts can access it.

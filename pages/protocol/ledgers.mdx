@@ -13,18 +13,14 @@ import { EpochTooltip } from "@/tooltips/Tooltips";
 
 # Ledgers
 
-The transaction history of a blockchain is called its ledger. Irys innovates by managing multiple <a className="underline decoration-dashed" id="ledger">ledgers</a> on a single blockchain, departing from the traditional single-ledger model.
+Irys tracks uploaded transacting using multiple <a className="underline decoration-dashed" id="ledger">ledgers</a> on a single blockchain, departing from the traditional single-ledger model.
 
-<Callout type="info" emoji="💡">
-	While there are multiple internal ledgers, the blockchain still maintains a single canonical state.
-</Callout>
+![](/diagrams/protocol/ledgers.jpg)
 
 Alongside these ledgers, Irys’ blocks maintain two <a className="underline decoration-dashed" id="blocklane">blocklanes</a>:
 
 - An execution blocklane for [value transfers](/protocol/transactions#value-transfers) and [smart contract interactions](/protocol/transactions#execution-transactions).
 - A storage blocklane for data storage transactions.
-
-![](/diagrams/protocol/ledgers.jpg)
 
 ## Transaction History
 
@@ -38,10 +34,6 @@ While Irys maintains a transaction history in its blocks, the associated data is
 </Callout>
 
 These ledgers have different storage terms, and users specify their intended ledger when posting a data transaction.
-
-## PoW + Staking
-
-Irys is a hybrid Proof Of Work + Staking (PoW+S) blockchain where miners compete for the right to produce a new block by performing storage proofs on their data. Unlike classic PoW, miners on Irys also make economic commitments to specific mining addresses and make pledges to the portions of the ledger they store. Miners face slashing penalties for inappropriate behavior, creating stronger disincentives for adversarial actions compared to pure PoW networks.
 
 ## Permanent Data (Publish Ledger)
 

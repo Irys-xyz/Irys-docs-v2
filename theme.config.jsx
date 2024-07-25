@@ -21,6 +21,7 @@ import {
 	MdCalculate,
 	MdOutlineQuestionMark,
 	MdOutlineSync,
+	MdOutlineBlurOn,
 } from "react-icons/md";
 
 const FooterWrapper = () => {
@@ -31,6 +32,7 @@ const FooterWrapper = () => {
 // Create a mapping for the sub-items
 const iconMapping = {
 	"what-is-irys": <MdOutlineQuestionMark color="#ff8451" />,
+	"pow-+-staking": <MdOutlineBlurOn color="#ff8451" />,
 	architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
 	treasury: <MdOutlineAccountBalance color="#ff8451" />,
 	mining: <MdBlurLinear color="#ff8451" />,
@@ -76,7 +78,7 @@ export default {
 
 			if (type !== "separator") {
 				const key = title.toLowerCase().replace(/\s+/g, "-");
-				console.log(key);
+				// console.log(key);
 				const icon = iconMapping[key];
 				return (
 					<div style={containerStyles}>
