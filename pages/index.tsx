@@ -113,14 +113,10 @@ export default function Home() {
 						<div className="col-span-12 md:col-span-6 flex flex-col gap-10 items-start justify-center  p-7 md:p-12 ">
 							<h2 className="font-bold text-2xl md:text-4xl tracking-tight">Why build on Irys?</h2>
 							<p className="text-[#959595] leading-loose">
-								Easily interact with and perform computations on user data within a virtual machine (VM).
-								Traditionally, smart contracts had limited access to user data due to high storage costs on
-								computation-optimized protocols. Irys optimizes for both, allowing smart contracts to easily
-								retrieve onchain data.
-								<br />
-								<br />
-								With programmable data, anyone can build large-scale apps and services on a single
-								decentralized protocol, including AI agents, DePIN networks, and other Web3 insfrastructure.
+								At the core of our vision is the belief that developers should have the freedom to build
+								fully onchain applications. The Irys L1 blockchain uniquely integrates verifiable compute
+								and verifiable data, empowering developers to unleash their creativity and create seamless
+								decentralized applications within a single blockchain ecosystem.
 							</p>
 						</div>
 						<div className="col-span-6 items-center justify-center relative hidden md:flex">
@@ -129,7 +125,7 @@ export default function Home() {
 					</div>
 					<div className="col-span-12 h-[1px] w-full bg-gradient-to-r from-transparent via-[#222222] to-transparent" />
 					<div className="grid grid-cols-12 col-span-12 px-7 md:px-12">
-						<div className="col-span-12 md:col-span-4 pt-12 pr-8">
+						{/* <div className="col-span-12 md:col-span-4 pt-12 pr-8">
 							<h2 className="font-bold text-2xl tracking-tight">Irys L1</h2>
 							<p className="text-[#959595] pt-7 leading-loose">
 								At the core of our vision is the belief that developers should have the freedom to build
@@ -140,16 +136,19 @@ export default function Home() {
 								empowering developers to unleash their creativity and create seamless decentralized
 								applications within a single blockchain ecosystem.
 							</p>
-						</div>
-						<div className="col-span-12 md:col-span-4 px-0 md:px-8 md:border-x pt-12 border-[#222222] border-x-0 border-y md:border-y-0 mt-10 pb-10 md:mt-0 md:pb-0">
+						</div> */}
+
+						{/* <div className="col-span-12 md:col-span-4 px-0 md:px-8 md:border-x pt-12 border-[#222222] border-x-0 border-y md:border-y-0 mt-10 pb-10 md:mt-0 md:pb-0"> */}
+						<div className="col-span-12 md:col-span-4 pt-12 pr-8">
 							<h2 className="font-bold text-2xl tracking-tight">IrysVM + Programmable Data</h2>
 							<p className="text-[#959595] pt-7 leading-loose">
 								Programmable data merges data with compute, enabling the creation of verifiable data
 								applications onchain at internet scale.
 								<br />
 								<br />
-								With programmable data, you can: - Access uploaded transaction data within the MV. - Prove
-								and verify computations done onchain.
+								With programmable data, you can:
+								<br />- Access uploaded transaction data within the VM.
+								<br />- Prove and verify computations done onchain.
 							</p>
 						</div>
 						<div className="col-span-12 md:col-span-4 pt-12 pl-0 md:pl-8">
@@ -158,8 +157,8 @@ export default function Home() {
 								True data ownership means you control the lifecycle of your data and only pay for the
 								storage you need.
 								<br />
-								<br />- <b>Permanent Data:</b> Guaranteed to be retrievable forever. <br />-{" "}
-								<b>Term Data:</b> You control how long it’s retrievable for
+								<br />- <b>Permanent Data:</b> Guaranteed to be retrievable forever.
+								<br />- <b>Term Data:</b> You control how long it’s retrievable for.
 							</p>
 						</div>
 					</div>
