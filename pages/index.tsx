@@ -142,7 +142,7 @@ export default function Home() {
 						<div className="col-span-12 md:col-span-4 pt-12 pr-8">
 							<h2 className="font-bold text-2xl tracking-tight">IrysVM + Programmable Data</h2>
 							<p className="text-[#959595] pt-7 leading-loose">
-								Programmable data merges data with compute, enabling the creation of verifiable data
+								Programmable Data merges data with compute, enabling the creation of verifiable data
 								applications onchain at internet scale.
 								<br />
 								<br />

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	background: black;
+}
+
 @keyframes lineDrawToRight {
 	0% {
 		width: 0;
