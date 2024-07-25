@@ -15,7 +15,7 @@ const Socials = (props: Props) => {
 		);
 
 		return () => {
-			//@ts-ignore
+			// @ts-ignore
 			setCurrentProject(null);
 		};
 	}, [currentHover]);
