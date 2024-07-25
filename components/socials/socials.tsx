@@ -96,8 +96,10 @@ const Socials = (props: Props) => {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 				>
-					{currentProject?.hover}{" "}
+					{/* @ts-ignore */}
+					{currentProject?.hover} {/* @ts-ignore */}
 					<img src={currentProject.icon} alt="" className="group-hover:hidden px-2" />
+					{/* @ts-ignore */}
 					{currentProject.title}
 				</motion.div>
 			)}
