@@ -20,6 +20,7 @@ import {
 	MdAutoGraph,
 	MdCalculate,
 	MdOutlineQuestionMark,
+	MdOutlineSync,
 } from "react-icons/md";
 
 const FooterWrapper = () => {
@@ -33,7 +34,6 @@ const iconMapping = {
 	architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
 	treasury: <MdOutlineAccountBalance color="#ff8451" />,
 	mining: <MdBlurLinear color="#ff8451" />,
-	overview: <Md360 color="#ff8451" />,
 	"use-cases": <MdOutlineDescription color="#ff8451" />,
 	verifiability: <MdOutlineVerified color="#ff8451" />,
 	"provable-storage": <MdOutlineStorage color="#ff8451" />,
@@ -43,6 +43,7 @@ const iconMapping = {
 	"2d-packing": <MdOutlineViewQuilt color="#ff8451" />,
 	"efficient-sampling": <MdFlipToBack color="#ff8451" />,
 	storage: <MdDataset color="#ff8451" />,
+	execution: <MdOutlineSync color="#ff8451" />,
 	"programmable-data": <MdDataObject color="#ff8451" />,
 	"pricing-model": <MdOutlineMonetizationOn color="#ff8451" />,
 	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
