@@ -32,7 +32,7 @@ const bentoData: Bento[] = [
 		description: "Allows pre-packing of empty capacity partitions for efficient data ingress.",
 		image: "/diagrams/architecture/irys-docs-capacity-mining.riv",
 		stateMachine: "Capacity-Mining",
-		href: "/protocol/partitions#partition-lifecycle",
+		href: "/protocol/partitions#capacity-partitions",
 	},
 	{
 		title: "Verifiability",
