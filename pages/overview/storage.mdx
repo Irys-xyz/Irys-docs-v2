@@ -14,18 +14,18 @@ Irys supports:
 
 ## Ledgers
 
-When you upload data to Irys, the transaction header is immediately included in the next block, while the associated data is uploaded by users afterward. This separation accommodates large file uploads that take longer than Irys’ blocktime.
+When you upload data to Irys, the transaction header is immediately included in the next block, and the associated data is uploaded after. This separation accommodates large file uploads that take longer than Irys’ blocktime.
 
-Irys manages data through the use of multiple [ledgers](/protocol/ledgers), each designed to handle different storage needs.
+Irys manages data with multiple [ledgers](/protocol/ledgers), each designed to handle different storage terms.
 
 ### Permanent Data (Publish Ledger)
 
-The [Publish Ledger](/protocol/ledgers#permanent-data-publish-ledger) contains only data provably uploaded to the network, this results in a Publish Ledger without holes, enabling reliable data retrieval for use within Irys’ programmable data smart contracts.
+The [Publish Ledger](/protocol/ledgers#permanent-data-publish-ledger) contains data provably uploaded to the network, this results in a Publish Ledger without holes.
+
+> Smart contracts can access all data posted to the Publish Ledger.
 
 ### Term Data Ledgers
 
 [Term Data ledgers](/protocol/ledgers#term-data-ledgers) store temporary data with defined expiration periods.
 
 At launch, Irys will implement a single term-ledger called the Submit Ledger, with plans to offer more based on community feedback. Transactions are first posted to the Submit Ledger, and once the data has been provably uploaded, it is promoted to the Publish Ledger.
-
-Once data has been promoted to the Publish Ledger, smart contracts can access it.
