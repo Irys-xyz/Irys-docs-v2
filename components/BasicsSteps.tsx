@@ -29,7 +29,7 @@ const steps: Step[] = [
 	{
 		title: "Mining",
 		description:
-			"Irys' mining is a combination of useful Proof of Work, where every computed hash is actually proving storage of a random part of Irys’ overall storage, staking a mining address, and pledging individual partitions.",
+			"Irys' mining is a combination of useful Proof of Work, staking a mining address, and pledging individual partitions.",
 		href: "/basics/mining",
 	},
 ];
