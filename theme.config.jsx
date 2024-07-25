@@ -54,13 +54,14 @@ const iconMapping = {
 
 export default {
 	nextThemes: {
-		defaultTheme: "dark",
+		defaultTheme: "system",
 	},
 	themeSwitch: {
 		useOptions() {
 			return {
 				dark: "Dark",
 				light: "Light",
+				system: "System",
 			};
 		},
 	},
