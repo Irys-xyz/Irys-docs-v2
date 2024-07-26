@@ -322,3 +322,83 @@ details[open] .faq-expand::before {
 	color: #000000;
 	width: 100px;
 }
+
+/* Home page */
+.debug {
+	@apply border border-red-500;
+}
+
+.custom-shadow {
+	box-shadow: 0px 0px 24px 0px #ff845199 inset, 0px 0px 12px 0px #ff845129;
+}
+
+@keyframes smallFloating {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(3px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+/* slightly rotate 5, -5 deg animation */
+@keyframes rotating {
+	0% {
+		transform: rotate(3deg);
+	}
+	50% {
+		transform: rotate(-3deg);
+	}
+	100% {
+		transform: rotate(3deg);
+	}
+}
+
+.rotate {
+	animation: rotating 1.8s infinite;
+}
+
+.float {
+	animation: floating 1.5s infinite;
+}
+
+.float-small {
+	animation: smallFloating 1.5s infinite;
+}
+
+.squeeze {
+	animation: squeezing 2s infinite;
+}
+
+.customGradient {
+	background: linear-gradient(to right, #000000cc, transparent 40%, transparent 60%, #000000cc),
+		linear-gradient(to bottom, #111111, transparent);
+}
+
+/* squeezing animation */
+@keyframes squeezing {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(0.96);
+	}
+	100% {
+		transform: scale(1);
+	}
+}

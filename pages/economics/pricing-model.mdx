@@ -1,0 +1,30 @@
+---
+description:
+---
+
+import Latex from "react-latex-next";
+import StorageCostChart from "@/components/StorageCostChart";
+
+# Pricing Model
+
+Irys has an up-front one-time fee model which simplifies the development and deployment of onchain applications. This predictable and stable pricing leads to better budgeting and planning for users.
+
+The pricing model is based on a fixed model, defined by:
+
+- Annualized cost of storing 1GB
+- Annualized decay rate
+- Safe minimum number of years
+
+Of the three, only the annualized cost of storing 1GB is updated from year to year.
+
+## Annualized Cost of Storing 1GB
+
+The model uses the annualized cost of storing 1GB, as determined by the pricing parameter, as its starting point.
+
+## Annualized Decay Rate
+
+The model assumes a conservative 1% annual decay rate in storage costs, accounting for a wide range of potential improvements in technology and market efficiency over time.
+
+## Safe Minimum Number of Years
+
+The pricing model calculates the one-time storage fee based on a safe minimum number of years (initially set to 200 years). This ensures that the fee charged is sufficient to cover storage costs for an extended period, providing peace of mind to users. The safety margins baked into the pricing model mean that in all but the very worst of outcomes the network can afford to pay for storage many multiples of 200 years into the future.

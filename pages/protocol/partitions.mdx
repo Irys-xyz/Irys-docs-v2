@@ -10,8 +10,6 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 # Partitions
 
-![](/diagrams/protocol/publish-ledger.jpg)
-
 Partitions are the fundamental building blocks of Irys’ [data ledgers](./ledgers). With them, the protocol can control many factors, including:
 
 - Controlling the number of replicas incentivized for every ledger index.
@@ -19,6 +17,8 @@ Partitions are the fundamental building blocks of Irys’ [data ledgers](./ledge
 - Managing data distribution in a way that is verifiable.
 - Rewarding miners for storing data reliably.
 - Onboarding a specific amount of capacity to meet the near future needs of the network.
+
+<img className="rounded-2xl my-5" src="/diagrams/protocol/publish-ledger.jpg" />
 
 All of these are efficiencies that allow Irys to account for and control it’s storage liabilities. This leads to efficient pricing that is passed on to users.
 
@@ -28,9 +28,11 @@ All of these are efficiencies that allow Irys to account for and control it’s 
 - As the ledger grows, more ledger indexes are added to store new data.
 - Multiple partitions reside at each index in the ledger, replicating the data.
 
-As miners come and go from the network, their partitions come and go with them. If this was a high-frequency occurrence, data would be constantly shuffled around to backfill the departing ledgers. To combat this, the protocol requires miners to make economic commitments to store data. If they fail to do this, they risk losing some of the value they put in escrow to participate.
+As miners come and go from the network, their partitions come and go with them. If this was a high-frequency occurrence, data would be constantly shuffled around to backfill the departing ledgers. To combat this, the protocol requires miners to make economic commitments to store data. If they fail to do this, they risk losing the tokens they staked to participate.
 
 By having miners commit to partitions and the protocol arranging those partitions into ledgers, Irys has the flexibility to define multiple data ledgers, each with its own storage term. At launch, we will have [two ledgers](/protocol/ledgers), one permanent and one temporary.
+
+## Capacity Partitions
 
 > Where do partitions come from, and how are they associated with a ledger?
 

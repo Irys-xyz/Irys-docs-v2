@@ -15,6 +15,13 @@ import {
 	Md360,
 	MdBlurLinear,
 	MdFlipToBack,
+	MdDataObject,
+	MdDataset,
+	MdAutoGraph,
+	MdCalculate,
+	MdOutlineQuestionMark,
+	MdOutlineSync,
+	MdOutlineBlurOn,
 } from "react-icons/md";
 
 const FooterWrapper = () => {
@@ -24,11 +31,11 @@ const FooterWrapper = () => {
 
 // Create a mapping for the sub-items
 const iconMapping = {
+	"what-is-irys": <MdOutlineQuestionMark color="#ff8451" />,
+	"pow-+-staking": <MdOutlineBlurOn color="#ff8451" />,
 	architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
-	pricing: <MdOutlineMonetizationOn color="#ff8451" />,
 	treasury: <MdOutlineAccountBalance color="#ff8451" />,
 	mining: <MdBlurLinear color="#ff8451" />,
-	overview: <Md360 color="#ff8451" />,
 	"use-cases": <MdOutlineDescription color="#ff8451" />,
 	verifiability: <MdOutlineVerified color="#ff8451" />,
 	"provable-storage": <MdOutlineStorage color="#ff8451" />,
@@ -37,17 +44,24 @@ const iconMapping = {
 	transactions: <MdOutlineSwapHoriz color="#ff8451" />,
 	"2d-packing": <MdOutlineViewQuilt color="#ff8451" />,
 	"efficient-sampling": <MdFlipToBack color="#ff8451" />,
+	storage: <MdDataset color="#ff8451" />,
+	execution: <MdOutlineSync color="#ff8451" />,
+	"programmable-data": <MdDataObject color="#ff8451" />,
+	"pricing-model": <MdOutlineMonetizationOn color="#ff8451" />,
+	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
+	"token-price-approximation": <MdAutoGraph color="#ff8451" />,
 };
 
 export default {
 	nextThemes: {
-		defaultTheme: "dark",
+		defaultTheme: "system",
 	},
 	themeSwitch: {
 		useOptions() {
 			return {
 				dark: "Dark",
 				light: "Light",
+				system: "System",
 			};
 		},
 	},
@@ -65,7 +79,7 @@ export default {
 
 			if (type !== "separator") {
 				const key = title.toLowerCase().replace(/\s+/g, "-");
-				console.log(key);
+				// console.log(key);
 				const icon = iconMapping[key];
 				return (
 					<div style={containerStyles}>

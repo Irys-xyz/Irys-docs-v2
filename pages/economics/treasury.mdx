@@ -1,0 +1,47 @@
+---
+description:
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+import { Callout } from "nextra-theme-docs";
+
+# Irys’ Protocol Treasury
+
+Irys employs a protocol-level treasury to ensure sustainable storage costs. Through upfront payments and balanced inflationary measures, the system protects against token dilution while incentivizing long-term data retention. This economic model aligns storage provider incentives with network stability.
+
+<div className="w-full flex justify-center">
+	<div className="w-3/4">
+		<SimpleRiveViewer
+			src="/diagrams/components/irys-docs-protocol-treasury.riv"
+			width={1920}
+			height={1080}
+			stateMachine="Protocol-Treasury"
+		/>
+	</div>
+</div>
+
+## Upfront Payments
+
+When users pay for storage in Irys’ [data ledgers](/protocol/ledgers), they make a single upfront payment. This payment is based on the amount of data uploaded and the cost of storing a [partition](/protocol/partitions) for a year. Users posting data to Irys’ permanent ledger pay for 200 years in advance, assuming a 1% annual decline in storage costs.
+
+<Callout type="info" emoji="💡">
+	Over the last 40 years, storage costs have decreased by approximately 30% annually. If storage costs
+	decline faster than 1% annually, the duration the treasury can pay for future storage is extended,
+	providing a safety margin against fluctuations in the protocol's native token price.
+</Callout>
+
+## Balanced Inflationary Measures
+
+Irys has an inflationary token emission schedule (similar to Bitcoin). A fixed amount is emitted each year through block rewards. Unlike Bitcoin's specific halving events, the inflation rate on Irys gradually decreases with each block.
+
+## Block Rewards
+
+Irys' block rewards are calibrated to cover annual [partition](/protocol/partitions) storage costs, ensuring network sustainability. The protocol's treasury acts as a safety net, compensating miners when rewards fall short, thus maintaining crucial fault tolerance.
+
+To balance fairness and efficiency, Irys employs a reward adjustment mechanism. When rewards exceed predetermined thresholds, surplus tokens are redirected to the treasury. This dual-action approach enhances the treasury's purchasing power while exerting deflationary pressure on the circulating token supply.
+
+This safeguards both miners and token holders, fostering a stable, sustainable ecosystem that adapts to changing market conditions.
+
+## Inflation-Resistant by Design
+
+Irys combats token dilution through a self-sustaining treasury mechanism. As new tokens are minted, the treasury receives a proportional allocation, preserving its purchasing power relative to the overall supply. This approach ensures the treasury's ability to fund future data storage costs, maintaining long-term network stability and value for all stakeholders.

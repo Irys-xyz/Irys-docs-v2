@@ -20,7 +20,7 @@ const componentBentoData: ComponentBento[] = [
 		details: [],
 		image: "/diagrams/components/irys-docs-proof-of-work-staking.riv",
 		stateMachine: "Proof-Of-Work",
-		href: "/protocol/ledgers#pow--staking",
+		href: "/overview/pows",
 	},
 	{
 		title: "Multiple Ledgers",
@@ -38,15 +38,15 @@ const componentBentoData: ComponentBento[] = [
 			"The virtual machine enabling Programmable Data — the execution of onchain programs with full access to the data layer.",
 		// image: "/diagrams/components/irys_docs_protocol_treasury.riv",
 		details: [],
-		href: "/programmable-data/pd-overview",
+		href: "/overview/execution/programmable-data",
 	},
 	{
 		title: "Protocol Treasury",
-		description: "More than just an endowment, Irys's treasury:",
+		description: "More than just an endowment, Irys' treasury:",
 		details: ["Covers storage liabilities", "Participates in yield-bearing activities"],
 		image: "/diagrams/components/irys-docs-protocol-treasury.riv",
 		stateMachine: "Protocol-Treasury",
-		href: "/basics/treasury",
+		href: "/economics/treasury",
 	},
 ];
 
