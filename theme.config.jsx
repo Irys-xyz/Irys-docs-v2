@@ -26,7 +26,7 @@ import {
 
 const FooterWrapper = () => {
 	const router = useRouter();
-	return<div className="border-t border-[#222222] mt-10 mx-auto"> <Footer /></div>;
+	return<div className="border-t border-[#222222] mt-10 mx-auto bg-[#111111]"> <Footer /></div>;
 };
 
 // Create a mapping for the sub-items

@@ -41,7 +41,9 @@ export default function Home() {
   const [buttonHovered, setButtonHovered] = useState(false);
 
   return (
-    <div className={`text-white relative overflow-hidden ${satoshi.className}`}>
+    <div
+      className={`text-white relative overflow-hidden ${satoshi.className} pb-10`}
+    >
       <AnimatePresence>
         {buttonHovered && (
           <motion.img
