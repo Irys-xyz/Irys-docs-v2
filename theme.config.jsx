@@ -79,12 +79,15 @@ export default {
 	sidebar: {
 		toggleButton: true,
 		titleComponent({ title, type }) {
+			console.log({ title });
+			console.log({ type });
+
 			const iconStyles = { fontSize: "1.1rem", marginRight: "0.5rem" };
 			const containerStyles = { display: "flex", alignItems: "center" };
 
 			if (type !== "separator") {
 				const key = title.toLowerCase().replace(/\s+/g, "-");
-				// console.log(key);
+				console.log(key);
 				const icon = iconMapping[key];
 				return (
 					<div style={containerStyles}>
