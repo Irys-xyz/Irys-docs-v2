@@ -16,44 +16,36 @@ const Footer = (props: Props) => {
 		}[];
 	}[] = [
 		{
-			title: "About",
+			title: "OVERVIEW",
 			items: [
 				{
-					title: "What is Irys",
-					href: "/what-is-irys",
+					title: "What is Irys?",
+					href: "/overview/what-is-irys",
 				},
 				{
-					title: "Team",
-					href: "/team",
+					title: "Storage",
+					href: "/overview/storage",
 				},
 				{
-					title: "FAQs",
-					href: "/faq",
-				},
-				{
-					title: "Media Kit",
-					href: "/media-kit",
-				},
-				{
-					title: "Blog",
-					href: "/blog",
+					title: "Programmable Data",
+					href: "/overview/execution/programmable-data",
 				},
 			],
 		},
 		{
-			title: "Community",
+			title: "PROTOCOL",
 			items: [
 				{
-					title: "Community",
-					href: "/community",
+					title: "Architecture",
+					href: "/protocol/architecture",
 				},
 				{
-					title: "Contact Us",
-					href: "/contact-us",
+					title: "Provable Storage",
+					href: "/protocol/provable-storage",
 				},
 				{
-					title: "Partner Program",
-					href: "/partner-program",
+					title: "2D Packing",
+					href: "/protocol/2d-packing",
 				},
 			],
 		},
@@ -77,13 +69,16 @@ const Footer = (props: Props) => {
 	];
 
 	return (
-		<footer className="container mx-auto flex flex-col gap-28 my-20 px-7 lg:px-0">
-			<div className="grid grid-cols-12 text-white gap-y-20">
+		<footer className="max-w-[1392px] flex flex-col gap-28 my-20 px-7 md:px-0 mx-auto pb-10 -mb-10">
+			<div className="grid grid-cols-12 text-white light gap-y-20">
 				<div className="md:col-span-3 lg:col-span-6 col-span-12">
 					<Image src={SvgIrysLogo} alt="Irys Logo" width={99} />
 				</div>
 				{OPTIONS.map((option) => (
-					<div key={option.title} className="col-span-6 md:col-span-3 lg:col-span-2 text-base flex flex-col gap-6">
+					<div
+						key={option.title}
+						className="col-span-6 md:col-span-3 lg:col-span-2 text-base flex flex-col gap-6"
+					>
 						<div className="font-bold">{option.title}</div>
 						<ul className="font-light text-[#B7B7B7] leading-4 flex flex-col gap-5">
 							{option.items.map((item) => (
@@ -100,7 +95,6 @@ const Footer = (props: Props) => {
 				<div className="bg-[#0B0B0B] grid grid-cols-12 rounded-xl">
 					<div className="col-span-12 md:col-span-6 flex gap-4 flex-col p-7 md:p-12">
 						<h2 className="text-white text-3xl font-bold">Join the Irys Community</h2>
-						<p className="text-[#B7B7B7]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
 					</div>
 					<div className="col-span-12 md:col-span-6 gap-2 flex items-center justify-center p-12">
 						{SOCIAL_MEDIAS_FOOTER.map((social, index) => (
