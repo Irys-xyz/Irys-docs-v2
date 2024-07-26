@@ -27,7 +27,7 @@ When data is unretrievable, the protocol has no way of knowing whether the miner
 Irys' design addresses these challenges through a combination of innovations:
 
 1. Multiple Data [Ledgers](./ledgers): Irys supports both [permanent](./ledgers#permanent-data-publish-ledger) and [temporary](./ledgers#submit-ledger) data storage ledgers, giving it flexibility in the commitments it can make around stored data.
-2. Staking and Slashing: Miners must stake `$IRYS` tokens when bringing a partition online. Irys incentivizes good behavior and penalizes malicious actions, enhancing network security and reliability of data replication.
+2. Staking and Slashing: Miners must stake native tokens when bringing a partition online. Irys incentivizes good behavior and penalizes malicious actions, enhancing network security and reliability of data replication.
 3. Proofs of Custody for Permanent Data: Irys uses proofs to ensure miners are actually storing the data they claim to have.
 4. Empty Capacity Mining: Irys plans for future storage needs by incentivizing miners to provide Capacity Partitions.
 
@@ -56,7 +56,7 @@ To accomplish this objective, Irys implements multiple data [ledgers](./ledgers)
 
 #### Publish Ledger - Permanent Data
 
-![](/diagrams/protocol/publish-ledger.jpg)
+<img className="rounded-2xl my-5" src="/diagrams/protocol/publish-ledger.jpg" />
 
 The Publish Ledger is the only ledger for permanent data on Irys. The data stored in this ledger is sometimes referred to as “Perm Data” in contrast to temporary data which is stored in “Term Data” ledgers. Permanent data in the Publish Ledger is special because the protocol only adds data to the Publish Ledger when it’s been provably uploaded to the network.
 
@@ -70,7 +70,7 @@ The answer is the use of Term Data and the Submit Ledger.
 
 #### Submit Ledger - Term Data
 
-![](/diagrams/protocol/submit-ledger.jpg)
+<img className="rounded-2xl my-5" src="/diagrams/protocol/submit-ledger.jpg" />
 
 Irys uses the term "Term Data" to describe temporary data storage; it refers to data that is committed to be available for a specific period, a storage term. The Irys testnet will launch with one Term Data ledger, the Submit ledger, but it is capable of supporting multiple Term Data ledgers with different storage terms.
 

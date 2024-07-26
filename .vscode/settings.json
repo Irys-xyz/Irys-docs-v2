@@ -6,5 +6,7 @@
 			"addWords": true,
 			"scope": "workspace"
 		}
-	}
+	},
+	"cSpell.enableFiletypes": ["mdx"],
+	"cSpell.words": ["incentivizing"]
 }

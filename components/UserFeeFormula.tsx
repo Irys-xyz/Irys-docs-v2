@@ -22,9 +22,10 @@ const UserFeeFormula: React.FC = () => {
 			setter(parsedValue);
 		}
 	};
+
 	return (
 		<div className="mt-5">
-			<div className="flex flex-col borderp-4">
+			<div className="flex flex-col border p-4">
 				<div className="flex justify-center px-4 py-2 rounded-xl text-white mb-4 ">
 					<table className="table-auto border border-gray-400 w-full">
 						<thead>
@@ -58,7 +59,7 @@ const UserFeeFormula: React.FC = () => {
 								</td>
 							</tr>
 							<tr>
-								<td className="border px-4 py-2">$IRYS Token Price</td>
+								<td className="border px-4 py-2">Native Token Price</td>
 								<td className="border px-4 py-2">
 									<input
 										type="text"
@@ -108,18 +109,16 @@ const UserFeeFormula: React.FC = () => {
 					<div className="px-5 flex items-center justify-center bg-[#FF8451] rounded-full text-xl text-white">
 						3
 					</div>
-					<div className="w-3/6 flex-1 ml-2 items-start">
-						Denominate the USD fee in $IRYS using the $IRYS Token
-					</div>
+					<div className="w-3/6 flex-1 ml-2 items-start">Denominate the USD fee in the native token</div>
 					<div className="w-2/6 flex flex-col items-start">
-						<Latex>{`$$= \\frac{\\text{USD fee}}{\\text{\\$IRYS Token Price}}$$`}</Latex>
+						<Latex>{`$$= \\frac{\\text{USD fee}}{\\text{Native Token Price}}$$`}</Latex>
 						<Latex>{`$$= ${(storageCost * (storageRequested / 1024)).toFixed(
 							2,
 						)} \\div ${tokenPrice}$$`}</Latex>
 						<Latex>{`$$= ${((storageCost * (storageRequested / 1024)) / tokenPrice).toFixed(7)} = ${(
 							(storageCost * (storageRequested / 1024)) /
 							tokenPrice
-						).toFixed(2)} \\text{ \\$IRYS}$$`}</Latex>
+						).toFixed(2)} \\text{ Native Token}$$`}</Latex>
 					</div>
 				</div>
 
@@ -141,7 +140,7 @@ const UserFeeFormula: React.FC = () => {
 						)}$$`}</Latex>
 						<Latex>{`$$= ${(((storageCost * (storageRequested / 1024)) / tokenPrice) * 1.05).toFixed(
 							2,
-						)} \\text{ \\$IRYS}$$`}</Latex>
+						)} \\text{ Native Token}$$`}</Latex>
 					</div>
 				</div>
 			</div>

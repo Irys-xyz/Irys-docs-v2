@@ -52,7 +52,7 @@ const SimpleRiveViewer: React.FC<SimpleRiveViewerProps> = ({ src, width, height,
 		<div className="flex flex-col">
 			<div
 				ref={containerRef}
-				className="w-full flex justify-center"
+				className="w-full flex justify-center rounded-2xl"
 				style={{
 					height: "auto",
 					minHeight: `${componentDimensions.height || height}px`,

@@ -1,2 +1,17 @@
 # Custom Dictionary Words
+Bento
+Blocklane
+blocklanes
+Crowdsourced
+crowdsourcing
+datachain
+hashpower
+incentivized
+incentivizes
+nextra
 onchain
+rollups
+unpromoted
+unretrievable
+unsampled
+usecases
