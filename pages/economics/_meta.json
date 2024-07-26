@@ -1,6 +1,6 @@
 {
+	"treasury": "Treasury",
 	"pricing-model": "Pricing Model",
 	"pricing-model-calculator": "Pricing Model Calculator",
-	"token-price-approximation": "Token Price Approximation",
-	"treasury": "Treasury"
+	"token-price-approximation": "Token Price Approximation"
 }

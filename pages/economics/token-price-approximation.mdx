@@ -9,28 +9,34 @@ import { EmaTooltip } from "@/tooltips/Tooltips";
 
 # Token Price Approximation
 
+Irys' pricing model is updated annually to account for improvements (declines) in storage costs. The genesis block instantiates a pricing model with an annualized cost of storage, which serves as the basis for paying the future cost of storage. As each year passes, the expectation is to observe an improvement in the annualized cost of storage.
+
+Approximately once a year (measured in block height), miners will have a 2-week window (also measured in block heights) to post their annualized cost of storing a partition in the headers of the blocks they produce.
+
+At the end of this two-week interval, the median cost is chosen as the basis for the pricing model in the upcoming year. These adjustments prevent the protocol from relying on the genesis block's pricing model, which may significantly overcharge in future years due to built-in safety margins.
+
 Given the following Token Price Adjustment parameters:
 
-<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-200 mt-5">
+<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-700 mt-5">
 	<table className="min-w-full divide-y divide-gray-200 rounded-2xl">
 		<thead className="">
 			<tr>
-				<th className="px-4 py-2 text-left border border-gray-200">Parameter</th>
-				<th className="px-4 py-2 text-left border border-gray-200">Value</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Parameter</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Value</th>
 			</tr>
 		</thead>
 		<tbody className="divide-y divide-gray-200">
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">Block time</td>
-				<td className="px-4 py-2 border border-gray-200">~2min</td>
+				<td className="px-4 py-2 border border-gray-700">Block time</td>
+				<td className="px-4 py-2 border border-gray-700">~2min</td>
 			</tr>
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">Adjustment Interval</td>
-				<td className="px-4 py-2 border border-gray-200">10 blocks (~20 min)</td>
+				<td className="px-4 py-2 border border-gray-700">Adjustment Interval</td>
+				<td className="px-4 py-2 border border-gray-700">10 blocks (~20 min)</td>
 			</tr>
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">Genesis Token Price</td>
-				<td className="px-4 py-2 border border-gray-200">$1.00 (for example)</td>
+				<td className="px-4 py-2 border border-gray-700">Genesis Token Price</td>
+				<td className="px-4 py-2 border border-gray-700">$1.00 (for example)</td>
 			</tr>
 		</tbody>
 	</table>
@@ -59,10 +65,10 @@ The EMA can be calculated using the following formula:
 
 <div className="overflow-x-auto mx-1 rounded-2xl mt-5">
 	<div className="grid grid-cols-1 md:grid-cols-[1fr_6fr_6fr] gap-2">
-		<div className="col-span-1 md:col-span-3 px-4 py-2 border border-gray-200 rounded-2xl bg-slate-800 text-white">
+		<div className="col-span-1 md:col-span-3 px-4 py-2 border border-gray-700 rounded-2xl bg-slate-800 text-white">
 			<Latex>{`$$EMA_b = \\alpha \\cdot P_b + (1 - \\alpha) \\cdot EMA_{b-1}$$`}</Latex>
 		</div>
-		<div className="col-span-1 md:col-span-3 px-4 py-2 border border-gray-200 rounded-2xl flex flex-col items-start">
+		<div className="col-span-1 md:col-span-3 px-4 py-2 border border-gray-700 rounded-2xl flex flex-col items-start">
 			<div key="1" className="mt-2 flex items-center">
 				<Latex>{`$$EMA_b$$`}</Latex>
 				<span className="ml-1">= the Exponential Moving Average at block b.</span>
@@ -128,9 +134,3 @@ The pricing model gives a fixed feel for X amount of data in USD (based on the c
 For miners quoting a price to users for storage during the 3rd adjustment interval, they would take whatever price was higher between the E9 token price or the E19, so that even if a data storage transaction was posted in the 3rd Adjustment Interval it could still be confirmed in the 4th.
 
 This ability to know what the protocol's native token will be priced at in the next adjustment interval is what allows for stable pricing. Without this mechanism, any time the price adjusted up all pending transactions would be dropped because they were now under-funded.
-
-## Annualized Cost Adjustments
-
-Irys' pricing model is updated annually to account for improvements (declines) in storage costs. The genesis block instantiates a pricing model with an annualized cost of storage, which serves as the basis for paying the future cost of storage. As each year passes, the expectation is to observe an improvement in the annualized cost of storage.
-
-Approximately once a year (measured in block height), miners will have a 2-week window (also measured in block heights) to post their annualized cost of storing a partition in the headers of the blocks they produce. At the end of this two-week interval, the median cost is chosen as the basis for the pricing model in the upcoming year. These adjustments prevent the protocol from relying on the genesis block's pricing model, which may significantly overcharge in future years due to built-in safety margins.

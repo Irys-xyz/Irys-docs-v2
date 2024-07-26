@@ -41,7 +41,7 @@ const StoragePriceFormula: React.FC = () => {
 
 	return (
 		<div className="mt-5 w-full rounded-2xl">
-			<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-200 p-4 rounded-2xl">
+			<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-700 p-1 md:p-4 rounded-2xl">
 				<div className="col-span-3 px-4 py-2 bg-slate-800 rounded-xl text-white">
 					<Latex>{formula}</Latex>
 				</div>
@@ -56,13 +56,13 @@ const StoragePriceFormula: React.FC = () => {
 					<div className="w-1/3">
 						<button
 							onClick={() => setShowDetails(!showDetails)}
-							className="flex items-center bg-[#FF8451] text-white px-4 py-2 rounded-full"
+							className="flex items-center bg-[#FF8451] text-white px-2 md:px-4 py-2 rounded-full"
 						>
 							<FaArrowTurnDown className={`transition-transform ${showDetails ? "rotate-180" : ""}`} />
 							{showDetails ? (
-								<span className="ml-2">Hide Details</span>
+								<span className="ml-1">Hide Details</span>
 							) : (
-								<span className="ml-2">More Details</span>
+								<span className="ml-1">More Details</span>
 							)}
 						</button>
 					</div>

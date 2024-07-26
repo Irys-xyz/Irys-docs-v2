@@ -8,7 +8,7 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 # 2D Packing
 
-Packing adds cryptographic fingerprints to stored data, proving miners provide genuine, unique resources. This prevents adversarial claims of false storage capacity.
+Packing adds cryptographic fingerprints to stored data, proving miners provide unique resources. This prevents adversarial claims of false storage capacity.
 
 <div className="w-full flex justify-center">
 	<div className="w-full">
@@ -30,50 +30,50 @@ Irys introduces 2D Packing, a novel approach to data verification. This method e
 
 Here’s how it works:
 
-<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-200 mt-5">
+<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-700 mt-5">
 	<table className="min-w-full divide-y divide-gray-200 rounded-2xl">
 		<thead className="bg-slate-800 text-white">
 			<tr>
-				<th className="px-4 py-2 text-left border border-gray-200">Step</th>
-				<th className="px-4 py-2 text-left border border-gray-200">Name</th>
-				<th className="px-4 py-2 text-left border border-gray-200">Description</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Step</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Name</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Description</th>
 			</tr>
 		</thead>
 		<tbody className="divide-y divide-gray-200">
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">1</td>
-				<td className="px-4 py-2 border border-gray-200">Data Partitioning</td>
-				<td className="px-4 py-2 border border-gray-200">
+				<td className="px-4 py-2 border border-gray-700">1</td>
+				<td className="px-4 py-2 border border-gray-700">Data Partitioning</td>
+				<td className="px-4 py-2 border border-gray-700">
 					Data is logically partitioned into 16TB partitions, suitable for individual 16TB HDDs.
 				</td>
 			</tr>
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">2</td>
-				<td className="px-4 py-2 border border-gray-200">Chunk Division</td>
-				<td className="px-4 py-2 border border-gray-200">
+				<td className="px-4 py-2 border border-gray-700">2</td>
+				<td className="px-4 py-2 border border-gray-700">Chunk Division</td>
+				<td className="px-4 py-2 border border-gray-700">
 					Each partition is divided into 256KiB chunks, which are used during mining to produce hashes.
 				</td>
 			</tr>
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">3</td>
-				<td className="px-4 py-2 border border-gray-200">Segment Creation</td>
-				<td className="px-4 py-2 border border-gray-200">
+				<td className="px-4 py-2 border border-gray-700">3</td>
+				<td className="px-4 py-2 border border-gray-700">Segment Creation</td>
+				<td className="px-4 py-2 border border-gray-700">
 					Each 256KiB chunk is further divided into 32-byte segments containing packing entropy from a
 					SHA-256 hash.
 				</td>
 			</tr>
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">4</td>
-				<td className="px-4 py-2 border border-gray-200">Sequential Hashing</td>
-				<td className="px-4 py-2 border border-gray-200">
+				<td className="px-4 py-2 border border-gray-700">4</td>
+				<td className="px-4 py-2 border border-gray-700">Sequential Hashing</td>
+				<td className="px-4 py-2 border border-gray-700">
 					Segments are hashed sequentially; each segment's hash input is the output of the previous segment.
 					Sequential hashing establishes a minimum packing time by requiring 8,192 hashes per chunk.
 				</td>
 			</tr>
 			<tr>
-				<td className="px-4 py-2 border border-gray-200">5</td>
-				<td className="px-4 py-2 border border-gray-200">Layered Hashing</td>
-				<td className="px-4 py-2 border border-gray-200">
+				<td className="px-4 py-2 border border-gray-700">5</td>
+				<td className="px-4 py-2 border border-gray-700">Layered Hashing</td>
+				<td className="px-4 py-2 border border-gray-700">
 					Repeated sequential hashing creates multiple layers of segments, storing the final layer in the
 					chunk.
 				</td>
