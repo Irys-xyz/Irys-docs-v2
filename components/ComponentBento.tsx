@@ -33,9 +33,9 @@ const componentBentoData: ComponentBento[] = [
 		href: "/protocol/ledgers",
 	},
 	{
-		title: "IrysVM",
+		title: "Programmable Data",
 		description:
-			"The virtual machine enabling Programmable Data — the execution of onchain programs with full access to the data layer.",
+			"Irys’ EVM enables Programmable Data where smart contracts can access the entirety of onchain data.",
 		// image: "/diagrams/components/irys_docs_protocol_treasury.riv",
 		details: [],
 		href: "/overview/execution/programmable-data",
