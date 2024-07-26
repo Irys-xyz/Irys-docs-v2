@@ -24,7 +24,7 @@ const UserFeeFormula: React.FC = () => {
 	};
 
 	return (
-		<div className="mt-5">
+		<div className="mt-5 ">
 			<div className="flex flex-col border p-4">
 				<div className="flex justify-center px-4 py-2 rounded-xl text-white mb-4 ">
 					<table className="table-auto border border-gray-400 w-full">
