@@ -1,0 +1,44 @@
+---
+description:
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# Irys Protocol
+
+> Irys takes the stance that a storage protocol that can make commitments about the data uploaded to it is more useful than one that can’t.
+
+One of the key challenges in building a datachain where smart contracts can access the entirety of onchain data is ensuring that all network participants have access to the data needed to reliably reach consensus.
+
+When you upload data to Irys, the headers are included in the next block, and the actual data is uploaded to miners afterward. This approach supports data uploads of any size, as larger files may take longer than Irys' block time to upload.
+
+However, if the data is never uploaded, it can lead to problems. Smart contracts must be able to verify data in order to reliably come to consensus about the state of the chain.
+
+Irys addresses this challenge through a combination of innovations.
+
+## Multiple Data Ledgers
+
+Irys tracks uploaded transactions using multiple [ledgers](/protocol/ledgers) on a single blockchain.
+
+<img className="rounded-2xl my-5" src="/diagrams/protocol/submit-ledger.jpg" />
+
+- **Publish Ledger**: The [Publish Ledger](/protocol/ledgers#permanent-data-publish-ledger) contains only data provably uploaded to the network. This data can be used by smart contracts.
+- **Submit Ledger**: Transactions are first posted to the [Submit Ledger](/protocol/ledgers#term-data-ledgers), giving users a 5 epoch window to upload associated data. If the data isn’t posted during that time, the space reserved for it expires.
+
+<Callout type="info" emoji="💡">
+	Smart contracts can only access data stored on the Publish Ledger, not the Submit Ledger.
+</Callout>
+
+The Submit and Publish Ledgers enable Irys to make strong commitments about its permanent data. This dual-ledger system allows Irys to verify both the receipt and publishing of data, while also clearly identifying which peers are responsible for storing specific data.
+
+## Staking and Slashing
+
+Miners must stake native tokens when bringing a partition online.
+
+When smart contracts on Irys reference data in the permanent Publish Ledger, they can expect that data to be available. If data is missing, Irys' allows for the slashing of miners who fail to store data that was uploaded to the network. This is critical for aligning miner incentives around storage and execution and is what makes programmable data possible.
+
+## Proofs of Custody
+
+Irys uses proofs of custody to ensure miners are actually storing the data they claim to have. This provides verifiability and accountability within the network.
+
+When a user wants to store data permanently, they post their transaction headers to the Submit Ledger. They then have until the Submit ledger expires to upload the associated data. Once the data is uploaded, miners share it and post proofs to each other to confirm receipt. After enough proofs have been collected, the miner creating the next block will promote the transaction from the Submit Ledger to the Publish Ledger. This promotion includes the collected proofs of storage, allowing miners to retrieve the permanent data if they do not already have it.
