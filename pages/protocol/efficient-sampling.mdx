@@ -12,10 +12,10 @@ Efficient Sampling is Irys' method for reading data from packed partitions and g
 
 This approach offers several benefits:
 
-- Cost-effective mining
-- Low barriers to entry
-- Increased miner profitability
-- Lower fees for users
+- Cost-effective mining.
+- Low barriers to entry.
+- Increased miner profitability.
+- Lower fees for users.
 
 Efficient Sampling allows the use of economical HDD hardware, maximizing the use of drive capacity. This makes mining accessible to a wider range of participants, lowering the barriers to entry. By making more efficient use of resources, miners experience increased profitability. Additionally, users benefit from lower fees due to reduced mining costs and benefit from a diverse network of miners.
 
@@ -24,26 +24,55 @@ Efficient Sampling allows the use of economical HDD hardware, maximizing the use
 	overlapping reads and inefficient coverage.
 </Callout>
 
-Efficient Sampling ensures complete coverage without overlaps, allowing for faster and more efficient sampling of large drives. Here’s how it works:
+Efficient Sampling ensures complete coverage without overlaps, allowing for faster and more efficient sampling of large drives.
 
-<div className="flex flex-row gap-5 items-start justify-start mt-10">
-	<div>
-		<Image
-			src="/diagrams/protocol/efficient-sampling.png"
-			alt="Efficient Sampling Diagram"
-			width={800}
-			height={600}
-			className="w-full h-auto"
-		/>
-	</div>
-	<div className="mt-4">
-		<ol className="list-decimal list-inside text-base">
-			<li>Divides the partition into 200MB ranges.</li>
-			<li>Creates a list of "unsampled ranges".</li>
-			<li>Randomly selects a range from the unsampled list for mining.</li>
-			<li>Moves the sampled range to a "sampled ranges" list.</li>
-			<li>Repeats until all ranges are sampled.</li>
-			<li>Swaps the sampled and unsampled lists to restart the process.</li>
-		</ol>
-	</div>
+Here’s how it works:
+
+<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-700 mt-5">
+	<table className="min-w-full divide-y divide-gray-200 rounded-2xl">
+		<thead className="bg-slate-800 text-white">
+			<tr>
+				<th className="px-4 py-2 text-left border border-gray-700">Step</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Description</th>
+			</tr>
+		</thead>
+		<tbody className="divide-y divide-gray-200">
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">1</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Divides the partition into 200MB ranges.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">2</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Creates a list of "unsampled ranges".
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">3</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Randomly selects a range from the unsampled list for mining.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">4</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Moves the sampled range to a "sampled ranges" list.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">5</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Repeats until all ranges are sampled.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">6</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Swaps the sampled and unsampled lists to restart the process.
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

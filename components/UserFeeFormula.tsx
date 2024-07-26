@@ -27,7 +27,7 @@ const UserFeeFormula: React.FC = () => {
 		<div className="mt-5 ">
 			<div className="flex flex-col border p-2 rounded-2xl">
 				<div className="flex justify-center px-2 py-2 mb-4 ">
-					<table className="table-auto md:border md:border-gray-200 w-full md:rounded-2xl">
+					<table className="table-auto md:border md:border-gray-700 w-full md:rounded-2xl">
 						<thead>
 							<tr className="bg-slate-800 text-white ">
 								<th className="md:border px-4 py-2">Parameter</th>

@@ -41,7 +41,7 @@ const StoragePriceFormula: React.FC = () => {
 
 	return (
 		<div className="mt-5 w-full rounded-2xl">
-			<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-200 p-1 md:p-4 rounded-2xl">
+			<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-700 p-1 md:p-4 rounded-2xl">
 				<div className="col-span-3 px-4 py-2 bg-slate-800 rounded-xl text-white">
 					<Latex>{formula}</Latex>
 				</div>
