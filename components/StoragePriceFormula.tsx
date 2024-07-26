@@ -40,12 +40,12 @@ const StoragePriceFormula: React.FC = () => {
 	const [showDetails, setShowDetails] = useState(false);
 
 	return (
-		<div className="mt-5 w-full">
-			<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-400 p-4">
+		<div className="mt-5 w-full rounded-2xl">
+			<div className="grid grid-cols-[1fr_6fr_6fr] gap-2 border border-gray-200 p-4 rounded-2xl">
 				<div className="col-span-3 px-4 py-2 bg-slate-800 rounded-xl text-white">
 					<Latex>{formula}</Latex>
 				</div>
-				<div className="col-span-3 px-4 py-2 text-white flex flex-row items-end">
+				<div className="col-span-3 px-4 py-2  flex flex-row items-end">
 					<div className="w-2/3">
 						{givens.map((given, index) => (
 							<div key={index} className="mt-2">

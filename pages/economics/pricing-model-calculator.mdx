@@ -11,12 +11,36 @@ import UserFeeFormula from "@/components/UserFeeFormula";
 
 Given the following pricing parameters:
 
-| Parameter                        | Value     |
-| -------------------------------- | --------- |
-| Annualized Storage Cost (per GB) | $0.01     |
-| Number of Replicas               | 10        |
-| Safe Minimum Time                | 200 years |
-| Decay Rate                       | 1%        |
+<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-200 mt-5">
+	<table className="min-w-full divide-y divide-gray-200 rounded-2xl">
+		<thead className="bg-slate-800 text-white">
+			<tr>
+				<th className="px-4 py-2 text-left border border-gray-200">Parameter</th>
+				<th className="px-4 py-2 text-left border border-gray-200">Value</th>
+			</tr>
+		</thead>
+		<tbody className="divide-y divide-gray-200">
+			<tr>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">
+					Annualized Storage Cost (per GB)
+				</td>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">$0.01</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">Number of Replicas</td>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">10</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">Safe Minimum Time</td>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">200 years</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">Decay Rate</td>
+				<td className="px-4 py-2 whitespace-nowrap border border-gray-200">1%</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 This is how to calculate the price of storage in USD:
 
