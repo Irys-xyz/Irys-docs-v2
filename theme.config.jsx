@@ -38,9 +38,8 @@ const FooterWrapper = () => {
 const iconMapping = {
 	"what-is-irys": <MdOutlineQuestionMark color="#ff8451" />,
 	"pow-+-staking": <MdOutlineBlurOn color="#ff8451" />,
-	architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
 	treasury: <MdOutlineAccountBalance color="#ff8451" />,
-	mining: <MdBlurLinear color="#ff8451" />,
+	"mining-requirements": <MdBlurLinear color="#ff8451" />,
 	"use-cases": <MdOutlineDescription color="#ff8451" />,
 	verifiability: <MdOutlineVerified color="#ff8451" />,
 	"protocol-overview": <MdOutlineStorage color="#ff8451" />,
@@ -56,6 +55,8 @@ const iconMapping = {
 	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
 	"token-price-approximation": <MdAutoGraph color="#ff8451" />,
 };
+
+//architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
 
 export default {
 	nextThemes: {

@@ -1,10 +1,7 @@
 {
 	"protocol-overview": "Protocol Overview",
-	"architecture": "Architecture",
-	"ledgers": "Ledgers",
 	"partitions": "Partitions",
+	"ledgers": "Ledgers",
 	"transactions": "Transactions",
-	"2d-packing": "2D Packing",
-	"efficient-sampling": "Efficient Sampling",
-	"provable-storage-OLD": "Provable storage (DEPRECATED)"
+	"pows": "PoW + Staking"
 }

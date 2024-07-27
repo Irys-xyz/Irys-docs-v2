@@ -10,27 +10,29 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 # Partitions
 
-Partitions are the fundamental building blocks of Irys’ [data ledgers](./ledgers). With them, the protocol can control many factors, including:
+Partitions are the fundamental building blocks of Irys’ [data ledgers](./ledgers), enabling control and optimization of the network. This approach allows for:
 
-- Controlling the number of replicas incentivized for every ledger index.
-- Controlling the total number of mineable partitions (both data and capacity).
-- Managing data distribution in a way that is verifiable.
-- Rewarding miners for storing data reliably.
-- Onboarding a specific amount of capacity to meet the near future needs of the network.
-
-<img className="rounded-2xl my-5" src="/diagrams/protocol/publish-ledger.jpg" />
+- Control over data replication.
+- Scaling minable partitions (both data and capacity).
+- Verifiable data distribution.
+- Performance-based miner rewards.
+- Adaptive network capacity scaling.
 
 All of these are efficiencies that allow Irys to account for and control it’s storage liabilities. This leads to efficient pricing that is passed on to users.
 
 ## Partitions & Ledgers
 
+<img className="rounded-2xl my-5" src="/diagrams/protocol/partition-ledger.jpg" />
+
 - A data ledger is composed of a sequence of partitions that fill up as data is added.
 - As the ledger grows, more ledger indexes are added to store new data.
 - Multiple partitions reside at each index in the ledger, replicating the data.
 
-As miners come and go from the network, their partitions come and go with them. If this was a high-frequency occurrence, data would be constantly shuffled around to backfill the departing ledgers. To combat this, the protocol requires miners to make economic commitments to store data. If they fail to do this, they risk losing the tokens they staked to participate.
+The network maintains stability through economic incentives. Miners make financial commitments to store data, discouraging frequent departures. This approach prevents constant data reshuffling and ensures consistent availability. By tying miners' economic interests to network performance, the protocol creates a resilient system where data remains secure and accessible. Miners who fail to uphold their commitments risk losing their stake, further reinforcing network reliability.
 
-By having miners commit to partitions and the protocol arranging those partitions into ledgers, Irys has the flexibility to define multiple data ledgers, each with its own storage term. At launch, we will have [two ledgers](/protocol/ledgers), one permanent and one temporary.
+By enabling miners to commit to specific partitions, the protocol organizes these [partitions](/protocol/partitions) into distinct [ledgers](/protocol/ledgers), offering unparalleled flexibility.
+
+This approach allows for multiple data ledgers, each tailored to different storage needs. At launch, there will be two ledgers: a [Permanent Ledger](/protocol/ledgers#permanent-data-publish-ledger) for long-term, immutable storage and a [Temporary Ledger](/protocol/ledgers#term-data-ledgers) for short-term, flexible storage solutions. This provides the ability to manage data seamlessly, catering to unique requirements.
 
 ## Capacity Partitions
 
