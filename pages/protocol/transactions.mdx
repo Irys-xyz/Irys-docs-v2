@@ -6,20 +6,39 @@ description:
 
 Irys supports three transaction types:
 
-- Value transfers
-- Data transactions
-- Execution transactions
+<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-700 mt-5">
+	<table className="min-w-full divide-y divide-gray-200 rounded-2xl">
+		<thead className="bg-slate-800 text-white">
+			<tr>
+				<th className="px-4 py-2 text-left border border-gray-700">Name</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Description</th>
+			</tr>
+		</thead>
+		<tbody className="divide-y divide-gray-200">
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">Value Transfers</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+						Transfers native tokens from one wallet to another.
+				</td>
+			</tr>
 
-## Value Transfers
+    		<tr>
+    			<td className="px-4 py-2 border border-gray-700 align-top">Data Transactions</td>
+    			<td className="px-4 py-2 border border-gray-700 align-top">
+    				Stores data on any of Irys' [ledgers](/protocol/ledgers). These transactions include properties about the data to be stored, and a single upfront payment covering the storage term.
+    			</td>
+    		</tr>
 
-Transfers native tokens from one wallet to another. These transactions are very similar to those you would see on Bitcoin or Ethereum.
+    		<tr>
+    			<td className="px-4 py-2 border border-gray-700 align-top">Execution Transactions</td>
+    			<td className="px-4 py-2 border border-gray-700 align-top">
+    					Smart contract execution. Like Ethereum, there is a maximum amount of compute that can be performed in each block. Users pay gas fees to purchase this compute, which also protects the network from spam attacks.
 
-## Data Transactions
+    					Execution transactions can access onchain data stored by data transactions. The verifiable nature of Irys' data allows it to be read and used in smart contract calls, providing developers with cheap state. This lowers onchain interaction costs and enables new usecases previously inaccessible due to high state storage costs.
+    			</td>
+    		</tr>
 
-Stores data on any of Irys' [ledgers](/protocol/ledgers). These transactions include properties about the data to be stored, and a single upfront payment covering the storage term.
+    	</tbody>
+    </table>
 
-## Execution Transactions
-
-Smart contract execution. Like Ethereum, there is a maximum amount of compute that can be performed in each block. Users pay gas fees to purchase this compute, which also protects the network from spam attacks.
-
-Execution transactions can access onchain data stored by data transactions. The verifiable nature of Irys' data allows it to be read and used in smart contract calls, providing developers with cheap state. This lowers onchain interaction costs and enables new usecases previously inaccessible due to high state storage costs.
+</div>
