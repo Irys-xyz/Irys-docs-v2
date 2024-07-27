@@ -53,7 +53,7 @@ const iconMapping = {
 	"programmable-data": <MdDataObject color="#ff8451" />,
 	"pricing-model": <MdOutlineMonetizationOn color="#ff8451" />,
 	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
-	"token-price-approximation": <MdAutoGraph color="#ff8451" />,
+	"price-approximation": <MdAutoGraph color="#ff8451" />,
 };
 
 //architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
