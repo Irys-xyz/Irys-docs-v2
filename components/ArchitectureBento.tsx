@@ -17,7 +17,7 @@ const bentoData: Bento[] = [
 		description: "Enables economical storage scaling with a 24-hour sampling window for 16TB HDDs.",
 		image: "",
 		stateMachine: "",
-		href: "/protocol/efficient-sampling",
+		href: "/architecture/efficient-sampling",
 	},
 	{
 		title: "Fast 2D Packing",
@@ -25,7 +25,7 @@ const bentoData: Bento[] = [
 			"Combined with staked mining addresses, enables incentive-compatible packing that scales horizontally, reduces packing costs, and increases the network's ability to ingest data.",
 		image: "/diagrams/architecture/irys-docs-fast-2d-packing.riv",
 		stateMachine: "2D-Packing",
-		href: "/protocol/2d-packing",
+		href: "/architecture/2d-packing",
 	},
 	{
 		title: "Capacity Mining",

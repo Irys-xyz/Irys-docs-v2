@@ -138,7 +138,7 @@ const NotFound = (props: Props) => {
 				},
 				{ title: "Storage Incentives", href: "/overview/storage-incentives" },
 				{ title: "Treasury", href: "/overview/treasury" },
-				{ title: "Mining", href: "/overview/mining" },
+				{ title: "Mining", href: "/architecture/mining-requirements" },
 			],
 		},
 		{
@@ -148,7 +148,7 @@ const NotFound = (props: Props) => {
 				{ title: "Provable storage", href: "/protocol/provable-storage" },
 				{ title: "Partitions", href: "/protocol/partitions" },
 				{ title: "Transactions", href: "/protocol/transactions" },
-				{ title: "Packing", href: "/protocol/2d-packing" },
+				{ title: "Packing", href: "/architecture/2d-packing" },
 				{ title: "Ledgers", href: "/protocol/ledgers" },
 			],
 		},
