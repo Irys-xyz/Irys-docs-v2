@@ -53,7 +53,7 @@ const Footer = (props: Props) => {
 	return (
 		<footer className="max-w-[1392px] flex flex-col gap-28 my-20 px-7 md:px-0 mx-auto pb-10 -mb-10">
 			<div className="grid grid-cols-12 text-white light gap-y-20">
-				<div className="md:col-span-4 lg:col-span-4 col-span-12">
+				<div className="md:col-span-4 lg:col-span-4 col-span-12 ml-5">
 					<Image src={SvgIrysLogo} alt="Irys Logo" width={99} />
 				</div>
 				{OPTIONS.map((option) => (
