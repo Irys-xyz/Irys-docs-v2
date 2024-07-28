@@ -36,6 +36,8 @@ This approach allows for multiple data ledgers, each tailored to different stora
 
 ## Capacity Partitions
 
+<img className="rounded-2xl my-5" src="/diagrams/protocol/capacity-partitions.jpg" />
+
 > Where do partitions come from, and how are they associated with a ledger?
 
 Irys measures the amount of data uploaded and then uses it to predict the number of partitions needed in the immediate future. These standby partitions do not contain any data (yet) and are referred to as Capacity Partitions. Miners mine empty capacity partitions, enabling them earn rewards. The protocol keeps these Capacity Partitions on standby and uses them to add storage capacity to Irys' data ledgers based on realtime user demand.
