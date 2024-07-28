@@ -13,7 +13,7 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 Partitions are the fundamental building blocks of Irys’ [data ledgers](./ledgers), enabling control and optimization of the network. This approach allows for:
 
 - Control over data replication.
-- Scaling minable partitions (both data and capacity).
+- Scaling data storage.
 - Verifiable data distribution.
 - Performance-based miner rewards.
 - Adaptive network capacity scaling.
@@ -26,7 +26,7 @@ All of these are efficiencies that allow Irys to account for and control it’s 
 
 - A data ledger is composed of a sequence of partitions that fill up as data is added.
 - As the ledger grows, more ledger indexes are added to store new data.
-- Multiple partitions reside at each index in the ledger, replicating the data.
+- Multiple partitions reside at each index in the ledger, replicating the data and ensuring fault-tolerance.
 
 The network maintains stability through economic incentives. Miners make financial commitments to store data, discouraging frequent departures. This approach prevents constant data reshuffling and ensures consistent availability. By tying miners' economic interests to network performance, the protocol creates a resilient system where data remains secure and accessible. Miners who fail to uphold their commitments risk losing their stake, further reinforcing network reliability.
 
@@ -38,7 +38,7 @@ This approach allows for multiple data ledgers, each tailored to different stora
 
 > Where do partitions come from, and how are they associated with a ledger?
 
-Irys measures the amount of data uploaded and then uses it to project the number of partitions needed on standby. These standby partitions do not contain any data (yet) and are referred to as Capacity Partitions. Miners mine empty capacity partitions, enabling them earn rewards. The protocol keeps these Capacity Partitions on "standby" and uses them to add storage capacity to Irys' data ledgers based on realtime user demand.
+Irys measures the amount of data uploaded and then uses it to predict the number of partitions needed in the immediate future. These standby partitions do not contain any data (yet) and are referred to as Capacity Partitions. Miners mine empty capacity partitions, enabling them earn rewards. The protocol keeps these Capacity Partitions on standby and uses them to add storage capacity to Irys' data ledgers based on realtime user demand.
 
 ## Partition Lifecycle
 
