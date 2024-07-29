@@ -20,8 +20,6 @@ Programmable Data unleashes developer creativity and enables new use cases previ
 
 ## Installation
 
-To get started with the Irys documentation site, follow these steps:
-
 1. **Clone the repository:**
 
    ```bash
