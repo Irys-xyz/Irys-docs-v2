@@ -6,6 +6,10 @@ body {
 	background: black;
 }
 
+.nx-p-0\.5 {
+	visibility: hidden;
+}
+
 @keyframes lineDrawToRight {
 	0% {
 		width: 0;
