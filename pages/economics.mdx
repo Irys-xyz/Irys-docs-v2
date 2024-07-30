@@ -1,35 +1,32 @@
+---
+description: Irys’s economic model is designed to ensure users and builders pay only for what they use.
+---
+
+import SimpleRiveViewer from "/components/SimpleRiveViewer";
+
 # Economics
 
-Irys’s economic model is designed to ensure users and builders pay only for what they use. By leveraging an advanced storage layer and [multiple data ledgers](/protocol/ledgers), users pay a fixed, predictable price for storage that meets their specific needs. This approach separates storage costs from execution layer security costs, offering more flexibility and cost-effectiveness.
+Irys’s economic model is designed to ensure users and builders pay only for what they use. By leveraging an advanced storage layer and [multiple data ledgers](/protocol/ledgers), users pay a
+fixed, predictable price for storage that meets their specific needs. This approach separates storage costs from execution layer security costs, offering more flexibility and cost-effectiveness.
 
 ## Storage Fees
 
-### Stable Fee Pricing
+Storage fees cover the cost of data storage for both permanent and temporary data.
 
-Irys offers stable storage fees, allowing projects and builders to reliably anticipate and budget their operating costs. Fees are based on the fixed costs of mining a partition for one year, accounting drive costs, power consumption, and other operational expenses. This results in a specific annual dollar amount for mining costs, forming the baseline for network fees.
+    - **Stable Fee Pricing**: Irys offers stable storage fees, allowing projects and builders to reliably anticipate and budget their operating costs. Fees are based on the fixed costs of mining a partition for one year, accounting drive costs, power consumption, and other operational expenses. This results in a specific annual dollar amount for mining costs, forming the baseline for network fees.
 
-### Pay-for-What-You-Use
+    - **Pay-for-What-You-Use**: Whether it’s permanent or temporary data, users of Irys only pay for the storage they use. Storage fees are paid as a single upfront payment for the specified duration. Users do not need to pay for the security of financial transactions if only storing data.
 
-Whether it’s permanent or temporary data, users of Irys only pay for the storage they use. Storage fees are paid as a single upfront payment for the specified duration. Users do not need to pay for the security of financial transactions if only storing data.
+    - **Pricing Model Updates**: Irys incorporates a mechanism to update its pricing model, ensuring it remains aligned with market conditions and technological advancements. This allows the protocol to adjust for various scenarios in storage costs over time, relying on consensus to maintain fairness and stability.
 
-### Pricing Model Updates
-
-Irys incorporates a mechanism to update its pricing model, ensuring it remains aligned with market conditions and technological advancements. This allows the protocol to adjust for various scenarios in storage costs over time, relying on consensus to maintain fairness and stability.
-
-### Token Price Approximation
-
-This mechanism ensures stable storage pricing in fiat terms, despite the potential volatility of the native token. This mechanism tracks the USD/native token exchange rate at the block production level; the protocol maintains consistent USD-equivalent storage costs for users, accommodating fluctuations in the token's market price.
+    - **Token Price Approximation**: This mechanism ensures stable storage pricing in fiat terms, despite the potential volatility of the native token. This mechanism tracks the USD/native token exchange rate at the block production level; the protocol maintains consistent USD-equivalent storage costs for users, accommodating fluctuations in the token's market price.
 
 ## Compute Fees
 
-### Usage-Based Pricing
+Compute fees cover gas costs paid when executing smart contracts and interacting with programmable data.
 
-Irys users pay only for the computational resources they use. Unlike the scalable storage layer, the execution layer offers a fixed amount of computation available per block, secured by consensus.
+    - **Usage-Based Pricing**: Irys users pay only for the computational resources they use. Unlike the scalable storage layer, the execution layer offers a fixed amount of computation available per block, secured by consensus.
 
-### Demand-Based Pricing
+    - **Demand-Based Pricing**: The [IrysVM](/why-build-on-irys/irysvm) manages available compute resources by dynamically adjusting fees. When demand is high, compute fees increase; when resources are abundant, fees decrease to a fixed baseline cost.
 
-The [IrysVM](/why-build-on-irys/irysvm) manages available compute resources by dynamically adjusting fees. When demand is high, compute fees increase; when resources are abundant, fees decrease to a fixed baseline cost.
-
-### Programmable Data Pricing
-
-There's a limit to the amount of onchain data that can be transferred between miners each block for verification and use in computation as Programmable Data. Users pay fees based on the volume of programmable data they reference in their smart contract executions.
+    - **Programmable Data Pricing**: There's a limit to the amount of onchain data that can be transferred between miners each block for verification and use in computation as Programmable Data. Users pay fees based on the volume of programmable data they reference in their smart contract executions.
