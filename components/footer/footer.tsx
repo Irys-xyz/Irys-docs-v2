@@ -19,15 +19,15 @@ const Footer = (props: Props) => {
 			items: [
 				{
 					title: "What is Irys?",
-					href: "/overview/what-is-irys",
+					href: "/learn-about-irys/what-is-irys",
 				},
 				{
-					title: "Storage",
-					href: "/overview/storage",
+					title: "What is A Datachain?",
+					href: "/learn-about-irys/what-is-datachain",
 				},
 				{
-					title: "Programmable Data",
-					href: "/overview/execution/programmable-data",
+					title: "Build With Us!",
+					href: "/build-with-us",
 				},
 			],
 		},
