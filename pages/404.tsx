@@ -77,13 +77,31 @@ const NotFound = (props: Props) => {
 
 	const irysProtocol: Section[] = [
 		{
-			title: "OVERVIEW",
+			title: "LEARN ABOUT IRYS",
 			css: "row-span-6",
 			items: [
-				{ title: "What Is Irys?", href: "/overview/what-is-irys" },
-				{ title: "Storage", href: "/overview/storage" },
-				{ title: "Programmable Data", href: "/overview/execution/programmable-data" },
-				{ title: "Verifiability", href: "/overview/execution/verifiability" },
+				{ title: "What Is Irys?", href: "/learn-about-irys/what-is-irys" },
+				{ title: "What Is a Datachain", href: "/learn-about-irys/what-is-datachain" },
+				{ title: "Why Irys Exists", href: "/learn-about-irys/why-irys-exists" },
+				{ title: "How Irys Solves These Problems", href: "/learn-about-irys/problems-solved" },
+			],
+		},
+		{
+			title: "WHY BUILD ON IRYS",
+			css: "row-span-6",
+			items: [
+				{ title: "Programmable Data", href: "/why-build-on-irys/programmable-data" },
+				{ title: "Verifiability", href: "/why-build-on-irys/verifiability" },
+				{ title: "IrysVM", href: "/why-build-on-irys/irysvm" },
+			],
+		},
+		{
+			title: "MINING ON IRYS",
+			css: "row-span-6",
+			items: [
+				{ title: "Running a Node", href: "/mining-on-irys/running-a-node" },
+				{ title: "2D Packing", href: "/mining-on-irys/2d-packing" },
+				{ title: "Efficient Sampling", href: "/mining-on-irys/efficient-sampling" },
 			],
 		},
 		{
@@ -94,26 +112,8 @@ const NotFound = (props: Props) => {
 				{ title: "Partitions", href: "/protocol/partitions" },
 				{ title: "Ledgers", href: "/protocol/ledgers" },
 				{ title: "Transactions", href: "/protocol/transactions" },
-				{ title: "PoW + Staking", href: "/protocol/pows" },
-			],
-		},
-		{
-			title: "ARCHITECTURE",
-			css: "row-span-6",
-			items: [
-				{ title: "2D Packing", href: "/architecture/2d-packing" },
-				{ title: "Efficient Sampling", href: "/architecture/efficient-sampling" },
-				{ title: "Mining Requirements", href: "/architecture/mining-requirements" },
-			],
-		},
-		{
-			title: "ECONOMICS",
-			css: "row-span-6",
-			items: [
-				{ title: "Treasury", href: "/economics/treasury" },
-				{ title: "Pricing Model", href: "/economics/pricing-model" },
-				{ title: "Pricing Model Calculator", href: "/economics/pricing-model-calculator" },
-				{ title: "Price Approximation", href: "/overview/foo" },
+				{ title: "Proof of Work + Staking", href: "/protocol/pows" },
+				{ title: "Fast Finality", href: "/protocol/fast-finality" },
 			],
 		},
 	];
