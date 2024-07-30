@@ -89,7 +89,7 @@ const ComponentBento: React.FC = () => {
 					)}
 					<p className="text-base font-light">{bento.description}</p>
 					{bento.details.length > 0 && (
-						<ul className="list-disc list-inside text-base font-light mt-2">
+						<ul className="list-disc text-base font-light mt-1 ml-5">
 							{bento.details.map((detail, index) => (
 								<li key={index}>{detail}</li>
 							))}
