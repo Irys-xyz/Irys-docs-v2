@@ -1,25 +1,13 @@
 ---
-description:
+description: Irys supports three transactions types value transfers, data transactions, and execution transactions.
 ---
 
-# Transaction Types
+# Transactions
 
-Irys supports three transaction types:
+Irys utilizes two separate blocklanes for transactions: one for storage and one for execution. This separation allows for optimized pricing based on the specific resources users interact with.
 
-- Value transfers
-- Data transactions
-- Execution transactions
+- **Value Transfers**: The simplest transaction type on Irys, moving tokens between account addresses.
 
-## Value Transfers
+- **Data Transactions**: These transactions write directly to Irys' advanced storage layer, leveraging multiple data ledgers for permanent or fixed-term storage. Storage fees are stable, charged upfront as a one-time payment, with users [paying only for their actual usage](/economics).
 
-Transfers native tokens from one wallet to another. These transactions are very similar to those you would see on Bitcoin or Ethereum.
-
-## Data Transactions
-
-Stores data on any of Irys' [ledgers](/protocol/ledgers). These transactions include properties about the data to be stored, and a single upfront payment covering the storage term.
-
-## Execution Transactions
-
-Smart contract execution. Like Ethereum, there is a maximum amount of compute that can be performed in each block. Users pay gas fees to purchase this compute, which also protects the network from spam attacks.
-
-Execution transactions can access onchain data stored by data transactions. The verifiable nature of Irys' data allows it to be read and used in smart contract calls, providing developers with cheap state. This lowers onchain interaction costs and enables new usecases previously inaccessible due to high state storage costs.
+- **Compute Transactions**: These interact with onchain programs in Irys' execution layer, backed by IrysVM and secured by consensus. Users pay for the amount of computation used. When the execution blocklane reaches capacity, fees increase to match demand.

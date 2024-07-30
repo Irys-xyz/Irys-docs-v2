@@ -1,0 +1,57 @@
+---
+description: The IrysVM goes beyond standard EVM functionality by providing integrated access to Irys’s storage capabilities.
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
+# IrysVM
+
+The Irys Virtual Machine (IrysVM) is a core component of the Irys blockchain, designed to provide a
+seamless and powerful environment for developers to build fully decentralized applications.
+
+<div className="w-full mt-5 flex justify-center items-center bg-[#222222] rounded-xl">
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/irysvm.riv"
+			width={1920}
+			height={1080}
+			stateMachine="IrysVM"
+		/>
+	</div>
+</div>
+
+As a fork of the Ethereum Virtual Machine (EVM), IrysVM leverages the unique capabilities of the Irys blockchain by integrating access to its advanced storage layer, unlocking the potential for Programmable Data.
+
+## Key Features
+
+- **Extended EVM Compatibility**:<br/>
+  The IrysVM maintains full compatibility with existing Ethereum smart contracts and development tools. Builders can deploy contracts and use familiar tooling, ensuring a smooth transition to the Irys ecosystem.
+
+  <br />
+
+- **Access to Irys’s Storage Layer**:<br/>
+  The IrysVM goes beyond standard EVM functionality by providing integrated access to Irys’s storage capabilities. This enables developers to store, manage, and utilize data more effectively within their decentralized applications.
+
+  <br />
+
+- **Programmable Data**:<br/>
+  The IrysVM allows for smart contracts to directly interact with stored data. This reduces complexity, enhances application performance, and lowers associated costs.
+
+## Current Development Stage
+
+As the IrysVM is in early development stages, it represents a promising frontier in blockchain development. The combination of storage and execution opens exciting possibilities for diverse execution models:
+
+- **Deferred Validation**:<br/>
+  Transaction sequences posted to the storage layer, periodically validated by smart contracts using Programmable Data.
+
+  <br />
+
+- **Off-chain Computation**:<br/>
+  Architectures that perform calculations off-chain, posting snapshots for onchain verification by Irys smart contracts with data layer access.
+
+  <br />
+
+- **Flexible Execution Models**:<br/>
+  Potential for various execution strategies tailored to specific application needs. This includes being able to execute any arbitrary WASM-compiled code.
+
+These approaches aim to enhance scalability, efficiency, and flexibility for decentralized applications. Continuous refinement and optimization are ongoing, with more details to be revealed in upcoming Irys Improvement Proposals. Stay tuned for further developments in this evolving blockchain ecosystem.

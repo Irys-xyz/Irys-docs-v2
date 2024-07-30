@@ -1,0 +1,23 @@
+---
+description: Irys enables smart contracts to access all onchain data, ensuring reliable consensus through innovations like efficient sampling, fast 2D packing, and capacity mining.
+---
+
+import { Callout } from "nextra-theme-docs";
+import ArchitectureBento from "/components/ArchitectureBento";
+import ComponentBento from "/components/ComponentBento";
+
+# Protocol Overview
+
+Irys enables smart contracts to reliably access the entirety of onchain data, ensuring all network participants have the data needed to reach consensus. One of the key challenges is maintaining access to this data for all participants.
+
+Irys operates on the principle that a storage protocol capable of making commitments about the data uploaded to it is more useful than one that cannot. When data is uploaded to Irys, the headers are included in the next block, and the actual data is uploaded to miners afterward. This method maintains network efficiency while supporting large data uploads.
+
+However, separating headers from data can create permanent gaps in the ledger if the promised data is not uploaded, leading to cascading issues throughout the system.
+
+Irys addresses these challenges through a combination of innovative designs:
+
+<ArchitectureBento />
+
+## Components
+
+<ComponentBento />

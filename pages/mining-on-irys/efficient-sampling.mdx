@@ -1,0 +1,93 @@
+---
+description: Irys's Efficient Sampling ensures fast, cost-effective sampling of packed partitions. It lowers entry barriers, increases miner profitability, and reduces user fees.
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+import { Callout } from "nextra-theme-docs";
+import Image from "next/image";
+
+# Efficient Sampling
+
+Efficient Sampling is Irys' method for reading data from packed partitions and generating proofs. It complements the [2D Packing](/architecture/2d-packing) used to prepare storage partitions.
+
+<div className="flex flex-col md:flex-row w-full flex justify-start items-center mt-5">
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/efficient-sampling.riv"
+			width={1920}
+			height={1080}
+			stateMachine="EfficientSampling"
+		/>
+	</div>
+	<div className="w-full md:w-1/2">
+		<div className="p-4">
+			<p className="mb-2">This approach offers several benefits:</p>
+			<ul className="list-disc list-inside">
+				<li>Cost-effective mining.</li>
+				<li>Low barriers to entry.</li>
+				<li>Increased miner profitability.</li>
+				<li>Lower fees for users.</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+Efficient Sampling allows the use of economical HDD hardware, maximizing the use of drive capacity. This makes mining accessible to a wider range of participants, lowering barriers to entry. By making efficient use of resources, miners experience increased profitability. Additionally, users benefit from lower fees due to reduced mining costs and benefit from a diverse network of miners.
+
+<Callout type="info" emoji="💡">
+	Efficient Sampling can sample a 16 TB partition faster than Random Sampling which is plagued by
+	overlapping reads and inefficient coverage.
+</Callout>
+
+Efficient Sampling ensures complete coverage without overlaps, allowing for faster and more efficient sampling of large drives.
+
+Here’s how it works:
+
+<div className="overflow-x-auto mx-1 rounded-2xl border border-gray-700 mt-5">
+	<table className="min-w-full divide-y divide-gray-200 rounded-2xl">
+		<thead className="bg-slate-800 text-white">
+			<tr>
+				<th className="px-4 py-2 text-left border border-gray-700">Step</th>
+				<th className="px-4 py-2 text-left border border-gray-700">Description</th>
+			</tr>
+		</thead>
+		<tbody className="divide-y divide-gray-200">
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">1</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Divides the partition into 200MB ranges.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">2</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Creates a list of "unsampled ranges".
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">3</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Randomly selects a range from the unsampled list for mining.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">4</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Moves the sampled range to a "sampled ranges" list.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">5</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Repeats until all ranges are sampled.
+				</td>
+			</tr>
+			<tr>
+				<td className="px-4 py-2 border border-gray-700 align-top">6</td>
+				<td className="px-4 py-2 border border-gray-700 align-top">
+					Swaps the sampled and unsampled lists to restart the process.
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

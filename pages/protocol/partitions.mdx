@@ -1,38 +1,34 @@
 ---
-description:
+description: Irys's partitions optimize data storage and replication, ensuring verifiable distribution, performance-based rewards, and adaptive scaling.
 ---
-
-import { LedgerTooltip, BlocklaneTooltip } from "@/tooltips/Tooltips";
-import SimpleRiveViewer from "@/components/SimpleRiveViewer";
-
-<LedgerTooltip />
-<BlocklaneTooltip />
 
 # Partitions
 
-Partitions are the fundamental building blocks of Irys’ [data ledgers](./ledgers). With them, the protocol can control many factors, including:
+Partitions are the fundamental building blocks of Irys’s data ledgers, enabling control and optimization of the network. This approach allows for:
 
-- Controlling the number of replicas incentivized for every ledger index.
-- Controlling the total number of mineable partitions (both data and capacity).
-- Managing data distribution in a way that is verifiable.
-- Rewarding miners for storing data reliably.
-- Onboarding a specific amount of capacity to meet the near future needs of the network.
+- Control over data replication.
+- Scaling minable partitions (both data and capacity).
+- Verifiable data distribution.
+- Performance-based miner rewards.
+- Adaptive network capacity scaling.
 
-<img className="rounded-2xl my-5" src="/diagrams/protocol/publish-ledger.jpg" />
-
-All of these are efficiencies that allow Irys to account for and control it’s storage liabilities. This leads to efficient pricing that is passed on to users.
+All of these are efficiencies that allow Irys to account for and control its storage liabilities. This leads to efficient pricing that is passed on to users.
 
 ## Partitions & Ledgers
 
-- A data ledger is composed of a sequence of partitions that fill up as data is added.
-- As the ledger grows, more ledger indexes are added to store new data.
-- Multiple partitions reside at each index in the ledger, replicating the data.
+A data ledger is composed of a sequence of partitions that fill up as data is added.
+As the ledger grows, more ledger indexes are added to store new data.
+Multiple partitions reside at each index in the ledger, replicating the data.
 
-As miners come and go from the network, their partitions come and go with them. If this was a high-frequency occurrence, data would be constantly shuffled around to backfill the departing ledgers. To combat this, the protocol requires miners to make economic commitments to store data. If they fail to do this, they risk losing the tokens they staked to participate.
+The network maintains stability through economic incentives. Miners make financial commitments to store data, discouraging frequent departures. This approach prevents constant data reshuffling and ensures consistent availability. By tying miners' economic interests to network performance, the protocol creates a resilient system where data remains secure and accessible. Miners who fail to uphold their commitments risk losing their stake, further reinforcing network reliability.
 
-By having miners commit to partitions and the protocol arranging those partitions into ledgers, Irys has the flexibility to define multiple data ledgers, each with its own storage term. At launch, we will have [two ledgers](/protocol/ledgers), one permanent and one temporary.
+By enabling miners to commit to specific partitions, the protocol organizes these partitions into distinct ledgers, offering unparalleled flexibility.
+
+This approach allows for multiple data ledgers, each tailored to different storage needs. At launch, there will be two ledgers: a Permanent Ledger for long-term, immutable storage and a Temporary Ledger for short-term, flexible storage solutions. This provides the ability to manage data seamlessly, catering to unique requirements.
 
 ## Capacity Partitions
+
+<img className="rounded-2xl my-5" src="/diagrams/capacity-partitions.jpg" />
 
 > Where do partitions come from, and how are they associated with a ledger?
 
@@ -40,48 +36,30 @@ Irys measures the amount of data uploaded and then uses it to project the number
 
 ## Partition Lifecycle
 
-<div className="w-full flex justify-center">
-	<div className="w-full">
-		<SimpleRiveViewer
-			src="/diagrams/architecture/irys-docs-capacity-mining.riv"
-			width={1920}
-			height={1080}
-			stateMachine="Capacity-Mining"
-		/>
-	</div>
-</div>
+- **Step 1: Partition Pledging**<br/>
+  Miners post a pledge transaction to the network indicating their willingness to bring a new partition online. The protocol then randomly assigns unclaimed capacity partitions to the pledged miners; any miners who don’t receive capacity partition assignments have their pledges refunded.
 
-### Step 1: Partition Pledging
+- **Step 2: Partition Packing**<br/>
+  The miner packs the Capacity Partition using Irys’s 2D Packing. This process fully encodes the miner’s fingerprint into the partition.
 
-Miners post a pledge transaction to the network indicating their willingness to bring a new partition online. The protocol then randomly assigns unclaimed capacity partitions to the pledged miners; any miners who don’t receive capacity partition assignments have their pledges refunded.
+- **Step 3: Partition Mining**<br/>
+  The protocol assigns a random 200MB sequential read every second. The miner takes these 200MB reads, splits them into 800 256KiB chunks, and proceeds to hash each chunk looking for a mining solution. If the miner finds a solution, that miner wins the right to produce a new block, thus earning rewards.
 
-### Step 2: Partition Packing
+- **Step 4: Ledger Assignment**<br/>
+  When it comes time to add more storage capacity to one of Irys’s data ledgers, the protocol will randomly select a Capacity Partition that is actively being mined. The randomness is weighted towards partitions that have been used to mine blocks, rewarding miners who have been participating longer and have been effective in mining.
 
-The miner packs the Capacity Partition using [Irys’ 2D Packing](./2d-packing). This process fully encodes the miner’s fingerprint into the partition.
+- **Step 5: Partition Departure**<br/>
+  There are two ways partitions leave the network: orderly departures and disorderly.
 
-### Step 3: Partition Mining
+      **Orderly Departure:**<br/>
+      1. The miner posts a transaction to un-pledge their partition and recover the commitment they staked initially.
+      2. A timeout period begins when the protocol assigns another Capacity Partition to synchronize the data being taken offline.
+      3. Once the timeout has passed, the departing miner can recover their staked commitment and remove their partition.
+      4. If the miner goes offline before the timeout has passed, they risk losing their pledged stake.
 
-The protocol assigns a random 200MB sequential read every second. The miner takes these 200MB reads, splits them into 800 256KiB chunks, and proceeds to hash each chunk looking for a mining solution. If the miner finds a solution, that miner wins the right to produce a new block, thus earning rewards.
-
-### Step 4: Ledger Assignment
-
-When it comes time to add more storage capacity to one of Irys’ data ledgers, the protocol will randomly select a Capacity Partition that is actively being mined. The randomness is weighted towards partitions that have been used to mine blocks, rewarding miners who have been participating longer and have been effective in mining.
-
-### Step 5: Partition Departure
-
-There are two ways partitions leave the network: orderly departures and disorderly.
-
-#### Orderly Departure
-
-1. The miner posts a transaction to un-pledge their partition and recover the commitment they staked initially.
-2. A timeout period begins when the protocol assigns another Capacity Partition to synchronize the data being taken offline.
-3. Once the timeout has passed, the departing miner can recover their staked commitment and remove their partition.
-4. If the miner goes offline before the timeout has passed, they risk losing their pledged stake.
-
-#### Disorderly Departure
-
-1. A miner engages in adversarial behavior toward the network (double signing blocks, for example).
-2. The protocol takes their staked commitment.
-3. The protocol assigns a new Capacity Partition to fill gaps left by the adversarial miner.
+      **Disorderly Departure:**<br/>
+      1. A miner engages in adversarial behavior toward the network (double signing blocks, for example).
+      2. The protocol takes their staked commitment.
+      3. The protocol assigns a new Capacity Partition to fill gaps left by the adversarial miner.
 
 This is an undesirable departure as the network will have to assign new capacity partitions quickly. Because of this, Irys requires a significant upfront staking from miners looking to participate in the protocol.

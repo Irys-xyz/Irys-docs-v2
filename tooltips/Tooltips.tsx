@@ -80,3 +80,13 @@ export const EpochTooltip: React.FC = () => (
 		style={tooltipStyles}
 	/>
 );
+
+export const VDFTooltip: React.FC = () => (
+	<Tooltip
+		id="vdf"
+		className="irys-tooltip-styles"
+		anchorSelect="#vdf"
+		content="A Verifiable Delay Function (VDF) requires a specific amount of sequential computational work to evaluate and can be quickly and publicly verified, ensuring fairness and unpredictability in mining."
+		style={tooltipStyles}
+	/>
+);

@@ -64,6 +64,7 @@ const SimpleRiveViewer: React.FC<SimpleRiveViewerProps> = ({ src, width, height,
 						style={{
 							width: `${componentDimensions.width}px`,
 							height: `${componentDimensions.height}px`,
+							borderRadius: "16px",
 						}}
 					/>
 				)}
