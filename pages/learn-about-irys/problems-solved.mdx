@@ -1,14 +1,18 @@
 # How Irys Solves These Problems
 
-Storage on Irys is designed to be both versatile and efficient, catering to a wide range of applications. Here’s how we address the problems identified:
+Storage on Irys is designed to be both versatile and efficient, catering to a wide range of applications.
+
+Here’s how we address the problems identified:
 
 ## Verifiable and Scalable Onchain Data
 
-Irys’s dual-ledger system supports both temporary and permanent data storage. The Submit Ledger temporarily stores data, providing a buffer period for verification. This data, once verified, moves to the Publish Ledger, ensuring that only verified data becomes permanent. Miners are incentivized to store data correctly through a hybrid Proof of Work and PoS mechanism, which also penalizes malicious vehavior. This guarantees data integrity and decentralization, avoiding issues like centralization and data gaps.
+Irys’s [dual-ledger](/protocol/ledgers) system supports both [temporary](/protocol/ledgers#term-data-ledgers) and [permanent data](/protocol/ledgers#permanent-data-publish-ledger) storage.
+
+The Submit Ledger temporarily stores data, providing a buffer period for verification. This data, once verified, moves to the Publish Ledger, ensuring that only verified data becomes permanent. Miners are incentivized to store data correctly through a hybrid [Proof of Work and Proof of Stake](/protocol/pows) mechanism, which also penalizes malicious behavior. This guarantees data integrity and decentralization, avoiding issues like centralization and data gaps.
 
 ## Programmable Data Integration
 
-While solving problems with existing datachains, we consequently developed a solution that addresses both storage issues and smart contract limitations. By integrating of data storage with the IrysVM execution layer enables real-time interaction with onchain data. Smart contracts can now access and manipulate data directly, enabling the onboarding of web services that were previously challenging or impossible to build onchain. The use of merkle inclusion proofs ensures fast and efficient data verification, significantly reducing computational overhead and consequently making onchain interactions more feasible and cost-effective.
+While solving problems with existing datachains, we consequently developed a solution that addresses both storage issues and smart contract limitations. By integrating of data storage with the [IrysVM](/why-build-on-irys/irysvm) execution layer enables real-time interaction with onchain data. Smart contracts can now [access and manipulate data directly](/why-build-on-irys/programmable-data), enabling the onboarding of web services that were previously challenging or impossible to build onchain. The use of merkle inclusion proofs ensures fast and efficient data verification, significantly reducing computational overhead and consequently making onchain interactions more feasible and cost-effective.
 
 ## Addressing Centralization Risks
 
@@ -16,4 +20,6 @@ Irys tackles centralization risks by ensuring that economic incentives align wit
 
 ## Unified Blockchain Architecture
 
-By integrating storage and execution within a single protocol, Irys simplifies the development process. Developers no longer need to rely on multiple protocols, which reduces both fragmentation and costs. The transparent pricing model provides predictable and stable costs for transactions and data storage, aiding in budgeting and planning. This unified approach makes Irys an ideal platform for building scalable, efficient, and innovative applications across various sectors, from NFTs and SocialFi to DePIN and AI. Anything that requires data to operate and scale, will naturally find its home on Irys.
+By integrating storage and execution within a single protocol, Irys simplifies the development process. Developers no longer need to rely on multiple protocols, which reduces both fragmentation and costs. The transparent pricing model provides predictable and stable costs for transactions and data storage, aiding in budgeting and planning. This unified approach makes Irys an ideal platform for building scalable, efficient, and innovative applications across various sectors, from NFTs and SocialFi to DePIN and AI.
+
+**Anything that requires data to operate and scale, will naturally find its home on Irys.**
