@@ -20,6 +20,8 @@ import {
 	MdOutlineQuestionMark,
 	MdOutlineSync,
 	MdOutlineBlurOn,
+	MdOutlineAccountTree,
+	MdOutlineBolt,
 } from "react-icons/md";
 
 const FooterWrapper = () => {
@@ -35,7 +37,7 @@ const FooterWrapper = () => {
 // Create a mapping for the sub-items
 const iconMapping = {
 	"what-is-irys": <MdOutlineQuestionMark color="#ff8451" />,
-	"pow-+-staking": <MdOutlineBlurOn color="#ff8451" />,
+	"proof-of-work-+-staking": <MdOutlineBlurOn color="#ff8451" />,
 	treasury: <MdOutlineAccountBalance color="#ff8451" />,
 	"mining-requirements": <MdBlurLinear color="#ff8451" />,
 	"use-cases": <MdOutlineDescription color="#ff8451" />,
@@ -52,6 +54,8 @@ const iconMapping = {
 	"pricing-model": <MdOutlineMonetizationOn color="#ff8451" />,
 	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
 	"price-approximation": <MdAutoGraph color="#ff8451" />,
+	"running-a-node": <MdOutlineAccountTree color="#ff8451" />,
+	"fast-finality": <MdOutlineBolt color="#ff8451" />,
 };
 
 export default {
@@ -75,7 +79,7 @@ export default {
 	},
 	sidebar: {
 		toggleButton: true,
-		defaultMenuCollapseLevel: 3,
+		defaultMenuCollapseLevel: 2,
 		titleComponent({ title, type }) {
 			const iconStyles = { fontSize: "1.1rem", marginRight: "0.5rem" };
 			const containerStyles = { display: "flex", alignItems: "center" };
@@ -86,6 +90,7 @@ export default {
 			if (type !== "separator") {
 				const key = title.toLowerCase().replace(/\s+/g, "-");
 				const icon = iconMapping[key];
+				console.log({ key });
 				return (
 					<div style={containerStyles}>
 						{icon && <span style={iconStyles}>{icon}</span>}

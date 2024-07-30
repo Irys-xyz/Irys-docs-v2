@@ -3,5 +3,6 @@
 	"partitions": "Partitions",
 	"ledgers": "Ledgers",
 	"transactions": "Transactions",
-	"pows": "PoW + Staking"
+	"pows": "Proof of Work + Staking",
+	"fast-finality": "Fast Finality"
 }
