@@ -2,7 +2,6 @@ import IrysLogoText from "./components/svg/IrysLogoText";
 import Footer from "./components/footer/footer";
 import { useRouter } from "next/router";
 import {
-	MdOutlineMonetizationOn,
 	MdOutlineAccountBalance,
 	MdOutlineDescription,
 	MdOutlineVerified,
@@ -15,13 +14,14 @@ import {
 	MdFlipToBack,
 	MdDataObject,
 	MdDataset,
-	MdAutoGraph,
-	MdCalculate,
+	MdOutlineCropFree,
 	MdOutlineQuestionMark,
 	MdOutlineSync,
 	MdOutlineBlurOn,
 	MdOutlineAccountTree,
 	MdOutlineBolt,
+	MdOutlineBubbleChart,
+	MdOutlineBuild,
 } from "react-icons/md";
 
 const FooterWrapper = () => {
@@ -36,25 +36,24 @@ const FooterWrapper = () => {
 
 // Create a mapping for the sub-items
 const iconMapping = {
-	"what-is-irys": <MdOutlineQuestionMark color="#ff8451" />,
-	"proof-of-work-+-staking": <MdOutlineBlurOn color="#ff8451" />,
-	treasury: <MdOutlineAccountBalance color="#ff8451" />,
-	"mining-requirements": <MdBlurLinear color="#ff8451" />,
-	"use-cases": <MdOutlineDescription color="#ff8451" />,
+	"what-is-irys?": <MdOutlineQuestionMark color="#ff8451" />,
+	"what-is-a-datachain?": <MdDataset color="#ff8451" />,
+	"why-irys-exists": <MdOutlineCropFree color="#ff8451" />,
+	"how-irys-solves-these-problems": <MdOutlineBuild color="#ff8451" />,
+
+	"programmable-data": <MdDataObject color="#ff8451" />,
 	verifiability: <MdOutlineVerified color="#ff8451" />,
-	"protocol-overview": <MdOutlineStorage color="#ff8451" />,
-	ledgers: <MdOutlineMenuBook color="#ff8451" />,
-	partitions: <MdOutlineViewList color="#ff8451" />,
-	transactions: <MdOutlineSwapHoriz color="#ff8451" />,
+	irysvm: <MdOutlineBubbleChart color="#ff8451" />,
+
+	"running-a-node": <MdOutlineAccountTree color="#ff8451" />,
 	"2d-packing": <MdOutlineViewQuilt color="#ff8451" />,
 	"efficient-sampling": <MdFlipToBack color="#ff8451" />,
-	storage: <MdDataset color="#ff8451" />,
-	execution: <MdOutlineSync color="#ff8451" />,
-	"programmable-data": <MdDataObject color="#ff8451" />,
-	"pricing-model": <MdOutlineMonetizationOn color="#ff8451" />,
-	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
-	"price-approximation": <MdAutoGraph color="#ff8451" />,
-	"running-a-node": <MdOutlineAccountTree color="#ff8451" />,
+
+	"protocol-overview": <MdOutlineStorage color="#ff8451" />,
+	partitions: <MdOutlineViewList color="#ff8451" />,
+	ledgers: <MdOutlineMenuBook color="#ff8451" />,
+	transactions: <MdOutlineSwapHoriz color="#ff8451" />,
+	"proof-of-work-+-staking": <MdOutlineBlurOn color="#ff8451" />,
 	"fast-finality": <MdOutlineBolt color="#ff8451" />,
 };
 
