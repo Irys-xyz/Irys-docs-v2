@@ -18,14 +18,15 @@ const componentBentoData: ComponentBento[] = [
 		description:
 			"Combines efficient sampling of PoW with economic deterrents inherent in staking and slashing, to ensure secure and scalable data storage and execution.",
 		details: [],
-		image: "/diagrams/components/irys-docs-proof-of-work-staking.riv",
+		image: "/protocol-animations/pows.riv",
 		stateMachine: "Proof-Of-Work",
 		href: "/protocol/pows",
 	},
 	{
 		title: "Multiple Ledgers",
 		description: "Allows the protocol to:",
-		image: "",
+		image: "/protocol-animations/multiple-ledgers.riv",
+		stateMachine: "MultipleLedgers",
 		details: [
 			"Make commitments about published data",
 			"Provide reliable access for the execution layer by managing data upload and storage proofs",
@@ -33,20 +34,21 @@ const componentBentoData: ComponentBento[] = [
 		href: "/protocol/ledgers",
 	},
 	{
-		title: "Programmable Data",
+		title: "IrysVM",
 		description:
-			"Irys’ EVM enables Programmable Data where smart contracts can access the entirety of onchain data.",
-		// image: "/diagrams/components/irys_docs_protocol_treasury.riv",
+			"Irys’ VM enables Programmable Data where smart contracts can access the entirety of onchain data.",
+		image: "/protocol-animations/irysvm.riv",
+		stateMachine: "IrysVM",
 		details: [],
-		href: "/overview/execution/programmable-data",
+		href: "/why-build-on-irys/irysvm",
 	},
 	{
 		title: "Protocol Treasury",
-		description: "More than just an endowment, Irys' treasury:",
+		description: "More than just an endowment, Irys's treasury:",
 		details: ["Covers storage liabilities", "Participates in yield-bearing activities"],
-		image: "/diagrams/components/irys-docs-protocol-treasury.riv",
+		image: "/protocol-animations/treasury.riv",
 		stateMachine: "Protocol-Treasury",
-		href: "/economics/treasury",
+		href: "/economics",
 	},
 ];
 
@@ -65,7 +67,7 @@ const ComponentBento: React.FC = () => {
 					className="border border-gray-700 cursor-pointer p-3 h-auto rounded-xl flex flex-col "
 				>
 					{bento.image && (
-						<div className="relative w-full h-60">
+						<div className="relative w-full">
 							{isImageFile(bento.image) ? (
 								<Image src={bento.image} alt={bento.title} layout="fill" className="rounded-xl" />
 							) : (

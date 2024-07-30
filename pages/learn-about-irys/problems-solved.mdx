@@ -1,13 +1,19 @@
 # How Irys Solves These Problems
 
-Storage on Irys is designed to be both versatile and efficient, catering to a wide range of applications. Here’s how it works:
+Storage on Irys is designed to be both versatile and efficient, catering to a wide range of applications. Here’s how we address the problems identified:
 
-**Solving the Data Storage Challenge**: In the current landscape, data storage solutions often suffer from inefficiencies and vulnerabilities, leading to high costs, lack of scalability, and data integrity issues. Irys addresses these challenges by providing a robust, economically sustainable, and secure data storage platform.
+## Verifiable and Scalable Onchain Data
 
-**Multi-Ledger System**: Irys supports multiple data ledgers including the submit ledger for temporary storage and the publish ledger for permanent storage. This approach ensures that data can be stored cost-effectively in the short term and securely in the long term.
+Irys’s dual-ledger system supports both temporary and permanent data storage. The Submit Ledger temporarily stores data, providing a buffer period for verification. This data, once verified, moves to the Publish Ledger, ensuring that only verified data becomes permanent. Miners are incentivized to store data correctly through a hybrid Proof of Work and PoS mechanism, which also penalizes malicious vehavior. This guarantees data integrity and decentralization, avoiding issues like centralization and data gaps.
 
-**Protocol-Managed Capacity**: Irys dynamically balances storage supply with demand, avoiding the pitfalls of over- or under-capacity that have plagued other datachains. This approach ensures miner profitability while maintaining a globally distributed network, optimizing both economic sustainability and network resilience.
+## Programmable Data Integration
 
-**Verifiable Data**: Data on Irys is always verifiable, meaning that users can prove for themselves that their data is accurately stored and accessible when needed. This verifiability is a cornerstone of Irys’s commitment to data integrity.
+While solving problems with existing datachains, we consequently developed a solution that addresses both storage issues and smart contract limitations. By integrating of data storage with the IrysVM execution layer enables real-time interaction with onchain data. Smart contracts can now access and manipulate data directly, enabling the onboarding of web services that were previously challenging or impossible to build onchain. The use of merkle inclusion proofs ensures fast and efficient data verification, significantly reducing computational overhead and consequently making onchain interactions more feasible and cost-effective.
 
-**Economic Incentives**: Miners on the Irys network are incentivized to store data correctly and efficiently through an economic incentive system, ensuring the network remains robust and reliable. Additionally, miners make upfront economic commitments and are penalized for failing to store data, making it infeasible for bad actors to affect the network’s integrity.
+## Addressing Centralization Risks
+
+Irys tackles centralization risks by ensuring that economic incentives align with network reliability. Miners must stake their commitments, which are at risk if they engage in adversarial behavior. This economic model discourages centralization by making it unfeasible for any single entity to dominate the network.
+
+## Unified Blockchain Architecture
+
+By integrating storage and execution within a single protocol, Irys simplifies the development process. Developers no longer need to rely on multiple protocols, which reduces both fragmentation and costs. The transparent pricing model provides predictable and stable costs for transactions and data storage, aiding in budgeting and planning. This unified approach makes Irys an ideal platform for building scalable, efficient, and innovative applications across various sectors, from NFTs and SocialFi to DePIN and AI. Anything that requires data to operate and scale, will naturally find its home on Irys.
