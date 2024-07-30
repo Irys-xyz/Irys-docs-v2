@@ -36,15 +36,15 @@ const Footer = (props: Props) => {
 			items: [
 				{
 					title: "SDK",
-					href: "/developers",
+					href: "https://arweave-tools.irys.xyz/irys-sdk",
 				},
 				{
 					title: "Query Package",
-					href: "/docs",
+					href: "https://arweave-tools.irys.xyz/querying/query-package",
 				},
 				{
 					title: "CLI",
-					href: "/cli",
+					href: "https://arweave-tools.irys.xyz/cli",
 				},
 			],
 		},
