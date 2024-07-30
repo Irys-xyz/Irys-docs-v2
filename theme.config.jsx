@@ -2,7 +2,6 @@ import IrysLogoText from "./components/svg/IrysLogoText";
 import Footer from "./components/footer/footer";
 import { useRouter } from "next/router";
 import {
-	MdAutoAwesomeMosaic,
 	MdOutlineMonetizationOn,
 	MdOutlineAccountBalance,
 	MdOutlineDescription,
@@ -12,7 +11,6 @@ import {
 	MdOutlineViewList,
 	MdOutlineSwapHoriz,
 	MdOutlineViewQuilt,
-	Md360,
 	MdBlurLinear,
 	MdFlipToBack,
 	MdDataObject,
@@ -55,8 +53,6 @@ const iconMapping = {
 	"pricing-model-calculator": <MdCalculate color="#ff8451" />,
 	"price-approximation": <MdAutoGraph color="#ff8451" />,
 };
-
-//architecture: <MdAutoAwesomeMosaic color="#ff8451" />,
 
 export default {
 	nextThemes: {

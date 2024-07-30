@@ -8,25 +8,29 @@ import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 # 2D Packing
 
-Packing adds cryptographic fingerprints to stored data, proving miners provide unique resources. This prevents adversarial claims of false storage capacity.
+Packing adds cryptographic fingerprints to stored data, proving miners provide unique resources. This prevents adversarial claims of false storage capacity. Irys introduces 2D Packing, a novel approach to data verification. This method ensures miners provide unique storage resources while deterring adversarial behavior.
 
-<div className="w-full flex justify-center">
-	<div className="w-full">
+<div className="flex flex-col md:flex-row w-full flex justify-start items-start mt-5">
+	<div className="w-full md:w-1/2">
 		<SimpleRiveViewer
-			src="/diagrams/architecture/irys-docs-fast-2d-packing.riv"
+			src="/protocol-animations/2d-packing.riv"
 			width={1920}
 			height={1080}
 			stateMachine="2D-Packing"
 		/>
 	</div>
+	<div className="w-full md:w-1/2">
+		<div className="p-4">
+			<p className="mb-2">This approach offers several benefits:</p>
+			<ul className="list-disc list-inside space-y-2">
+				<li>Scalable performance across devices</li>
+				<li>Lower storage fees</li>
+				<li>Consistent verification times</li>
+				<li>Enhanced security without computational intensity</li>
+			</ul>
+		</div>
+	</div>
 </div>
-
-Irys introduces 2D Packing, a novel approach to data verification. This method ensures miners provide unique storage resources while deterring adversarial behavior. 2D Packing, combined with staking and slashing mechanisms, offers:
-
-- Scalable performance across devices
-- Lower storage fees
-- Consistent verification times
-- Enhanced security without computational intensity
 
 Here’s how it works:
 

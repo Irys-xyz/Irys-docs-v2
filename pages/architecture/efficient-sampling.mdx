@@ -10,12 +10,27 @@ import Image from "next/image";
 
 Efficient Sampling is Irys' method for reading data from packed partitions and generating proofs. It complements the [2D Packing](/architecture/2d-packing) used to prepare storage partitions.
 
-This approach offers several benefits:
-
-- Cost-effective mining.
-- Low barriers to entry.
-- Increased miner profitability.
-- Lower fees for users.
+<div className="flex flex-col md:flex-row w-full flex justify-start items-center mt-5">
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/efficient-sampling.riv"
+			width={1920}
+			height={1080}
+			stateMachine="EfficientSampling"
+		/>
+	</div>
+	<div className="w-full md:w-1/2">
+		<div className="p-4">
+			<p className="mb-2">This approach offers several benefits:</p>
+			<ul className="list-disc list-inside space-y-2">
+				<li>Cost-effective mining.</li>
+				<li>Low barriers to entry.</li>
+				<li>Increased miner profitability.</li>
+				<li>Lower fees for users.</li>
+			</ul>
+		</div>
+	</div>
+</div>
 
 Efficient Sampling allows the use of economical HDD hardware, maximizing the use of drive capacity. This makes mining accessible to a wider range of participants, lowering barriers to entry. By making efficient use of resources, miners experience increased profitability. Additionally, users benefit from lower fees due to reduced mining costs and benefit from a diverse network of miners.
 

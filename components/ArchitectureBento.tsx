@@ -15,8 +15,8 @@ const bentoData: Bento[] = [
 	{
 		title: "Efficient Sampling",
 		description: "Enables economical storage scaling with a 24-hour sampling window for 16TB HDDs.",
-		image: "",
-		stateMachine: "",
+		image: "/protocol-animations/efficient-sampling.riv",
+		stateMachine: "EfficientSampling",
 		href: "/architecture/efficient-sampling",
 	},
 	{
