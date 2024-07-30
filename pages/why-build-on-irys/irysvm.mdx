@@ -2,9 +2,29 @@
 description: The IrysVM goes beyond standard EVM functionality by providing integrated access to Irys’s storage capabilities.
 ---
 
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
 # IrysVM
 
-The Irys Virtual Machine (IrysVM) is a core component of the Irys blockchain, designed to provide a seamless and powerful environment for developers to build fully decentralized applications. As a fork of the Ethereum Virtual Machine (EVM), IrysVM leverages the unique capabilities of the Irys blockchain by integrating access to its advanced storage layer, unlocking the potential for Programmable Data.
+The Irys Virtual Machine (IrysVM) is a core component of the Irys blockchain, designed to provide a
+seamless and powerful environment for developers to build fully decentralized applications.
+
+<div className="flex flex-col md:flex-row w-full flex justify-start items-start mt-5">
+	<div className="w-full md:w-1/2">
+		<div className="md:mr-5">
+			As a fork of the Ethereum Virtual Machine (EVM), IrysVM leverages the unique capabilities of the Irys blockchain by integrating access to its advanced storage layer, unlocking the potential for Programmable Data.
+    	</div>
+    </div>
+    <div className="w-full md:w-1/2">
+    	<SimpleRiveViewer
+    		src="/protocol-animations/irysvm.riv"
+    		width={1920}
+    		height={1080}
+    		stateMachine="IrysVM"
+    	/>
+    </div>
+
+</div>
 
 ## Key Features
 

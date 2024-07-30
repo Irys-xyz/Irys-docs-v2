@@ -2,9 +2,27 @@
 description: Irys ensures data verification is fast, efficient, and accessible. Optimized data preparation with 2D Packing allows verification on standard devices, maintaining network integrity.
 ---
 
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
 # Verifiability
 
-In the world of blockchain and decentralization, verifiability is essential, ensuring data correctness and trustworthiness. For Irys, this principle is a core feature, making data verification fast, efficient, and accessible.
+<div className="flex flex-col md:flex-row w-full flex justify-start items-start mt-5">
+	<div className="w-full md:w-1/2">
+		<div className="">
+			In the world of blockchain and decentralization, verifiability is essential, ensuring data correctness
+			and trustworthiness. For Irys, this principle is a core feature, making data verification fast,
+			efficient, and accessible.
+		</div>
+	</div>
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/verifiability.riv"
+			width={1920}
+			height={1080}
+			stateMachine="Verifiability"
+		/>
+	</div>
+</div>
 
 ## Why Verifiability Matters
 
