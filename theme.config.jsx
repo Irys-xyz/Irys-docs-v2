@@ -82,14 +82,10 @@ export default {
 		titleComponent({ title, type }) {
 			const iconStyles = { fontSize: "1.1rem", marginRight: "0.5rem" };
 			const containerStyles = { display: "flex", alignItems: "center" };
-			if (type === "separator") {
-				console.log("separator ecountered " + title);
-			}
 
 			if (type !== "separator") {
 				const key = title.toLowerCase().replace(/\s+/g, "-");
 				const icon = iconMapping[key];
-				console.log({ key });
 				return (
 					<div style={containerStyles}>
 						{icon && <span style={iconStyles}>{icon}</span>}
@@ -97,7 +93,6 @@ export default {
 					</div>
 				);
 			}
-			console.log("hitting default return " + title);
 
 			return (
 				<div style={containerStyles}>
