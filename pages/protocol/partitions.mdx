@@ -1,6 +1,6 @@
 # Partitions
 
-Partitions are the fundamental building blocks of Irys’ data ledgers, enabling control and optimization of the network. This approach allows for:
+Partitions are the fundamental building blocks of Irys’s data ledgers, enabling control and optimization of the network. This approach allows for:
 
 - Control over data replication.
 - Scaling minable partitions (both data and capacity).
@@ -36,13 +36,13 @@ Irys measures the amount of data uploaded and then uses it to project the number
   Miners post a pledge transaction to the network indicating their willingness to bring a new partition online. The protocol then randomly assigns unclaimed capacity partitions to the pledged miners; any miners who don’t receive capacity partition assignments have their pledges refunded.
 
 - **Step 2: Partition Packing**<br/>
-  The miner packs the Capacity Partition using Irys’ 2D Packing. This process fully encodes the miner’s fingerprint into the partition.
+  The miner packs the Capacity Partition using Irys’s 2D Packing. This process fully encodes the miner’s fingerprint into the partition.
 
 - **Step 3: Partition Mining**<br/>
   The protocol assigns a random 200MB sequential read every second. The miner takes these 200MB reads, splits them into 800 256KiB chunks, and proceeds to hash each chunk looking for a mining solution. If the miner finds a solution, that miner wins the right to produce a new block, thus earning rewards.
 
 - **Step 4: Ledger Assignment**<br/>
-  When it comes time to add more storage capacity to one of Irys’ data ledgers, the protocol will randomly select a Capacity Partition that is actively being mined. The randomness is weighted towards partitions that have been used to mine blocks, rewarding miners who have been participating longer and have been effective in mining.
+  When it comes time to add more storage capacity to one of Irys’s data ledgers, the protocol will randomly select a Capacity Partition that is actively being mined. The randomness is weighted towards partitions that have been used to mine blocks, rewarding miners who have been participating longer and have been effective in mining.
 
 - **Step 5: Partition Departure**<br/>
   There are two ways partitions leave the network: orderly departures and disorderly.
