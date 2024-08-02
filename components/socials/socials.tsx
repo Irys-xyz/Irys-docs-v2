@@ -38,7 +38,7 @@ const Socials = (props: Props) => {
 		},
 		{
 			title: "Telegram",
-			href: "https://t.me/irys_xyz",
+			href: "https://t.me/+XBHwxDZzApRhOGM9",
 			color: "hover:bg-[#29A8EB]",
 			icon: "/assets/home/socials/tg.svg",
 			hover: "Join the community on",
