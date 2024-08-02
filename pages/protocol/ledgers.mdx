@@ -3,10 +3,22 @@ description: Irys uses multiple ledgers, enabling scalable and reliable data man
 ---
 
 import { Callout } from "nextra/components";
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
 # Ledgers
 
 Irys innovates on the traditional blockchain model by implementing multiple ledgers on a single chain:
+
+<div className="w-full mt-5 flex justify-center items-center bg-[#222222] rounded-xl">
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/multiple-ledgers.riv"
+			width={1920}
+			height={1080}
+			stateMachine="MultipleLedgers"
+		/>
+	</div>
+</div>
 
 - **Transaction History**: Like most blockchains, Irys maintains a record of transactions in its blocks.
 - **Data Ledgers**: Unlike traditional models, Irys stores associated transaction data in separate ledgers.
