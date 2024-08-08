@@ -1,5 +1,5 @@
 {
-	"quickstart": "Quickstart",
-	"query-package": "Query Package",
+	"query-package": "Query package",
+	"api": "API docs",
 	"graphql": "GraphQL"
 }

@@ -1,0 +1,39 @@
+---
+description: Searches Arweave based on block height
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `toTimestamp(timeStamp)`
+
+
+Use the [`fromTimestamp()`](./fromTimestamp) and `toTimestamp()` functions to search for transactions by timestamp. Results returned are `>= fromTimestamp` and `< toTimestamp`.
+
+<div className="" />
+**Parameters**
+<div className="-mt-6" />
+-   `timeStamp`: Timestamp as Date object or UNIX timestamp in milliseconds
+
+You can search by passing `Date` objects to the functions:
+
+```js
+const results = await myQuery
+	.search("irys:transactions")
+	.fromTimestamp(new Date("2023-07-01"))
+	.toTimestamp(new Date("2023-07-03"));
+```
+
+Or by using UNIX timestamps in millisecond format:
+
+```js
+const results = await myQuery
+	.search("irys:transactions")
+	.fromTimestamp(1688144401000)
+	.toTimestamp(1688317201000);
+```
+
+<Callout type="info" emoji="ℹ️">
+	Irys timestamps are accurate to the millisecond, so you need to provide a timestamp in millisecond format. You can
+	convert from human-readable time to UNIX timestamp using websites like [Epoch101](https://www.epoch101.com/), be
+	sure to convert in **millisecond** format, not **second**.
+</Callout>

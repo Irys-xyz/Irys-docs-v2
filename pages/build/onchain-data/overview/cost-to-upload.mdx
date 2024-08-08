@@ -1,0 +1,39 @@
+---
+description: Understand our dynamic fee structure.
+---
+
+
+import UploadFeeCalculator from "@/components/UploadFeeCalculator";
+
+# Cost to Upload
+
+The cost to upload data to Irys is based on the number of bytes uploaded.{" "}
+
+The calculator provides the real-time cost of permanently uploading your data.
+
+<div class="mt-10">
+	<UploadFeeCalculator />
+</div>
+
+## Fee breakdown
+
+Fees are computed as follows:
+
+```
+irys_fee(X = number of bytes) =
+arweave_cost(max(X, 10000)) *
+conversion_rate("AR", token) *
+global_multiplier *
+oracle_fee
+```
+
+- `arweave_cost` is cost of storing `X` number of bytes on Arweave using linear pricing (i.e. ignoring minimum chunk size). e.g. if `arweave_cost(256KB) = $2.56` then `arweave_cost(1KB) = $0.01`
+- `conversion_rate` is the conversion rate between AR and some other token (e.g. MATIC). This allows users to pay the same fees in different currencies.
+- `global_multiplier` is a multiplier applied to all transactions which can be seen as a “profit margin”.
+- `oracle_fee` is a risk multiplier which accounts for cost of treasury management and asset volatility.
+
+## Free uploads
+
+Uploads below 100 KiB are free on Irys. This is a public good for users to be encouraged to try Irys. Uploads are rate-limited to 600 transactions per minute, with upload counts resetting every minute.
+
+If you upload more than 600 transactions within a minute and have a funded balance, that balance will be used to pay for the transaction. If you don't have a balance, then you'll get a `402 - Free transaction limit exceeded, funds required` error.

@@ -1,0 +1,24 @@
+---
+description: Sorts search results by timestamp
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `sort("ASC" | "DESC")`
+
+Sorts query results by timestamp either in ascending or descending format.
+
+**Parameters**
+
+<div className="-mt-6" />- `sortType`: Either "ASC" (ascending) or "DESC" (descending)
+
+```js
+const results = await myQuery.search("irys:transactions").token("ethereum").sort("ASC");
+```
+
+```js
+const results = await myQuery
+	.search("arweave:transactions")
+	.tags([{ name: "Content-Type", values: ["image/png", "image/jpg"] }]);
+	.sort("DESC");
+```

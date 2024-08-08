@@ -1,0 +1,62 @@
+---
+description: Funds the node with the specified amount of tokens.
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `upload-dir`
+
+Uploads an entire directory of files.
+
+**Parameters**
+
+<div className="-mt-6" />
+
+- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
+- `-t`: The [token](/overview/supported-tokens) to use when uploading.
+- `-w`: Your [private key](/cli#using-private-keys).
+- `--index-file`: Name of the file to use as an index for manifests.
+- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+
+## Examples
+
+### Mainnet
+
+```console
+irys upload-dir ./myImages \
+  -t ethereum \
+  -w bf20......c9885307
+```
+
+### Devnet
+
+```console
+irys upload-dir ./myImages \
+  -n devnet \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --provider-url https://rpc.sepolia.dev
+```
+
+<Callout type="info" emoji="ℹ️">
+	Devnet RPC URLs change often, use a recent one from https://chainlist.org/
+</Callout>
+
+## Downloading
+
+Files uploaded via `irys upload-dir` can be retrieved in one of two ways.
+
+1. Creating a URL with the format `https://gateway.irys.xyz/[manifest-id]/[original-file-name]`.
+2. Creating a URL using the transaction ID of each individual file uploaded with the format `https://gateway.irys.xyz/[transacton-id]`
+
+After a successful folder upload, two files are written to your local project directory:
+
+- `[folder_name].csv`
+- `[folder_name].json`
+
+The example below highlights a folder called “llama_folder” with a total of 5 files in it. The transaction id for each file can be used to retrieve the uploaded data by forming a URL with the format `https://gateway.irys.xyz]/[transaction-id]`
+
+<img
+	className="border border-[#FEF4EE] rounded-xl mt-5 md:w-5/6 w-full"
+	src="/img/code-assets/llama-folder-manifest.png"
+/>

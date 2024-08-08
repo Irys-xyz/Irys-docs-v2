@@ -1,0 +1,99 @@
+---
+description: Funds the node with the specified amount of tokens
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `irys.fund(amount)`
+
+Funds the [Irys network](/overview/networks) you connected to with the specified number of tokens.
+
+**Parameters**
+
+<div className="-mt-6" />- `amount`: The amount to fund ([in atomic units](/irys-sdk/api/utils-toAtomic)) -
+`multiplier`: Fee multiplier (optional)
+
+**Returns**
+
+<div className="-mt-6" />- `response`: A JSON object with the following values
+
+```json
+response = {
+	id, // The transaction id of the fund transfer
+	quantity, // How much is being transferred
+	reward, // The amount taken by the network as a fee
+	target, // The address the funds were sent to
+};
+```
+
+## Upfront funding
+
+You can up-front fund a node, where you send over enough funds to cover all of a project’s uploads. When upfront funding, you may want to [write a script to monitor your stored balance, topping up when needed.](/tutorials/basics/monitor-node-balance)
+
+```js
+try {
+	const irys = await getIrys();
+
+	const fundTx = await irys.fund(irys.utils.toAtomic(0.05));
+	console.log(`Successfully funded ${irys.utils.fromAtomic(fundTx.quantity)} ${irys.token}`);
+} catch (e) {
+	console.log("Error funding node ", e);
+}
+```
+
+## Lazy-funding
+
+You can also lazy-fund a node where you check the cost to upload each file first and then transfer exact funds. This works best with currencies like MATIC, ETH and SOL whose balances post (almost) instantly.
+
+```js
+try {
+	const irys = await getIrys();
+
+	const pathToFile = "./myNFT.png";
+	const { size } = await fs.promises.stat(pathToFile);
+	const price = await irys.getPrice(size);
+	await irys.fund(price);
+
+	const { id } = await irys.uploadFile(pathToFile);
+	console.log(`${pathToFile} --> Uploaded to https://gateway.irys.xyz/${id}`);
+} catch (e) {
+	console.log("Error funding node ", e);
+}
+```
+
+<Callout type="info" emoji="ℹ️">
+Not all calls to `irys.fund()` will post immediately to your account, some blockchains are faster than others. When funding with AR, it can take upwards of 40 minutes before the balance post. For MATIC, ETH and SOL, balances will usually post in < 10s.
+</Callout>
+
+## Fee multiplier
+
+The `multiplier` parameter multiplies the fees we allow the network to take, in effect prioritizing the transaction. Normally you can safely ignore this parameter, however, if you're experiencing errors when funding, you can try passing a value of `1.2` or more.
+
+```js
+try {
+	const irys = await getIrys();
+
+	const fundTx = await irys.fund(irys.utils.toAtomic(0.05), 1.2);
+	console.log(`Successfully funded ${irys.utils.fromAtomic(fundTx.quantity)} ${irys.token}`);
+} catch (e) {
+	console.log("Error funding node ", e);
+}
+```
+
+## Paid RPCs
+
+When [transferring tokens](/learn/funding-withdrawing) we use public RPCs. Sometimes these can be slow to confirm transactions. If you're experiencing an error when funding, consider using a paid RPC.
+
+```js
+const network = "devnet;
+const providerUrl = ""; // Paid RPC URL
+const token = "ethereum";
+const privateKey = process.env.PRIVATE_KEY;
+
+const irys = new Irys({
+	network, // URL of the node you want to connect to
+	token, // Currency used for payment
+	key: privateKey, // ETH or SOL private key
+	config: { providerUrl },
+});
+```

@@ -1,0 +1,19 @@
+{
+	"fund": "fund()",
+	"withdrawBalance": "withdrawBalance()",
+	"withdrawAll": "withdrawAll()",
+	"getLoadedBalance": "getLoadedBalance()",
+	"getPrice": "getPrice()",
+	"upload": "upload()",
+	"uploadFile": "uploadFile()",
+	"uploadFolder": "uploadFolder()",
+	"utils-toAtomic": "utils.toAtomic()",
+	"utils-fromAtomic": "utils.fromAtomic()",
+	"utils-getReceipt": "utils.getReceipt()",
+	"utils-verifyReceipt": "utils.verifyReceipt()",
+	"funder-submitFundTransaction": "funder.submitFundTransaction()",
+	"uploader-uploadBundle": "uploader.uploadBundle()",
+	"uploader-generateManifest": {
+		"display": "hidden"
+	}
+}

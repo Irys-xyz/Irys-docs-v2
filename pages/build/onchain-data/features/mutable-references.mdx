@@ -1,0 +1,99 @@
+---
+description: Mutable references enable the creation of a single, static URL that is linked to a sequential series of transactions.
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# Mutable references
+
+Mutable references enable the creation of a single, static URL that is linked to a sequential series of transactions. You can add a new transaction to the series at any time, and the URL will always resolve to the most recent transaction.
+
+<img className="border border-[#FEF4EE] rounded mt-5  lg:w-5/6 w-full" src="/img/mutable-references.png" />
+
+To create a mutable reference:
+
+1. Upload a base transaction to Irys and reference it using a URL in the following format `https://gateway.irys.xyz/mutable/:id`
+
+```js
+const irys = await getIrys();
+const receiptOne = await irys.upload("First TX");
+console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
+```
+
+2. Upload an addition to the series as a new transaction, and add a tag named `Root-TX` with the value of the original transaction ID.
+
+```js
+const tags = [{ name: "Root-TX", value: receiptOne.id }];
+const receiptTwo = await irys.upload("Second TX", { tags: tags });
+console.log(`TX 2 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
+```
+
+The original URL (`https://gateway.irys.xyz/mutable/:id`) now resolves to the second transaction in the chain.
+
+<Callout type="info" emoji="ℹ️">
+	When building a transaction chain, additions must be made using the same wallet that created the original transaction.
+	This prevents unauthorized actors from maliciously modifying someone else’s transaction chain.
+</Callout>
+
+## Granularity
+
+Mutable references are based on Irys’ millisecond-accurate timestamps. You can publish multiple sequential updates to a given transaction and be confident the transaction served by the `/mutable/` endpoint will always be the most recent chronological one.
+
+## Versions
+
+While the `https://gateway.irys.xyz/mutable/:id` endpoint will always resolve to the most recent transaction in a chain, it is possible to directly access any transaction in a chain using the transaction’s ID and a URL in the format `https://gateway.irys.xyz/:id`
+
+You can query a version chain using the [Irys query package](/querying/query-package):
+
+```js
+import Query from "@irys/query";
+
+const txID = "WF--VR1ZERvABYy1aNYD3QJ0OAVDSUF8dTlg6zFKveQ";
+const fromAddress = "0x591b5ce7ca10a55a9b5d1516ef89693d5b3586b8";
+
+const myQuery = new Query({ network: "mainnet" });
+const results = await myQuery
+	.search("irys:transactions")
+	.tags([{ name: "Root-TX", values: [txID] }])
+	.from([fromAddress])
+	.sort("ASC");
+
+results.forEach((result, i) => {
+	const formattedTimestamp = new Date(result.timestamp).toLocaleString();
+	console.log(`Update ${i + 1}: ID: ${result.id}, Timestamp: ${formattedTimestamp}`);
+});
+```
+
+Or GraphQL:
+
+```js
+query getChain {
+  transactions(
+    tags: [
+      {
+        name: "Root-TX"
+        values: ["WF--VR1ZERvABYy1aNYD3QJ0OAVDSUF8dTlg6zFKveQ"]
+      }
+    ]
+    owners: ["0x591b5ce7ca10a55a9b5d1516ef89693d5b3586b8"]
+    order: ASC
+  ) {
+    edges {
+      node {
+        id
+        timestamp
+      }
+    }
+  }
+}
+```
+
+## Use-cases
+
+Irys’ mutable references open up new opportunities for builders, including:
+
+- Gaming NFTs: Metadata changes based on in-game actions
+- Dynamic NFTs: Images change based on onchain activity
+- Software distribution: The latest version is always available via the same link
+- Content publishing / social media: Content can be updated at any time and users will always have the most recent version
+- Website hosting / dApp front-ends: Websites can be updated at any time without changing the main URL

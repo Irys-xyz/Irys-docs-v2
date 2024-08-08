@@ -1,0 +1,36 @@
+---
+description: Withdraws the supplied amount
+---
+
+# `irys.withdrawAll()`
+
+Withdraws the entire balance associated with the token selected when creating the `Irys` object.
+
+**Returns**
+
+<div className="-mt-6" />
+
+- `response`: Either a 400 or 200 code:
+
+```json
+400 - something went wrong
+
+200 - Ok
+response.data = {
+	requested, // the requested amount,
+	fee, // the reward required by the network (network fee)
+	final, // total cost to your account (requested + fee)
+	tx-id, // the ID of the withdrawal transaction
+}
+```
+
+**Example**
+
+```ts
+try {
+	const irys = await getIrys();
+	const tx = await irys.withdrawAll();
+} catch (e) {
+	console.log("Error withdrawing funds ", e);
+}
+```

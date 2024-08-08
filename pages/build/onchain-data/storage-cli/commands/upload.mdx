@@ -1,0 +1,60 @@
+---
+description: Funds the node with the specified amount of tokens.
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `upload`
+
+Uploads a single file.
+
+**Parameters**
+
+<div className="-mt-6" />
+
+- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
+- `-t`: The [token](/overview/supported-tokens) to use when uploading.
+- `-w`: Your [private key](/cli#using-private-keys).
+- `--tags`: [Tags](/irys-sdk/tags) to include, format `<name>` `<value>`
+- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+
+## Examples
+
+### Mainnet
+
+```console
+irys upload myImage.png \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --tags tagName1 tagValue1 tagName2 tagValue2
+```
+
+### Devnet
+
+```console
+irys upload myImage.png \
+  -n devnet \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --tags tagName1 tagValue1 tagName2 tagValue2 \
+  --provider-url https://rpc.sepolia.dev
+```
+
+<Callout type="info" emoji="ℹ️">
+	Devnet RPC URLs change often, use a recent one from https://chainlist.org/
+</Callout>
+
+## Downloading
+
+Files uploaded via `irys upload` can be downloaded using the transaction ID provided after a successful upload.
+
+```console
+irys upload myImage.png \
+  -n mainnet \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --tags tagName1 tagValue1 tagName2 tagValue2
+
+Loaded address: 0xac568a981b1370b2e1baa8ce30bd5ac9e28c572d
+Uploaded to https://gateway.irys.xyz/yPX6_rwxfJ_2gTvXSHGoumIvlFR-EwuRlUMmHpeLHUM
+```

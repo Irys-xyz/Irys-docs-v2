@@ -1,7 +1,10 @@
 {
-	"receipts": "Receipts",
 	"supported-tokens": "Supported Tokens",
+	"receipts": "Receipts",
+	"tags": "Tags",
 	"manual-tx": "Manually Creating a Tx",
 	"balance-approvals": "Balance Approvals",
-	"path-manifests": "Path Manifests"
+	"path-manifests": "Path Manifests",
+	"mutable-references": "Mutable References",
+	"ipfs-cid": "Using IPFS CIDs"
 }
