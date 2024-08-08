@@ -4,15 +4,16 @@ description: A fault-tolerant, resumable, signer & uploader
 
 import { Callout, Tab, Tabs } from "nextra-theme-docs";
 
-# Chunked uploader
+# Chunked Uploader
 
-The chunked uploader is a fault-tolerant, resumable, stream-based signer and uploader. It allows you to pause and resume uploads, and to do things like create progress bars that show upload progress.
+The Chunked Uploader is a fault-tolerant, resumable, stream-based signer and uploader. It allows you to pause and resume uploads, and to do things like create progress bars that show upload progress.
 
-The chunked uploader is supported both with Irys / NodeJS on the server and with WebIrys in the browser.
+The Chunked Uploader is supported with the `Irys` object on the server and with the `WebIrys` object in the browser.
+
 Key Terminology:
 
-- Batch size - the maximum number of chunks to upload at once. Defaults to 5.
-- Chunk size - the maximum size of a single chunk. Defaults to 25MB. For those with slower/unstable connections, reducing both should lead to improved reliability. For those with faster connections, increasing both will lead to higher throughput, at the cost of more memory (and CPU).
+- Batch size:  the maximum number of chunks to upload at once. Defaults to 5.
+- Chunk size: the maximum size of a single chunk. Defaults to 25MB. For those with slower/unstable connections, reducing both should lead to improved reliability. For those with faster connections, increasing both will lead to higher throughput, at the cost of more memory (and CPU).
 
 <Callout type="info" emoji="ℹ️">
 	The default uploder (accessed via `irys.upload()`) does chunking automatically. You only need to use the Chunked
