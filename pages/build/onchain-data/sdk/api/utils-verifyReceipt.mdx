@@ -8,12 +8,13 @@ import { Callout } from "nextra-theme-docs";
 
 Returns true or false, indicating if a receipt is valid or not.
 
-**Parameters**
+## Parameters
 
-<div className="-mt-6" />- `receipt`: The receipt as a JSON object in the following format
+- `receipt`: The receipt as a JSON object in the following format
+
 ```json
 {
-    id, // Transaction id 
+    id, // Transaction ID 
     public, // Public key of the bundler node used
     signature, // A signed deep hash of the JSON receipt
     deadlineHeight, // The block number by which the transaction must be finalized on Arweave
@@ -22,13 +23,11 @@ Returns true or false, indicating if a receipt is valid or not.
 }
 ```
 
-**Returns**
-
-<div className="-mt-6" />
+## Returns
 
 - `isValid`: A true or false value indicating if the receipt is valid
 
-**Example**
+## Example
 
 ```js
 const irys = await getIrys();

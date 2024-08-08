@@ -6,22 +6,20 @@ import { Callout } from "nextra-theme-docs";
 
 # `irys.upload(data, tags)`
 
-Permanently uploads data.
+Uploads data to Irys.
 
-**Parameters**
-
-<div className="-mt-6" />
+## Parameters
 
 - `data`: The data to upload
-- `tags`: Optional [metatags](/irys-sdk/tags)
+- `tags`: Optional [metatags](/build/onchain-data/features/tags)
 
-**Returns**
+## Returns
 
-<div className="-mt-6" />- `receipt`: A receipt in the form of a JSON object with the following values:
+- `receipt`: A receipt in the form of a JSON object with the following values:
 
 ```json
 response = {
-	id, // Transaction id (used to download the data)
+	id, // Transaction ID (used to download the data)
 	timestamp, // Timestamp (UNIX milliseconds) of when the transaction was created and verified
 	version, // The version of this JSON file, currently 1.0.0
 	public, // Public key of the bundler node used
@@ -33,7 +31,7 @@ response = {
 }
 ```
 
-**Example**
+## Example
 
 ```js
 const irys = await getIrys();
@@ -48,6 +46,6 @@ try {
 ```
 
 <Callout type="info" emoji="ℹ️">
-	The transaction id returned as part of the response is used to download the data, simply create a URL with the format
+	Use the transaction ID returned as part of the response to download the data by creating a URL in the format
 	`https://gateway.irys.xyz/[transaction-id].`
 </Callout>

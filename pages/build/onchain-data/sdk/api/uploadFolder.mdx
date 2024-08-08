@@ -4,18 +4,16 @@ description: Uploads a folder of files to Irys
 
 # `uploadFolder()`
 
-Permanently uploads a group of files in a single transaction.
+Uploads a group of files to Irys in a single transaction.
 
-When using the method on the server (`Irys`), you provide the path to a folder which is then uploaded. When using the method in the browser (`WebIrys`), you pass an array of `File` objects that are then uploaded.
-
-- [`Irys`](/irys-sdk/api/uploadFolder#irysuploadfolder)
-- [`WebIrys`](/irys-sdk/api/uploadFolder#webirysuploadfolder)
+- [`Irys`](./uploadFolder#irysuploadfolder): For uploading a folder on the server.
+- [`WebIrys`](./uploadFolder#webirysuploadfolder): For uploading a folder from the browser. 
 
 ## `irys.uploadFolder()`
 
-**Parameters**
+Pass the path to a folder. 
 
-<div className="-mt-6" />
+## Parameters
 
 - `folderToUpload`: Path to the folder being uploaded
 - `indexFile`: (optional) The name of an
@@ -24,15 +22,13 @@ When using the method on the server (`Irys`), you provide the path to a folder w
 - `batchSize`: (optional) The number of files to upload at once.
 - `keepDeleted`: (optional) Whether to keep now deleted items from previous uploads. When you upload a folder, the file names are indexed and saved. If you then re-upload that same folder, Irys will only upload new files added since the previous upload. In the case where you delete files from your source directory, this flag tells Irys whether to keep those deleted files in the index or remove them.
 
-**Returns**
-
-<div className="-mt-6" />
+## Returns
 
 - `response`: A JSON object with the following values
 
 ```json
 {
-	id, // Transaction id (used to download the data)
+	id, // Transaction ID (used to download the data)
 	timestamp, // Timestamp (UNIX milliseconds) of when the transaction was created and verified
 	version, // The version of this JSON file, currently 1.0.0
 	public, // Public key of the bundler node used
@@ -44,7 +40,7 @@ When using the method on the server (`Irys`), you provide the path to a folder w
 }
 ```
 
-**Example**
+## Example
 
 ```js
 const irys = await getIrys();
@@ -66,9 +62,9 @@ try {
 
 ## `webIrys.uploadFolder()`
 
-**Parameters**
+Pass an array of `File` objects.
 
-<div className="-mt-6" />
+## Parameters
 
 - `files`: An array of `TaggedFile` objects, each containing a `File` and an array of tags to be added to that file
 - `indexFileRelPath`: (optional) The name of an
@@ -77,9 +73,7 @@ try {
 - `throwawayKey`: (optional) Your own throwaway JWK to use for signing (i.e if you want to use the same one for more than one set of uploads).
 - `seperateManifestTx`: (optional) If true, the manifest transaction will be excluded from the bundle making its tags indexable and queryable.
 
-**Returns**
-
-<div className="-mt-6" />
+## Returns
 
 - `manifest`: A JSON object with the following values
 
@@ -97,7 +91,7 @@ try {
 }
 ```
 
-**Example**
+## Example
 
 ```ts
 const webIrys = await getWebIrys();
@@ -123,7 +117,7 @@ const uploadOptions = {
 const response = await webIrys.uploadFolder(taggedFiles, uploadOptions);
 ```
 
-**Returns**
+## Returns
 
 A JSON object containing the following values. A receipt is also generated which can be retrieved using [`irys.utils.getReceipt(response.id)`](/irys-sdk/api/utils-getReceipt)
 
@@ -151,7 +145,7 @@ Files uploaded via `uploadFolder()` can be retrieved in one of two ways.
 1. Creating a URL with the format `https://gateway.irys.xyz/[manifest-id]/[original-file-name]`.
 2. Creating a URL using the transaction ID of each individual file uploaded with the format `https://gateway.irys.xyz/[transacton-id]`
 
-After a successful folder upload, two files are written to your local project directory `[folder_name].csv` and `[folder_name].json`. The example below highlights a folder called “llama_folder” with a total of 5 files in it. The transaction id for each file can be used to retrieve the uploaded data by forming a URL with the format `https://gateway.irys.xyz]/[transaction-id]`
+After a successful folder upload, two files are written to your local project directory `[folder_name].csv` and `[folder_name].json`. The example below highlights a folder called “llama_folder” with a total of 5 files in it. The transaction ID for each file can be used to retrieve the uploaded data by forming a URL with the format `https://gateway.irys.xyz]/[transaction-id]`
 
 <img
 	className="border border-[#FEF4EE] rounded-xl mt-5 md:w-5/6 w-full"

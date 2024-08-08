@@ -6,29 +6,27 @@ import { Callout } from "nextra-theme-docs";
 
 # `irys.funder.submitFundTransaction(txID)`
 
-Tells a node to re-evaluate a funding transaction.
+Tells the network to re-evaluate a funding transaction.
 
-**Parameters**
+## Parameters
 
-<div className="-mt-6" />- `txID`: The ID of the funding transaction to re-evaluate.
+- `txID`: The ID of the funding transaction to re-evaluate.
 
-
-**Returns**
-
-<div className="-mt-6" />
+## Returns
 
 - `response`: A JSON object with the following values
 
 ```json
 response = {
-	id, // The transaction id of the fund transfer
+	id, // The transaction ID of the fund transfer
 	quantity, // How much is being transferred
 	reward, // The amount taken by the network as a fee
 	target, // The address the funds were sent to
 };
 ```
 
-**Example**
+## Example
+
 ```js
 const irys = await getIrys();
 

@@ -22,7 +22,7 @@ const transactionOptions = { tags: [{ name: "Content-Type", value: "text/plain" 
 // 1. Using a Buffer containing just the data you want to upload.
 const dataBuffer = Buffer.from("Hello, world!");
 const response = await uploader.uploadData(dataBuffer, transactionOptions);
-// The transaction id (used to query the network) is found in response.data.id
+// The transaction ID (used to query the network) is found in response.data.id
 console.log(`Data buffer uploaded ==> https://gateway.irys.xyz/${response.data.id}`);
 
 // 2. Using a Readable (stream) pointing to the data

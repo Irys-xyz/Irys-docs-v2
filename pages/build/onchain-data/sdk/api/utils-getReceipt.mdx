@@ -1,28 +1,24 @@
 ---
-description: Returns the receipt associated with the supplied transaction id
+description: Returns the receipt associated with the supplied transaction ID
 ---
 
 import { Callout } from "nextra-theme-docs";
 
 # `irys.utils.getReceipt(trasnactionId)`
 
-Returns the receipt associated with the supplied transaction id, or an error if no receipt is found.
+Returns the receipt associated with the supplied transaction ID, or an error if no receipt is found.
 
-**Parameters**
-
-<div className="-mt-6" />
+## Parameters
 
 - `transactionId`: The transaction ID associated with the receipt
 
-**Returns**
-
-<div className="-mt-6" />
+## Returns
 
 - `response`: A JSON object with the following values
 
 ```json
 response = {
-	id, // Transaction id (used to download the data)
+	id, // Transaction ID (used to download the data)
 	timestamp, // Timestamp (UNIX milliseconds) of when the transaction was created and verified
 	version, // The version of this JSON file, currently 1.0.0
 	public, // Public key of the bundler node used
@@ -34,13 +30,13 @@ response = {
 }
 ```
 
-**Example**
+## Example
 
 ```js
 const irys = await getIrys();
 
 try {
-	const transactionID = "i9tgbHsr6c1sxryAQ-SLM2rfQAYRuyap7RmGgH28mI4"; // Your transaction Id
+	const transactionID = "i9tgbHsr6c1sxryAQ-SLM2rfQAYRuyap7RmGgH28mI4"; // Your transaction ID
 	const receipt = await irys.utils.getReceipt(transactionID);
 	console.log(receipt);
 } catch (e) {

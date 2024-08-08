@@ -4,15 +4,13 @@ description: Withdraws the supplied amount
 
 # `irys.withdrawBalance(amount)`
 
-Withdraws the supplied amount. The parameter value must in atomic units.
+Withdraws the specified amount from the user's account balance. The unit is the `token` parameter supplied when creating the `Irys` object. If you have balances in more than one token, you must re-instantiate the `Irys` object for each token.
 
-**Parameters**
+## Parameters
 
-<div className="-mt-6" />- `amount`: The amount to withdraw. Value must be in [atomic units](./utils-toAtomic).
+- `amount`: The amount to withdraw. Value must be in [atomic units](./utils-toAtomic).
 
-**Returns**
-
-<div className="-mt-6" />
+## Returns
 
 -   `response`: Either a 400 or 200 code, combined with the following values:
 
@@ -29,7 +27,8 @@ response.data = {
 }
 ```
 
-**Example**
+## Example
+
 ```js
 const irys = await getIrys();
 

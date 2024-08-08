@@ -74,7 +74,7 @@ const SequentialHashing: React.FC = () => {
 						</button>
 					</div>
 					<div className="flex flex-col items-start justify-center ml-5">
-						<p className="">Combine mining address, partition id, and chunk id using SHA-256 to form seed hash</p>
+						<p className="">Combine mining address, partition id, and chunk ID using SHA-256 to form seed hash</p>
 					</div>
 				</div>
 				<div className="flex flex-row mt-5">

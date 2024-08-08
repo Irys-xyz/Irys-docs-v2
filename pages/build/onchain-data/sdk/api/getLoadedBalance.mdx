@@ -1,19 +1,19 @@
 ---
-description: Returns the connected wallet's balance on the connected node
+description: Returns the connected wallet's balance.
 ---
 
 import { Callout } from "nextra-theme-docs";
 
 # `irys.getLoadedBalance()`
 
-Returns the connected wallet's balance on the connected node.
+Returns the connected wallet's balance.
 
-**Returns**
+## Returns
 
-<div className="-mt-6" />- `loadedBalance`: Wallet balance on the connected node in atomic units. You can convert it
-into standard units using [`irys.utils.fromAtomic(atomicUnits)`](/irys-sdk/api/utils-fromAtomic).
+- `loadedBalance`: Wallet balance in atomic units. You can convert it
+into standard units using [`irys.utils.fromAtomic(atomicUnits)`](./utils-fromAtomic).
 
-**Example**
+## Example
 
 ```js
 const irys = await getIrys();
