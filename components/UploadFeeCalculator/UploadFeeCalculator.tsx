@@ -244,7 +244,7 @@ const UploadFeeCalculator: React.FC = () => {
 					<a className="underline" href="/overview/tags">
 						tags
 					</a>{" "}
-					you'll use
+					you{"'"}ll use
 				</p>
 				<ItemInput onItemAdd={handleItemAdd} />
 				<div className="flex flex-wrap gap-4 overflow-y-scroll scrollbar-thumb-gray-200 scrollbar-thin max-h-60 [&::-webkit-scrollbar]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
