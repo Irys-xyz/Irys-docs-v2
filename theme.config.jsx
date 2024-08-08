@@ -36,25 +36,25 @@ const FooterWrapper = () => {
 
 // Create a mapping for the sub-items
 const iconMapping = {
-	"what-is-irys?": <MdOutlineQuestionMark color="#ff8451" />,
-	"what-is-a-datachain?": <MdDataset color="#ff8451" />,
-	"why-irys-exists": <MdOutlineCropFree color="#ff8451" />,
-	"how-irys-solves-these-problems": <MdOutlineBuild color="#ff8451" />,
+	"What-is-Irys?": <MdOutlineQuestionMark color="#ff8451" />,
+	"What-is-a-Datachain?": <MdDataset color="#ff8451" />,
+	"Why-Irys-Exists": <MdOutlineCropFree color="#ff8451" />,
+	"How-Irys-Solves-These-Problems": <MdOutlineBuild color="#ff8451" />,
 
-	"programmable-data": <MdDataObject color="#ff8451" />,
-	verifiability: <MdOutlineVerified color="#ff8451" />,
-	irysvm: <MdOutlineBubbleChart color="#ff8451" />,
+	"Programmable-Data": <MdDataObject color="#ff8451" />,
+	Verifiability: <MdOutlineVerified color="#ff8451" />,
+	IrysVM: <MdOutlineBubbleChart color="#ff8451" />,
 
-	"running-a-node": <MdOutlineAccountTree color="#ff8451" />,
-	"2d-packing": <MdOutlineViewQuilt color="#ff8451" />,
-	"efficient-sampling": <MdFlipToBack color="#ff8451" />,
+	"Running-a-Node": <MdOutlineAccountTree color="#ff8451" />,
+	"2D-Packing": <MdOutlineViewQuilt color="#ff8451" />,
+	"Efficient-Sampling": <MdFlipToBack color="#ff8451" />,
 
-	"protocol-overview": <MdOutlineStorage color="#ff8451" />,
-	partitions: <MdOutlineViewList color="#ff8451" />,
-	ledgers: <MdOutlineMenuBook color="#ff8451" />,
-	transactions: <MdOutlineSwapHoriz color="#ff8451" />,
-	"proof-of-work-+-staking": <MdOutlineBlurOn color="#ff8451" />,
-	"fast-finality": <MdOutlineBolt color="#ff8451" />,
+	"Protocol-Overview": <MdOutlineStorage color="#ff8451" />,
+	Partitions: <MdOutlineViewList color="#ff8451" />,
+	Ledgers: <MdOutlineMenuBook color="#ff8451" />,
+	Transactions: <MdOutlineSwapHoriz color="#ff8451" />,
+	"Proof-of-Work-+-Staking": <MdOutlineBlurOn color="#ff8451" />,
+	"Fast-Finality": <MdOutlineBolt color="#ff8451" />,
 };
 
 export default {
@@ -84,7 +84,7 @@ export default {
 			const containerStyles = { display: "flex", alignItems: "center" };
 
 			if (type !== "separator") {
-				const key = title.toLowerCase().replace(/\s+/g, "-");
+				const key = title.replace(/\s+/g, "-");
 				const icon = iconMapping[key];
 				return (
 					<div style={containerStyles}>

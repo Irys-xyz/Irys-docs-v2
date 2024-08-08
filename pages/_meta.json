@@ -1,8 +1,14 @@
 {
-	"learn-about-irys": "LEARN ABOUT IRYS",
-	"why-build-on-irys": "WHY BUILD ON IRYS",
-	"mining-on-irys": "MINING ON IRYS",
-	"protocol": "PROTOCOL",
-	"economics": "ECONOMICS",
-	"build-with-us": "BUILD WITH US"
+	"learn": {
+		"title": "Learn",
+		"type": "page"
+	},
+	"build": {
+		"title": "Build",
+		"type": "page"
+	},
+	"mine": {
+		"title": "Mine",
+		"type": "page"
+	}
 }

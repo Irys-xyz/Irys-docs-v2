@@ -1,0 +1,11 @@
+{
+	"quickstart": "Quickstart",
+	"overview": "Overview",
+	"features": "Features",
+	"sdk": "SDK",
+	"rest-api": "REST API",
+	"storage-cli": "Storage CLI",
+	"querying": "Querying",
+	"guides": "Guides",
+	"troubleshooting": "Troubleshooting"
+}

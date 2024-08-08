@@ -5,17 +5,7 @@ const withNextra = nextra({
 	themeConfig: "./theme.config.jsx",
 });
 
-const nextConfig = withNextra({
-	async redirects() {
-		return [
-			{
-				source: "/",
-				destination: "/learn-about-irys/what-is-irys",
-				permanent: true,
-			},
-		];
-	},
-});
+const nextConfig = withNextra();
 
 // If you have other Next.js configurations, you can pass them as the parameter:
 // const nextConfig = withNextra({ /* other next.js config */ });
