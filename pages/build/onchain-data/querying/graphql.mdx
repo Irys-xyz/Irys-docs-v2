@@ -6,37 +6,33 @@ import { Callout } from "nextra-theme-docs";
 
 # Querying With GraphQL
 
-In addition to the query library, you can also query Irys transactions directly using GraphQL.
+In addition to the Query Package, you can also query Irys transactions directly using GraphQL.
 
-## Irys vs Arweave GraphQL
+## GraphQL Clients
 
-This document covers how to query Irys directly, Arweave [also has docs on their query schema](https://gql-guide.vercel.app/).
+You can query using an HTTP library like fetch or axios, or use specialized clients like [Apollo Client](https://www.apollographql.com/) or [urql](https://formidable.com/open-source/urql/).
 
-## GraphQL clients
-
-You can query using an HTTP library like fetch or axios. You can also use specialized clients like [Apollo Client](https://www.apollographql.com/) or [urql](https://formidable.com/open-source/urql/).
-
-## Anatomy of a query
+## Anatomy of a Query
 
 A GraphQL query is made up of:
 
-- Query Arguments: Arguments that specify search parameters, limit the number of results returned, or enable pagination.
+- Query Arguments: Specify search parameters, limit the number of results returned, or enable pagination.
 - Results Fields: Fields that define the data you want to retrieve.
 
-<img className="border border-[#FEF4EE] rounded mt-5 w-5/6" src="/img/graphql/BundlrGQL-Anatomy.png" />
+<img className="border border-[#FEF4EE] rounded mt-5 w-5/6" src="/build/img/GQL-Anatomy.png" />
 
-## Query arguments
+## Query Arguments
 
 Any of the following query arguments can be used as search parameters:
 
 | Field   | Description                                                                                                                                                                                              |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ids`   | An array of transaction IDs passed as strings. Values are ORed together, matching results will include transactions that have any of the supplied IDs.                                                   |
-| `owner` | The address used when posting the transaction. Can be a native address from [any of the chains supported by Irys](/overview/supported-tokens). Note in results fields, this is referred to as `address`. |
-| `token` | The [token](/overview/supported-tokens) used to pay for the transaction.                                                                                                                                 |
+| `owner` | The address used when posting the transaction. Can be a native address from [any of the chains supported by Irys](/build/onchain-data/features/supported-tokens). Note in results fields, this is referred to as `address`. |
+| `token` | The [token](/build/onchain-data/features/supported-tokens) used to pay for the transaction.                                                                                                                                 |
 | `tags`  | An array of tag name / value pairs passed as JSON objects.                                                                                                                                               |
 
-## Results fields
+## Results Fields
 
 When building a query, any of the following values be included in your results:
 | Field | Description |
@@ -44,11 +40,11 @@ When building a query, any of the following values be included in your results:
 | `id` | The transaction ID. |
 | `address` | The address used when posting the transaction. Can be a native address from any of the chains supported by Irys. Note in query arguements, this is referred to as `owner`. |
 | `token` | The token used to pay for the transaction. |
-| `receipt { `<br/>&nbsp;&nbsp;`deadlineHeight `<br/>&nbsp;&nbsp;`signature  `<br/>&nbsp;&nbsp;`version `<br/>`}` | An optional receipt, only exists if a user requested one at upload.<br/> `deadlineHeight`: The block number by which the transaction must be finalized on Arweave. <br/>`signature`: A signed deep hash of the JSON receipt. |
+| `receipt { `<br/>&nbsp;&nbsp;`deadlineHeight `<br/>&nbsp;&nbsp;`signature  `<br/>&nbsp;&nbsp;`version `<br/>`}` | An optional receipt, only exists if a user requested one at upload.<br/> `deadlineHeight`: The block number by which the transaction must be finalized. <br/>`signature`: A signed deep hash of the JSON receipt. |
 | `tags {    `<br/>&nbsp;&nbsp;`name     `<br/>&nbsp;&nbsp;`value`<br/>`}` | An array of tags supplied as name / value pairs. Exists if the user added them at upload. |
 |`timestamp` | The timestamp, accurate to the millisecond of when the transaction was posted. This value is the same as the receipt timestamp. |
 
-## Mainnet & devnet
+## Mainnet & Devnet
 
 We have two GraphQL endpoints, one for mainnet and one for devnet.
 
@@ -57,17 +53,17 @@ We have two GraphQL endpoints, one for mainnet and one for devnet.
 | Mainnet | https://arweave.mainnet.irys.xyz/graphql |
 | Devnet  | https://arweave.devnet.irys.xyz/graphql  |
 
-## GraphQL sandbox
+## GraphQL Sandbox
 
 Clicking on any of the endpoint URLs above will direct you to the GraphQL Sandbox used for building and testing queries. Press Control+Space at any time to see an interactive popup window of either query arguments or results fields.
 
-<img className="border border-[#FEF4EE] rounded mt-5 w-5/6" src="/img/graphql/BundlrGQL-Sandbox.png" />
+<img className="border border-[#FEF4EE] rounded mt-5 w-5/6" src="/build/img/GQL-Sandbox.png" />
 
-## Sample queries
+## Sample Queries
 
-Queries return transaction metadata. To then retrieve data, use the returned transaction ID and download the data from a gateway using a URL formed as follows `https://gateway.irys.xyz/[transaction-id]`.
+Queries return transaction metadata. To then retrieve data, use the returned transaction ID and download the data from the Irys gateway using a URL formed as follows `https://gateway.irys.xyz/[transaction-id]`.
 
-### Transaction ids
+### Transaction IDs
 
 Search by transaction IDs.
 
@@ -128,7 +124,7 @@ query getByOwner {
 
 ### Tags
 
-Search for transactions matching [tag](/irys-sdk/tags) name / value pairs:
+Search for transactions matching [tag](/build/onchain-data/features/tags) name / value pairs:
 
 ```graphql
 query getAllPNGs {
@@ -179,7 +175,7 @@ query getTagsWithAnd {
 }
 ```
 
-### Limiting results
+### Limiting Results
 
 Limit the number of results returned by including the `limit` parameter:
 
