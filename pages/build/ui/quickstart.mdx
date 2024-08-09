@@ -1,0 +1,308 @@
+---
+description: Using the WebIrys class to interact with Irys from the browser
+---
+
+import { Callout } from "nextra-theme-docs";
+import Heading from "@/components/Heading";
+
+# Irys in the browser
+
+Working with Irys in the browser is similar to working with our server-side SDK, however
+there are a few differences which are demonstrated below.
+
+<Callout emoji="🚀">
+	If you're using Irys with React and `npx create-react-app`, you will need to [follow some extra setup
+	steps](/tutorials/react).
+</Callout>
+
+## Installing
+
+Install using npm:
+
+```console
+npm install @irys/sdk
+```
+
+or yarn:
+
+```console
+yarn add @irys/sdk
+```
+
+## Importing
+
+```js
+import { WebIrys } from "@irys/sdk";
+```
+
+## Connecting to a node
+
+When instantiating a `WebIrys` object pass:
+
+- `network`: Either `"mainnet"` or `"devnet"`
+- `token`: Payment [token](/overview/supported-tokens)
+- `wallet`: A wallet object containing the end-user's injected provider and the name of the provider package your project uses
+
+```js
+const getWebIrys = async () => {
+	// Ethers5 provider
+	await window.ethereum.enable();
+	const provider = new providers.Web3Provider(window.ethereum);
+
+	const network = "mainnet";
+	const token = "ethereum";
+	// Devnet RPC URLs change often, use a recent one from https://chainlist.org
+	const rpcUrl = "";
+
+	// Create a wallet object
+	const wallet = { rpcUrl: rpcUrl, name: "ethersv5", provider: provider };
+	// Use the wallet object
+	const webIrys = new WebIrys({ network, token, wallet });
+	await webIrys.ready();
+
+	return webIrys;
+};
+```
+
+After instantiating the object, call `webIrys.ready()`.
+
+### Supported providers
+
+WebIrys supports the following providers. When instantiating a new `WebIrys` object, you must pass in the name of the provider you will be using.
+
+| Package                                 | Parameter value |
+| --------------------------------------- | --------------- |
+| [Ethers 5](https://docs.ethers.org/v5/) | ethersv5        |
+| [Ethers 6](https://docs.ethers.org/v6/) | ethersv6        |
+| [Solana](https://solana.com/)           | solana          |
+| [Viem v2](https://viem.sh/)             | viemv2          |
+
+### Aptos
+
+```ts
+const aptosWallet = useWallet();
+
+const getWebIrys = async () => {
+	const network = "devnet";
+	const token = "aptos";
+	const rpcUrl = "testnet"; // "mainnet" || "testnet"
+	const wallet = { rpcUrl: rpcUrl, name: "aptos", provider: aptosWallet };
+	const webIrys = new WebIrys({ network, token, wallet });
+	await webIrys.ready();
+
+	return webIrys;
+};
+```
+
+### Solana React Hooks
+
+When working with the Solana React hooks, start by wrapping your components in the Solana `ConnectionProvider` `WalletProvider` and `WalletModalProvider` providers.
+
+```js
+import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+
+// Devnet or Mainnet
+const network = WalletAdapterNetwork.Devnet;
+const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
+const wallets = useMemo(() => [new PhantomWalletAdapter()], [network]);
+
+<ConnectionProvider endpoint={endpoint}>
+	<WalletProvider wallets={wallets} autoConnect>
+		<WalletModalProvider>
+			<YourComponents />
+		</WalletModalProvider>
+	</WalletProvider>
+</ConnectionProvider>;
+```
+
+Then, in components where you need to access a `WebIrys` object use the `useWallet()` hook to get a reference to the user's injected provider, and pass that into `WebIrys` when instantiating a new object.
+
+```js
+import { useWallet } from "@solana/wallet-adapter-react";
+const wallet = useWallet();
+
+const getIrys = async (): Promise<WebIrys> => {
+	// Devnet RPC URLs change often, use a recent one from https://chainlist.org
+	const rpcUrl = "";
+
+	const wallet = { rpcUrl: rpcUrl, name: "solana", provider: wallet };
+	const webIrys = new WebIrys({ network: "mainnet", token: "solana", wallet });
+	await webIrys.ready();
+	return webIrys;
+};
+```
+
+### Additional providers
+
+Additionally, the following providers will work with extra setup code.
+
+| Package                                        | Parameter value |
+| ---------------------------------------------- | --------------- |
+| [Othent](/irys-sdk/irys-in-the-browser#othent) | othent          |
+| [Privy](/irys-sdk/irys-in-the-browser#privy)   | privy           |
+
+#### [Othent](https://othent.io/)
+
+```js
+export const getWebIrys = async () => {
+	const wallet = { name: "Othent KMS", provider: othentKMS };
+	const network = "mainnet";
+	const token = "arweave";
+	const webIrys = new WebIrys({ network, token, wallet });
+	await webIrys.ready();
+	return webIrys;
+};
+```
+
+#### [Privy](https://www.privy.io/)
+
+Initialize the Privy provider with your app ID and wrap it around your components. In most NextJS projects, you will place this code in your `app.tsx` file. In our example, we use the `<PrivyIrys />` component as a placeholder for your app's top-level component structure.
+
+<Callout emoji="🚀">
+	We also have [a demo repository](https://github.com/Irys-xyz/privy-irys) teaching how to build a PWA photo-sharing app
+	using Privy and Irys.
+</Callout>
+
+```js
+import { PrivyProvider } from "@privy-io/react-auth";
+
+<PrivyProvider
+	appId="YOUR-APP-ID"
+	onSuccess={handlePrivyLogin}
+	config={{
+		loginMethods: ["email", "wallet"],
+		appearance: {
+			theme: "dark",
+			accentColor: "#676FFF",
+			logo: "https://docs.irys.xyz/img/favicon.svg",
+		},
+		embeddedWallets: {
+			createOnLogin: "users-without-wallets",
+		},
+	}}
+>
+	<PrivyIrys />
+</PrivyProvider>;
+```
+
+Then, write code to login with Privy and create a new `WebIrys` object.
+
+The code to create a `WebIrys` object differs depending on if you're using an [external wallet](https://docs.privy.io/guide/frontend/wallets/external) vs an [embedded one](https://docs.privy.io/guide/frontend/embedded/overview). When using external wallets, pass the Ethers provider returned from the `Wallet` object, when using embedded wallets pass the `sendTransaction` Privy React hook.
+
+The following code uses conditional logic to create the correct `WebIrys` object based on the wallet type. If your application only supports a single wallet type, feel free to simplify the code.
+
+```js
+import { User, usePrivy, useWallets } from "@privy-io/react-auth";
+
+const { wallets } = useWallets();
+const { login } = usePrivy();
+const { sendTransaction } = usePrivy();
+
+// First login
+login();
+
+// The 0th position wallet is the most recently used one
+const w = wallets.at(0);
+// Or find the embedded wallet
+// const w = wallets.find((wallet) => wallet.walletClientType === 'privy');
+
+// Then create a WebIrys object
+const getWebIrys = async () => {
+	const network = "devnet";
+	const token = "ethereum";
+
+	const provider = await w?.getEthersProvider();
+	if (!provider) throw new Error(`Cannot find privy wallet`);
+	const irysWallet =
+		w?.walletClientType === "privy"
+			? { name: "privy-embedded", provider, sendTransaction }
+			: { name: "privy", provider };
+
+	const webIrys = new WebIrys({
+		network,
+		token,
+		wallet: irysWallet,
+	});
+
+	await webIrys.ready();
+};
+```
+
+## Funding a node
+
+Fund a node using any of our [supported tokens](/overview/supported-tokens):
+
+```js
+const fundNode = async () => {
+	const webIrys = await getWebIrys();
+	try {
+		const fundTx = await webIrys.fund(webIrys.utils.toAtomic(0.05));
+		console.log(`Successfully funded ${webIrys.utils.fromAtomic(fundTx.quantity)} ${webIrys.token}`);
+	} catch (e) {
+		console.log("Error uploading data ", e);
+	}
+};
+```
+
+## Uploading
+
+Data uploaded to Irys is given a millisecond-accurate timestamp, attributes and authorship details before being passed to Arweave for permanent storage. This information is used to create a signed receipt that can be trustlessly [verified](/irys-sdk/api/utils-verifyReceipt).
+
+### Uploading data
+
+```js
+const uploadData = async () => {
+	const webIrys = await getWebIrys();
+	const dataToUpload = "GM world.";
+	try {
+		const receipt = await webIrys.upload(dataToUpload);
+		console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+	} catch (e) {
+		console.log("Error uploading data ", e);
+	}
+};
+```
+
+### Uploading a file
+
+Upload a [File](https://developer.mozilla.org/en-US/docs/Web/API/File) object.
+
+```js
+const uploadFile = async (fileToUpload: File) => {
+	const webIrys = await getWebIrys();
+	// Your file
+	const tags = [{ name: "application-id", value: "MyNFTDrop" }];
+
+	try {
+		const receipt = await webIrys.uploadFile(fileToUpload, { tags: tags });
+		console.log(`File uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+	} catch (e) {
+		console.log("Error uploading file ", e);
+	}
+};
+```
+
+### Uploading a folder
+
+Upload an array of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) objects.
+
+Upon upload, a manifest is automatically created. Your files can be accessed `https://gateway.irys.xyz/[manifestId]/[file-name]`.
+
+```js
+const uploadFolder = async (files: File[], tags: Tag[]) => {
+	const webIrys = await getIrys();
+
+	try {
+		const receipt = await webIrys.uploadFolder(files, {
+			tags,
+		}); //returns the manifest ID
+
+		console.log(`Files uploaded. Manifest Id=${receipt.manifestId} Receipt Id=${receipt.id}`);
+	} catch (e) {
+		console.log("Error uploading file ", e);
+	}
+};
+```
