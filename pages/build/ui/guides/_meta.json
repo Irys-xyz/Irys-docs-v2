@@ -1,4 +1,5 @@
 {
 	"irys-react": "npx create-react-app",
-	"vite": "Vite"
+	"vite": "Vite",
+	"calling-smart-contracts": "Calling Smart Contracts"
 }
