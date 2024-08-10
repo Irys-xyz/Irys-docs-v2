@@ -6,6 +6,7 @@ type Item = {
 };
 
 type Section = {
+	id: string; 
 	title: string;
 	css: string;
 	items: Item[];
@@ -19,6 +20,7 @@ const arweaveToolsBaseUrl = "https://arweave-tools.irys.xyz";
 const NotFound = (props: Props) => {
 	const devToolsForArweave: Section[] = [
 		{
+			id: "overview", 
 			title: "Overview",
 			css: "row-span-6",
 			items: [
@@ -38,6 +40,7 @@ const NotFound = (props: Props) => {
 			],
 		},
 		{
+			id: "sdk", 
 			title: "SDK",
 			css: "row-span-6",
 			items: [
@@ -57,6 +60,7 @@ const NotFound = (props: Props) => {
 			],
 		},
 		{
+			id: "cli", 
 			title: "CLI",
 			css: "row-span-6",
 			items: [
@@ -65,6 +69,7 @@ const NotFound = (props: Props) => {
 			],
 		},
 		{
+			id: "querying", 
 			title: "QUERYING",
 			css: "row-span-6",
 			items: [
@@ -77,6 +82,7 @@ const NotFound = (props: Props) => {
 
 	const irysProtocol: Section[] = [
 		{
+			id: "learn-about-irys", 
 			title: "LEARN ABOUT IRYS",
 			css: "row-span-6",
 			items: [
@@ -87,6 +93,7 @@ const NotFound = (props: Props) => {
 			],
 		},
 		{
+			id: "why-build-on-irys", 
 			title: "WHY BUILD ON IRYS",
 			css: "row-span-6",
 			items: [
@@ -96,6 +103,7 @@ const NotFound = (props: Props) => {
 			],
 		},
 		{
+			id: "mining-on-irys", 
 			title: "MINING ON IRYS",
 			css: "row-span-6",
 			items: [
@@ -105,6 +113,7 @@ const NotFound = (props: Props) => {
 			],
 		},
 		{
+			id: "protocol", 
 			title: "PROTOCOL",
 			css: "row-span-6",
 			items: [
@@ -137,20 +146,19 @@ const NotFound = (props: Props) => {
 					<div className="grid grid-cols-12 col-span-12 border border-white/10 rounded-md">
 						{irysProtocol.map((section) => (
 							<div
-								key={section.title}
+								key={section.id} 
 								className={`w-full col-span-12 md:col-span-4 lg:col-span-3 text-base flex flex-col ${section.css}`}
 							>
 								<div className="font-bold text-white flex gap-2 items-center px-5 py-[13.4px] bg-[#0B0B0B] border-t border-white/10">
 									<div className="w-[2px] h-full bg-[#FF8451]"></div>
 									{section.title}
 								</div>
-								<div className="w-full h-[1px] bg-[#141414]"></div>
-								<div className="flex flex-col divide-y divide-white/10 last:border-b border-white/10">
-									{section.items.map((item) => (
+								<div className="flex flex-col px-3 py-3 text-gray-400">
+									{section.items.map((item, index) => (
 										<a
-											key={item.title}
+											key={`${section.id}-item-${index}`} 
 											href={item.href}
-											className="text-[#B7B7B7] hover:bg-[#171717] hover:text-white px-3 py-[14px] transition-all "
+											className="font-medium text-white hover:text-gray-400 transition-colors py-2 text-sm"
 										>
 											{item.title}
 										</a>
@@ -159,53 +167,45 @@ const NotFound = (props: Props) => {
 							</div>
 						))}
 					</div>
-
-					<h2 className="rounded-tl-lg rounded-tr-lg text-white col-span-12 py-3 px-4 font-bold text-lg tracking-tight bg-[#FF8451] mt-10">
-						DEVELOPER TOOLS FOR ARWEAVE
+				</div>
+				<div className="grid grid-cols-12 m-6 md:m-0 w-full px-7 md:px-0 md:w-auto">
+					<h2 className="rounded-tl-lg rounded-tr-lg text-white col-span-12 py-3 px-4 font-bold text-lg tracking-tight bg-[#FF8451]">
+						ARWEAVE TOOLS
 					</h2>
 					<div className="grid grid-cols-12 col-span-12 border border-white/10 rounded-md">
 						{devToolsForArweave.map((section) => (
 							<div
-								key={section.title}
+								key={section.id} 
 								className={`w-full col-span-12 md:col-span-4 lg:col-span-3 text-base flex flex-col ${section.css}`}
 							>
 								<div className="font-bold text-white flex gap-2 items-center px-5 py-[13.4px] bg-[#0B0B0B] border-t border-white/10">
 									<div className="w-[2px] h-full bg-[#FF8451]"></div>
 									{section.title}
 								</div>
-								<div className="w-full h-[1px] bg-[#141414]"></div>
-								<div className="flex flex-col divide-y divide-white/10 last:border-b border-white/10">
-									{section.items.map((item) => (
+								<div className="flex flex-col px-3 py-3 text-gray-400">
+									{section.items.map((item, index) => (
 										<a
-											key={item.title}
+											key={`${section.id}-item-${index}`} 
 											href={item.href}
-											className="text-[#B7B7B7] hover:bg-[#171717] hover:text-white px-3 py-[14px] transition-all "
+											className="font-medium text-white hover:text-gray-400 transition-colors py-2 text-sm"
 										>
 											{item.title}
 										</a>
 									))}
-									{section.subItems && (
-										<>
-											<div className="mt-4"></div>
-											<div className="font-bold text-white flex gap-2 items-center px-5 py-[13.4px] bg-[#0B0B0B] border-t border-white/10 md:mt-20">
-												<div className="w-[2px] h-full bg-[#FF8451]"></div>
-												Guides & Tutorials
-											</div>
-											<div className="w-full h-[1px] bg-[#141414]"></div>
-											<div className="flex flex-col divide-y divide-white/10 last:border-b border-white/10">
-												{section.subItems.map((subItem) => (
-													<a
-														key={subItem.title}
-														href={subItem.href}
-														className="text-[#B7B7B7] hover:bg-[#171717] hover:text-white px-3 py-[14px] transition-all "
-													>
-														{subItem.title}
-													</a>
-												))}
-											</div>
-										</>
-									)}
 								</div>
+								{section.subItems && (
+									<div className="flex flex-col px-3 py-3 text-gray-400">
+										{section.subItems.map((item, index) => (
+											<a
+												key={`${section.id}-subitem-${index}`} 
+												href={item.href}
+												className="font-medium text-white hover:text-gray-400 transition-colors py-2 text-sm"
+											>
+												{item.title}
+											</a>
+										))}
+									</div>
+								)}
 							</div>
 						))}
 					</div>
