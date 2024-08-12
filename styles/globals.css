@@ -406,3 +406,45 @@ details[open] .faq-expand::before {
 		transform: scale(1);
 	}
 }
+
+/* swagger-custom.module.css */
+/* WILLIAM THIS IS THE CSS FOR THE REST API SECTION */
+/* Light Mode */
+/* swagger-custom.module.css */
+
+/* Light Mode */
+.light .swagger-ui .topbar {
+  background-color: #ffffff;
+}
+.light .swagger-ui .btn {
+  background-color: #FF8451;
+  color: #ffffff;
+}
+.light .swagger-ui .info,
+.light .swagger-ui .opblock-description,
+.light .swagger-ui .responses-inner h4,
+.light .swagger-ui .parameter__name,
+.light .swagger-ui .response .response-col_description,
+.light .swagger-ui .opblock-summary-method,
+.light .swagger-ui .opblock-summary-path {
+  color: #000000;
+}
+
+/* Dark Mode */
+.dark .swagger-ui .topbar {
+  background-color: #1f2937;
+}
+.dark .swagger-ui .btn {
+  background-color: #FF8451;
+  color: #ffffff;
+}
+.dark .swagger-ui .info,
+.dark .swagger-ui .opblock-description,
+.dark .swagger-ui .responses-inner h4,
+.dark .swagger-ui .parameter__name,
+.dark .swagger-ui .response .response-col_description,
+.dark .swagger-ui .opblock-summary-method,
+.dark .swagger-ui .opblock-summary-path,
+.dark .swagger-ui .col_header .parameters-col_description {
+  color: #ffffff;
+}

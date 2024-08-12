@@ -26,12 +26,14 @@
     "react-loading-skeleton": "^3.4.0",
     "react-spring": "^9.7.3",
     "react-tooltip": "^5.26.4",
-    "redstone-api": "^0.4.12"
+    "redstone-api": "^0.4.12",
+    "swagger-ui-react": "^5.17.14"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/swagger-ui-react": "^4.18.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",

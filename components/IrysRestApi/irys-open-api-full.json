@@ -1,0 +1,523 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Info route",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/info": {
+      "get": {
+        "summary": "Info route",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/public": {
+      "get": {
+        "summary": "Get public information",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Get status",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/account/balance/{currency}": {
+      "post": {
+        "summary": "Fund account with currency",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account funded successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get user balance for currency",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Balance retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/balance": {
+      "get": {
+        "summary": "Get user balance",
+        "responses": {
+          "200": {
+            "description": "Balance retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/approval": {
+      "get": {
+        "summary": "Get approval information",
+        "responses": {
+          "200": {
+            "description": "Approval information retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/near/lookup": {
+      "get": {
+        "summary": "Lookup NEAR account",
+        "responses": {
+          "200": {
+            "description": "NEAR account information retrieved successfully"
+          }
+        }
+      }
+    },
+    "/price/{size}": {
+      "get": {
+        "summary": "Get price for size",
+        "parameters": [
+          {
+            "name": "size",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price retrieved successfully"
+          }
+        }
+      }
+    },
+    "/peers": {
+      "get": {
+        "summary": "Get peers",
+        "responses": {
+          "200": {
+            "description": "Peers retrieved successfully"
+          }
+        }
+      }
+    },
+    "/miners": {
+      "get": {
+        "summary": "Get top peers",
+        "responses": {
+          "200": {
+            "description": "Top peers retrieved successfully"
+          }
+        }
+      }
+    },
+    "/peers/random/{count}": {
+      "get": {
+        "summary": "Get random peers",
+        "parameters": [
+          {
+            "name": "count",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Random peers retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{currency}": {
+      "post": {
+        "summary": "Post transaction",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction posted successfully"
+          }
+        }
+      }
+    },
+    "/tx": {
+      "post": {
+        "summary": "Post transaction",
+        "responses": {
+          "200": {
+            "description": "Transaction posted successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/data": {
+      "head": {
+        "summary": "Get transaction data head",
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction data head retrieved successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get transaction data",
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction data retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/status": {
+      "get": {
+        "summary": "Get transaction status",
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction status retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/tags": {
+      "get": {
+        "summary": "Get transaction tags",
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction tags retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}": {
+      "get": {
+        "summary": "Get transaction metadata",
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction metadata retrieved successfully"
+          }
+        }
+      }
+    },
+    "/price/{currency}/{size}": {
+      "get": {
+        "summary": "Get price for currency and size",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price retrieved successfully"
+          }
+        }
+      }
+    },
+    "/bulk/txs/data": {
+      "post": {
+        "summary": "Get bulk transaction data",
+        "responses": {
+          "200": {
+            "description": "Bulk transaction data retrieved successfully"
+          }
+        }
+      }
+    },
+    "/bulk/account/spending/{currency}": {
+      "post": {
+        "summary": "Get bulk account spending in currency",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bulk account spending data retrieved successfully"
+          }
+        }
+      }
+    },
+    "/bulk/account/spending_usd/{currency}": {
+      "post": {
+        "summary": "Get bulk account spending in USD",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bulk account spending data retrieved successfully"
+          }
+        }
+      }
+    },
+    "/chunks/{currency}/{txid}/{offset}": {
+      "post": {
+        "summary": "Upload chunk",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "txid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chunk uploaded successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get chunk",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "txid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chunk retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/withdraw": {
+      "post": {
+        "summary": "Withdraw user balance",
+        "responses": {
+          "200": {
+            "description": "Balance withdrawn successfully"
+          }
+        }
+      }
+    },
+    "/account/withdrawals/{currency}": {
+      "get": {
+        "summary": "Get withdrawals for currency",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Withdrawals retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/withdrawals": {
+      "get": {
+        "summary": "Get all withdrawals",
+        "responses": {
+          "200": {
+            "description": "Withdrawals retrieved successfully"
+          }
+        }
+      }
+    },
+    "/supersecretsecurerandomstring/bundle/seedingStatus": {
+      "get": {
+        "summary": "Get seeding status",
+        "responses": {
+          "200": {
+            "description": "Seeding status retrieved successfully"
+          }
+        }
+      }
+    },
+    "/:path([a-zA-Z0-9_-]{43}.*)": {
+      "get": {
+        "summary": "Wildcard route for transaction data",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction data retrieved successfully"
+          }
+        }
+      }
+    }
+  }
+}
