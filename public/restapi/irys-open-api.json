@@ -48,13 +48,13 @@
         }
       }
     },
-    "/account/balance/{currency}": {
+    "/account/balance/{token}": {
       "get": {
-        "summary": "Get user balance for currency",
+        "summary": "Get user balance for token",
         "tags": ["account"],
         "parameters": [
           {
-            "name": "currency",
+            "name": "token",
             "in": "path",
             "required": true,
             "schema": {
@@ -139,13 +139,13 @@
             }
           }
         },
-        "/tx/{currency}": {
+        "/tx/{token}": {
           "post": {
             "summary": "Post transaction",
             "tags": ["transactions"],
             "parameters": [
               {
-                "name": "currency",
+                "name": "token",
                 "in": "path",
                 "required": true,
                 "schema": {
@@ -300,13 +300,13 @@
         }
       }
     },
-    "/price/{currency}/{size}": {
+    "/price/{token}/{size}": {
       "get": {
-        "summary": "Get price for currency and size",
+        "summary": "Get price for token and size",
         "tags": ["price"],
         "parameters": [
           {
-            "name": "currency",
+            "name": "token",
             "in": "path",
             "required": true,
             "schema": {
@@ -329,13 +329,13 @@
         }
       }
     },
-    "/chunks/{currency}/{txid}/{offset}": {
+    "/chunks/{token}/{txid}/{offset}": {
       "post": {
         "summary": "Upload chunk",
         "tags": ["chunks"],
         "parameters": [
           {
-            "name": "currency",
+            "name": "token",
             "in": "path",
             "required": true,
             "schema": {
@@ -382,7 +382,7 @@
         "tags": ["chunks"],
         "parameters": [
           {
-            "name": "currency",
+            "name": "token",
             "in": "path",
             "required": true,
             "schema": {
@@ -434,13 +434,13 @@
         }
       }
     },
-    "/account/withdrawals/{currency}": {
+    "/account/withdrawals/{token}": {
       "get": {
-        "summary": "Get withdrawals for currency",
+        "summary": "Get withdrawals for token",
         "tags": ["account"],
         "parameters": [
           {
-            "name": "currency",
+            "name": "token",
             "in": "path",
             "required": true,
             "schema": {
