@@ -9,7 +9,7 @@ interface IrysRestApiProps {
 
 const IrysRestApi: React.FC<IrysRestApiProps> = ({ tags }) => {
   const customConfig: SwaggerUIProps = {
-    docExpansion: "full",
+    docExpansion: "list",
     defaultModelsExpandDepth: -1,
     displayOperationId: true,
     deepLinking: true,

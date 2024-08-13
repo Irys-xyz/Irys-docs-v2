@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://node1.irys.xyz",
+      "description": "Irys Mainnet"
+    },
+    {
+      "url": "https://devnet.irys.xyz",
+      "description": "Irys Devnet"
+    }
+  ],
+  "paths": {
+    "/account/balance": {
+      "get": {
+        "summary": "Get user balance",
+        "tags": ["account"],
+        "responses": {
+          "200": {
+            "description": "Balance retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/balance/{currency}": {
+      "post": {
+        "summary": "Fund account with currency",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account funded successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get user balance for currency",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Balance retrieved successfully"
+          }
+        }
+      }
+    },
+    "/price/{size}": {
+      "get": {
+        "summary": "Get price for size",
+        "tags": ["price"],
+        "parameters": [
+          {
+            "name": "size",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price retrieved successfully"
+          }
+        }
+      }
+    },
+    "/price/{currency}/{size}": {
+      "get": {
+        "summary": "Get price for currency and size",
+        "tags": ["price"],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price retrieved successfully"
+          }
+        }
+      }
+    }
+  }
+}

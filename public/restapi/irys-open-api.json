@@ -15,37 +15,40 @@
     }
   ],
   "paths": {
-    "/account/balance": {
+    "/info": {
       "get": {
-        "summary": "Get user balance",
-        "tags": ["account"],
+        "summary": "Info route",
+        "tags": ["general"],
         "responses": {
           "200": {
-            "description": "Balance retrieved successfully"
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/public": {
+      "get": {
+        "summary": "Get public information",
+        "tags": ["general"],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Get status",
+        "tags": ["general"],
+        "responses": {
+          "200": {
+            "description": "Successful response"
           }
         }
       }
     },
     "/account/balance/{currency}": {
-      "post": {
-        "summary": "Fund account with currency",
-        "tags": ["account"],
-        "parameters": [
-          {
-            "name": "currency",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Account funded successfully"
-          }
-        }
-      },
       "get": {
         "summary": "Get user balance for currency",
         "tags": ["account"],
@@ -57,7 +60,15 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          } 
         ],
         "responses": {
           "200": {
@@ -66,13 +77,133 @@
         }
       }
     },
-    "/price/{size}": {
+    "/account/approval": {
       "get": {
-        "summary": "Get price for size",
-        "tags": ["price"],
+        "summary": "Get approval information",
+        "tags": ["account"],
         "parameters": [
           {
-            "name": "size",
+            "name": "payingAddress",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "approvedAddress",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }  
+        ],
+        "responses": {
+          "200": {
+            "description": "Approval information retrieved successfully"
+          }
+        }
+      }
+    },
+    {
+      "paths": {
+        "/tx": {
+          "post": {
+            "summary": "Post transaction",
+            "tags": ["transactions"],
+            "requestBody": {
+              "description": "Binary transaction data",
+              "required": true,
+              "content": {
+                "application/octet-stream": {
+                  "schema": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Transaction posted successfully"
+              }
+            }
+          }
+        },
+        "/tx/{currency}": {
+          "post": {
+            "summary": "Post transaction",
+            "tags": ["transactions"],
+            "parameters": [
+              {
+                "name": "currency",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "description": "Binary transaction data",
+              "required": true,
+              "content": {
+                "application/octet-stream": {
+                  "schema": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Transaction posted successfully"
+              }
+            }
+          }
+        }
+      }
+    },    
+    "/tx": {
+      "post": {
+        "summary": "Post transaction",
+        "tags": ["transactions"],
+        "requestBody": {
+          "description": "Binary transaction data",
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction posted successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/data": {
+      "head": {
+        "summary": "Get transaction data",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
             "in": "path",
             "required": true,
             "schema": {
@@ -82,7 +213,89 @@
         ],
         "responses": {
           "200": {
-            "description": "Price retrieved successfully"
+            "description": "Transaction data head retrieved successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get transaction data",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction data retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/status": {
+      "get": {
+        "summary": "Get transaction status",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction status retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/tags": {
+      "get": {
+        "summary": "Get transaction tags",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction tags retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}": {
+      "get": {
+        "summary": "Get transaction metadata",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction metadata retrieved successfully"
           }
         }
       }
@@ -112,6 +325,161 @@
         "responses": {
           "200": {
             "description": "Price retrieved successfully"
+          }
+        }
+      }
+    },
+    "/chunks/{currency}/{txid}/{offset}": {
+      "post": {
+        "summary": "Upload chunk",
+        "tags": ["chunks"],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "txid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Binary chunk data",
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Chunk uploaded successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get chunk",
+        "tags": ["chunks"],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "txid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chunk retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/withdraw": {
+      "post": {
+        "summary": "Withdraw user balance",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          } 
+        ],
+        "responses": {
+          "200": {
+            "description": "Balance withdrawn successfully"
+          }
+        }
+      }
+    },
+    "/account/withdrawals/{currency}": {
+      "get": {
+        "summary": "Get withdrawals for currency",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          } 
+        ],
+        "responses": {
+          "200": {
+            "description": "Withdrawals retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/withdrawals": {
+      "get": {
+        "summary": "Get all withdrawals",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          } 
+        ],
+        "responses": {
+          "200": {
+            "description": "Withdrawals retrieved successfully"
           }
         }
       }

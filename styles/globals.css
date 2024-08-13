@@ -430,6 +430,16 @@ details[open] .faq-expand::before {
   color: #000000;
 }
 
+/* Hack. I actually want to remove this with a custom renderer, but can't figure out how - Luke */
+.light .swagger-ui .opblock-tag {
+  display: none;
+}
+
+/* Hack. I actually want to remove this with a custom renderer, but can't figure out how - Luke */
+.dark .swagger-ui .opblock-tag {
+  display: none;
+}
+
 /* Dark Mode */
 .dark .swagger-ui .topbar {
   background-color: #1f2937;
