@@ -435,6 +435,10 @@ details[open] .faq-expand::before {
   display: none;
 }
 
+.swagger-ui .opblock-summary-operation-id {
+  display: none !important;
+}
+
 /* Hack. I actually want to remove this with a custom renderer, but can't figure out how - Luke */
 .dark .swagger-ui .opblock-tag {
   display: none;
