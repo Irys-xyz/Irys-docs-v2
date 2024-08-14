@@ -24,7 +24,7 @@ const manifest = await irys.uploader.generateManifest({ items: map });
 
 const tags = [
 	{ name: "Type", value: "manifest" },
-	{ name: "Content-Type", value: "application/x.arweave-manifest+json" },
+	{ name: "Content-Type", value: "application/x.irys-manifest+json" },
 ];
 const receipt = await irys.upload(JSON.stringify(manifest), { tags });
 const manifestId = receipt.id;
@@ -34,7 +34,7 @@ const manifestId = receipt.id;
 
 Upon uploading a manifest, you get a [receipt](/learn/receipts) containing a transaction ID. To download transactions in a path manifest, request them from the [Irys gateway](/overview/gateways) using a URL formatted as:
 
-`https://gateway.irys.xyz/:manifestId/:pathName`
+`https://testnet-gateway.irys.xyz/:manifestId/:pathName`
 
 The gateway then:
 
@@ -53,7 +53,7 @@ For example, if you have a manifest with ID `W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc
 
 You can download the first entry using:
 
-`https://gateway.irys.xyz/W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc_Vx8fwv4/foo1.png`
+`https://testnet-gateway.irys.xyz/W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc_Vx8fwv4/foo1.png`
 
 ## Static websites
 
@@ -67,7 +67,7 @@ Use path manifests to create a logical grouping of transactions, even transactio
 
 This example:
 
-1.  Uses the [Irys query package](/developer-docs/querying/query-package) to search for the 10 most recent transactions tagged `image/png`.
+1.  Uses the [Irys query package](/build/onchain-data/graphql) to search for the 10 most recent transactions tagged `image/png`.
 2.  Groups the transations using a `Map` object.
 3.  Creates a manifest mapping the transations to paths.
 4.  Permanently uploads the manifest using Irys.
@@ -99,13 +99,13 @@ const generateManifest = async () => {
 	const manifest = await irys.uploader.generateManifest({ items: map });
 	const tags = [
 		{ name: "Type", value: "manifest" },
-		{ name: "Content-Type", value: "application/x.arweave-manifest+json" },
+		{ name: "Content-Type", value: "application/x.irys-manifest+json" },
 	];
 	const receipt = await irys.upload(JSON.stringify(manifest), { tags });
 	const manifestId = receipt.id;
 
 	map.forEach((value, key) => {
-		console.log(`https://gateway.irys.xyz/${manifestId}/${key}`);
+		console.log(`https://testnet-gateway.irys.xyz/${manifestId}/${key}`);
 	});
 };
 

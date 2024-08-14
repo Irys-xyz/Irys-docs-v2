@@ -1,7 +1,15 @@
 {
 	"downloading": "Downloading Data",
-	"storage-terms": "Storage Terms",
-	"cost-to-upload": "Cost to Upload",
-	"bundlers": "Bundlers",
-	"gateway": "Gateway"
+	"storage-terms": {
+		"display": "hidden"
+	},
+	"cost-to-upload": {
+		"display": "hidden"
+	},
+	"bundlers": {
+		"display": "hidden"
+	},
+	"gateway" : {
+		"display": "hidden"
+	}
 }

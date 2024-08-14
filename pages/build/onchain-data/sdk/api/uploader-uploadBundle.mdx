@@ -26,7 +26,7 @@ response = {
 	version, // The version of this JSON file, currently 1.0.0
 	public, // Public key of the bundler node used
 	signature, // A signed deep hash of the JSON receipt
-	deadlineHeight, // The block number by which the transaction must be finalized on Arweave
+	deadlineHeight, // The block number by which the transaction must be finalized
 	block, // Deprecated
 	validatorSignatures, // Deprecated
 	verify, // An async function used to verify the receipt at any time
@@ -46,7 +46,7 @@ for (let i = 0; i < maxTxs; i++) {
 	});
 	await newTx.sign(); // ID is now set
 	txs.push(newTx);
-	console.log(`Tx created and signed, https://gateway.irys.xyz/${newTx.id}`);
+	console.log(`Tx created and signed, https://testnet-gateway.irys.xyz/${newTx.id}`);
 }
 
 try {
@@ -59,5 +59,5 @@ try {
 
 <Callout type="info" emoji="ℹ️">
 	The transaction ID returned as part of the response is used to download the data, simply create a URL with the format
-	`https://gateway.irys.xyz/[transaction-id].`
+	`https://testnet-gateway.irys.xyz/[transaction-id].`
 </Callout>

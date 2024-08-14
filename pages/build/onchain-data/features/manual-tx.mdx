@@ -4,10 +4,10 @@ description: Manually creating, signing and uploading a transaction.
 
 import { Callout } from "nextra-theme-docs";
 
-# Manually creating a transaction
+# Manually Creating a Transaction
 
-In addition to uploading using the SDK functions [`irys.upload()`](/developer-docs/irys-sdk/api/upload),[`irys.uploadFile()`](/developer-docs/irys-sdk/api/uploadFile),
-and [`irys.uploadFolder()`](/developer-docs/irys-sdk/api/uploadFolder), you can also manually create, sign, and upload a transaction in separate steps.
+In addition to uploading using the SDK functions [`irys.upload()`](/build/onchain-data/sdk/api/upload),[`irys.uploadFile()`](/build/onchain-data/sdk/api/uploadFile),
+and [`irys.uploadFolder()`](/build/onchain-data/sdk/api/uploadFolder), you can also manually create, sign, and upload a transaction in separate steps.
 
 ## Workflow
 
@@ -21,14 +21,13 @@ After calling `tx.sign()`, you can access the transaction ID via `tx.id`, this f
 	You must call `tx.sign()` before using the value of `tx.id`.
 </Callout>
 
-## Creating, signing, uploading
+## Creating, Signing, Uploading
 
 Basic workflow.
 
 ```js
 const createSignUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	// See: https://docs.irys.xyz/developer-docs/irys-sdk#connecting-to-irys
 	const irys = await getIrys();
 
 	// Create the transaction
@@ -40,18 +39,17 @@ const createSignUpload = async () => {
 
 	// Upload the transaction
 	const receipt = await tx.upload();
-	console.log(`Tx uploaded. https://gateway.irys.xyz/${receipt.id}`);
+	console.log(`Tx uploaded. https://testnet-gateway.irys.xyz/${receipt.id}`);
 };
 ```
 
-## Serializing a transaction
+## Serializing a Transaction
 
 Serialize a transaction and recreate it later.
 
 ```js
 const serializationUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	// See: https://docs.irys.xyz/developer-docs/irys-sdk#connecting-to-irys
 	const irys = await getIrys();
 
 	// Create the transaction
@@ -71,7 +69,7 @@ const serializationUpload = async () => {
 	// Upload the tx
 	const receipt = await tx2.upload();
 
-	console.log(`Tx uploaded. https://gateway.irys.xyz/${receipt.id}`);
+	console.log(`Tx uploaded. https://testnet-gateway.irys.xyz/${receipt.id}`);
 };
 ```
 
@@ -84,7 +82,6 @@ First, generate an anchor and use that to create a transaction with your data. T
 ```js
 const deterministicIDUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	// See: https://docs.irys.xyz/developer-docs/irys-sdk#connecting-to-irys
 	const irys = await getIrys();
 
 	// Generate 32 bytes through Buffer.from(anchor)
@@ -103,6 +100,6 @@ const deterministicIDUpload = async () => {
 	await tx2.sign();
 	console.log(`Tx2 ID ${tx2.id}`); // ID is the same
 	const receipt = await tx2.upload();
-	console.log(`Tx uploaded. https://gateway.irys.xyz/${receipt.id}`);
+	console.log(`Tx uploaded. https://testnet-gateway.irys.xyz/${receipt.id}`);
 };
 ```

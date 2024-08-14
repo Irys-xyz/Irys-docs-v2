@@ -4,7 +4,9 @@
 	"tags": "Tags",
 	"manual-tx": "Manually Creating a Tx",
 	"balance-approvals": "Balance Approvals",
-	"path-manifests": "Path Manifests",
+	"path-manifests": {
+		"display": "hidden"
+	},
 	"mutable-references": "Mutable References",
 	"ipfs-cid": "Using IPFS CIDs"
 }

@@ -1,12 +1,12 @@
 ---
-description: Searching Irys using GraphQL
+description: Search Irys transaction metadata using GraphQL.
 ---
 
 import { Callout } from "nextra-theme-docs";
 
 # Querying With GraphQL
 
-In addition to the Query Package, you can also query Irys transactions directly using GraphQL.
+You can query Irys transaction metadata using GraphQL.
 
 ## GraphQL Clients
 
@@ -44,24 +44,21 @@ When building a query, any of the following values be included in your results:
 | `tags {    `<br/>&nbsp;&nbsp;`name     `<br/>&nbsp;&nbsp;`value`<br/>`}` | An array of tags supplied as name / value pairs. Exists if the user added them at upload. |
 |`timestamp` | The timestamp, accurate to the millisecond of when the transaction was posted. This value is the same as the receipt timestamp. |
 
-## Mainnet & Devnet
+## Endpoint
 
-We have two GraphQL endpoints, one for mainnet and one for devnet.
-
-| Node    | Endpoint                                 |
-| ------- | ---------------------------------------- |
-| Mainnet | https://arweave.mainnet.irys.xyz/graphql |
-| Devnet  | https://arweave.devnet.irys.xyz/graphql  |
+https://testnet-upload.irys.xyz/graphql
 
 ## GraphQL Sandbox
 
-Clicking on any of the endpoint URLs above will direct you to the GraphQL Sandbox used for building and testing queries. Press Control+Space at any time to see an interactive popup window of either query arguments or results fields.
+Clicking on the [endpoint URL](https://testnet-upload.irys.xyz/graphql) above will take you to the GraphQL Sandbox used for building and testing queries. Press Control+Space at any time to see an interactive popup window of either query arguments or results fields.
 
 <img className="border border-[#FEF4EE] rounded mt-5 w-5/6" src="/build/img/GQL-Sandbox.png" />
 
 ## Sample Queries
 
-Queries return transaction metadata. To then retrieve data, use the returned transaction ID and download the data from the Irys gateway using a URL formed as follows `https://gateway.irys.xyz/[transaction-id]`.
+Queries return transaction metadata. To then retrieve data, use the returned transaction ID and download the data from the Irys gateway using a URL formed as follows: 
+
+`https://testnet-gateway.irys.xyz/[transaction-id]`.
 
 ### Transaction IDs
 
@@ -100,7 +97,7 @@ query getByTimestamp {
 ```
 
 <Callout type="info" emoji="ℹ️">
-	Irys timestamps are accurate to the millisecond, so you need to provide a timestamp in millisecond format. You can
+	Irys timestamps are accurate to the millisecond, so you need to provide a timestamp in millisecond format when querying. You can
 	convert from human-readable time to UNIX timestamp using websites like [Epoch101](https://www.epoch101.com/), be sure
 	to convert in **millisecond** format, not **second**.
 </Callout>

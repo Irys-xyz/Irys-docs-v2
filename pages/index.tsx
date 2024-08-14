@@ -113,22 +113,8 @@ export default function Home() {
 							</div>
 						</div>
 					</motion.a>
-					<motion.a
-						href="/mine"
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1, transition: { delay: 0.3 } }}
-						onMouseEnter={() => setButtonHovered(true)}
-						onMouseLeave={() => setButtonHovered(false)}
-					>
-						<div className="hover:bg-[#FF8451] transition-all group w-[213.57px] h-16 rounded-full custom-shadow border-[#FF8451] border p-2 flex items-center  text-white hover:text-black justify-center">
-							<div className="uppercase gap-3 flex items-center justify-center font-bold tracking-tight">
-								Mine
-								<div>
-									<img src="/assets/home/others/chevron.svg" alt="" className="group-hover:invert" />
-								</div>
-							</div>
-						</div>
-					</motion.a>
+
+
 				</div>
 				<Socials />
 

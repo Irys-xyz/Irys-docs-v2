@@ -58,7 +58,7 @@ try {
 	await irys.fund(price);
 
 	const { id } = await irys.uploadFile(pathToFile);
-	console.log(`${pathToFile} --> Uploaded to https://gateway.irys.xyz/${id}`);
+	console.log(`${pathToFile} --> Uploaded to https://testnet-gateway.irys.xyz/${id}`);
 } catch (e) {
 	console.log("Error funding node ", e);
 }

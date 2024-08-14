@@ -4,7 +4,7 @@ description: Pay for your users uploads using Irys's Balance Approvals
 
 import { Callout } from "nextra-theme-docs";
 
-# Balance approvals
+# Balance Approvals
 
 Use balance approvals to share balances between multiple addresses. This helps to onboard users without requiring them to own tokens.
 
@@ -21,7 +21,7 @@ Balance approvals:
 - Are non-transferable.
 - Can be configured to expire automatically.
 
-## Create an approval
+## Create an Approval
 
 To update an existing approval, create a new approval with the same address (it will overwrite the existing approval).
 
@@ -33,7 +33,7 @@ const receipt = await irys.approval.createApproval({
 });
 ```
 
-## Upload using an approval
+## Upload Using an Approval
 
 ```ts
 const receipt = await irys.upload("GM World", { upload: { paidBy: "<address>" } });
@@ -51,13 +51,13 @@ const uploadOptions = {
 const receipt = await irys.upload(dataToUpload, uploadOptions);
 ```
 
-## Revoke an approval
+## Revoke an Approval
 
 ```ts
 const receipt = await irys.approval.revokeApproval({ approvedAddress: "<address>" });
 ```
 
-## Get balances you're approved to use
+## Get Balances You're Approved To Use
 
 Get approvals from the array of addresses provided:
 
@@ -87,7 +87,7 @@ Return type:
 [];
 ```
 
-## Get approvals you've created
+## Get Approvals You've Created
 
 Get approvals for the array of addresses provided:
 
@@ -117,18 +117,12 @@ Return type:
 [];
 ```
 
-## Get balance approvals via HTTP
+## Get Balance Approvals via HTTP
 
 You can also request balance approvals via HTTP:
 
-**Devnet**:
+**Testnet**:
 
 ```
-https://arweave.devnet.irys.xyz/account/approval?payingAddress=<...>&token=<...>&approvedAddress=<...>
-```
-
-**Mainnet**:
-
-```
-https://arweave.mainnet.irys.xyz/account/approval?payingAddress=<...>&token=<...>&approvedAddress=<...>
+https://testnet.irys.xyz/account/approval?payingAddress=<...>&token=<...>&approvedAddress=<...>
 ```

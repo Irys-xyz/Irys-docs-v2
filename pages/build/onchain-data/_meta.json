@@ -5,7 +5,10 @@
 	"sdk": "SDK",
 	"rest-api": "REST API",
 	"storage-cli": "Storage CLI",
-	"querying": "Querying",
+	"graphql": "Querying",
+	"querying": {
+		"display": "hidden"
+	},
 	"guides": "Guides",
 	"troubleshooting": "Troubleshooting"
 }

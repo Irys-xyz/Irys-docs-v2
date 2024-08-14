@@ -6,7 +6,6 @@ export const tokenOptions: {
         { "value": "ethereum", "label": "Ethereum - ETH", "ticker": "ETH" },
         { "value": "solana", "label": "Solana - SOL", "ticker": "SOL" },
         { "value": "matic", "label": "Polygon - MATIC", "ticker": "MATIC" },
-        { "value": "arweave", "label": "Arweave - AR", "ticker": "AR" },
         { "value": "avalanche", "label": "Avalanche C-Chain - AVAX", "ticker": "AVAX" },
         { "value": "algorand", "label": "Algorand - ALGO", "ticker": "ALGO" },
         { "value": "chainlink", "label": "Chainlink - LINK", "ticker": "LINK" },

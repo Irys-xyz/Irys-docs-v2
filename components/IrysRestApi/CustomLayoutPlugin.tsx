@@ -19,30 +19,32 @@ class CustomLayout extends React.Component<CustomLayoutProps> {
     )
   }
 }
-
 // Plugin to disable "Try it out" button for specific endpoints
 const DisableTryItOutPlugin = () => {
-  console.log("DisableTryItOutPlugin=");
+  console.log("DisableTryItOutPlugin initialized");
 
   return {
     wrapComponents: {
-      Operation: (Original: React.ComponentType<any>, { React }: any) => (props: any) => {
+      Operation: (Original: React.ComponentType<any>) => (props: any) => {
+        console.log("Operation component rendered with props:", props);
+
         const isDisabled = [
           "/account/balance/{currency}",
           "/account/approval"
-          // Paths for which to hide the Try it out button
-        ].includes(props.operationProps.path)
-        console.log("DisableTryItOutPlugin=",props.operationProps.path);
-        console.log({isDisabled})
+        ].includes(props.operationProps.path);
+
+        console.log("Is Try It Out disabled?", isDisabled);
+
         if (isDisabled) { 
-          return <div>{props.operationProps.operation.operationId} (Try It Out disabled)</div>
+          return <div>{props.operationProps.operation.operationId} (Try It Out disabled)</div>;
         }
 
-        return <Original {...props} />
+        return <Original {...props} />;
       },
     },
-  }
-}
+  };
+};
+
 
 // Create the plugin that provides our layout component
 const CustomLayoutPlugin = () => {

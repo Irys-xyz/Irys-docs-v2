@@ -24,7 +24,7 @@ response = {
 	version, // The version of this JSON file, currently 1.0.0
 	public, // Public key of the bundler node used
 	signature, // A signed deep hash of the JSON receipt
-	deadlineHeight, // The block number by which the transaction must be finalized on Arweave
+	deadlineHeight, // The block number by which the transaction must be finalized
 	block, // Deprecated
 	validatorSignatures, // Deprecated
 	verify, // An async function used to verify the receipt at any time
@@ -39,7 +39,7 @@ const irys = await getIrys();
 const dataToUpload = "GM world.";
 try {
 	const receipt = await irys.upload(dataToUpload);
-	console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+	console.log(`Data uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
 } catch (e) {
 	console.log("Error uploading data ", e);
 }
@@ -47,5 +47,5 @@ try {
 
 <Callout type="info" emoji="ℹ️">
 	Use the transaction ID returned as part of the response to download the data by creating a URL in the format
-	`https://gateway.irys.xyz/[transaction-id].`
+	`https://testnet-gateway.irys.xyz/[transaction-id].`
 </Callout>

@@ -9,6 +9,7 @@
 	},
 	"mine": {
 		"title": "Mine",
-		"type": "page"
+		"type": "page",
+		"display": "hidden"
 	}
 }

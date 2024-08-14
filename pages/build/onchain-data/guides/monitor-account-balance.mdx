@@ -4,7 +4,7 @@ description: Monitor your account balance using JavaScript, our CLI, or cURL
 
 # Monitor Node Balance With A Script
 
-Irys's upfront funding simplifies the uploading data by allowing you to pre-fund your uploads. This eliminates the need for individual funding calls for each upload as the loaded balance is automatically deducted from with each upload. To keep track of your loaded balance, users commonly create scripts that periodically check their balance and provide notifications when it approaches zero.
+Irys's upfront funding simplifies uploading data by allowing you to pre-fund your uploads. This eliminates the need for individual funding calls for each upload as the loaded balance is automatically deducted from with each upload. To keep track of your loaded balance, users commonly create scripts that periodically check their balance and provide notifications when it approaches zero.
 
 This guide offers examples of how to monitor your balance using:
 
@@ -17,21 +17,21 @@ These three techniques are all equally effective options.
 ## JavaScript
 
 ```js
-import Irys from "@irys/sdk";
+import Irys from "@irys-network/bundler-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
 const getIrys = async () => {
-	const network = "devnet";
-	// Devnet RPC URLs change often, use a recent one from https://chainlist.org/
+	const network = "testnet";
+	// RPC URLs change often, use a recent one from https://chainlist.org/
 	const providerUrl = "";
 	const token = "ethereum";
 
 	const irys = new Irys({
-		network, // "mainnet" || "devnet"
+		network, 
 		token, // Token used for payment
 		key: process.env.PRIVATE_KEY, // ETH or SOL private key
-		config: { providerUrl }, // Optional provider URL, only required when using Devnet
+		config: { providerUrl }, // RPC provider URL
 	});
 	return irys;
 };
@@ -73,15 +73,15 @@ You can achieve the same thing using our CLI and a bash script. The advantage to
 
 # Define your variables
 address="0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D" # Public wallet address
-# Devnet RPC URLs change often, use a recent one from https://chainlist.org/
+# RPC URLs change often, use a recent one from https://chainlist.org/
 provider_url="https://rpc.sepolia.dev"
-node_address="https://arweave.devnet.irys.xyz"
+node_address="https://testnet.irys.xyz"
 token="ethereum"
 balance_output="";
 
 # Check if node_address contains "devnet"
 # When using devnet, you must also include a provider-url
-if [[ $node_address == *"devnet"* ]]; then
+if [[ $node_address == *"testnet"* ]]; then
    balance_output=$(irys balance $address --provider-url $provider_url -h $node_address -c $token)
 else
    balance_output=$(irys balance $address -h $node_address -t $token)
@@ -109,7 +109,7 @@ To run a bash script periodically, use `cron`. Assuming you saved the above scri
 ## cURL
 
 A third option is to make cURL request using a URL with the following format `https://<node-address>/account/balance/<token>?address=<address>`. For example to check the MATIC balance of the wallet with address `0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D`, you would use the command
-`https://arweave.devnet.irys.xyz/account/balance/matic?address=0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D`
+`https://testnet.irys.xyz/account/balance/matic?address=0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D`
 
 Just as with our CLI, you don’t need to provide your private key. This version is also more streamlined than the CLI version as you don’t need to include the provider URL when checking the Devnet balances.
 
@@ -118,7 +118,7 @@ Just as with our CLI, you don’t need to provide your private key. This version
 
 # Define your variables
 address="0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D" # Public wallet address
-node_address="https://arweave.devnet.irys.xyz"
+node_address="https://testnet.irys.xyz"
 token="token"
 balance_output="";
 

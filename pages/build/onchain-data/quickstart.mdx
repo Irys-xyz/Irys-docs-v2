@@ -12,42 +12,40 @@ import { Callout } from "nextra-theme-docs";
 Install using npm:
 
 ```console
-npm install @irys/sdk
+npm install @irys-network/bundler-sdk
 ```
 
 or yarn:
 
 ```console
-yarn add @irys/sdk
+yarn add @irys-network/bundler-sdk
 ```
 
 <Callout type="info" emoji="ℹ️">
 	If you get a warning saying `bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)` during
 	install, it can be safely ignored. For details on how make it go away, see our [troubleshooting
-	guide](/irys-sdk/troubleshooting#bigint).
+	guide](/build/onchain-data/troubleshooting#bigint).
 </Callout>
 
 ## Importing
 
 ```js
-import Irys from "@irys/sdk";
+import Irys from "@irys-network/bundler-sdk";
 ```
 
 ## Connecting to Irys
 
-
-
-Connect using a private key when using an EVM or Solana wallet:
+Connect using a private key linked to an EVM or Solana wallet:
 
 ```js
 const getIrys = async () => {
-	const network = "mainnet";
-	// Devnet RPC URLs change often, use a recent one from https://chainlist.org/
+	const network = "testnet";
+	// RPC URLs change often, use a recent one from https://chainlist.org/
 	const providerUrl = "";
 	const token = "ethereum";
 
 	const irys = new Irys({
-		network, // "mainnet" or "devnet"
+		network, 
 		token, // Token used for payment
 		key: process.env.PRIVATE_KEY, // ETH or SOL private key
 		config: { providerUrl }, // Optional provider URL, only required when using Devnet
@@ -56,34 +54,15 @@ const getIrys = async () => {
 };
 ```
 
-Or using a serialized JWK file when using an Arweave wallet:
-
-```js
-const getIrysArweave = async () => {
-	const network = "mainnet";
-	const token = "arweave";
-	const key = JSON.parse(fs.readFileSync("arweaveWallet.json").toString());
-
-	const irys = new Irys({
-		network, // "mainnet" or "devnet"
-		token, // Token used for payment and signing
-		key, // Arweave wallet
-	});
-	return irys;
-};
-```
-
 ### Provider URLs
 
-Use the `providerUrl` parameter to specify an RPC provider.
+Use the `providerUrl` parameter to specify an RPC provider, this is required.
 
-- When working with Nodes 1 and 2, this value is optional and will default to the main public RPC provider for the chosen chain.
-- When working with Devnet, this parameter is required.
-- When working with Aptos, use one of "mainnet" | "testnet" | "devnet" instead of a URL.
+> When working with Aptos, use "testnet" | "devnet" instead of a URL.
 
-## Funding a node
+## Funding Irys
 
-Fund a node using any of our [supported tokens](/build/onchain-data/features/supported-tokens):
+Fund your account on the Irys network using any of our [supported tokens](/build/onchain-data/features/supported-tokens):
 
 ```js
 const fundNode = async () => {
@@ -99,26 +78,22 @@ const fundNode = async () => {
 
 ## Uploading
 
-Data uploaded to Irys is given a millisecond-accurate timestamp, attributes and authorship details before being being stored onchain. 
-
-This information is used to create a signed receipt that be trustlessly [verified](/build/onchain-data/sdk/api/utils-verifyReceipt).
-
-### Uploading data
+### Uploading Data
 
 ```js
 const uploadData = async () => {
 	const irys = await getIrys();
-	const dataToUpload = "GM world.";
+	const dataToUpload = "hirys world.";
 	try {
 		const receipt = await irys.upload(dataToUpload);
-		console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+		console.log(`Data uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
 	} catch (e) {
 		console.log("Error uploading data ", e);
 	}
 };
 ```
 
-### Uploading a file
+### Uploading a File
 
 ```js
 const uploadFile = async () => {
@@ -130,20 +105,20 @@ const uploadFile = async () => {
 
 	try {
 		const receipt = await irys.uploadFile(fileToUpload, { tags: tags });
-		console.log(`File uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+		console.log(`File uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
 	} catch (e) {
 		console.log("Error uploading file ", e);
 	}
 };
 ```
 
-### Uploading a folder
+### Uploading a Folder
 
 You can upload a group of files as a single transaction from both the server and the browser.
 
 <Callout type="info" emoji="ℹ️">
 	When [uploading a folder](/irys-sdk/api/uploadFolder), files can be accessed either directly at
-	`https://gateway.irys.xyz/[transaction-id]` or `https://gateway.irys.xyz/[manifest-id]/[file-name]`
+	`https://testnet-gateway.irys.xyz/[transaction-id]` or `https://testnet-gateway.irys.xyz/[manifest-id]/[file-name]`
 </Callout>
 
 ### Server
@@ -185,22 +160,7 @@ const taggedFiles = files.map((f: TaggedFile, i: number) => {
 const response = await webIrys.uploadFolder(taggedFiles);
 ```
 
-## Querying
-
-In addition to using the [query package](/build/onchain-data/querying/query-package) to search Irys, you can also search directly from the Irys SDK. The following shows how to search for all transactions posted to [Irys mainnet](/overview/networks), paid for with Matic, and uploaded during a three day period.
-
-For more details on all search functions, see [query package documentation](/querying/query-package).
-
-```js
-const result = await irys
-	.search("irys:transactions")
-	.network("mainnet")
-	.token("ethereum")
-	.fromTimestamp(new Date("2023-07-01"))
-	.toTimestamp(new Date("2023-07-03"));
-```
-
-## 3rd party build tools
+## 3rd-Party Build Tools
 
 ### Parcel
 

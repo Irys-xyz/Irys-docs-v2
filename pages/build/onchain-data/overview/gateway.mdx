@@ -7,7 +7,7 @@ The Irys Gateway indexes and serves data posted to the network.
 
 To ensure that all transactions posted to Irys are easily searchable and accessible, the gateway indexes all transaction metadata. Whenever a user posts a transaction to Irys, the gateway detects it and adds it to its database.
 
-While indexing, the gateway extracts transactions from each block and indexes the metadata. When a bundle is encountered, the gateway indexes all the transactions within. Similarly, if a manifest is found, the gateway indexes it. By indexing manifests, the gateway creates a virtual directory structure that mimics the original folder system. This allows users to access data using the URL format `https://gateway.irys.xyz/[manifest-id]/[file-name]`.
+While indexing, the gateway extracts transactions from each block and indexes the metadata. When a bundle is encountered, the gateway indexes all the transactions within. Similarly, if a manifest is found, the gateway indexes it. By indexing manifests, the gateway creates a virtual directory structure that mimics the original folder system. This allows users to access data using the URL format `https://testnet-gateway.irys.xyz/[manifest-id]/[file-name]`.
 
 ## Querying
 
@@ -23,7 +23,7 @@ When a user posts a transaction to Irys, the gateway picks it up and stores it i
 
 When a transaction is seeded to miners, its header and data are stored separately. To access this data, users request it from a gateway. Because it can be complex, computationally heavy, and difficult for average
 users to access data directly from miners, gateways are crucial in making [downloading
-data](/developer-docs/downloading) as simple as uploading.
+data](/build/onchain-data/overview/downloading) as simple as uploading.
 
 When a user requests data from a given gateway, the gateway first checks its internal cache, serving the data from there if it's available. If not, the gateway then checks Arweave to see if the data is stored there. If found, that gateway retrieves the data and serves it to the user, caching it for future use and providing faster response times for frequently requested data.
 
@@ -35,13 +35,10 @@ Gateways are a crucial component in Irys's scaling strategy. To effectively scal
 
 ## Gateway Schema / Endpoints
 
-To download data from a gateway, use the transactionobtained during upload. The most commonly used gateway is `https://gateway.irys.xyz`, and the format used to download data is `https://gateway.irys.xyz/[transaction-id]`.
+To download data from a gateway, use the transaction obtained during upload. The most commonly used gateway is `https://testnet-gateway.irys.xyz`, and the format used to download data is `https://testnet-gateway.irys.xyz/[transaction-id]`.
 
-For example `https://gateway.irys.xyz/CO9EpX0lekJEfXUOeXncUmMuG8eEp5WJHXl9U9yZUYA`.
+For example `https://testnet-gateway.irys.xyz/CO9EpX0lekJEfXUOeXncUmMuG8eEp5WJHXl9U9yZUYA`.
 
-For GraphQL queries, you can connect to either of these endpoints:
+For GraphQL queries, you can connect to:
 
-| Node    | Endpoint                                 |
-| ------- | ---------------------------------------- |
-| Mainnet | https://arweave.mainnet.irys.xyz/graphql |
-| Devnet  | https://arweave.devnet.irys.xyz/graphql  |
+https://testnet-upload.irys.xyz/graphql

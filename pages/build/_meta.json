@@ -3,5 +3,7 @@
 	"onchain-data": "ONCHAIN DATA",
 	"sc": "SMART CONTRACTS",
 	"ui": "FRONT-END DEV",
-	"iip": "IRYS IMPROVEMENT PROPOSALS"
+	"iip": {
+    "display": "hidden"
+  }
 }

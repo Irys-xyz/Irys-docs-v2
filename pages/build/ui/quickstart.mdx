@@ -20,26 +20,26 @@ there are a few differences which are demonstrated below.
 Install using npm:
 
 ```console
-npm install @irys/sdk
+npm install @irys-network/bundler-sdk
 ```
 
 or yarn:
 
 ```console
-yarn add @irys/sdk
+yarn add @irys-network/bundler-sdk
 ```
 
 ## Importing
 
 ```js
-import { WebIrys } from "@irys/sdk";
+import { WebIrys } from "@irys-network/bundler-sdk";
 ```
 
 ## Connecting to a node
 
 When instantiating a `WebIrys` object pass:
 
-- `network`: Either `"mainnet"` or `"devnet"`
+- `network`: "testnet"
 - `token`: Payment [token](/overview/supported-tokens)
 - `wallet`: A wallet object containing the end-user's injected provider and the name of the provider package your project uses
 
@@ -49,9 +49,9 @@ const getWebIrys = async () => {
 	await window.ethereum.enable();
 	const provider = new providers.Web3Provider(window.ethereum);
 
-	const network = "mainnet";
+	const network = "testnet";
 	const token = "ethereum";
-	// Devnet RPC URLs change often, use a recent one from https://chainlist.org
+	// RPC URLs change often, use a recent one from https://chainlist.org
 	const rpcUrl = "";
 
 	// Create a wallet object
@@ -85,7 +85,7 @@ const aptosWallet = useWallet();
 const getWebIrys = async () => {
 	const network = "devnet";
 	const token = "aptos";
-	const rpcUrl = "testnet"; // "mainnet" || "testnet"
+	const rpcUrl = "testnet";
 	const wallet = { rpcUrl: rpcUrl, name: "aptos", provider: aptosWallet };
 	const webIrys = new WebIrys({ network, token, wallet });
 	await webIrys.ready();
@@ -125,11 +125,11 @@ import { useWallet } from "@solana/wallet-adapter-react";
 const wallet = useWallet();
 
 const getIrys = async (): Promise<WebIrys> => {
-	// Devnet RPC URLs change often, use a recent one from https://chainlist.org
+	// RPC URLs change often, use a recent one from https://chainlist.org
 	const rpcUrl = "";
 
 	const wallet = { rpcUrl: rpcUrl, name: "solana", provider: wallet };
-	const webIrys = new WebIrys({ network: "mainnet", token: "solana", wallet });
+	const webIrys = new WebIrys({ network: "testnet", token: "solana", wallet });
 	await webIrys.ready();
 	return webIrys;
 };
@@ -149,8 +149,8 @@ Additionally, the following providers will work with extra setup code.
 ```js
 export const getWebIrys = async () => {
 	const wallet = { name: "Othent KMS", provider: othentKMS };
-	const network = "mainnet";
-	const token = "arweave";
+	const network = "testnet";
+	const token = "ethereum";
 	const webIrys = new WebIrys({ network, token, wallet });
 	await webIrys.ready();
 	return webIrys;
@@ -249,8 +249,6 @@ const fundNode = async () => {
 
 ## Uploading
 
-Data uploaded to Irys is given a millisecond-accurate timestamp, attributes and authorship details before being passed to Arweave for permanent storage. This information is used to create a signed receipt that can be trustlessly [verified](/irys-sdk/api/utils-verifyReceipt).
-
 ### Uploading data
 
 ```js
@@ -259,7 +257,7 @@ const uploadData = async () => {
 	const dataToUpload = "GM world.";
 	try {
 		const receipt = await webIrys.upload(dataToUpload);
-		console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+		console.log(`Data uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
 	} catch (e) {
 		console.log("Error uploading data ", e);
 	}
@@ -278,7 +276,7 @@ const uploadFile = async (fileToUpload: File) => {
 
 	try {
 		const receipt = await webIrys.uploadFile(fileToUpload, { tags: tags });
-		console.log(`File uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+		console.log(`File uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
 	} catch (e) {
 		console.log("Error uploading file ", e);
 	}
@@ -289,7 +287,7 @@ const uploadFile = async (fileToUpload: File) => {
 
 Upload an array of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) objects.
 
-Upon upload, a manifest is automatically created. Your files can be accessed `https://gateway.irys.xyz/[manifestId]/[file-name]`.
+Upon upload, a manifest is automatically created. Your files can be accessed `https://testnet-gateway.irys.xyz/[manifestId]/[file-name]`.
 
 ```js
 const uploadFolder = async (files: File[], tags: Tag[]) => {

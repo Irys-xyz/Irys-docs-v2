@@ -1,9 +1,5 @@
 
 export const CURRENCY_ATOMIC: Record<string, Currency> = {
-    arweave: {
-        ticker: "AR",
-        atomic: 1e12,
-    },
     ethereum: {
         ticker: "ETH",
         atomic: 1e18,
