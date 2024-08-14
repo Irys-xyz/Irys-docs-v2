@@ -1,0 +1,27 @@
+---
+description: Track upload progress with event callbacks
+---
+
+# Upload events
+
+The uploader emits three events during each upload. These can be subscribed to for any use case when tracking upload progress is needed.
+
+-   `chunkUpload`: Emitted whenever a chunk is uploaded.
+-   `chunkError`: Emitted whenever a chunk upload fails. Due to internal retry logic, these errors can most likely be ignored as long as the upload doesn't error overall.
+-   `done`: Emitted when the upload completes.
+
+```js
+uploader.on("chunkUpload", (chunkInfo) => {
+	console.log(
+		`Uploaded Chunk number ${chunkInfo.id}, offset of ${chunkInfo.offset}, size ${chunkInfo.size} Bytes, with a total of ${chunkInfo.totalUploaded} bytes uploaded.`,
+	);
+});
+
+uploader.on("chunkError", (e) => {
+	console.error(`Error uploading chunk number ${e.id} - ${e.res.statusText}`);
+});
+
+uploader.on("done", (finishRes) => {
+	console.log(`Upload completed with ID ${finishRes.id}`);
+});
+```

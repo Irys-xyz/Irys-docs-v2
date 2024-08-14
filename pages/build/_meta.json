@@ -1,8 +1,6 @@
 {
 	"welcome-devs": "WELCOME BUILDERS!",
-	"onchain-data": "ONCHAIN DATA",
-	"sc": "SMART CONTRACTS",
-	"ui": "FRONT-END DEV",
+	"data": "UPLOAD DATA",
 	"iip": {
     "display": "hidden"
   }
