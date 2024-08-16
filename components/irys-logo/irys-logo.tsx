@@ -13,7 +13,7 @@ const IrysInteractiveEye = () => {
   });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: any) => {
       const container = containerRef.current;
       if (!container) return;
 

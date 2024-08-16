@@ -51,11 +51,11 @@ const ThemeToggle: React.FC = () => {
     if (localStorage.getItem("theme") === "dark") {
       localStorage.setItem("theme", "light");
       html?.classList.add("light");
-      html.classList.remove("dark");
+      html?.classList.remove("dark");
     } else {
       localStorage.setItem("theme", "dark");
       html?.classList.add("dark");
-      html.classList.remove("light");
+      html?.classList.remove("light");
     }
   };
 
@@ -65,7 +65,7 @@ const ThemeToggle: React.FC = () => {
       onClick={handleClick}
     >
       <MoonIcon className="text-[#4F4F4F] group-hover:text-black dark:flex hidden" />
-      <SunIcon className="text-black group-hover:text-white dark:hidden" />
+      <SunIcon className="text-[#777777] group-hover:text-white dark:hidden" />
     </li>
   );
 };
