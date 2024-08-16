@@ -66,7 +66,7 @@ setInterval(checkAndPrintBalance, 30 * 60 * 1000);
 
 ## CLI
 
-You can achieve the same thing using our CLI and a bash script. The advantage to doing it this way is you’re not connecting to Irys, which means you don’t need to provide your private key. Using your wallet’s public address, the script calls our CLI’s [`irys balance`](/build/onchain-data/storage-cli/commands/balance) command, parses the output and tests if it’s close to 0.
+You can achieve the same thing using our CLI and a bash script. The advantage to doing it this way is you’re not connecting to Irys, which means you don’t need to provide your private key. Using your wallet’s public address, the script calls our CLI’s [`irys balance`](/build/d/storage-cli/commands/balance) command, parses the output and tests if it’s close to 0.
 
 ```bash
 #!/bin/bash

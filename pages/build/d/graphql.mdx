@@ -28,8 +28,8 @@ Any of the following query arguments can be used as search parameters:
 | Field   | Description                                                                                                                                                                                              |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ids`   | An array of transaction IDs passed as strings. Values are ORed together, matching results will include transactions that have any of the supplied IDs.                                                   |
-| `owner` | The address used when posting the transaction. Can be a native address from [any of the chains supported by Irys](/build/onchain-data/features/supported-tokens). Note in results fields, this is referred to as `address`. |
-| `token` | The [token](/build/onchain-data/features/supported-tokens) used to pay for the transaction.                                                                                                                                 |
+| `owner` | The address used when posting the transaction. Can be a native address from [any of the chains supported by Irys](/build/d/features/supported-tokens). Note in results fields, this is referred to as `address`. |
+| `token` | The [token](/build/d/features/supported-tokens) used to pay for the transaction.                                                                                                                                 |
 | `tags`  | An array of tag name / value pairs passed as JSON objects.                                                                                                                                               |
 
 ## Results Fields
@@ -121,7 +121,7 @@ query getByOwner {
 
 ### Tags
 
-Search for transactions matching [tag](/build/onchain-data/features/tags) name / value pairs:
+Search for transactions matching [tag](/build/d/features/tags) name / value pairs:
 
 ```graphql
 query getAllPNGs {

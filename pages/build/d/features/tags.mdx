@@ -8,13 +8,13 @@ Irys supports attaching metadata tags to each transaction.
 
 Tags can be used to:
 
-- Categorize transactions, making it easier to [search for and retrieve relevant information](/build/onchain-data/graphql)
-- Build [mutable references](/build/onchain-data/features/mutable-references)
+- Categorize transactions, making it easier to [search for and retrieve relevant information](/build/d/graphql)
+- Build [mutable references](/build/d/features/mutable-references)
 - Inform web browsers how to render files
 
 ## Querying
 
-Tags are indexed by gateways and are queryable using [GraphQL](/build/onchain-data/graphql).
+Tags are indexed by gateways and are queryable using [GraphQL](/build/d/graphql).
 
 ## Content-Type
 
@@ -37,7 +37,7 @@ try {
 }
 ```
 
-You can also add tags via the [CLI's](/build/onchain-data/storage-cli/installation) `-t` option, followed by a series of name / value pairs
+You can also add tags via the [CLI's](/build/d/storage-cli/installation) `-t` option, followed by a series of name / value pairs
 
 ```console
 irys upload myImage.png -t tagName1 tagValue1 tagName2 tagValue2 -n mainnet -t matic -w bf20......c9885307

@@ -11,9 +11,9 @@ While indexing, the gateway extracts transactions from each block and indexes th
 
 ## Querying
 
-Transaction metadata can be [queried](/build/onchain-data/querying/query-package) directly using the [Irys query package](/build/onchain-data/querying/query-package) a REST API or [GraphQL](/build/onchain-data/querying/graphql). This enables users to create tailored queries, such as searching for specific [tags](/build/onchain-data/features/tags) or addresses.
+Transaction metadata can be [queried](/build/d/querying/query-package) directly using the [Irys query package](/build/d/querying/query-package) a REST API or [GraphQL](/build/d/querying/graphql). This enables users to create tailored queries, such as searching for specific [tags](/build/d/features/tags) or addresses.
 
-Irys supports adding custom metadata [tags](/build/onchain-data/features/tags) to each upload, these tags allow users to build data models, all queryable via GraphQL.
+Irys supports adding custom metadata [tags](/build/d/features/tags) to each upload, these tags allow users to build data models, all queryable via GraphQL.
 
 When a user posts a transaction to Irys, the gateway picks it up and stores it in its database. This allows the gateway to support optimistic GraphQL, meaning query results include both transactions seeded to miners as well as those expected to be seeded soon. This ensures users have access to the most up-to-date data and can use it to build real-time applications.
 
@@ -23,7 +23,7 @@ When a user posts a transaction to Irys, the gateway picks it up and stores it i
 
 When a transaction is seeded to miners, its header and data are stored separately. To access this data, users request it from a gateway. Because it can be complex, computationally heavy, and difficult for average
 users to access data directly from miners, gateways are crucial in making [downloading
-data](/build/onchain-data/overview/downloading) as simple as uploading.
+data](/build/d/overview/downloading) as simple as uploading.
 
 When a user requests data from a given gateway, the gateway first checks its internal cache, serving the data from there if it's available. If not, the gateway then checks Arweave to see if the data is stored there. If found, that gateway retrieves the data and serves it to the user, caching it for future use and providing faster response times for frequently requested data.
 
