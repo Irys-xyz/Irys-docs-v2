@@ -85,7 +85,9 @@ const NavOptions: React.FC = () => {
         <Link href={"/mine"}>
           <NavItem Icon={MineIcon} text="Mine" />
         </Link>
-        <NavItem Icon={GithubIcon} text="Github" isHighlighted />
+        <Link href="https://github.com/Irys-xyz" target="_blank">
+          <NavItem Icon={GithubIcon} text="Github" isHighlighted />
+        </Link>
         <ThemeToggle />
       </ul>
     </div>
