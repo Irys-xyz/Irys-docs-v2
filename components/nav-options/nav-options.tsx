@@ -5,6 +5,7 @@ import MineIcon from "../svg/navbar/mine";
 import GithubIcon from "../svg/navbar/github";
 import SunIcon from "../svg/navbar/sun";
 import MoonIcon from "../svg/navbar/moon";
+import Link from "next/link";
 
 // Type for individual nav item
 type NavItemProps = {
@@ -75,9 +76,15 @@ const NavOptions: React.FC = () => {
   return (
     <div className="ml-auto">
       <ul className="flex gap-1">
-        <NavItem Icon={LearnIcon} text="Learn" />
-        <NavItem Icon={BuildIcon} text="Build" />
-        <NavItem Icon={MineIcon} text="Mine" />
+        <Link href={"/learn/learn-about-irys/what-is-irys"}>
+          <NavItem Icon={LearnIcon} text="Learn" />
+        </Link>
+        <Link href={"/build/welcome-devs"}>
+          <NavItem Icon={BuildIcon} text="Build" />
+        </Link>
+        <Link href={"/mine"}>
+          <NavItem Icon={MineIcon} text="Mine" />
+        </Link>
         <NavItem Icon={GithubIcon} text="Github" isHighlighted />
         <ThemeToggle />
       </ul>
