@@ -69,7 +69,10 @@ const IrysInteractiveEye = () => {
   }, []);
 
   return (
-    <div className="relative w-[48px] h-[59px]" ref={containerRef}>
+    <div
+      className="relative w-[48px] h-[59px] text-black dark:text-white"
+      ref={containerRef}
+    >
       <svg
         width="100%"
         height="100%"
