@@ -31,7 +31,7 @@ const createSignUpload = async () => {
 	const irys = await getIrys();
 
 	// Create the transaction
-	const tx = irys.createTransaction("GM World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
+	const tx = irys.createTransaction("hirys!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
 
 	// Sign the transaction
 	await tx.sign(); // ID is now set
@@ -53,7 +53,7 @@ const serializationUpload = async () => {
 	const irys = await getIrys();
 
 	// Create the transaction
-	const tx1 = irys.createTransaction("GM World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
+	const tx1 = irys.createTransaction("hirys!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
 	// Note: You can sign before *or* after serializing
 	await tx1.sign(); // ID is now set
 	console.log(`Tx created and signed, ID=${tx1.id}`);
