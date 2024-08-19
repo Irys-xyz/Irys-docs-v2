@@ -11,24 +11,15 @@ Checks the price to upload the specified number of bytes.
 ## Parameters
 
 - `-t`: The [token](/overview/supported-tokens) used for payment.
-- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
-- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+- `-n`: The network to check. Use `testnet`.
+- `--provider-url`: RPC URL to use. Required when using testnet.
 
-## Examples
-
-### Mainnet
-
-```console
-irys price 1000000 \
-  -t ethereum
-```
-
-### Devnet
+## Example
 
 ```console
 irys price 1000000 \
   -t ethereum \
-  -n devnet \
+  -n testnet \
   --provider-url https://rpc.sepolia.dev
 ```
 

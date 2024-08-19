@@ -12,27 +12,17 @@ Uploads an entire directory of files.
 
 
 
-- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
+- `-n`: The network to check. Use `testnet`.
 - `-t`: The [token](/overview/supported-tokens) to use when uploading.
 - `-w`: Your [private key](/cli#using-private-keys).
 - `--index-file`: Name of the file to use as an index for manifests.
-- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+- `--provider-url`: RPC URL to use. Required when using testnet.
 
-## Examples
-
-### Mainnet
+## Example
 
 ```console
 irys upload-dir ./myImages \
-  -t ethereum \
-  -w bf20......c9885307
-```
-
-### Devnet
-
-```console
-irys upload-dir ./myImages \
-  -n devnet \
+  -n testnet \
   -t ethereum \
   -w bf20......c9885307 \
   --provider-url https://rpc.sepolia.dev

@@ -75,7 +75,7 @@ This example:
 ```ts
 // Get the most recent 'totalIds' number TXs tagged 'image/gif'
 const getTxIds = async (totalIds: number): Promise<string[]> => {
-	const myQuery = new Query({ network: "devnet" });
+	const myQuery = new Query({ network: "testnet" });
 	const results = await myQuery
 		.search("irys:transactions")
 		.tags([{ name: "Content-Type", values: ["image/gif"] }])

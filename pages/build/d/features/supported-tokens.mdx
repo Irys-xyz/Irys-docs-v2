@@ -48,7 +48,7 @@ const getIrys = async () => {
 		network, 
 		token, // Token used for payment
 		key: process.env.PRIVATE_KEY, // ETH or SOL private key
-		config: { providerUrl }, // Optional provider URL, only required when using Devnet
+		config: { providerUrl }, // RPC provider URL, required on testnet
 	});
 	return irys;
 };

@@ -79,8 +79,8 @@ node_address="https://testnet.irys.xyz"
 token="ethereum"
 balance_output="";
 
-# Check if node_address contains "devnet"
-# When using devnet, you must also include a provider-url
+# Check if node_address contains "testnet"
+# When using testnet, you must also include a provider-url
 if [[ $node_address == *"testnet"* ]]; then
    balance_output=$(irys balance $address --provider-url $provider_url -h $node_address -c $token)
 else
@@ -111,7 +111,7 @@ To run a bash script periodically, use `cron`. Assuming you saved the above scri
 A third option is to make cURL request using a URL with the following format `https://<node-address>/account/balance/<token>?address=<address>`. For example to check the MATIC balance of the wallet with address `0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D`, you would use the command
 `https://testnet.irys.xyz/account/balance/matic?address=0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D`
 
-Just as with our CLI, you don’t need to provide your private key. This version is also more streamlined than the CLI version as you don’t need to include the provider URL when checking the Devnet balances.
+Just as with our CLI, you don’t need to provide your private key. This version is also more streamlined than the CLI version as you don’t need to include the provider URL when checking the testnet balances.
 
 ```bash
 #!/bin/bash

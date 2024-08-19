@@ -6,7 +6,7 @@ import { Callout } from "nextra-theme-docs";
 
 # `withdraw`
 
-Withdraws funds from either Irys's mainnet or devnet.
+Withdraws funds from your Irys account.
 
 <Callout type="info" emoji="ℹ️">
 Not all calls to `withdraw` will post immediately to your account, some blockchains are faster than others. When funding with AR, it can take upwards of 40 minutes before the balance post. For MATIC, ETH and SOL, balances will usually post in < 10s.
@@ -14,26 +14,16 @@ Not all calls to `withdraw` will post immediately to your account, some blockcha
 
 ## Parameters
 
-- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
+- `-n`: The network to check. Use `testnet`.
 - `-t`: The [token](/overview/supported-tokens) to withdraw.
 - `-w`: Your [private key](/cli#using-private-keys).
-- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+- `--provider-url`: RPC URL to use. Required when using testnet.
 
-## Examples
-
-### Mainnet
+## Example
 
 ```console
 irys withdraw 1000000000000000 \
-  -t ethereum \
-  -w bf20......c9885307
-```
-
-### Devnet
-
-```console
-irys withdraw 1000000000000000 \
-  -n devnet \
+  -n testnet \
   -t ethereum \
   -w bf20......c9885307 \
   --provider-url https://rpc.sepolia.dev

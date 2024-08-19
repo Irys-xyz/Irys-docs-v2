@@ -10,28 +10,17 @@ Uploads a single file.
 
 ## Parameters
 
-- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
+- `-n`: The network to check. Use `testnet`.
 - `-t`: The [token](/overview/supported-tokens) to use when uploading.
 - `-w`: Your [private key](/cli#using-private-keys).
 - `--tags`: [Tags](/irys-sdk/tags) to include, format `<name>` `<value>`
-- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+- `--provider-url`: RPC URL to use. Required when using testnet.
 
-## Examples
-
-### Mainnet
+## Example
 
 ```console
 irys upload myImage.png \
-  -t ethereum \
-  -w bf20......c9885307 \
-  --tags tagName1 tagValue1 tagName2 tagValue2
-```
-
-### Devnet
-
-```console
-irys upload myImage.png \
-  -n devnet \
+  -n testnet \
   -t ethereum \
   -w bf20......c9885307 \
   --tags tagName1 tagValue1 tagName2 tagValue2 \
@@ -48,7 +37,7 @@ Files uploaded via `irys upload` can be downloaded using the transaction ID prov
 
 ```console
 irys upload myImage.png \
-  -n mainnet \
+  -n tesenet \
   -t ethereum \
   -w bf20......c9885307 \
   --tags tagName1 tagValue1 tagName2 tagValue2

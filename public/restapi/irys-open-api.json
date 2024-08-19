@@ -6,12 +6,8 @@
   },
   "servers": [
     {
-      "url": "https://node1.irys.xyz",
-      "description": "Irys Mainnet"
-    },
-    {
-      "url": "https://devnet.irys.xyz",
-      "description": "Irys Devnet"
+      "url": "https://testnet-upload.irys.xyz/",
+      "description": "Irys Testnet"
     }
   ],
   "paths": {

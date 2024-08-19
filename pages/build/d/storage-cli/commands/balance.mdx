@@ -10,25 +10,16 @@ Returns the amount of funds available on the specified node. Provide your public
 
 ## Parameters
 
-- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
+- `-n`: The network to check. Use `testnet`.
 - `-t`: The [token](/overview/supported-tokens) to use when funding.
-- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+- `--provider-url`: RPC URL to use. Required when using testnet.
 
-## Examples
-
-### Mainnet
-
-```console
-irys balance 0xac568a981b1370b2e1baa8ce30bd5ac9e28c572d \
-  -t ethereum \
-```
-
-### Devnet
+## Example
 
 ```console
 irys balance 0x591B5Ce7cA10a55A9B5d1516eF89693D5b3586b8 \
   -t ethereum \
-  -n devnet \
+  -n testnet \
   --provider-url https://rpc.sepolia.dev
 ```
 

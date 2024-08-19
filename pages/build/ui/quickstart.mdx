@@ -83,7 +83,7 @@ WebIrys supports the following providers. When instantiating a new `WebIrys` obj
 const aptosWallet = useWallet();
 
 const getWebIrys = async () => {
-	const network = "devnet";
+	const network = "testnet";
 	const token = "aptos";
 	const rpcUrl = "testnet";
 	const wallet = { rpcUrl: rpcUrl, name: "aptos", provider: aptosWallet };
@@ -211,7 +211,7 @@ const w = wallets.at(0);
 
 // Then create a WebIrys object
 const getWebIrys = async () => {
-	const network = "devnet";
+	const network = "testnet";
 	const token = "ethereum";
 
 	const provider = await w?.getEthersProvider();
