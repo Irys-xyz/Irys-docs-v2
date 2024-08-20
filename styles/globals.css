@@ -4,7 +4,6 @@
 
 /**
  * Custom CSS for new Theme
- * @Author: William G
  */
 
 body {
@@ -484,9 +483,13 @@ details[open] .faq-expand::before {
 /* Light Mode */
 /* swagger-custom.module.css */
 
+.opblock-section-header {
+  @apply !bg-white dark:!bg-[#111111];
+}
+
 /* Light Mode */
 .light .swagger-ui .topbar {
-  background-color: #ffffff;
+  @apply bg-white dark:!bg-[#111111];
 }
 .light .swagger-ui .btn {
   background-color: #ff8451;
@@ -533,4 +536,58 @@ details[open] .faq-expand::before {
 .dark .swagger-ui .opblock-summary-path,
 .dark .swagger-ui .col_header .parameters-col_description {
   color: #ffffff;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > article
+  > main
+  > div.nx-mb-8.nx-flex.nx-items-center.nx-border-t.nx-pt-8.dark\:nx-border-neutral-800.contrast-more\:nx-border-neutral-400.dark\:contrast-more\:nx-border-neutral-400.print\:nx-hidden
+  > a.nx-flex.nx-max-w-\[50\%\].nx-items-center.nx-gap-1.nx-py-4.nx-text-base.nx-font-medium.nx-text-gray-600.nx-transition-colors.\[word-break\:break-word\].hover\:nx-text-primary-600.dark\:nx-text-gray-300.md\:nx-text-lg.ltr\:nx-ml-auto.ltr\:nx-pl-4.ltr\:nx-text-right.rtl\:nx-mr-auto.rtl\:nx-pr-4.rtl\:nx-text-left {
+  @apply rounded-xl dark:bg-[#090909] p-4 border border-[#E3E3E3] !text-black dark:border-0 dark:!text-white;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > article
+  > main
+  > div.nx-mb-8.nx-flex.nx-items-center.nx-border-t.nx-pt-8.dark\:nx-border-neutral-800.contrast-more\:nx-border-neutral-400.dark\:contrast-more\:nx-border-neutral-400.print\:nx-hidden
+  > a.nx-flex.nx-max-w-\[50\%\].nx-items-center.nx-gap-1.nx-py-4.nx-text-base.nx-font-medium.nx-text-gray-600.nx-transition-colors.\[word-break\:break-word\].hover\:nx-text-primary-600.dark\:nx-text-gray-300.md\:nx-text-lg.ltr\:nx-pr-4.rtl\:nx-pl-4 {
+  @apply rounded-xl dark:bg-[#090909] p-4 border border-[#E3E3E3] !text-black dark:border-0 dark:!text-white;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li
+  > button {
+  @apply !text-black dark:!text-white;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li.nx-flex.nx-flex-col.nx-gap-1
+  > a {
+  @apply !text-black dark:!text-white;
+}
+
+:is(html[class~="dark"] .dark\:nx-shadow-\[0_-12px_16px_\#111\]) {
+  @apply !shadow-none;
+}
+
+#__next > div > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\] > nav > div > p {
+  @apply !text-black dark:!text-white;
 }
