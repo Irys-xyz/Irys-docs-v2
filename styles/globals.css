@@ -613,7 +613,7 @@ pre > * {
 }
 
 .nx-bg-primary-100 {
-  @apply !bg-[#ff8451]/10 !text-[#ff8451];
+  @apply !bg-[#F2F2F2] dark:!bg-[#101010] !text-[#2C2C2C] dark:!text-[#BABABA];
 }
 
 main > * > a {
