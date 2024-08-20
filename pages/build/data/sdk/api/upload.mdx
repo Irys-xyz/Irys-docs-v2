@@ -1,0 +1,51 @@
+---
+description: Uploads data
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `irys.upload(data, tags)`
+
+Uploads data to Irys.
+
+## Parameters
+
+- `data`: The data to upload
+- `tags`: Optional [metatags](/build/data/features/tags)
+
+## Returns
+
+- `receipt`: A receipt in the form of a JSON object with the following values:
+
+```json
+response = {
+	id, // Transaction ID (used to download the data)
+	timestamp, // Timestamp (UNIX milliseconds) of when the transaction was created and verified
+	version, // The version of this JSON file, currently 1.0.0
+	public, // Public key of the bundler node used
+	signature, // A signed deep hash of the JSON receipt
+	deadlineHeight, // The block number by which the transaction must be finalized
+	block, // Deprecated
+	validatorSignatures, // Deprecated
+	verify, // An async function used to verify the receipt at any time
+}
+```
+
+## Example
+
+```js
+const irys = await getIrys();
+
+const dataToUpload = "GM world.";
+try {
+	const receipt = await irys.upload(dataToUpload);
+	console.log(`Data uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
+} catch (e) {
+	console.log("Error uploading data ", e);
+}
+```
+
+<Callout type="info" emoji="ℹ️">
+	Use the transaction ID returned as part of the response to download the data by creating a URL in the format
+	`https://testnet-gateway.irys.xyz/[transaction-id].`
+</Callout>
