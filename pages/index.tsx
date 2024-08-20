@@ -42,7 +42,7 @@ export default function Home() {
 
   return (
     <div
-      className={`text-white relative overflow-hidden ${satoshi.className} pb-10`}
+      className={`text-white relative overflow-hidden ${satoshi.className} bg-black`}
     >
       <AnimatePresence>
         {buttonHovered && (
@@ -203,11 +203,8 @@ export default function Home() {
           </div>
         </motion.div>
       </main>
-      <div className="border-t border-[#222222]">
-        <div className="mx-auto container">
-          <Footer />
-        </div>
-      </div>
+
+      <Footer bgColor="black" />
     </div>
   );
 }

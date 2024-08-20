@@ -30,40 +30,42 @@ import IrysInteractiveEye from "./components/irys-logo/irys-logo";
 const FooterWrapper = () => {
   const router = useRouter();
   return (
-    <div className="border-t border-[#222222] mt-10 mx-auto bg-[#111111]">
-      {" "}
+
+  
       <Footer />
-    </div>
+
   );
 };
 
 // Create a mapping for the sub-items
 const iconMapping = {
-  "What-is-Irys?": <MdOutlineQuestionMark color="#ff8451" />,
-  "What-is-a-Datachain?": <MdDataset color="#ff8451" />,
-  "Why-Irys-Exists": <MdOutlineCropFree color="#ff8451" />,
-  "How-Irys-Solves-These-Problems": <MdOutlineBuild color="#ff8451" />,
+  "What-is-Irys?": <MdOutlineQuestionMark  />,
+  "What-is-a-Datachain?": <MdDataset  />,
+  "Why-Irys-Exists": <MdOutlineCropFree  />,
+  "How-Irys-Solves-These-Problems": <MdOutlineBuild  />,
 
-  "Programmable-Data": <MdDataObject color="#ff8451" />,
-  Verifiability: <MdOutlineVerified color="#ff8451" />,
-  IrysVM: <MdOutlineBubbleChart color="#ff8451" />,
+  "Programmable-Data": <MdDataObject  />,
+  Verifiability: <MdOutlineVerified  />,
+  IrysVM: <MdOutlineBubbleChart  />,
 
-  "Running-a-Node": <MdOutlineAccountTree color="#ff8451" />,
-  "2D-Packing": <MdOutlineViewQuilt color="#ff8451" />,
-  "Efficient-Sampling": <MdFlipToBack color="#ff8451" />,
+  "Running-a-Node": <MdOutlineAccountTree  />,
+  "2D-Packing": <MdOutlineViewQuilt  />,
+  "Efficient-Sampling": <MdFlipToBack  />,
 
-  "Protocol-Overview": <MdOutlineStorage color="#ff8451" />,
-  Partitions: <MdOutlineViewList color="#ff8451" />,
-  Ledgers: <MdOutlineMenuBook color="#ff8451" />,
-  Transactions: <MdOutlineSwapHoriz color="#ff8451" />,
-  "Proof-of-Work-+-Staking": <MdOutlineBlurOn color="#ff8451" />,
-  "Fast-Finality": <MdOutlineBolt color="#ff8451" />,
+  "Protocol-Overview": <MdOutlineStorage  />,
+  Partitions: <MdOutlineViewList  />,
+  Ledgers: <MdOutlineMenuBook  />,
+  Transactions: <MdOutlineSwapHoriz  />,
+  "Proof-of-Work-+-Staking": <MdOutlineBlurOn  />,
+  "Fast-Finality": <MdOutlineBolt  />,
 };
 
 export default {
   nextThemes: {
     defaultTheme: "system",
   },
+  primaryHue: 17.56,
+  primarySaturation: 68.24,
   themeSwitch: {
     useOptions() {
       return {
@@ -84,7 +86,7 @@ export default {
     defaultMenuCollapseLevel: 2,
     titleComponent({ title, type }) {
       const iconStyles = { fontSize: "1.1rem", marginRight: "0.5rem" };
-      const containerStyles = { display: "flex", alignItems: "center" };
+      const containerStyles = { display: "flex", alignItems: "center", marginTop: "2px", marginBottom: "2px" };
 
       if (type !== "separator") {
         const key = title.replace(/\s+/g, "-");
