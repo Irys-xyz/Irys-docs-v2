@@ -24,7 +24,7 @@ npm install
 Install the Irys SDK and ethers:
 
 ```console
-npm install @irys-network/bundler-sdk ethers@6
+npm install @irys-network/bundler-client ethers@6
 ```
 
 Change your `App.tsx` file as follows. This example uses ethers6, if you're using [a different provider](/irys-sdk/irys-in-the-browser#supported-providers) make sure to specify it when creating the `wallet`.
@@ -33,7 +33,7 @@ Change your `App.tsx` file as follows. This example uses ethers6, if you're usin
 import "./App.css";
 import { useState } from "react";
 import { ethers } from "ethers";
-import { WebIrys } from "@irys-network/bundler-sdk";
+import { WebIrys } from "@irys-network/bundler-client";
 
 function App() {
 	const [connectedAddress, setConnectedAddress] = useState<string>("");
