@@ -82,9 +82,9 @@ const NavOptions: React.FC = () => {
         <Link href={"/build/welcome-devs"}>
           <NavItem Icon={BuildIcon} text="Build" />
         </Link>
-        <Link href={"/mine"}>
+        {/* <Link href={"/mine"}>
           <NavItem Icon={MineIcon} text="Mine" />
-        </Link>
+        </Link> */}
         <Link href="https://github.com/Irys-xyz" target="_blank">
           <NavItem Icon={GithubIcon} text="Github" isHighlighted />
         </Link>
