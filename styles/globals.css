@@ -568,7 +568,7 @@ details[open] .faq-expand::before {
   > ul
   > li
   > button {
-  @apply !text-black dark:!text-white !font-semibold uppercase;
+  @apply !text-black dark:!text-white !font-semibold;
 }
 
 #__next
@@ -581,7 +581,7 @@ details[open] .faq-expand::before {
   > ul
   > li.nx-flex.nx-flex-col.nx-gap-1
   > a {
-  @apply !text-black dark:!text-white !font-semibold uppercase;
+  @apply !text-black dark:!text-white !font-semibold;
 }
 
 :is(html[class~="dark"] .dark\:nx-shadow-\[0_-12px_16px_\#111\]) {
