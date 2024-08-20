@@ -197,13 +197,14 @@ const NotFound = (props: Props) => {
   ];
 
   return (
-    <div className="py-10 lg:py-26">
-      <div className="flex items-center justify-center text-center px-7">
+    <div className="py-10 lg:py-26 bg-black">
+      <div className="flex items-center justify-center text-center px-7 py-10">
         <h1 className="text-4xl lg:text-6xl text-white tracking-tight font-bold col-span-12">
           We recently re-organized things. <br />
           But don&apos;t worry, we got you.
         </h1>
       </div>
+
       <div className="relative flex md:flex-row flex-col gap-10 mx-auto container md:items-start items-center justify-center py-10 lg:py-26">
         <div className="hidden xl:block top-0 md:sticky ">
           <img src="https://i.imgur.com/j1pLgwx.png" alt="" className="" />
