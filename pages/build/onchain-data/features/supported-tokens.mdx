@@ -1,0 +1,55 @@
+---
+description: Pay for your upload with most popular tokens.
+---
+
+# Supported Tokens
+
+Iyrs supports most popular tokens for paying for uploads.
+
+On our testnet, you can pay for uploads in any of these tokens:
+
+| Token / Blockchain | Token | Parameter Value | `Irys` Support | `WebIrys` Support |
+| ------------------ | ----- | --------------- | -------------- | ----------------- |
+| Aptos              | APT   | aptos           | yes            | yes               |
+| Algorand           | ALGO  | algorand        | yes            | no                |
+| Arbitrum           | ETH   | arbitrum        | yes            | yes               |
+| Avalanche C-Chain  | AVAX  | avalanche       | yes            | yes               |
+| Berachain          | BERA  | bera            | yes            | yes               |
+| Binance Coin       | BNB   | bnb             | yes            | yes               |
+| Boba               | BOBA  | boba            | yes            | yes               |
+| Boba-eth           | ETH   | boba-eth        | yes            | yes               |
+| Chainlink          | LINK  | chainlink       | yes            | yes               |
+| Ethereum           | ETH   | ethereum        | yes            | yes               |
+| Base Ethereum      | ETH   | base-eth        | yes            | yes               |
+| Linea Ethereum     | ETH   | linea-eth       | yes            | yes               |
+| Scroll Ethereum    | ETH   | scroll-eth      | yes            | yes               |
+| Fantom             | FTM   | fantom          | yes            | yes               |
+| IoTeX              | IoTeX | iotex           | yes            | yes               |
+| Near               | NEAR  | near            | yes            | yes               |
+| Polygon            | MATIC | matic           | yes            | yes               |
+| Solana             | SOL   | solana          | yes            | yes               |
+| USDC (on Ethereum) | USDC  | usdc-eth        | yes            | yes               |
+| USDC (on Polygon)  | USDC  | usdc-polygon    | yes            | yes               |
+
+## Specifying Token
+
+The token is set when creating a new `Irys` or `WebIrys` object, the accepted values are listed in the third column of the table above.
+
+Example:
+
+```js
+const getIrys = async () => {
+	const network = "testnet";
+	// RPC URLs change often, use a recent one from https://chainlist.org/
+	const providerUrl = "";
+	const token = "ethereum";
+
+	const irys = new Irys({
+		network, 
+		token, // Token used for payment
+		key: process.env.PRIVATE_KEY, // ETH or SOL private key
+		config: { providerUrl }, // Optional provider URL, only required when using Devnet
+	});
+	return irys;
+};
+```
