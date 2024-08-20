@@ -1,0 +1,158 @@
+---
+description: Monitor your account balance using JavaScript, our CLI, or cURL
+---
+
+# Monitor Node Balance With A Script
+
+Irys's upfront funding simplifies uploading data by allowing you to pre-fund your uploads. This eliminates the need for individual funding calls for each upload as the loaded balance is automatically deducted from with each upload. To keep track of your loaded balance, users commonly create scripts that periodically check their balance and provide notifications when it approaches zero.
+
+This guide offers examples of how to monitor your balance using:
+
+- [JavaScript](./monitor-account-balance#javascript) 
+- [Command Line Interface (CLI)](./monitor-account-balance#cli) 
+- [cURL](/monitor-account-balance#curl). 
+
+These three techniques are all equally effective options.
+
+## JavaScript
+
+```js
+import Irys from "@irys-network/bundler-sdk";
+import dotenv from "dotenv";
+dotenv.config();
+
+const getIrys = async () => {
+	const network = "testnet";
+	// RPC URLs change often, use a recent one from https://chainlist.org/
+	const providerUrl = "";
+	const token = "ethereum";
+
+	const irys = new Irys({
+		network, 
+		token, // Token used for payment
+		key: process.env.PRIVATE_KEY, // ETH or SOL private key
+		config: { providerUrl }, // RPC provider URL
+	});
+	return irys;
+};
+
+const checkBalance = async () => {
+	const irys = await getIrys();
+
+	// Get loaded balance in atomic units
+	const atomicBalance = await irys.getLoadedBalance();
+	// Convert balance to standard units
+	const convertedBalance = irys.utils.fromAtomic(atomicBalance);
+	return convertedBalance;
+};
+
+const checkAndPrintBalance = async () => {
+	const balance = await checkBalance();
+	const threshold = 0.1; // 10% threshold
+
+	if (Math.abs(balance) <= threshold) {
+		console.log(`Balance ${balance} is within 10% of 0, please fund.`);
+	} else {
+		console.log(`Balance ${balance} funding not yet needed.`);
+	}
+};
+
+// Call the function immediately
+checkAndPrintBalance();
+
+// Then repeat every 30 minutes
+setInterval(checkAndPrintBalance, 30 * 60 * 1000);
+```
+
+## CLI
+
+You can achieve the same thing using our CLI and a bash script. The advantage to doing it this way is you’re not connecting to Irys, which means you don’t need to provide your private key. Using your wallet’s public address, the script calls our CLI’s [`irys balance`](/build/data/storage-cli/commands/balance) command, parses the output and tests if it’s close to 0.
+
+```bash
+#!/bin/bash
+
+# Define your variables
+address="0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D" # Public wallet address
+# RPC URLs change often, use a recent one from https://chainlist.org/
+provider_url="https://rpc.sepolia.dev"
+node_address="https://testnet.irys.xyz"
+token="ethereum"
+balance_output="";
+
+# Check if node_address contains "testnet"
+# When using testnet, you must also include a provider-url
+if [[ $node_address == *"testnet"* ]]; then
+   balance_output=$(irys balance $address --provider-url $provider_url -h $node_address -c $token)
+else
+   balance_output=$(irys balance $address -h $node_address -t $token)
+fi
+
+# Use regex to parse the output and assign the parsed value to a variable
+parsed_balance=$(echo $balance_output | awk -F'[()]' '{split($2,a," "); print a[1]}')
+ # Define your threshold
+threshold=0.1
+
+# Check if parsed_balance is within threshold of 0
+is_close_to_zero=$(echo "$parsed_balance < $threshold" | bc -l)
+
+if [ $is_close_to_zero -eq 1 ]; then
+   echo "Balance ${parsed_balance} is within $(echo "$threshold*100" | bc -l)% of 0, please fund."
+else
+   echo "Balance ${parsed_balance} funding not yet needed"
+fi
+```
+
+To run a bash script periodically, use `cron`. Assuming you saved the above script as a file `checkBalance.sh`, open up your crontab file using `crontab -e` and then add an entry to call the script periodically. To call it every 30 minutes, you’d add the following:
+
+`*/30 * * * * /path/to/your/script/checkBalance.sh`
+
+## cURL
+
+A third option is to make cURL request using a URL with the following format `https://<node-address>/account/balance/<token>?address=<address>`. For example to check the MATIC balance of the wallet with address `0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D`, you would use the command
+`https://testnet.irys.xyz/account/balance/matic?address=0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D`
+
+Just as with our CLI, you don’t need to provide your private key. This version is also more streamlined than the CLI version as you don’t need to include the provider URL when checking the Devnet balances.
+
+```bash
+#!/bin/bash
+
+# Define your variables
+address="0xaC568a981B1370B2e1bAA8cE30BD5AC9E28C572D" # Public wallet address
+node_address="https://testnet.irys.xyz"
+token="token"
+balance_output="";
+
+# Create the API endpoint URL
+balance_check_url="${node_address}/account/balance/${token}?address=${address}"
+
+# Make the cURL request and capture the response
+balance_output=$(curl -s "$balance_check_url")
+
+# Parse the balance from the response using awk
+parsed_balance=$(echo "$balance_output" | awk -F'"' '{print $4}')
+
+# Define the decimal factor for conversion (this works for MATIC and others with 18 decimals)
+decimal_factor=1000000000000000000
+
+# For Solana currencies with 9 decimals, use
+# decimal_factor=1000000000
+
+# Convert parsed_balance to standard units
+balance_in_standard_units=$(awk -v parsed_balance="$parsed_balance" -v decimal_factor="$decimal_factor" 'BEGIN{printf "%.18f", parsed_balance/decimal_factor}')
+
+# Define your threshold in standard units
+threshold=0.1
+
+# Check if balance_in_standard_units is within a threshold of 0
+is_close_to_zero=$(awk -v balance="$balance_in_standard_units" -v threshold="$threshold" 'BEGIN{if(balance < threshold) print 1; else print 0}')
+
+if [ $is_close_to_zero -eq 1 ]; then
+   echo "Balance ${balance_in_standard_units} is within $(echo "$threshold*100" | bc -l)% of 0, please fund."
+else
+   echo "Balance ${balance_in_standard_units} funding not yet needed"
+fi
+```
+
+To run a bash script periodically, use `cron`. Assuming you saved the above script as a file `checkBalance.sh`, open up your crontab file using `crontab -e` and then add an entry to call the script periodically. To call it every 30 minutes, you’d add the following:
+
+`*/30 * * * * /path/to/your/script/checkBalance.sh`
