@@ -1,0 +1,44 @@
+---
+description: Funds the node with the specified amount of tokens.
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `fund`
+
+Fund Irys's mainnet or devnet with the specified amount of tokens.
+
+<Callout type="info" emoji="ℹ️">
+Not all calls to `fund` will post immediately to your account, some blockchains are faster than others. 
+</Callout>
+
+## Parameters
+
+- `-n`: The network to check. Values are `mainnet` or `devnet` (if you omit, the default is `mainnet`).
+- `-t`: The [token](/overview/supported-tokens) to use when funding.
+- `-w`: Your [private key](/cli#using-private-keys).
+- `--provider-url`: RPC URL to use. This is only required when using Devnet.
+
+## Examples
+
+### Mainnet
+
+```console
+irys fund 1000000000000000 \
+  -t ethereum \
+  -w bf20......c9885307
+```
+
+### Devnet
+
+```console
+irys fund 1000000000000000 \
+  -n devnet \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --provider-url https://rpc.sepolia.dev
+```
+
+<Callout type="info" emoji="ℹ️">
+	RPC URLs change often, use a recent one from https://chainlist.org/
+</Callout>

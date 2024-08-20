@@ -1,0 +1,17 @@
+/* Light Mode */
+.swagger-ui .topbar {
+  background-color: #f54298 !important;
+}
+.swagger-ui .btn {
+  background-color: #f54298 !important;
+  color: #f54298 !important;
+}
+
+/* Dark Mode */
+.dark .swagger-ui .topbar {
+  background-color: #f54298 !important;
+}
+.dark .swagger-ui .btn {
+  background-color: #f54298 !important;
+  color: #f54298 !important;
+}

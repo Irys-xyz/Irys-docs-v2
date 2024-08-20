@@ -1,0 +1,15 @@
+{
+	"downloading": "Downloading Data",
+	"storage-terms": {
+		"display": "hidden"
+	},
+	"cost-to-upload": {
+		"display": "hidden"
+	},
+	"bundlers": {
+		"display": "hidden"
+	},
+	"gateway" : {
+		"display": "hidden"
+	}
+}

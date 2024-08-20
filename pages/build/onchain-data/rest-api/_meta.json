@@ -1,0 +1,7 @@
+{
+	"general": "General",
+	"account": "/account/*",
+	"price": "/price/*",
+	"transactions": "/tx/*",
+	"chunks": "/chunks/*"
+}
