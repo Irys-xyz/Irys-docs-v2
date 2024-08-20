@@ -13,6 +13,7 @@ type NavItemProps = {
   text: string;
   isHighlighted?: boolean;
   onClick?: () => void;
+  className?: string;
 };
 
 // NavItem component to render individual navigation items
@@ -21,6 +22,7 @@ const NavItem: React.FC<NavItemProps> = ({
   text,
   isHighlighted = false,
   onClick,
+  className,
 }) => {
   const baseClasses =
     "group cursor-pointer flex items-center justify-center gap-2 rounded-lg px-4 py-2";
@@ -30,8 +32,8 @@ const NavItem: React.FC<NavItemProps> = ({
     "dark:text-[#BABABA] text-[#2C2C2C] group-hover:text-white";
   const darkBackgroundClasses = "bg-[#F2F2F2] dark:bg-[#090909]";
   const highlightClasses = isHighlighted
-    ? `font-bold cursor-pointer text-white bg-[#111111] px-4 py-2 flex gap-2 items-center justify-center rounded-lg ${hoverClasses}`
-    : `${baseClasses} ${hoverClasses} ${textColorClasses} ${darkBackgroundClasses}`;
+    ? `font-bold cursor-pointer text-white bg-[#111111] px-4 py-2 flex gap-2 items-center justify-center rounded-lg ${hoverClasses} ${className}`
+    : `${baseClasses} ${hoverClasses} ${textColorClasses} ${darkBackgroundClasses} ${className}`;
 
   return (
     <li className={highlightClasses} onClick={onClick}>
@@ -86,7 +88,12 @@ const NavOptions: React.FC = () => {
           <NavItem Icon={MineIcon} text="Mine" />
         </Link> */}
         <Link href="https://github.com/Irys-xyz" target="_blank">
-          <NavItem Icon={GithubIcon} text="Github" isHighlighted />
+          <NavItem
+            Icon={GithubIcon}
+            text="Github"
+            isHighlighted
+            className="ml-3"
+          />
         </Link>
         <ThemeToggle />
       </ul>

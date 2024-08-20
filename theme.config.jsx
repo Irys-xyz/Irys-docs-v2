@@ -64,17 +64,9 @@ export default {
   nextThemes: {
     defaultTheme: "system",
   },
-  primaryHue: 17.56,
-  primarySaturation: 68.24,
-  themeSwitch: {
-    useOptions() {
-      return {
-        dark: "Dark",
-        light: "Light",
-        system: "System",
-      };
-    },
-  },
+  primaryHue: 0,
+  primarySaturation: 1,
+  themeSwitch: false,
   editLink: {
     component: () => null,
   },
@@ -82,11 +74,11 @@ export default {
     content: () => null,
   },
   sidebar: {
-    toggleButton: true,
+    toggleButton: false,
     defaultMenuCollapseLevel: 2,
     titleComponent({ title, type }) {
       const iconStyles = { fontSize: "1.1rem", marginRight: "0.5rem" };
-      const containerStyles = { display: "flex", alignItems: "center", marginTop: "2px", marginBottom: "2px" };
+      const containerStyles = { display: "flex", alignItems: "center", marginTop: "3px", marginBottom: "3px" };
 
       if (type !== "separator") {
         const key = title.replace(/\s+/g, "-");

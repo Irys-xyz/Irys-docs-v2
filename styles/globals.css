@@ -568,7 +568,7 @@ details[open] .faq-expand::before {
   > ul
   > li
   > button {
-  @apply !text-black dark:!text-white;
+  @apply !text-black dark:!text-white !font-semibold uppercase;
 }
 
 #__next
@@ -581,7 +581,7 @@ details[open] .faq-expand::before {
   > ul
   > li.nx-flex.nx-flex-col.nx-gap-1
   > a {
-  @apply !text-black dark:!text-white;
+  @apply !text-black dark:!text-white !font-semibold uppercase;
 }
 
 :is(html[class~="dark"] .dark\:nx-shadow-\[0_-12px_16px_\#111\]) {
@@ -590,4 +590,54 @@ details[open] .faq-expand::before {
 
 #__next > div > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\] > nav > div > p {
   @apply !text-black dark:!text-white;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-sticky.nx-bottom-0.nx-bg-white.dark\:nx-bg-dark.nx-mx-4.nx-py-4.nx-shadow-\[0_-12px_16px_\#fff\].nx-flex.nx-items-center.nx-gap-2.dark\:nx-border-neutral-800.dark\:nx-shadow-\[0_-12px_16px_\#111\].contrast-more\:nx-border-neutral-400.contrast-more\:nx-shadow-none.contrast-more\:dark\:nx-shadow-none.nx-border-t {
+  @apply hidden;
+}
+
+:is(html[class~="dark"] .dark\:nx-bg-primary-300\/10) {
+  background-color: hsl(0deg 0% 5.1%);
+}
+
+pre {
+  @apply !bg-[#F2F2F2] dark:!bg-[#0d0d0d] !text-base;
+}
+
+pre > * {
+  @apply !leading-relaxed;
+}
+
+.nx-bg-primary-100 {
+  @apply !bg-[#ff8451]/10 !text-[#ff8451];
+}
+
+main > * > a {
+  @apply dark:!text-white !text-black;
+}
+
+:is([dir="ltr"] .ltr\:nx-pl-3) {
+  padding-left: 0.75rem;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li.open
+  > div
+  > div
+  > ul {
+  @apply !pl-0 !ml-0;
+}
+.before\:nx-bg-gray-200:before {
+  @apply !bg-transparent;
 }
