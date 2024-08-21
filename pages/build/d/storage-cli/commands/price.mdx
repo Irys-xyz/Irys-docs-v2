@@ -3,6 +3,7 @@ description: Funds the node with the specified amount of tokens.
 ---
 
 import { Callout } from "nextra-theme-docs";
+import ApiTable from "@/components/api-table/api-table.tsx";
 
 # `price`
 
@@ -10,9 +11,16 @@ Checks the price to upload the specified number of bytes.
 
 ## Parameters
 
-- `-t`: The [token](/build/d/features/supported-tokens) used for payment.
-- `-n`: The network to check, use `testnet`.
-- `--provider-url`: RPC URL to use. 
+
+<ApiTable columns={[
+	{ header: "Option", key: "type", span: 3 },
+	{ header: "Description", key: "description", span: 9 },
+]} data={[
+	  { type: "-n", description: "The network to check, use `testnet`." },
+    { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
+    { type: "--provider-url", description: "RPC URL to use. " },
+]}/>
+
 
 ## Example
 

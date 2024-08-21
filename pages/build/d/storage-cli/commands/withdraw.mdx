@@ -3,6 +3,7 @@ description: Funds the node with the specified amount of tokens.
 ---
 
 import { Callout } from "nextra-theme-docs";
+import ApiTable from "@/components/api-table/api-table.tsx";
 
 # `withdraw`
 
@@ -14,10 +15,17 @@ Not all calls to `withdraw` will post immediately to your account, some blockcha
 
 ## Parameters
 
-- `-n`: The network to check, use `testnet`.
-- `-t`: The [token](/build/d/features/supported-tokens) to withdraw.
-- `-w`: Your private key.
-- `--provider-url`: RPC URL to use. 
+
+
+<ApiTable columns={[
+	{ header: "Option", key: "type", span: 3 },
+	{ header: "Description", key: "description", span: 9 },
+]} data={[
+	  { type: "-n", description: "The network to check, use `testnet`." },
+    { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
+    { type: "-w", description: "Your private key." },
+    { type: "--provider-url", description: "RPC URL to use." },
+]}/>
 
 ## Example
 
