@@ -1,0 +1,52 @@
+---
+description: Funds the node with the specified amount of tokens.
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# `upload-dir`
+
+Uploads an entire directory of files.
+
+## Parameters
+
+
+
+- `-n`: The network to check, use `testnet`.
+- `-t`: The [token](/build/d/features/supported-tokens) to use when uploading.
+- `-w`: Your private key.
+- `--index-file`: Name of the file to use as an index for manifests.
+- `--provider-url`: RPC URL to use. 
+
+## Example
+
+```console
+irys upload-dir ./myImages \
+  -n testnet \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --provider-url https://rpc.sepolia.dev
+```
+
+<Callout type="info" emoji="ℹ️">
+	RPC URLs change often, use a recent one from https://chainlist.org/
+</Callout>
+
+## Downloading
+
+Files uploaded via `irys upload-dir` can be retrieved in one of two ways.
+
+1. Creating a URL with the format `https://testnet-gateway.irys.xyz/[manifest-id]/[original-file-name]`.
+2. Creating a URL using the transaction ID of each individual file uploaded with the format `https://testnet-gateway.irys.xyz/[transacton-id]`
+
+After a successful folder upload, two files are written to your local project directory:
+
+- `[folder_name].csv`
+- `[folder_name].json`
+
+The example below highlights a folder called with a total of 5 files in it. The transaction ID for each file can be used to retrieve the uploaded data by forming a URL with the format `https://testnet-gateway.irys.xyz]/[transaction-id]`
+
+<img
+	className="rounded-xl mt-5 md:w-5/6 w-full"
+	src="/build/img/folder-manifest.png"
+/>

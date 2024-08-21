@@ -34,30 +34,68 @@ const SPAN_TO_CLASS: {
 };
 
 // Function to parse markdown links to HTML
+// const parseMarkdownLinks = (text: string) => {
+//   const regex = /\[(.*?)\]\((.*?)\)/g;
+//   return text.split(regex).map((part, index) => {
+//     if (index % 3 === 1) {
+//       // This is the link text
+//       return <span key={index}>{part}</span>;
+//     } else if (index % 3 === 2) {
+//       // This is the URL
+//       return (
+//         <Link
+//           key={index}
+//           href={part}
+//           rel="noopener noreferrer"
+//           className={"ml-1 underline"}
+//         >
+//           {text.split(regex)[index - 1]}
+//         </Link>
+//       );
+//     } else {
+//       // This is plain text or part of the markdown syntax
+//       return <span key={index}>{part}</span>;
+//     }
+//   });
+// };
+
 const parseMarkdownLinks = (text: string) => {
-  const regex = /\[(.*?)\]\((.*?)\)/g;
-  return text.split(regex).map((part, index) => {
-    if (index % 3 === 1) {
-      // This is the link text
-      return <span key={index}>{part}</span>;
-    } else if (index % 3 === 2) {
-      // This is the URL
-      return (
-        <Link
-          key={index}
-          href={part}
-          rel="noopener noreferrer"
-          className={"ml-1 underline"}
-        >
-          {text.split(regex)[index - 1]}
+  const regex = /(\[(.*?)\]\((.*?)\))|(`[^`]+`)/g;
+  const parts = [];
+  let lastIndex = 0;
+
+  text.replace(regex, (match, p1, p2, p3, p4, offset) => {
+    // Add plain text before the match
+    if (offset > lastIndex) {
+      parts.push(text.slice(lastIndex, offset));
+    }
+
+    if (p1 && p2 && p3) {
+      // This is a Markdown link with potential inline code
+      const parsedLinkText = parseMarkdownLinks(p2); // Recursive call to handle inline code
+      parts.push(
+        <Link key={offset} href={p3} rel="noopener noreferrer" className="underline">
+          {parsedLinkText}
         </Link>
       );
-    } else {
-      // This is plain text or part of the markdown syntax
-      return <span key={index}>{part}</span>;
+    } else if (p4) {
+      // This is inline code wrapped in backticks
+      parts.push(<code key={offset} className="bg-gray-100 dark:bg-gray-800 p-1 rounded">{p4.slice(1, -1)}</code>);
     }
+
+    lastIndex = offset + match.length;
+    return match;
   });
+
+  // Add any remaining plain text after the last match
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
 };
+
+
 
 /**
  * A table component to display API data
