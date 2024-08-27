@@ -1,22 +1,21 @@
 ---
-description: Irys's 2D Packing ensures miners store unique data replicas. It offers scalable performance, lower storage fees, and consistent verification times.
+description: Irys's Matrix Packing ensures miners store unique data replicas. It offers scalable performance, lower storage fees, and consistent verification times.
 ---
 
 import SequentialHashing from "@/components/SequentialHashing";
-import Irys2dPacking from "@/components/Irys2dPacking";
 import SimpleRiveViewer from "@/components/SimpleRiveViewer";
 
-# 2D Packing
+# Matrix Packing
 
-Packing adds cryptographic fingerprints to stored data, proving miners provide unique resources. This prevents adversarial claims of false storage capacity. Irys introduces 2D Packing, a novel approach to data verification. This method ensures miners provide unique storage resources while deterring adversarial behavior.
+Packing adds cryptographic fingerprints to stored data, proving miners provide unique resources. This prevents adversarial claims of false storage capacity. Irys introduces Matrix Packing, a novel approach to data verification. This method ensures miners provide unique storage resources while deterring adversarial behavior.
 
 <div className="flex flex-col md:flex-row w-full flex justify-start items-start mt-5">
 	<div className="w-full md:w-1/2">
 		<SimpleRiveViewer
-			src="/protocol-animations/2d-packing.riv"
+			src="/protocol-animations/matrix-packing.riv"
 			width={1920}
 			height={1080}
-			stateMachine="2D-Packing"
+			stateMachine="Matrix-Packing"
 		/>
 	</div>
 	<div className="w-full md:w-1/2">
@@ -88,10 +87,10 @@ Here’s how it works:
 
 ## Advantages
 
-Irys's 2D packing operates in parallel, enabling simultaneous chunk processing while maintaining safe individual packing times. This ensures reading packed data is always more economical than packing. Uniquely, 2D Packing allows fingerprinting of empty capacity, rewarding miners for preparedness. When needed, data is swiftly XOR'd into existing packing, eliminating repacking and ensuring rapid, cost-effective data ingress.
+Irys's Matrix packing operates in parallel, enabling simultaneous chunk processing while maintaining safe individual packing times. This ensures reading packed data is always more economical than packing. Uniquely, Matrix Packing allows fingerprinting of empty capacity, rewarding miners for preparedness. When needed, data is swiftly XOR'd into existing packing, eliminating repacking and ensuring rapid, cost-effective data ingress.
 
 This innovative approach optimizes network efficiency and resource utilization
 
 ## Blocktimes
 
-The safe minimum time for 2D Packing and unpacking sets a lower limit on block validation time for miners. This establishes a minimum block time for the network, approximately 3 seconds. However, as Proof of Work block times typically range from 9-12 seconds, this constraint doesn't negatively impact network performance.
+The safe minimum time for Matrix Packing and unpacking sets a lower limit on block validation time for miners. This establishes a minimum block time for the network, approximately 3 seconds. However, as Proof of Work block times typically range from 9-12 seconds, this constraint doesn't negatively impact network performance.

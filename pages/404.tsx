@@ -100,7 +100,7 @@ const NotFound = (props: Props) => {
 			css: "row-span-6",
 			items: [
 				{ title: "Running a Node", href: "/mining-on-irys/running-a-node" },
-				{ title: "2D Packing", href: "/mining-on-irys/2d-packing" },
+				{ title: "Matrix Packing", href: "/mining-on-irys/matrix-packing" },
 				{ title: "Efficient Sampling", href: "/mining-on-irys/efficient-sampling" },
 			],
 		},

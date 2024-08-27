@@ -46,7 +46,7 @@ const iconMapping = {
 	irysvm: <MdOutlineBubbleChart color="#ff8451" />,
 
 	"running-a-node": <MdOutlineAccountTree color="#ff8451" />,
-	"2d-packing": <MdOutlineViewQuilt color="#ff8451" />,
+	"matrix-packing": <MdOutlineViewQuilt color="#ff8451" />,
 	"efficient-sampling": <MdFlipToBack color="#ff8451" />,
 
 	"protocol-overview": <MdOutlineStorage color="#ff8451" />,
