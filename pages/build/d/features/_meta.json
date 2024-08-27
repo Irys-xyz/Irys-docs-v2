@@ -1,12 +1,12 @@
 {
 	"supported-tokens": "Supported Tokens",
-	"receipts": "Receipts",
 	"tags": "Tags",
-	"manual-tx": "Manually Creating a Tx",
+	"receipts": "Receipts",
+	"mutable-references": "Mutable References",
 	"balance-approvals": "Balance Approvals",
+	"manual-tx": "Manually Creating a Tx",
 	"path-manifests": {
 		"display": "hidden"
 	},
-	"mutable-references": "Mutable References",
 	"ipfs-cid": "Using IPFS CIDs"
 }

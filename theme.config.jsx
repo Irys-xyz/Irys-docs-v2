@@ -49,7 +49,7 @@ const iconMapping = {
   IrysVM: <MdOutlineBubbleChart  />,
 
   "Running-a-Node": <MdOutlineAccountTree  />,
-  "2D-Packing": <MdOutlineViewQuilt  />,
+  "Matrix-Packing": <MdOutlineViewQuilt  />,
   "Efficient-Sampling": <MdFlipToBack  />,
 
   "Protocol-Overview": <MdOutlineStorage  />,

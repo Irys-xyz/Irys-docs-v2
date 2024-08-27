@@ -20,12 +20,12 @@ const bentoData: Bento[] = [
 		href: "/learn/mining-on-irys/efficient-sampling",
 	},
 	{
-		title: "Fast 2D Packing",
+		title: "Fast Matrix Packing",
 		description:
 			"Combined with staked mining addresses, enables incentive-compatible packing that scales horizontally, reduces packing costs, and increases the network's ability to ingest data.",
-		image: "/protocol-animations/2d-packing.riv",
-		stateMachine: "2D-Packing",
-		href: "/learn/mining-on-irys/2d-packing",
+		image: "/protocol-animations/matrix-packing.riv",
+		stateMachine: "Matrix-Packing",
+		href: "/learn/mining-on-irys/matrix-packing",
 	},
 	{
 		title: "Capacity Mining",
@@ -37,7 +37,7 @@ const bentoData: Bento[] = [
 	{
 		title: "Verifiability",
 		description:
-			"End users can easily verify onchain which mining addresses are storing their data. 2D Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
+			"End users can easily verify onchain which mining addresses are storing their data. Matrix Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
 		image: "/protocol-animations/verifiability.riv",
 		stateMachine: "Verifiability",
 		href: "/learn/why-build-on-irys/verifiability",
