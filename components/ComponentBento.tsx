@@ -20,7 +20,7 @@ const componentBentoData: ComponentBento[] = [
 		details: [],
 		image: "/protocol-animations/pows.riv",
 		stateMachine: "Proof-Of-Work",
-		href: "/protocol/pows",
+		href: "/learn/protocol/pows",
 	},
 	{
 		title: "Multiple Ledgers",
@@ -31,7 +31,7 @@ const componentBentoData: ComponentBento[] = [
 			"Make commitments about published data",
 			"Provide reliable access for the execution layer by managing data upload and storage proofs",
 		],
-		href: "/protocol/ledgers",
+		href: "/learn/protocol/ledgers",
 	},
 	{
 		title: "IrysVM",
@@ -40,7 +40,7 @@ const componentBentoData: ComponentBento[] = [
 		image: "/protocol-animations/irysvm.riv",
 		stateMachine: "IrysVM",
 		details: [],
-		href: "/why-build-on-irys/irysvm",
+		href: "/learn/why-build-on-irys/irysvm",
 	},
 	{
 		title: "Protocol Treasury",
@@ -48,7 +48,7 @@ const componentBentoData: ComponentBento[] = [
 		details: ["Covers storage liabilities", "Participates in yield-bearing activities"],
 		image: "/protocol-animations/treasury.riv",
 		stateMachine: "Protocol-Treasury",
-		href: "/economics",
+		href: "/learn/economics",
 	},
 ];
 

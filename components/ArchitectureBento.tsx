@@ -17,30 +17,30 @@ const bentoData: Bento[] = [
 		description: "Enables economical storage scaling with a 24-hour sampling window for 16TB HDDs.",
 		image: "/protocol-animations/efficient-sampling.riv",
 		stateMachine: "EfficientSampling",
-		href: "/mining-on-irys/efficient-sampling",
+		href: "/learn/mining-on-irys/efficient-sampling",
 	},
 	{
-		title: "Fast 2D Packing",
+		title: "Fast Matrix Packing",
 		description:
 			"Combined with staked mining addresses, enables incentive-compatible packing that scales horizontally, reduces packing costs, and increases the network's ability to ingest data.",
-		image: "/protocol-animations/2d-packing.riv",
-		stateMachine: "2D-Packing",
-		href: "/mining-on-irys/2d-packing",
+		image: "/protocol-animations/matrix-packing.riv",
+		stateMachine: "Matrix-Packing",
+		href: "/learn/mining-on-irys/matrix-packing",
 	},
 	{
 		title: "Capacity Mining",
 		description: "Allows pre-packing of empty capacity partitions for efficient data ingress.",
 		image: "/protocol-animations/capacity-mining.riv",
 		stateMachine: "Capacity-Mining",
-		href: "/protocol/partitions#capacity-partitions",
+		href: "/learn/protocol/partitions#capacity-partitions",
 	},
 	{
 		title: "Verifiability",
 		description:
-			"End users can easily verify onchain which mining addresses are storing their data. 2D Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
+			"End users can easily verify onchain which mining addresses are storing their data. Matrix Unpacking is cross-platform and can be done on consumer hardware, even in a browser.",
 		image: "/protocol-animations/verifiability.riv",
 		stateMachine: "Verifiability",
-		href: "/why-build-on-irys/verifiability",
+		href: "/learn/why-build-on-irys/verifiability",
 	},
 ];
 

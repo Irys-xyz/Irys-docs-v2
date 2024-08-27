@@ -146,15 +146,15 @@ const NotFound = (props: Props) => {
       title: "LEARN ABOUT IRYS",
       css: "row-span-6",
       items: [
-        { title: "What Is Irys?", href: "/learn-about-irys/what-is-irys" },
+        { title: "What Is Irys?", href: "/learn/learn-about-irys/what-is-irys" },
         {
           title: "What Is a Datachain",
-          href: "/learn-about-irys/what-is-datachain",
+          href: "/learn/learn-about-irys/what-is-datachain",
         },
-        { title: "Why Irys Exists", href: "/learn-about-irys/why-irys-exists" },
+        { title: "Why Irys Exists", href: "/learn/learn-about-irys/why-irys-exists" },
         {
           title: "How Irys Solves These Problems",
-          href: "/learn-about-irys/problems-solved",
+          href: "/learn/learn-about-irys/problems-solved",
         },
       ],
     },
@@ -164,18 +164,18 @@ const NotFound = (props: Props) => {
       items: [
         {
           title: "Programmable Data",
-          href: "/why-build-on-irys/programmable-data",
+          href: "/learn/why-build-on-irys/programmable-data",
         },
-        { title: "Verifiability", href: "/why-build-on-irys/verifiability" },
-        { title: "IrysVM", href: "/why-build-on-irys/irysvm" },
+        { title: "Verifiability", href: "/learn/why-build-on-irys/verifiability" },
+        { title: "IrysVM", href: "/learn/why-build-on-irys/irysvm" },
       ],
     },
     {
       title: "MINING ON IRYS",
       css: "row-span-6",
       items: [
-        { title: "Running a Node", href: "/mining-on-irys/running-a-node" },
-        { title: "2D Packing", href: "/mining-on-irys/2d-packing" },
+        { title: "Running a Node", href: "/learn/mining-on-irys/running-a-node" },
+        { title: "Matrix Packing", href: "/learn/mining-on-irys/matrix-packing" },
         {
           title: "Efficient Sampling",
           href: "/mining-on-irys/efficient-sampling",
@@ -186,12 +186,12 @@ const NotFound = (props: Props) => {
       title: "PROTOCOL",
       css: "row-span-6",
       items: [
-        { title: "Protocol Overview", href: "/protocol/protocol-overview" },
-        { title: "Partitions", href: "/protocol/partitions" },
-        { title: "Ledgers", href: "/protocol/ledgers" },
-        { title: "Transactions", href: "/protocol/transactions" },
-        { title: "Proof of Work + Staking", href: "/protocol/pows" },
-        { title: "Fast Finality", href: "/protocol/fast-finality" },
+        { title: "Protocol Overview", href: "/learn/protocol/protocol-overview" },
+        { title: "Partitions", href: "/learn/protocol/partitions" },
+        { title: "Ledgers", href: "/learn/protocol/ledgers" },
+        { title: "Transactions", href: "/learn/protocol/transactions" },
+        { title: "Proof of Work + Staking", href: "/learn/protocol/pows" },
+        { title: "Fast Finality", href: "/learn/protocol/fast-finality" },
       ],
     },
   ];
