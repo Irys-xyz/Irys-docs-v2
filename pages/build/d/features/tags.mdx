@@ -31,7 +31,7 @@ const tags = [{ name: "Content-Type", value: "image/png" }];
 
 try {
 	const response = await irys.uploadFile(fileToUpload, { tags: tags });
-	console.log(`File uploaded ==> https://testnet-gateway.irys.xyz/${response.id}`);
+	console.log(`File uploaded ==> https://gateway.irys.xyz/${response.id}`);
 } catch (e) {
 	console.log("Error uploading file ", e);
 }
@@ -57,7 +57,7 @@ const tags = [{ name: "application-id", value: "NFTs To The Moon" }];
 
 try {
 	const response = await irys.uploadFile(fileToUpload, { tags: tags });
-	console.log(`File uploaded ==> https://testnet-gateway.irys.xyz/${response.id}`);
+	console.log(`File uploaded ==> https://gateway.irys.xyz/${response.id}`);
 } catch (e) {
 	console.log("Error uploading file ", e);
 }

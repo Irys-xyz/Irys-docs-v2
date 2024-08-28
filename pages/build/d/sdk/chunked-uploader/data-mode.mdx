@@ -20,11 +20,11 @@ const transactionOptions = { tags: [{ name: "Content-Type", value: "text/plain" 
 const dataBuffer = Buffer.from("Hello, world!");
 const response = await uploader.uploadData(dataBuffer, transactionOptions);
 // The transaction ID (used to query the network) is found in response.data.id
-console.log(`Data buffer uploaded ==> https://testnet-gateway.irys.xyz/${response.data.id}`);
+console.log(`Data buffer uploaded ==> https://gateway.irys.xyz/${response.data.id}`);
 
 // 2. OR Upload a Readable (stream) pointing to the data
 uploader = irys.uploader.chunkedUploader; // Recreate for each transaction
 const dataStream = fs.createReadStream("./data.txt");
 response = await uploader.uploadData(dataStream, transactionOptions);
-console.log(`Read Stream uploaded ==> https://testnet-gateway.irys.xyz/${response.data.id}`);
+console.log(`Read Stream uploaded ==> https://gateway.irys.xyz/${response.data.id}`);
 ```

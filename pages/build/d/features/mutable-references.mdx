@@ -12,12 +12,12 @@ Mutable references enable the creation of a single, static URL that is linked to
 
 To create a mutable reference:
 
-1. Upload a base transaction to Irys and reference it using a URL in the following format `https://testnet-gateway.irys.xyz/mutable/:id`
+1. Upload a base transaction to Irys and reference it using a URL in the following format `https://gateway.irys.xyz/mutable/:id`
 
 ```js
 const irys = await getIrys();
 const receiptOne = await irys.upload("First TX");
-console.log(`TX 1 uploaded https://testnet-gateway.irys.xyz/mutable/${receiptOne.id}`);
+console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```
 
 2. Upload an addition to the series as a new transaction, and add a tag named `Root-TX` with the value of the original transaction ID.
@@ -25,10 +25,10 @@ console.log(`TX 1 uploaded https://testnet-gateway.irys.xyz/mutable/${receiptOne
 ```js
 const tags = [{ name: "Root-TX", value: receiptOne.id }];
 const receiptTwo = await irys.upload("Second TX", { tags: tags });
-console.log(`TX 2 uploaded https://testnet-gateway.irys.xyz/mutable/${receiptOne.id}`);
+console.log(`TX 2 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```
 
-The original URL (`https://testnet-gateway.irys.xyz/mutable/:id`) now resolves to the second transaction in the chain.
+The original URL (`https://gateway.irys.xyz/mutable/:id`) now resolves to the second transaction in the chain.
 
 <Callout type="info" emoji="ℹ️">
 	When building a transaction chain, additions must be made using the same wallet that created the original transaction.
@@ -41,7 +41,7 @@ Mutable references are based on Irys’ millisecond-accurate timestamps. You can
 
 ## Versions
 
-While the `https://testnet-gateway.irys.xyz/mutable/:id` endpoint will always resolve to the most recent transaction in a chain, it is possible to directly access any transaction in a chain using the transaction’s ID and a URL in the format `https://testnet-gateway.irys.xyz/:id`
+While the `https://gateway.irys.xyz/mutable/:id` endpoint will always resolve to the most recent transaction in a chain, it is possible to directly access any transaction in a chain using the transaction’s ID and a URL in the format `https://gateway.irys.xyz/:id`
 
 You can query a version chain using GraphQL:
 

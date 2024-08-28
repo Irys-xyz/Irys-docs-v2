@@ -34,7 +34,7 @@ const manifestId = receipt.id;
 
 Upon uploading a manifest, you get a [receipt](/learn/receipts) containing a transaction ID. To download transactions in a path manifest, request them from the [Irys gateway](/overview/gateways) using a URL formatted as:
 
-`https://testnet-gateway.irys.xyz/:manifestId/:pathName`
+`https://gateway.irys.xyz/:manifestId/:pathName`
 
 The gateway then:
 
@@ -53,7 +53,7 @@ For example, if you have a manifest with ID `W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc
 
 You can download the first entry using:
 
-`https://testnet-gateway.irys.xyz/W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc_Vx8fwv4/foo1.png`
+`https://gateway.irys.xyz/W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc_Vx8fwv4/foo1.png`
 
 ## Static websites
 
@@ -105,7 +105,7 @@ const generateManifest = async () => {
 	const manifestId = receipt.id;
 
 	map.forEach((value, key) => {
-		console.log(`https://testnet-gateway.irys.xyz/${manifestId}/${key}`);
+		console.log(`https://gateway.irys.xyz/${manifestId}/${key}`);
 	});
 };
 

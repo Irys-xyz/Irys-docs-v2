@@ -58,7 +58,7 @@ const tags = [{ name: "Content-Type", value: "image/png" }];
 
 try {
 	const response = await irys.uploadFile(fileToUpload, tags);
-	console.log(`File uploaded ==> https://testnet-gateway.irys.xyz/${response.id}`);
+	console.log(`File uploaded ==> https://gateway.irys.xyz/${response.id}`);
 } catch (e) {
 	console.log("Error uploading file ", e);
 }
@@ -66,5 +66,5 @@ try {
 
 <Callout type="info" emoji="ℹ️">
 	Use the transaction ID returned as part of the response to download the data by creating a URL in the format
-	`https://testnet-gateway.irys.xyz/[transaction-id].`
+	`https://gateway.irys.xyz/[transaction-id].`
 </Callout>

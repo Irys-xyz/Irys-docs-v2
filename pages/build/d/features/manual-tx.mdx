@@ -39,7 +39,7 @@ const createSignUpload = async () => {
 
 	// Upload the transaction
 	const receipt = await tx.upload();
-	console.log(`Tx uploaded. https://testnet-gateway.irys.xyz/${receipt.id}`);
+	console.log(`Tx uploaded. https://gateway.irys.xyz/${receipt.id}`);
 };
 ```
 
@@ -69,7 +69,7 @@ const serializationUpload = async () => {
 	// Upload the tx
 	const receipt = await tx2.upload();
 
-	console.log(`Tx uploaded. https://testnet-gateway.irys.xyz/${receipt.id}`);
+	console.log(`Tx uploaded. https://gateway.irys.xyz/${receipt.id}`);
 };
 ```
 
@@ -100,6 +100,6 @@ const deterministicIDUpload = async () => {
 	await tx2.sign();
 	console.log(`Tx2 ID ${tx2.id}`); // ID is the same
 	const receipt = await tx2.upload();
-	console.log(`Tx uploaded. https://testnet-gateway.irys.xyz/${receipt.id}`);
+	console.log(`Tx uploaded. https://gateway.irys.xyz/${receipt.id}`);
 };
 ```

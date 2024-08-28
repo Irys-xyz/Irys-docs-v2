@@ -49,14 +49,14 @@ const uploadToIrysWithCID = async () => {
 	const receipt = await irys.upload(dataToUpload, { tags: tags });
 
 	// You can download using either the Irys transaction ID or IPFS Content ID
-	console.log(`Transaction ID URL https://testnet-gateway.irys.xyz/${receipt.id}`);
-	console.log(`Content ID URL https://testnet-gateway.irys.xyz/ipfs/${contentID}`);
+	console.log(`Transaction ID URL https://gateway.irys.xyz/${receipt.id}`);
+	console.log(`Content ID URL https://gateway.irys.xyz/ipfs/${contentID}`);
 };
 ```
 
 ## Downloading with a CID
 
-To download data tagged with a CID, request it from the Irys gateway using a URL in the format `https://testnet-gateway.irys.xyz/ipfs/:contentID`.
+To download data tagged with a CID, request it from the Irys gateway using a URL in the format `https://gateway.irys.xyz/ipfs/:contentID`.
 
 <Callout type="info" emoji="ℹ️">
 	If the same CID is assigned to more than one transaction, the Irys gateway will always return the one with the
@@ -65,7 +65,7 @@ To download data tagged with a CID, request it from the Irys gateway using a URL
 
 ```js
 const fetchData = async (ipfsCID) => {
-	const url = `https://testnet-gateway.irys.xyz/ipfs/${ipfsCID}`;
+	const url = `https://gateway.irys.xyz/ipfs/${ipfsCID}`;
 	console.log(`URL: ${url}`);
 
 	const response = await fetch(url);
@@ -104,8 +104,8 @@ const uploadToIrysWithCID = async (dataToUpload, contentType, contentID) => {
 		{ name: "IPFS-CID", value: contentID },
 	];
 	const receipt = await irys.upload(dataToUpload, { tags: tags });
-	console.log(`Direct URL: https://testnet-gateway.irys.xyz/${receipt.id}`);
-	console.log(`Content ID URL: https://testnet-gateway.irys.xyz/ipfs/${contentID}`);
+	console.log(`Direct URL: https://gateway.irys.xyz/${receipt.id}`);
+	console.log(`Content ID URL: https://gateway.irys.xyz/ipfs/${contentID}`);
 };
 
 const downloadAndDetermineContentType = async (ipfsCID) => {

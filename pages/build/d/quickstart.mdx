@@ -86,7 +86,7 @@ const uploadData = async () => {
 	const dataToUpload = "hirys world.";
 	try {
 		const receipt = await irys.upload(dataToUpload);
-		console.log(`Data uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
+		console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
 	} catch (e) {
 		console.log("Error uploading data ", e);
 	}
@@ -105,7 +105,7 @@ const uploadFile = async () => {
 
 	try {
 		const receipt = await irys.uploadFile(fileToUpload, { tags: tags });
-		console.log(`File uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
+		console.log(`File uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
 	} catch (e) {
 		console.log("Error uploading file ", e);
 	}
@@ -118,7 +118,7 @@ You can upload a group of files as a single transaction from both the server and
 
 <Callout type="info" emoji="ℹ️">
 	When [uploading a folder](/build/d/sdk/api/uploadFolder), files can be accessed either directly at
-	`https://testnet-gateway.irys.xyz/[transaction-id]` or `https://testnet-gateway.irys.xyz/[manifest-id]/[file-name]`
+	`https://gateway.irys.xyz/[transaction-id]` or `https://gateway.irys.xyz/[manifest-id]/[file-name]`
 </Callout>
 
 ### Server

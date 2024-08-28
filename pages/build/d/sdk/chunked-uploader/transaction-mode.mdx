@@ -13,5 +13,5 @@ uploader = irys.uploader.chunkedUploader; // Recreate for each transaction
 const transaction = irys.createTransaction("Hello, world!");
 await transaction.sign();
 response = await uploader.uploadTransaction(transaction);
-console.log(`Transaction mode uploaded ==> https://testnet-gateway.irys.xyz/${response.data.id}`);
+console.log(`Transaction mode uploaded ==> https://gateway.irys.xyz/${response.data.id}`);
 ```

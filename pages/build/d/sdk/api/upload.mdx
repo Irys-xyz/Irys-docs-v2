@@ -52,7 +52,7 @@ const irys = await getIrys();
 const dataToUpload = "GM world.";
 try {
 	const receipt = await irys.upload(dataToUpload);
-	console.log(`Data uploaded ==> https://testnet-gateway.irys.xyz/${receipt.id}`);
+	console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
 } catch (e) {
 	console.log("Error uploading data ", e);
 }
@@ -60,5 +60,5 @@ try {
 
 <Callout type="info" emoji="ℹ️">
 	Use the transaction ID returned as part of the response to download the data by creating a URL in the format
-	`https://testnet-gateway.irys.xyz/[transaction-id].`
+	`https://gateway.irys.xyz/[transaction-id].`
 </Callout>
