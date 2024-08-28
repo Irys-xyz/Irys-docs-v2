@@ -3,10 +3,8 @@
 	"tags": "Tags",
 	"receipts": "Receipts",
 	"mutable-references": "Mutable References",
+	"path-manifests": "Path Manifests",
 	"balance-approvals": "Balance Approvals",
 	"manual-tx": "Manually Creating a Tx",
-	"path-manifests": {
-		"display": "hidden"
-	},
 	"ipfs-cid": "Using IPFS CIDs"
 }

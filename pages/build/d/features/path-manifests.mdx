@@ -32,9 +32,9 @@ const manifestId = receipt.id;
 
 ## Resolving
 
-Upon uploading a manifest, you get a [receipt](/learn/receipts) containing a transaction ID. To download transactions in a path manifest, request them from the [Irys gateway](/overview/gateways) using a URL formatted as:
+Upon uploading a manifest, you get a [receipt](/build/d/features/receipts) containing a manifest ID. To download transactions in a path manifest, request them from the Irys gateway using a URL formatted as:
 
-`https://gateway.irys.xyz/:manifestId/:pathName`
+`https://gateway.irys.xyz/[manifestId]/[pathName]`
 
 The gateway then:
 
@@ -55,11 +55,6 @@ You can download the first entry using:
 
 `https://gateway.irys.xyz/W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc_Vx8fwv4/foo1.png`
 
-## Static websites
-
-When uploading a static website using `irys.uploadFolder()`, you can automatically create a path manifest by passing it as a parameter.
-
-For more information, [see our guide on uploading static websites](/hands-on/tutorials/uploading-static-sites).
 
 ## Manually creating a path manifest
 
@@ -67,28 +62,32 @@ Use path manifests to create a logical grouping of transactions, even transactio
 
 This example:
 
-1.  Uses the [Irys query package](/build/d/graphql) to search for the 10 most recent transactions tagged `image/png`.
-2.  Groups the transations using a `Map` object.
-3.  Creates a manifest mapping the transations to paths.
+1.  Uses 10 existing transaction IDs.
+2.  Groups the transactions using a `Map` object.
+3.  Creates a manifest mapping the transactions to paths.
 4.  Permanently uploads the manifest using Irys.
 
 ```ts
 // Get the most recent 'totalIds' number TXs tagged 'image/gif'
-const getTxIds = async (totalIds: number): Promise<string[]> => {
-	const myQuery = new Query({ network: "testnet" });
-	const results = await myQuery
-		.search("irys:transactions")
-		.tags([{ name: "Content-Type", values: ["image/gif"] }])
-		.sort("ASC")
-		.limit(totalIds);
-
-	const txIds: string[] = results.map((result) => result.id); // Adjust based on actual structure
+const getTxIds = async () => {
+	const txIds = [
+			'DSfHGmnhb7AN3xY3VUCykl-2xKiQcqXrsSP9zpzQQmY',
+			'vW3jH4kpL8mT9rXsUo7dE1cXfP5qY1kJzG2j6V8a3n9',
+			'9cJ5KzY8rV2mL0N1Xg4T7wBqP3hD6fFz0o2v9u3E5i1',
+			'P3jH8mT5r0N2L6Xy7K1zQ4oV9cE2fFzJ5w8u0d3i1g6',
+			'r9X0L4T2m5K8P1H6V7o3zYQfE9wC2j0i3u5D6F7n8g',
+			'K2mL7T5r1X8P0H9V3zY4oE6fFzJ2w8u0d3i1g9n5C7',
+			'T5r8X0L4m1P2H7V9o3zY6fE2fJ0wC5u3i1g9D7n8K',
+			'6V7K0T5r1X2P8H9m3zY4oE2fFzJ5w8u0d1i9g7n3C',
+			'm1X2T7P5r8H9V0o3zY4fE6fFzJ2w8u0d3i1g9n7C',
+			'P8L7m1T0X2H9V3o4zY5E6fFzJ2w8u0d3i1g9n7K8C'
+		];
 	return txIds;
 };
 
-// Generate a manifest containing the 10 most recent TX IDs tagged 'image/gif'
+// Generate a manifest containing 10 Tx IDs
 const generateManifest = async () => {
-	const txIds: string[] = await getTxIds(10);
+	const txIds: string[] = getTxIds();
 	const map = new Map();
 	for (let i = 0; i < txIds.length; i++) {
 		map.set(`foo${i}.gif`, txIds[i]);
