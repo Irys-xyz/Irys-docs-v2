@@ -42,6 +42,20 @@ When instantiating a `WebIrys` object pass:
 - `network`: "testnet"
 - `token`: Payment [token](/build/d/features/supported-tokens)
 - `wallet`: A wallet object containing the end-user's injected provider and the name of the provider package your project uses
+- After instantiating the object, call `webIrys.ready()`.
+
+### Supported Providers
+
+WebIrys supports the following providers. When instantiating a new `WebIrys` object, you must pass in the name of the provider you will be using.
+
+| Package                                 | Parameter value |
+| --------------------------------------- | --------------- |
+| [Ethers 5](https://docs.ethers.org/v5/) | ethersv5        |
+| [Ethers 6](https://docs.ethers.org/v6/) | ethersv6        |
+| [Solana](https://solana.com/)           | solana          |
+| [Viem v2](https://viem.sh/)             | viemv2          |
+
+### Ethers v5
 
 ```js
 const getWebIrys = async () => {
@@ -64,18 +78,26 @@ const getWebIrys = async () => {
 };
 ```
 
-After instantiating the object, call `webIrys.ready()`.
+### Ethers v6
 
-### Supported Providers
+```ts
+const getWebIrys = async () => {
+	await window.ethereum.enable();
+	const provider = new ethers.BrowserProvider(window.ethereum);
+	const network = "testnet";
+	const token = "ethereum";
+	// RPC URLs change often, use a recent one from https://chainlist.org
+	const rpcUrl = "";
 
-WebIrys supports the following providers. When instantiating a new `WebIrys` object, you must pass in the name of the provider you will be using.
+	// Create a wallet object
+	const wallet = { name: "ethersv6", provider: provider };
+	// Use the wallet object
+	const webIrys = new WebIrys({ network, token, wallet });
+	await webIrys.ready();
 
-| Package                                 | Parameter value |
-| --------------------------------------- | --------------- |
-| [Ethers 5](https://docs.ethers.org/v5/) | ethersv5        |
-| [Ethers 6](https://docs.ethers.org/v6/) | ethersv6        |
-| [Solana](https://solana.com/)           | solana          |
-| [Viem v2](https://viem.sh/)             | viemv2          |
+	return webIrys;
+};
+```
 
 ### Aptos
 
