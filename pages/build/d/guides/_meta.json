@@ -1,7 +1,10 @@
 {
-	"uploading-nfts": "Uploading NFT Assets",
-	"dynamic-nft": "Creating a Dynamic NFT",
-	"monitor-account-balance": "Monitoring Account Balance",
 	"irys-react": "Using npx create-react-app",
-	"vite": "Using Vite"
+	"vite": "Using Vite",
+	"ai-prompts": {
+		"display": "hidden"
+	},
+	"monitor-account-balance": "Monitoring Account Balance",
+	"uploading-nfts": "Uploading NFT Assets",
+	"dynamic-nft": "Creating a Dynamic NFT"
 }
