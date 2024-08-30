@@ -8,9 +8,11 @@ import { Callout } from "nextra-theme-docs";
 
 DePIN networks need a reliable data layer they can trust. 
 
-Imagine a network of nodes signing and reporting data onchain, with a smart contract that reads this data to mint rewards. This setup only works if the DePIN protocol can easily verify that miners are storing the data they claim to store and that the data hasn’t been tampered with after being uploaded.
+Imagine a network of nodes signing and reporting data onchain, with a smart contract that reads this data to mint rewards. This setup only works if the DePIN protocol can easily verify that miners are storing the data they claim to store and that the data hasn’t been tampered with after being uploaded. Additionally, DePIN networks need to chronologically order data so they can process it in the order it was posted.
 
-Irys makes this possible by providing permanent onchain data storage and millisecond-accurate timestamps. Protocols can verify data integrity, confirm that it's stored by miners, and ensure it remains unaltered. Data on Irys can be accessed by protocols on any blockchain, simplifying architecture and maintaining trust throughout the network.
+Irys makes this possible by providing permanent onchain data storage and millisecond-accurate timestamps. Protocols can verify data integrity, confirm that it's stored by miners, and ensure it remains unaltered.
+
+Data on Irys can be accessed by protocols on any blockchain, simplifying architecture and maintaining trust throughout the network.
 
 ## Example
 

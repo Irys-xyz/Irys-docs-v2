@@ -4,5 +4,7 @@
 	"mining-on-irys": "MINING ON IRYS",
 	"protocol": "PROTOCOL",
 	"economics": "ECONOMICS",
-	"build-with-us": "BUILD WITH US"
+	"build-with-us": {
+		"display": "hidden"
+	}
 }
