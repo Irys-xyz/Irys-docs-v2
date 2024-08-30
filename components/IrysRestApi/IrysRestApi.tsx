@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
-import { CustomLayoutPlugin, SimpleTestPlugin } from "./CustomLayoutPlugin";
+import { CustomLayoutPlugin } from "./CustomLayoutPlugin";
 
 interface IrysRestApiProps {
   tags: string[];
@@ -82,7 +82,7 @@ const IrysRestApi: React.FC<IrysRestApiProps> = ({ tags }) => {
     displayOperationId: true,
     deepLinking: true,
     layout: "CustomLayout",
-    plugins: [CustomLayoutPlugin, SimpleTestPlugin],
+    plugins: [CustomLayoutPlugin],
     filter: tags.join(","),
     url: "/restapi/irys-open-api.json",
   };
