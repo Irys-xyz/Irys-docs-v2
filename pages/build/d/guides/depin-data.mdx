@@ -41,7 +41,7 @@ Example data for a weather sensor.
 }
 ```
 
-You can upload your DePIN data to Irys using the Irys CLI:
+You can upload your DePIN data to Irys using the [Irys CLI](/build/d/storage-cli/installation):
 
 ```console
 irys upload depin_data.json \
@@ -52,7 +52,7 @@ irys upload depin_data.json \
   --provider-url https://sepolia.base.org
 ```
 
-Or through the Irys SDK:
+Or through the [Irys SDK](/build/d/sdk/installing-the-sdk):
 
 ```ts
 import Irys from "@irys-network/bundler-client";
@@ -74,20 +74,20 @@ const uploadDePINData = async () => {
 
 ## Using Tags for Data Querying and Sequencing
 
-Irys supports adding metadata tags to each upload, allowing you to categorize data and make it easily searchable. For DePIN networks, tags like `device-id`, `data-type`, `location`, and `application-id` can be attached to each upload. This makes it simple to filter data by criteria important to your network.
+Irys supports adding [metadata tags](/build/d/features/tags) to each upload, allowing you to categorize data and make it easily searchable. For DePIN networks, tags like `device-id`, `data-type`, `location`, and `application-id` can be attached to each upload. This makes it simple to filter data by criteria important to your network.
 
 ### Example Tags
 
 Here’s how you might tag a data upload:
 
-- device-id: "foo_device_001"
-- data-type: "temperature"
-- location: "San Francisco, CA"
-- application-id: "DePIN Network Alpha"
+- `device-id`: "foo_device_001"
+- `data-type`: "temperature"
+- `location`: "San Francisco, CA"
+- `application-id`: "DePIN Network Alpha"
 
 ### Querying Data by Tags
 
-To query data stored on Irys, you can use GraphQL to search for specific tags and order the results by timestamp:
+To query data stored on Irys, [you can use GraphQL](/build/d/graphql) to search [for specific tags](/build/d/graphql#tags) and [order the results by timestamp](/build/d/graphql#sorting):
 
 ```graphql
 query getDeviceTemperatureData {
