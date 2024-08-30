@@ -38,8 +38,6 @@ After [installing the Irys SDK](/build/d/sdk/installing-the-sdk), upload your as
 ```js
 import Irys from "@irys-network/bundler-client";
 import * as fs from "fs";
-import dotenv from "dotenv";
-dotenv.config();
 
 const uploadImage = async () => {
 	const irys = await getIrys();
@@ -95,8 +93,6 @@ Finally, upload your NFT metadata to Irys and use the URL generated to mint the 
 ```js
 import Irys from "@irys-network/bundler-client";
 import * as fs from "fs";
-import dotenv from "dotenv";
-dotenv.config();
 
 const uploadMetadata = async () => {
 	const irys = await getIrys();

@@ -8,11 +8,11 @@ import { Callout } from "nextra-theme-docs";
 
 DePIN networks need a reliable data layer they can trust. 
 
-Imagine a network of nodes signing and reporting data onchain, with a smart contract that reads this data to mint rewards. This setup only works if the DePIN protocol can easily verify that miners are storing the data they claim to store and that the data hasn’t been tampered with after being uploaded. Additionally, DePIN networks need to chronologically order data so they can process it in the order it was posted.
+Imagine a network of nodes signing and reporting data onchain and a smart contract that reads this data to mint rewards. This setup only works if the DePIN protocol can easily verify that miners are storing the data they claim to store and that the data hasn’t been tampered with after being uploaded. Additionally, DePIN networks need to chronologically order data so they can process it in the order it was posted.
 
 Irys makes this possible by providing permanent onchain data storage and millisecond-accurate timestamps. Protocols can verify data integrity, confirm that it's stored by miners, and ensure it remains unaltered.
 
-Data on Irys can be accessed by protocols on any blockchain, simplifying architecture and maintaining trust throughout the network.
+Data on Irys can be accessed by protocols on any blockchain.
 
 ## Example
 
@@ -87,6 +87,27 @@ Here’s how you might tag a data upload:
 - `location`: "San Francisco, CA"
 - `application-id`: "DePIN Network Alpha"
 
+```ts
+import Irys from "@irys-network/bundler-client";
+
+const uploadDePINData = async () => {
+	const irys = await getIrys();
+ 
+	const fileToUpload = "./depin_data.json";
+	const tags = [{ name: "Content-Type", value: "application/json" },
+                { name: "device-id", value: "foo_device_001" }
+                { name: "data-type", value: "temperature" }
+                { name: "location", value: "San Francisco, CA" }
+                { name: "application-id", value: "DePIN Network Alpha" }];
+
+	try {
+		const response = await irys.uploadFile(fileToUpload, { tags: tags });
+		console.log(`File uploaded ==> https://gateway.irys.xyz/${response.id}`);
+	} catch (e) {
+		console.log("Error uploading file ", e);
+	}
+};
+
 ### Querying Data by Tags
 
 To query data stored on Irys, [you can use GraphQL](/build/d/graphql) to search [for specific tags](/build/d/graphql#tags) and [order the results by timestamp](/build/d/graphql#sorting):
@@ -113,6 +134,6 @@ query getDeviceTemperatureData {
 }
 ```
 
-This query retrieves all temperature data from `foo_device_001` located in `San Francisco`, and orders the results by the upload timestamp. 
+This query retrieves all `temperature` data from `foo_device_001` located in `San Francisco`, and orders the results by the upload timestamp. 
 
 By using tags and timestamps, you can ensure your DePIN network maintains accurate data sequencing and retrieval across any blockchain.

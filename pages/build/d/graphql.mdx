@@ -12,6 +12,10 @@ You can query Irys transaction metadata using GraphQL.
 
 You can query using an HTTP library like fetch or axios, or use specialized clients like [Apollo Client](https://www.apollographql.com/) or [urql](https://formidable.com/open-source/urql/).
 
+## Endpoint
+
+https://uploader.irys.xyz/graphql
+
 ## Anatomy of a Query
 
 A GraphQL query is made up of:
@@ -44,9 +48,6 @@ When building a query, any of the following values be included in your results:
 | `tags {    `<br/>&nbsp;&nbsp;`name     `<br/>&nbsp;&nbsp;`value`<br/>`}` | An array of tags supplied as name / value pairs. Exists if the user added them at upload. |
 |`timestamp` | The timestamp, accurate to the millisecond of when the transaction was posted. This value is the same as the receipt timestamp. |
 
-## Endpoint
-
-https://uploader.irys.xyz/graphql
 
 ## GraphQL Sandbox
 
