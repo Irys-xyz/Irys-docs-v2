@@ -4,6 +4,9 @@
 	"ai-prompts": {
 		"display": "hidden"
 	},
+	"depin-data": {
+		"display": "hidden"
+	},
 	"monitor-account-balance": "Monitoring Account Balance",
 	"uploading-nfts": "Uploading NFT Assets",
 	"dynamic-nft": "Creating a Dynamic NFT"
