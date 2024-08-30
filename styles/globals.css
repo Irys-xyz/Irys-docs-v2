@@ -641,3 +641,8 @@ main > * > a {
 .before\:nx-bg-gray-200:before {
   @apply !bg-transparent;
 }
+
+.hide-try-it-out .try-out__btn {
+  display: none !important;
+}
+

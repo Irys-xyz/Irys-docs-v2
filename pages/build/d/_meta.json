@@ -4,6 +4,7 @@
 	"sdk": "SDK",
 	"irys-in-the-browser" : "Irys in The Browser",
 	"storage-cli": "Storage CLI",
+	"rest-api": "REST API",
 	"downloading": "Downloading",
 	"graphql": "Querying",
 	"guides": "Guides",

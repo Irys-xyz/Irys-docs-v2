@@ -81,7 +81,7 @@ const NavOptions: React.FC = () => {
         <Link href={"/learn/learn-about-irys/what-is-irys"}>
           <NavItem Icon={LearnIcon} text="Learn" />
         </Link>
-        <Link href={"/build/welcome-devs"}>
+        <Link href={"/build/welcome-builders"}>
           <NavItem Icon={BuildIcon} text="Build" />
         </Link>
         {/* <Link href={"/mine"}>

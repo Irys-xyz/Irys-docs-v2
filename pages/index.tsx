@@ -104,7 +104,7 @@ export default function Home() {
             </div>
           </motion.a>
           <motion.a
-            href="/build/welcome-devs"
+            href="/build/welcome-builders"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.3 } }}
             onMouseEnter={() => setButtonHovered(true)}

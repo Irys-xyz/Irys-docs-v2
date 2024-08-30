@@ -1,0 +1,7 @@
+{
+	"general": "General Routes",
+	"account": "Account Routes",
+	"price": "Price Routes",
+	"transactions": "Transaction Routes",
+	"chunks": "Chunk Routes"
+}
