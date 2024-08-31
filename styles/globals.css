@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +10,7 @@
 
 body {
   @apply !bg-white dark:!bg-black;
+  font-family: "Satoshi", sans-serif;
 }
 
 #__next
@@ -646,3 +649,175 @@ main > * > a {
   display: none !important;
 }
 
+/* remove padding from the side menu list items */
+div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div
+  > div
+  > div
+  > ul
+  > li
+  > div
+  > div
+  > ul
+  > li
+  > a {
+  /* @apply px-2 py-2 flex items-center; */
+  @apply !p-0;
+}
+
+/* REST API CUSTOM CSS */
+.opblock {
+  font-family: "Satoshi", sans-serif;
+}
+
+.opblock-body {
+  @apply dark:bg-[#141414] bg-[#F5F5F5];
+}
+
+.opblock-title {
+  @apply dark:!text-white !text-[#0F1828];
+}
+
+.parameters-container > .opblock-description-wrapper > p {
+  @apply dark:text-[#AEAEAE] text-[#686D72];
+}
+
+.responses-wrapper > .opblock-section-header > h4 {
+  @apply dark:!text-[#FFFFFF] !text-[#0F1828];
+}
+
+.col_header.response-col_status {
+  @apply dark:!text-[#AEAEAE] !text-[#686D72];
+}
+
+.col_header.response-col_description {
+  @apply dark:text-[#FEFEFE] text-[#0F1828];
+}
+
+.col.col_header.response-col_links {
+  @apply dark:text-[#AEAEAE] text-[#686D72];
+}
+
+.response-col_status {
+  @apply dark:!text-[#AEAEAE] text-[#686D72];
+}
+
+.response-col_description__inner {
+  @apply dark:text-white text-[#0F1828];
+}
+
+.response-col_links {
+  @apply dark:!text-[#AEAEAE] !text-[#686D72];
+}
+
+.col_header.parameters-col_name {
+  @apply dark:text-[#AEAEAE] text-[#0F1828];
+}
+
+.col_header.parameters-col_description {
+  @apply dark:text-white text-[#0F1828];
+}
+
+.parameter__type {
+  @apply dark:!text-[#AEAEAE] !text-[#686D72];
+}
+
+.parameter__in {
+  @apply dark:!text-[#535353] !text-[#535353];
+}
+
+.opblock-description-wrapper {
+  @apply dark:!text-white !text-[#0F1828];
+}
+
+.opblock.opblock-get {
+  @apply !border dark:!border-[#262626] !rounded-lg !border-[#E0E0E0];
+}
+
+.opblock.opblock-post {
+  @apply !border dark:!border-[#262626] !rounded-lg !border-[#E0E0E0];
+}
+
+.opblock.opblock-head {
+  @apply !border dark:!border-[#262626] !rounded-lg !border-[#E0E0E0];
+}
+
+.opblock-summary.opblock-summary-get {
+  @apply dark:bg-[#202020] bg-[#4A89E7] !rounded-lg !overflow-hidden;
+}
+
+.opblock-summary.opblock-summary-post {
+  @apply dark:bg-[#202020] bg-[#3FC483] !rounded-lg
+  !overflow-hidden;
+}
+
+.opblock-summary.opblock-summary-head {
+  @apply dark:bg-[#202020] bg-[#9012fe] !rounded-lg
+  !overflow-hidden;
+}
+
+.opblock-post > div > button.opblock-summary-control > div > span > a > span {
+  @apply dark:!text-[#91BB9D] !text-white font-normal;
+}
+
+.opblock-head > div > button.opblock-summary-control > div > span > a > span {
+  @apply dark:!text-[#D8A4FF] !text-white font-normal;
+}
+
+.opblock-get > div > button.opblock-summary-control > div > span > a > span {
+  @apply dark:!text-[#91A2BB] !text-white font-normal;
+}
+
+.opblock-get
+  > div
+  > button.opblock-summary-control
+  > span.opblock-summary-method {
+  font-family: "Satoshi", sans-serif;
+  @apply !border dark:!border-[#4A89E7] !rounded-lg !border-white !bg-[#4A89E714] dark:!text-[#4A89E7];
+}
+
+.opblock-post
+  > div
+  > button.opblock-summary-control
+  > span.opblock-summary-method {
+  font-family: "Satoshi", sans-serif;
+  @apply !border dark:!border-[#3FC483] !rounded-lg dark:!bg-[#3FC48314] !bg-white dark:!text-[#3FC483] text-[#3FC483] !border-white;
+}
+
+.opblock-head
+  > div
+  > button.opblock-summary-control
+  > span.opblock-summary-method {
+  font-family: "Satoshi", sans-serif;
+  @apply !border dark:!border-[#9012fe] !rounded-lg dark:!bg-[#9012fe27] !bg-white dark:!text-[#9012fe] text-[#9012fe] !border-white;
+}
+
+button.btn.try-out__btn {
+  @apply !bg-[#FF8451] border-[#FF8451] hover:!bg-[#FF8451]/80 hover:!border-[#FF8451];
+}
+
+.opblock-summary-description {
+  @apply dark:!text-[#535353] !text-[#B7D0F5];
+}
+
+#operations-transactions-post_tx
+  > div
+  > button.opblock-summary-control
+  > div
+  > div {
+  @apply dark:!text-[#535353] !text-[#C9FFE5];
+}
+
+.parameters input {
+  @apply placeholder:!text-[#535353] dark:!bg-[#111111] dark:!border-[#4D4D4D] dark:text-white text-black;
+}
+
+.opblock .opblock-control-arrow {
+  @apply dark:!fill-[#AEAEAE] !fill-white;
+}
+
+.content-type {
+  @apply placeholder:!text-[#535353] dark:!bg-[#111111] dark:!border-[#4D4D4D];
+}
