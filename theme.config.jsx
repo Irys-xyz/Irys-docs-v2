@@ -131,6 +131,10 @@ const iconMapping = {
     src: "/assets/rive/build/07 Guides.riv",
     animation: "GuidesAnim",
   },
+  Troubleshooting: {
+    src: "/assets/rive/build/08 Troubleshooting.riv",
+    animation: "TroubleshootingAnim",
+  },
 };
 
 export default {
