@@ -32,25 +32,28 @@ On our testnet, you can pay for uploads in any of these tokens:
 | USDC (on Ethereum) | USDC  | usdc-eth        | yes            | yes               |
 | USDC (on Polygon)  | USDC  | usdc-polygon    | yes            | yes               |
 
-## Specifying Token
 
-The token is set when creating a new `Irys` or `WebIrys` object, the accepted values are listed in the third column of the table above.
+## Connecting to Irys
 
-Example:
+The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your import statements and connection code will differ depending on the token used for payment.
 
-```js
+The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/import-configure). 
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
 const getIrys = async () => {
-	const network = "testnet";
-	// RPC URLs change often, use a recent one from https://chainlist.org/
-	const providerUrl = "";
-	const token = "ethereum";
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
 
-	const irys = new Irys({
-		network, 
-		token, // Token used for payment
-		key: process.env.PRIVATE_KEY, // ETH or SOL private key
-		config: { providerUrl }, // Optional provider URL, only required when using Devnet
-	});
-	return irys;
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
 };
 ```

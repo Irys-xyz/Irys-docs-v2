@@ -108,16 +108,21 @@ try {
 
 When transferring tokens we use public RPCs. Sometimes these can be slow to confirm transactions. If you're experiencing an error when funding, consider using a paid RPC.
 
-```js
-const network = "testnet";
-const providerUrl = ""; // Paid RPC URL
-const token = "ethereum";
-const privateKey = process.env.PRIVATE_KEY;
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
 
-const irys = new Irys({
-  network, // URL of the node you want to connect to
-  token, // Currency used for payment
-  key: privateKey, // ETH or SOL private key
-  config: { providerUrl },
-});
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
 ```

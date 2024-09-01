@@ -54,33 +54,39 @@ When using our testnet, you must provide the URL an RPC for the chain you're usi
 
 For example, this will throw an error:
 
-```js
-const getIrys = async () => {
-	const token = "ethereum";
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
 
-	const irys = new Irys({
-		network: "testnet",
-		token, // Token used for payment
-		key: process.env.PRIVATE_KEY, // EVM private key
-	});
-	return irys;
+const getIrys = async () => {
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
 };
 ```
 
 But this will not:
 
-```js
-const getIrys = async () => {
-	const token = "ethereum";
-	const providerUrl = "https://rpc.sepolia.dev";
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
 
-	const irys = new Irys({
-		network: "testnet",
-		token, // Token used for payment
-		key: process.env.EVM_PRIVATE_KEY, // EVM private key
-		config: { providerUrl }, // Optional provider URL, only required when using Devnet
-	});
-	return irys;
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
 };
 ```
 

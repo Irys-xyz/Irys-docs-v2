@@ -1,0 +1,460 @@
+---
+description: Importing and configuring the SDK
+---
+
+import { Tab, Tabs, Callout } from "nextra-theme-docs";
+
+
+# Importing & Configuring
+
+The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your import statements and connection code will differ depending on the token used for payment.
+
+Select the appropriate code from the options below when starting your project.
+
+<div className="flex justify-center text-center mt-5">
+[APTOS](#aptos) | [ALGOrand](#algorand) | [Arbitrum](#arbitrum) | [Avalanche C-Chain](#avalanche-c-chain) | [Berachain](#berachain) | [Binance Coin](#binance-coin) | [Boba](#boba) | [Boba-eth](#boba-eth) | [Chainlink](#chainlink) | [Eclipse](#eclipse) | [Ethereum](#ethereum) | [Base Ethereum](#base-ethereum) | [Linea Ethereum](#linea-ethereum) | [Scroll Ethereum](#scroll-ethereum) | [Fantom](#fantom) | [IoTeX](#iotex) | [Near](#near) | [Polygon](#polygon) | [Solana](#solana) | [USDC (on Ethereum)](#usdc-on-ethereum) | [USDC (on Polygon)](#usdc-on-polygon)
+</div>
+
+## Aptos
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Algorand
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Arbitrum
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Avalanche C-Chain
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Berachain
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Binance Coin
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Boba
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Boba-eth
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Chainlink
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Eclipse
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Ethereum
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Base Ethereum
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Linea Ethereum
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Scroll Ethereum
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Fantom
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## IoTeX
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Near
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Polygon
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## Solana
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## USDC (on Ethereum)
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+## USDC (on Polygon)
+
+
+```ts
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
+};
+```
+
+
+

@@ -6,17 +6,21 @@ import { Tab, Tabs, Callout } from "nextra-theme-docs";
 
 # Installing The SDK
 
-Install using npm:
+Install using npm or yarn.
 
+<Tabs items={['npm', 'yarn']}>
+  <Tabs.Tab>
 ```console
 npm install @irys-network/bundler-client
 ```
-
-or yarn:
-
+	</Tabs.Tab>
+  <Tabs.Tab>
 ```console
 yarn add @irys-network/bundler-client
-```
+```	
+	</Tabs.Tab>
+</Tabs>
+
 
 <Callout type="info" emoji="ℹ️">
 	If you get a warning saying `bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)` during

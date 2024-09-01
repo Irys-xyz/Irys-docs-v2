@@ -1,5 +1,6 @@
 {
-	"installing-the-sdk": "Installing the SDK",
+	"installing": "Installing the SDK",
+	"import-configure": "Importing & Configuring",
 	"api": "API",
 	"chunked-uploader": "Chunked Uploader"
 }

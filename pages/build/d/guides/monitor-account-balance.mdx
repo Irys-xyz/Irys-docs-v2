@@ -2,6 +2,8 @@
 description: Monitor your account balance using JavaScript, our CLI, or cURL
 ---
 
+import { Callout } from "nextra-theme-docs";
+
 # Monitor Node Balance With A Script
 
 Irys's upfront funding simplifies uploading data by allowing you to pre-fund your uploads. This eliminates the need for individual funding calls for each upload as the loaded balance is automatically deducted from with each upload. To keep track of your loaded balance, users commonly create scripts that periodically check their balance and provide notifications when it approaches zero.
@@ -16,24 +18,28 @@ These three techniques are all equally effective options.
 
 ## JavaScript
 
+<Callout type="info" emoji="ℹ️">
+	The following `getIrys()` function is for using the Ethereum token only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/import-configure). 
+</Callout>
+
 ```js
-import Irys from "@irys-network/bundler-client";
+import Ethereum from "@irys-network/bundler-ethereum-node";
+import NodeIrys from "@irys-network/bundler-client-node";
 import dotenv from "dotenv";
 dotenv.config();
 
 const getIrys = async () => {
-	const network = "testnet";
-	// RPC URLs change often, use a recent one from https://chainlist.org/
-	const providerUrl = "";
-	const token = "ethereum";
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
 
-	const irys = new Irys({
-		network, 
-		token, // Token used for payment
-		key: process.env.PRIVATE_KEY, // ETH or SOL private key
-		config: { providerUrl }, // RPC provider URL
-	});
-	return irys;
+  const irys = await new NodeIrys(Ethereum)
+              .withWallet(process.env.PRIVATE_KEY)
+              .testnet()
+              .withRpc(providerUrl)
+              .build();
+
+  console.log(`Connected to Irys from ${irys.address}`);
+  return irys;
 };
 
 const checkBalance = async () => {
