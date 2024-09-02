@@ -55,38 +55,37 @@ When using our testnet, you must provide the URL an RPC for the chain you're usi
 For example, this will throw an error:
 
 ```ts
-import Ethereum from "@irys-network/bundler-ethereum-node";
-import NodeIrys from "@irys-network/bundler-client-node";
+import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 
 const getIrys = async () => {
-  const irys = await new NodeIrys(Ethereum)
-              .withWallet(process.env.PRIVATE_KEY)
-              .testnet()
-              .build();
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
 
-  console.log(`Connected to Irys from ${irys.address}`);
-  return irys;
+  const irysClient  = await EthereumNodeIrys()
+    .withWallet(process.env.PRIVATE_KEY)
+    .testnet();
+
+  console.log(`Connected to Irys from ${irysClient.address}`);
+  return irysClient;
 };
 ```
 
 But this will not:
 
 ```ts
-import Ethereum from "@irys-network/bundler-ethereum-node";
-import NodeIrys from "@irys-network/bundler-client-node";
+import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 
 const getIrys = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irys = await new NodeIrys(Ethereum)
-              .withWallet(process.env.PRIVATE_KEY)
-              .testnet()
-              .withRpc(providerUrl)
-              .build();
+  const irysClient  = await EthereumNodeIrys()
+    .withWallet(process.env.PRIVATE_KEY)
+    .testnet()
+    .withRpc(providerUrl);
 
-  console.log(`Connected to Irys from ${irys.address}`);
-  return irys;
+  console.log(`Connected to Irys from ${irysClient.address}`);
+  return irysClient;
 };
 ```
 

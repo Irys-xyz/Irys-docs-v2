@@ -40,20 +40,18 @@ The Irys SDK reduces dependency bloat by providing dedicated packages for each t
 The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/import-configure). 
 
 ```ts
-import Ethereum from "@irys-network/bundler-ethereum-node";
-import NodeIrys from "@irys-network/bundler-client-node";
+import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 
 const getIrys = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irys = await new NodeIrys(Ethereum)
-              .withWallet(process.env.PRIVATE_KEY)
-              .testnet()
-              .withRpc(providerUrl)
-              .build();
+  const irysClient  = await EthereumNodeIrys()
+    .withWallet(process.env.PRIVATE_KEY)
+    .testnet()
+    .withRpc(providerUrl);
 
-  console.log(`Connected to Irys from ${irys.address}`);
-  return irys;
+  console.log(`Connected to Irys from ${irysClient.address}`);
+  return irysClient;
 };
 ```
