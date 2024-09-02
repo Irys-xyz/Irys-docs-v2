@@ -18,7 +18,20 @@ Select the appropriate code from the options below when starting your project.
 ## Aptos
 
 ```ts
-TODO
+import AptosNodeIrys from "@irys-network/node-bundler-aptos";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irysClient  = await AptosNodeIrys()
+    .withWallet(process.env.PRIVATE_KEY)
+    .testnet()
+    .withRpc(providerUrl);
+
+  console.log(`Connected to Irys from ${irysClient.address}`);
+  return irysClient;
+};
 ```
 
 ## Algorand
@@ -243,7 +256,20 @@ const getIrys = async () => {
 ## Solana
 
 ```ts
-TODO
+import SolanaNodeIrys from "@irys-network/node-bundler-solana";
+
+const getIrys = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irysClient  = await SolanaNodeIrys()
+    .withWallet(process.env.PRIVATE_KEY)
+    .testnet()
+    .withRpc(providerUrl);
+
+  console.log(`Connected to Irys from ${irysClient.address}`);
+  return irysClient;
+};
 ```
 
 ## USDC (on Ethereum)
