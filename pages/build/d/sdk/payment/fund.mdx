@@ -47,7 +47,7 @@ Upfront funding reduces the number of transactions required when uploading. You 
 
 ```js
 try {
-  const irys = await getIrys();
+  const irys = await getIrysBundler();
 
   const fundTx = await irys.fund(irys.utils.toAtomic(0.05));
   console.log(
@@ -64,7 +64,7 @@ try {
 
 ```js
 try {
-  const irys = await getIrys();
+  const irys = await getIrysBundler();
 
   const pathToFile = "./myNFT.png";
   const { size } = await fs.promises.stat(pathToFile);
@@ -91,7 +91,7 @@ The `multiplier` parameter multiplies the fees we allow the network to take, in 
 
 ```js
 try {
-  const irys = await getIrys();
+  const irys = await getIrysBundler();
 
   const fundTx = await irys.fund(irys.utils.toAtomic(0.05), 1.2);
   console.log(
@@ -111,7 +111,7 @@ When transferring tokens we use public RPCs. Sometimes these can be slow to conf
 ```ts
 import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 

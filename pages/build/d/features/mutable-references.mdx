@@ -15,7 +15,7 @@ To create a mutable reference:
 1. Upload a base transaction to Irys and reference it using a URL in the following format `https://gateway.irys.xyz/mutable/:txId`
 
 ```js
-const irys = await getIrys();
+const irys = await getIrysBundler();
 const receiptOne = await irys.upload("First TX");
 console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```

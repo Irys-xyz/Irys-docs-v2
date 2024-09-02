@@ -39,7 +39,7 @@ After [installing the Irys SDK](/build/d/sdk/installing-the-sdk), upload your as
 import * as fs from "fs";
 
 const uploadImage = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 	const fileToUpload = "./myNFT.png";
 
 	// Get size of file
@@ -94,7 +94,7 @@ import Irys from "@irys-network/bundler-client";
 import * as fs from "fs";
 
 const uploadMetadata = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	const fileToUpload = "./metadata.json";
 	const tags = [{ name: "Content-Type", value: "application/json" }];

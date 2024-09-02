@@ -35,7 +35,7 @@ response.data = {
 
 ```ts
 try {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 	const tx = await irys.withdrawAll();
 } catch (e) {
 	console.log("Error withdrawing funds ", e);

@@ -313,7 +313,7 @@ Upon upload, a manifest is automatically created. Your files can be accessed `ht
 
 ```js
 const uploadFolder = async (files: File[], tags: Tag[]) => {
-	const webIrys = await getIrys();
+	const webIrys = await getIrysBundler();
 
 	try {
 		const receipt = await webIrys.uploadFolder(files, {

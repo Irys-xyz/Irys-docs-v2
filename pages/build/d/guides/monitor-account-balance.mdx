@@ -19,7 +19,7 @@ These three techniques are all equally effective options.
 ## JavaScript
 
 <Callout type="info" emoji="ℹ️">
-	The following `getIrys()` function is for using the Ethereum token only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/import-configure). 
+	The following `getIrysBundler()` function is for using the Ethereum token only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/import-configure). 
 </Callout>
 
 ```js
@@ -27,7 +27,7 @@ import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 import dotenv from "dotenv";
 dotenv.config();
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
@@ -39,7 +39,7 @@ const getIrys = async () => {
 };
 
 const checkBalance = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	// Get loaded balance in atomic units
 	const atomicBalance = await irys.getLoadedBalance();
