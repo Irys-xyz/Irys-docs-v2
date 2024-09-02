@@ -37,114 +37,113 @@ const FooterWrapper = () => {
 // Create a mapping for the sub-items
 const iconMapping = {
   "What-is-Irys?": {
-    src: "/assets/rive/learn/01-What Is Irys.riv",
+    src: "/assets/rive/learn/what-is-irys.riv",
     animation: "WhatIsIrysAnim",
   },
   "What-is-a-Datachain?": {
-    src: "/assets/rive/learn/03-Why Iris Exist.riv",
+    src: "/assets/rive/learn/why-irys-exist.riv",
     animation: "Hover",
   },
   "Why-Irys-Exists": {
-    src: "/assets/rive/learn/03-Why Iris Exist.riv",
+    src: "/assets/rive/learn/why-irys-exist.riv",
     animation: "Hover",
   },
   "How-Irys-Solves-These-Problems": {
-    src: "/assets/rive/learn/04 - How Irys Solve These Problems.riv",
+    src: "/assets/rive/learn/how-irys-solve-these-problems.riv",
     animation: "Hover",
   },
 
   "Programmable-Data": {
-    src: "/assets/rive/learn/05-Programable Data.riv",
+    src: "/assets/rive/learn/programable-data.riv",
     animation: "Hover",
   },
   Verifiability: {
-    src: "/assets/rive/learn/06- Verifiability.riv",
+    src: "/assets/rive/learn/verifiability.riv",
     animation: "Hover",
   },
   IrysVM: {
-    src: "/assets/rive/learn/07- Irys VM.riv",
+    src: "/assets/rive/learn/irys-vm.riv",
     animation: "Hover",
   },
-
   "Running-a-Node": {
-    src: "/assets/rive/learn/08 - Running a Node.riv",
+    src: "/assets/rive/learn/running-a-node.riv",
     animation: "Hover",
   },
   "Matrix-Packing": {
-    src: "/assets/rive/learn/09 -  2d Packaging.riv",
+    src: "/assets/rive/learn/2d-packaging.riv",
     animation: "Hover",
   },
   "Efficient-Sampling": {
-    src: "/assets/rive/learn/10 - Efficient Sampling.riv",
+    src: "/assets/rive/learn/efficient-sampling.riv",
     animation: "Hover",
   },
 
   "Protocol-Overview": {
-    src: "/assets/rive/learn/11 - Protocol Overview.riv",
+    src: "/assets/rive/learn/protocol-overview.riv",
     animation: "Hover",
   },
   Partitions: {
-    src: "/assets/rive/learn/12 - Partitions.riv",
+    src: "/assets/rive/learn/partitions.riv",
     animation: "Hover",
   },
   Ledgers: {
-    src: "/assets/rive/learn/13 - Ledgers.riv",
+    src: "/assets/rive/learn/ledgers.riv",
     animation: "Hover",
   },
   Transactions: {
-    src: "/assets/rive/learn/14 - Transactions.riv",
+    src: "/assets/rive/learn/transactions.riv",
     animation: "Hover",
   },
   "Proof-of-Work-+-Staking": {
-    src: "/assets/rive/learn/15 - Proof of Work.riv",
+    src: "/assets/rive/learn/proof-of-work.riv",
     animation: "Hover",
   },
   "Fast-Finality": {
-    src: "/assets/rive/learn/16 - Fast Finality.riv",
+    src: "/assets/rive/learn/fast-finality.riv",
     animation: "Hover",
   },
   "Quickstart": {
-    src: "/assets/rive/build/01 Quickstart.riv",
+    src: "/assets/rive/build/quickstart.riv",
     animation: "FlagAnim",
   },
   Overview: {
-    src: "/assets/rive/build/02 Overview.riv",
+    src: "/assets/rive/build/overview.riv",
     animation: "Overview Anim",
   },
   Features: {
-    src: "/assets/rive/build/03 Features.riv",
+    src: "/assets/rive/build/features.riv",
     animation: "Features Anim",
   },
   SDK: {
-    src: "/assets/rive/build/04 SDK.riv",
+    src: "/assets/rive/build/sdk.riv",
     animation: "SDKAnim ",
   },
   "Irys-in-the-Browser": { // Placeholder
-    src: "/assets/rive/build/07 Guides.riv",
+    src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },
   "Storage-CLI": {
-    src: "/assets/rive/build/05 Storage CLI.riv",
+    src: "/assets/rive/build/storage-cli.riv",
     animation: "StorageAnim",
   },
   "REST-API": { // Placeholder
-    src: "/assets/rive/build/07 Guides.riv",
+    src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },
   "Downloading": { // Placeholder
-    src: "/assets/rive/build/07 Guides.riv",
+    src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },
   Querying: {
-    src: "/assets/rive/build/06 Querying.riv",
+    src: "/assets/rive/build/querying.riv",
     animation: "Querying",
   },
   Guides: {
-    src: "/assets/rive/build/07 Guides.riv",
+    src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },
   Troubleshooting: {
-    src: "/assets/rive/build/08 Troubleshooting.riv",
+    src: "/assets/rive/build/troubleshooting.riv",
     animation: "TroubleshootingAnim",
   },
 };
