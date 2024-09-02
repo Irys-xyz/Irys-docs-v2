@@ -18,9 +18,7 @@ Tags are indexed by gateways and are queryable using [GraphQL](/build/d/graphql)
 
 ## Content-Type
 
-The Irys CLI automatically infers and sets the appropriate [`Content-Type`](https://developer.mozilla.org/en-US/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) tag based on the file extension when uploading files and folders.
-
-If your use case necessitates manual Content-Type tag setting, you can specify it during the upload process. Doing so will override the default behavior and apply the `Content-Type` you provided.
+Irys automatically infers and sets the appropriate [`Content-Type`](https://developer.mozilla.org/en-US/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) tag based on the file extension when uploading files and folders. You can also manually set the `Content-Type` tag, doing so will override the default behavior and apply the value you provide.
 
 ```js
 // Your file

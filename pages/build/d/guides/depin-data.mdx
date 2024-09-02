@@ -10,9 +10,9 @@ DePIN networks need a reliable data layer they can trust.
 
 Imagine a network of nodes signing and reporting data onchain and a smart contract that reads this data to mint rewards. This setup only works if the DePIN protocol can easily verify that miners are storing the data they claim to store and that the data hasn’t been tampered with after being uploaded. Additionally, DePIN networks need to chronologically order data so they can process it in the order it was posted.
 
-Irys makes this possible by providing permanent onchain data storage and millisecond-accurate timestamps. Protocols can verify data integrity, confirm that it's stored by miners, and ensure it remains unaltered.
+Irys makes this possible with permanent onchain data storage and upload receipts with millisecond-accurate timestamps. Protocols can verify data is stored by miners, ensure it remains unaltered, and sequence it.
 
-Data on Irys can be accessed by protocols on any blockchain.
+**Data on Irys can be accessed by protocols on any blockchain.**
 
 ## Example
 
@@ -57,7 +57,6 @@ irys upload depin_data.json \
 Or through the [Irys SDK](/build/d/sdk/installing-the-sdk):
 
 ```ts
-import Irys from "@irys-network/bundler-client";
 
 const uploadDePINData = async () => {
 	const irys = await getIrys();
@@ -74,7 +73,7 @@ const uploadDePINData = async () => {
 };
 ```
 
-## Using Tags for Data Querying and Sequencing
+## Using Tags
 
 Irys supports adding [metadata tags](/build/d/features/tags) to each upload, allowing you to categorize data and make it easily searchable. For DePIN networks, tags like `device-id`, `data-type`, `location`, and `application-id` can be attached to each upload. This makes it simple to filter data by criteria important to your network.
 
@@ -88,8 +87,6 @@ Here’s how you might tag a data upload:
 - `application-id`: "DePIN Network Alpha"
 
 ```ts
-import Irys from "@irys-network/bundler-client";
-
 const uploadDePINData = async () => {
 	const irys = await getIrys();
  
@@ -107,8 +104,9 @@ const uploadDePINData = async () => {
 		console.log("Error uploading file ", e);
 	}
 };
+```
 
-### Querying Data by Tags
+### Querying 
 
 To query data stored on Irys, [you can use GraphQL](/build/d/graphql) to search [for specific tags](/build/d/graphql#tags) and [order the results by timestamp](/build/d/graphql#sorting):
 

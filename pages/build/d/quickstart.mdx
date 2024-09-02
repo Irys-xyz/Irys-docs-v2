@@ -41,7 +41,7 @@ yarn add @irys-network/bundler-client
 
 The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your import statements and connection code will differ depending on the token used for payment.
 
-The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/import-configure). 
+The following code is for using ethereum only, we [also have examples covering all supported tokens](/build/d/sdk/import-configure). 
 
 ```ts
 import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
@@ -64,7 +64,9 @@ const getIrys = async () => {
 
 Use the `providerUrl` parameter to specify an RPC provider, this is required.
 
-> When working with Aptos, use "testnet" | "devnet" instead of a URL.
+<Callout type="info" emoji="ℹ️">
+	When working with Aptos, use "testnet" | "devnet" instead of a URL.
+</Callout>
 
 ## Funding Irys
 
@@ -124,7 +126,7 @@ You can upload a group of files as a single transaction from both the server and
 
 <Callout type="info" emoji="ℹ️">
 	When [uploading a folder](/build/d/sdk/api/uploadFolder), files can be accessed either directly at
-	`https://gateway.irys.xyz/[transaction-id]` or `https://gateway.irys.xyz/[manifest-id]/[file-name]`
+	`https://gateway.irys.xyz/:transactionId` or `https://gateway.irys.xyz/:manifestId/:fileName`
 </Callout>
 
 ### Server

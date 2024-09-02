@@ -309,7 +309,7 @@ const uploadFile = async (fileToUpload: File) => {
 
 Upload an array of [File](https://developer.mozilla.org/en-US/docs/Web/API/File) objects.
 
-Upon upload, a manifest is automatically created. Your files can be accessed `https://gateway.irys.xyz/[manifestId]/[file-name]`.
+Upon upload, a manifest is automatically created. Your files can be accessed `https://gateway.irys.xyz/:manifestId/:fileName`.
 
 ```js
 const uploadFolder = async (files: File[], tags: Tag[]) => {
