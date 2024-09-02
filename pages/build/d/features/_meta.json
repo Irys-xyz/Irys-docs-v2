@@ -1,4 +1,6 @@
 {
+	"bundlers": "Bundlers",
+	"gateway": "Gateway",
 	"supported-tokens": "Supported Tokens",
 	"tags": "Tags",
 	"receipts": "Receipts",
