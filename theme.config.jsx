@@ -85,7 +85,7 @@ const iconMapping = {
     src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },
-  "Miner": { // Placeholder
+  "Miners": { // Placeholder
     src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },

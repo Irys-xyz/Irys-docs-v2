@@ -17,7 +17,7 @@ Within Data Mode, you can either upload using:
 const transactionOptions = { tags: [{ name: "Content-Type", value: "text/plain" }] };
 
 // 1. Upload a Buffer containing just the data you want to upload.
-const dataBuffer = Buffer.from("Hello, world!");
+const dataBuffer = Buffer.from("Hirys, world!");
 const response = await uploader.uploadData(dataBuffer, transactionOptions);
 // The transaction ID (used to query the network) is found in response.data.id
 console.log(`Data buffer uploaded ==> https://gateway.irys.xyz/${response.data.id}`);
