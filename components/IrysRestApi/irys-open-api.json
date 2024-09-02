@@ -1,0 +1,457 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://uploader.irys.xyz/",
+      "description": "Irys Testnet"
+    }
+  ],
+  "paths": {
+    "/info": {
+      "get": {
+        "summary": "Info route",
+        "tags": ["general"],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/public": {
+      "get": {
+        "summary": "Get public information",
+        "tags": ["general"],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Get status",
+        "tags": ["general"],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/account/balance/{token}": {
+      "get": {
+        "summary": "Get user balance for token",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Balance retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/approval": {
+      "get": {
+        "summary": "Get approval information",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "payingAddress",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "approvedAddress",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Approval information retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx": {
+      "post": {
+        "summary": "Post transaction",
+        "tags": ["transactions"],
+        "requestBody": {
+          "description": "Binary transaction data",
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction posted successfully"
+          }
+        }
+      }
+    },
+    "/tx/{token}": {
+      "post": {
+        "summary": "Post transaction",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Binary transaction data",
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction posted successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/data": {
+      "head": {
+        "summary": "Get transaction data",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction data head retrieved successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get transaction data",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction data retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/status": {
+      "get": {
+        "summary": "Get transaction status",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction status retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}/tags": {
+      "get": {
+        "summary": "Get transaction tags",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction tags retrieved successfully"
+          }
+        }
+      }
+    },
+    "/tx/{txId}": {
+      "get": {
+        "summary": "Get transaction metadata",
+        "tags": ["transactions"],
+        "parameters": [
+          {
+            "name": "txId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction metadata retrieved successfully"
+          }
+        }
+      }
+    },
+    "/price/{token}/{size}": {
+      "get": {
+        "summary": "Get price for token and size",
+        "tags": ["price"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price retrieved successfully"
+          }
+        }
+      }
+    },
+    "/chunks/{token}/{txid}/{offset}": {
+      "post": {
+        "summary": "Upload chunk",
+        "tags": ["chunks"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "txid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Binary chunk data",
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Chunk uploaded successfully"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get chunk",
+        "tags": ["chunks"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "txid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chunk retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/withdraw": {
+      "post": {
+        "summary": "Withdraw user balance",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Balance withdrawn successfully"
+          }
+        }
+      }
+    },
+    "/account/withdrawals/{token}": {
+      "get": {
+        "summary": "Get withdrawals for token",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Withdrawals retrieved successfully"
+          }
+        }
+      }
+    },
+    "/account/withdrawals": {
+      "get": {
+        "summary": "Get all withdrawals",
+        "tags": ["account"],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Withdrawals retrieved successfully"
+          }
+        }
+      }
+    }
+  }
+}
