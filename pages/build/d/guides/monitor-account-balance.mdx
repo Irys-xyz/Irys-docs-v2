@@ -28,11 +28,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const getIrysBundler = async () => {
-  // RPC URLs change often, use a recent one from https://chainlist.org/
-  const providerUrl = "";
-
-  const irysClient  = await EthereumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY);
+  const irysClient  = await EthereumNodeIrys().withWallet(process.env.PRIVATE_KEY);
 
   console.log(`Connected to Irys from ${irysClient.address}`);
   return irysClient;

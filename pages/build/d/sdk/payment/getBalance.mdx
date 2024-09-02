@@ -5,7 +5,7 @@ description: Returns the connected wallet's balance.
 import { Callout } from "nextra-theme-docs";
 import ApiTable from "@/components/api-table/api-table.tsx";
 
-# `irys.getLoadedBalance()`
+# `irys.getBalance()`
 
 Returns the connected wallet's balance.
 
@@ -21,8 +21,12 @@ Returns the connected wallet's balance.
 
 ## Example
 
+<Callout type="info" emoji="ℹ️">
+To upload data, first c`getIrysBundler()` connects to the 
+</Callout>
+
 ```js
-const irys = await getBalance();
+const irys = await getIrysBundler();
 
 // Get loaded balance in atomic units
 const atomicBalance = await irys.getBalance();

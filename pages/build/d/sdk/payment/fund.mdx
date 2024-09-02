@@ -112,11 +112,7 @@ When transferring tokens we use public RPCs. Sometimes these can be slow to conf
 import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 
 const getIrysBundler = async () => {
-  // RPC URLs change often, use a recent one from https://chainlist.org/
-  const providerUrl = "";
-
-  const irysClient  = await EthereumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY);
+  const irysClient  = await EthereumNodeIrys().withWallet(process.env.PRIVATE_KEY);
 
   console.log(`Connected to Irys from ${irysClient.address}`);
   return irysClient;

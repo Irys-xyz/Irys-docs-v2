@@ -47,9 +47,6 @@ The following code is for using ethereum only, we [also have examples covering a
 import EthereumBundlerIrys from "@irys-network/bundler-ethereum";
  
 const getIrysBundler = async () => {
-  // RPC URLs change often, use a recent one from https://chainlist.org/
-  const providerUrl = "";
- 
   const irysBundler  = await EthereumBundlerIrys().withWallet(process.env.PRIVATE_KEY);
  
   console.log(`Connected to Irys from ${irysBundler.address}`);
