@@ -16,7 +16,7 @@ Funds your account with the specified number of tokens.
 	{ header: "Type", key: "type", span: 2 },
 	{ header: "Description", key: "description", span: 8 },
 ]} data={[
-	  { name: "amount", type: "BigNumber", description: "The amount to fund [in atomic units](/build/d/sdk/api/utils-toAtomic)." },
+	  { name: "amount", type: "BigNumber", description: "The amount to fund [in atomic units](../utils/utils-toAtomic)." },
 	  { name: "multiplier", type: "number", description: "(optional) Fee multiplier." },
 ]}/>
 
@@ -43,7 +43,7 @@ You can choose to upfront fund where you cover the cost of future uploads, or us
 
 ## Upfront Funding
 
-Upfront funding reduces the number of transactions required when uploading. You fund once and then when uploading, payment is deducted directly from your account. You can also [withdraw](/build/d/sdk/api/withdrawBalance) any excess balance if needed.
+Upfront funding reduces the number of transactions required when uploading. You fund once and then when uploading, payment is deducted directly from your account. You can also [withdraw](./withdrawBalance) any excess balance if needed.
 
 ```js
 try {
@@ -117,7 +117,6 @@ const getIrys = async () => {
 
   const irysClient  = await EthereumNodeIrys()
     .withWallet(process.env.PRIVATE_KEY)
-    .testnet()
     .withRpc(providerUrl);
 
   console.log(`Connected to Irys from ${irysClient.address}`);

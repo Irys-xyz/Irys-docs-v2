@@ -44,12 +44,16 @@ response = {
 }
 ```
 
+## Funding
+
+Uploads of less than 100 KiB are are free. For larger uploads, you'll need to [fund your account first](/build/d/sdk/payment/fund). 
+
 ## Example
 
 ```js
 const irys = await getIrys();
 
-const dataToUpload = "GM world.";
+const dataToUpload = "Hirys world.";
 try {
 	const receipt = await irys.upload(dataToUpload);
 	console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);

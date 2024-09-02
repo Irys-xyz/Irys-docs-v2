@@ -6,8 +6,8 @@ import { Callout } from "nextra-theme-docs";
 
 # Manually Creating a Transaction
 
-In addition to uploading using the SDK functions [`irys.upload()`](/build/d/sdk/api/upload),[`irys.uploadFile()`](/build/d/sdk/api/uploadFile),
-and [`irys.uploadFolder()`](/build/d/sdk/api/uploadFolder), you can also manually create, sign, and upload a transaction in separate steps.
+In addition to uploading using the SDK functions [`irys.upload()`](/build/d/sdk/upload/upload),[`irys.uploadFile()`](/build/d/sdk/upload/uploadFile),
+and [`irys.uploadFolder()`](/build/d/sdk/upload/uploadFolder), you can also manually create, sign, and upload a transaction in separate steps.
 
 ## Workflow
 
@@ -31,7 +31,7 @@ const createSignUpload = async () => {
 	const irys = await getIrys();
 
 	// Create the transaction
-	const tx = irys.createTransaction("GM World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
+	const tx = irys.createTransaction("Hirys World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
 
 	// Sign the transaction
 	await tx.sign(); // ID is now set
@@ -53,7 +53,7 @@ const serializationUpload = async () => {
 	const irys = await getIrys();
 
 	// Create the transaction
-	const tx1 = irys.createTransaction("GM World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
+	const tx1 = irys.createTransaction("Hirys World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
 	// Note: You can sign before *or* after serializing
 	await tx1.sign(); // ID is now set
 	console.log(`Tx created and signed, ID=${tx1.id}`);
@@ -86,14 +86,14 @@ const deterministicIDUpload = async () => {
 
 	// Generate 32 bytes through Buffer.from(anchor)
 	const anchor = randomBytes(16).toString("hex");
-	const tx1 = irys.createTransaction("GM Irys!", {
+	const tx1 = irys.createTransaction("Hirys Irys!", {
 		tags: [{ name: "content-type", value: "text/plain" }],
 		anchor,
 	});
 	await tx1.sign();
 	console.log(`Tx1 ID ${tx1.id}`); // ID is now set
 
-	const tx2 = irys.createTransaction("GM Irys!", {
+	const tx2 = irys.createTransaction("Hirys Irys!", {
 		tags: [{ name: "content-type", value: "text/plain" }],
 		anchor,
 	});

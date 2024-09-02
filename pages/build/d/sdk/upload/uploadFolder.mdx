@@ -9,11 +9,14 @@ import ApiTable from "@/components/api-table/api-table.tsx";
 Uploads a group of files to Irys in a single transaction.
 
 See:
-- [`Irys`](./uploadFolder#irysuploadfolderfoldertoupload-tags): For uploading a folder on the server.
-- [`WebIrys`](./uploadFolder#webirysuploadfolderfile): For uploading a folder from the browser. 
+- [`Irys`](#irysuploadfolderfoldertoupload-tags): For uploading a folder on the server.
+- [`WebIrys`](#webirysuploadfoldertaggedfile): For uploading a folder from the browser. 
+
+## Funding
+
+Uploads of less than 100 KiB are are free. For larger uploads, you'll need to [fund your account first](/build/d/sdk/payment/fund). 
 
 ## `irys.uploadFolder(folderToUpload, tags)`
-
 
 ## Parameters
 
@@ -141,7 +144,7 @@ const response = await webIrys.uploadFolder(taggedFiles, uploadOptions);
 
 ## Returns
 
-A JSON object containing the following values. A receipt is also generated which can be retrieved using [`irys.utils.getReceipt(response.id)`](/build/d/sdk/api/utils-getReceipt)
+A JSON object containing the following values. A receipt is also generated which can be retrieved using [`irys.utils.getReceipt(response.id)`](/build/d/sdk/utils/utils-getReceipt)
 
 ```json
 {

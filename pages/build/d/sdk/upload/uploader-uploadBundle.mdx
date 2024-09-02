@@ -53,6 +53,10 @@ response = {
 }
 ```
 
+## Funding
+
+Uploads of less than 100 KiB are are free. For larger uploads, you'll need to [fund your account first](/build/d/sdk/payment/fund). 
+
 ## Example
 
 ```js
@@ -61,7 +65,7 @@ const maxTxs = 5;
 const txs = [];
 
 for (let i = 0; i < maxTxs; i++) {
-	const newTx = irys.createTransaction(`GM World! ${i + 1}`, {
+	const newTx = irys.createTransaction(`Hirys World! ${i + 1}`, {
 		tags: [{ name: "Content-Type", value: "text/plain" }],
 	});
 	await newTx.sign(); // ID is now set

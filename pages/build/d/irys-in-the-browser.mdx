@@ -276,7 +276,7 @@ const fundNode = async () => {
 ```js
 const uploadData = async () => {
 	const webIrys = await getWebIrys();
-	const dataToUpload = "GM world.";
+	const dataToUpload = "Hirys world.";
 	try {
 		const receipt = await webIrys.upload(dataToUpload);
 		console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);

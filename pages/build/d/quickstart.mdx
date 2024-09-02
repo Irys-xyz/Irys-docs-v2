@@ -52,7 +52,6 @@ const getIrys = async () => {
 
   const irysClient  = await EthereumNodeIrys()
     .withWallet(process.env.PRIVATE_KEY)
-    .testnet()
     .withRpc(providerUrl);
 
   console.log(`Connected to Irys from ${irysClient.address}`);
@@ -125,7 +124,7 @@ const uploadFile = async () => {
 You can upload a group of files as a single transaction from both the server and the browser.
 
 <Callout type="info" emoji="ℹ️">
-	When [uploading a folder](/build/d/sdk/api/uploadFolder), files can be accessed either directly at
+	When [uploading a folder](/build/d/sdk/upload/uploadFolder), files can be accessed either directly at
 	`https://gateway.irys.xyz/:transactionId` or `https://gateway.irys.xyz/:manifestId/:fileName`
 </Callout>
 

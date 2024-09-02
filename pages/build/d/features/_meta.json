@@ -1,12 +1,12 @@
 {
-	"bundlers": "Bundlers",
+	"bundler": "Bundler",
 	"gateway": "Gateway",
 	"supported-tokens": "Supported Tokens",
 	"tags": "Tags",
-	"receipts": "Receipts",
-	"mutable-references": "Mutable References",
-	"path-manifests": "Path Manifests",
+	"mutable-references": "Mutability",
+	"path-manifests": "Onchain Folders",
 	"balance-approvals": "Balance Approvals",
 	"manual-tx": "Manually Creating a Tx",
-	"ipfs-cid": "Using IPFS CIDs"
+	"ipfs-cid": "Using IPFS CIDs",
+	"receipts": "Receipts"
 }

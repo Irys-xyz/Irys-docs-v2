@@ -4,6 +4,10 @@ description: Bundlers group multiple transactions together into a single transac
 
 # Bundlers
 
+Bundlers enable any number of data transactions to be uploded at once. 
+
+## Bundles
+
 Bundlers group multiple transactions together into a single transaction before posting to the blockchain. They allow for infinite transaction scaling - as up to 2^256 transactions to be stored in a single bundle. 
 
 Bundles consist of multiple transactions collated together and written to as a single transaction. Each transaction in a bundle is called a DataItem. A DataItem shares many properties with a regular data transaction, including owner, data, tags, target, signature, and id. However, it cannot transfer tokens and does not have a reward, as the top-level transaction covers the reward for all bundled data.

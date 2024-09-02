@@ -4,10 +4,5 @@
 	"payment": "Payment API",
 	"upload": "Upload API",
 	"utils": "Utility API",
-	"chunked-uploader": "Chunked Uploader",
-	"---": {
-    "type": "separator"
-  },
-	"api": "API",
-	"api2": "API2"
+	"chunked-uploader": "Chunked Uploader"
 }
