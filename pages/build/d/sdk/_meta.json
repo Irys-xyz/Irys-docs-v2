@@ -1,6 +1,10 @@
 {
 	"installing": "Installing the SDK",
 	"import-configure": "Importing & Configuring",
+	"payment": "Payment API",
+	"upload": "Upload API",
+	"utils": "Utility API",
 	"api": "API",
+	"api2": "API2",
 	"chunked-uploader": "Chunked Uploader"
 }

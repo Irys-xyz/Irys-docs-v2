@@ -1,0 +1,6 @@
+{
+	"upload": "upload()",
+	"uploadFile": "uploadFile()",
+	"uploadFolder": "uploadFolder()",
+	"uploader-uploadBundle": "uploader.uploadBundle()"
+}

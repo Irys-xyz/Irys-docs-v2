@@ -1,0 +1,8 @@
+{
+	"fund": "fund()",
+	"funder-submitFundTransaction": "submitFundTransaction()",
+	"withdrawBalance": "withdrawBalance()",
+	"withdrawAll": "withdrawAll()",
+	"getLoadedBalance": "getLoadedBalance()",
+	"getPrice": "getPrice()"
+}

@@ -1,0 +1,34 @@
+---
+description: Returns the connected wallet's balance.
+---
+
+import { Callout } from "nextra-theme-docs";
+import ApiTable from "@/components/api-table/api-table.tsx";
+
+# `irys.getLoadedBalance()`
+
+Returns the connected wallet's balance.
+
+## Returns
+
+<ApiTable columns={[
+	{ header: "Type", key: "type", span: 2 },
+	{ header: "Description", key: "description", span: 10 },
+]} data={[
+	  { type: "BigNumber", description: "Wallet balance in atomic units. You can convert it into standard units using [`irys.utils.fromAtomic()`](./utils-fromAtomic)." },
+]}/>
+
+
+## Example
+
+```js
+const irys = await getIrys();
+
+// Get loaded balance in atomic units
+const atomicBalance = await irys.getLoadedBalance();
+console.log(`Node balance (atomic units) = ${atomicBalance}`);
+
+// Convert balance to standard
+const convertedBalance = irys.utils.fromAtomic(atomicBalance);
+console.log(`Node balance (converted) = ${convertedBalance}`);
+```

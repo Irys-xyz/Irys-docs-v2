@@ -1,0 +1,43 @@
+---
+description: Withdraws the supplied amount
+---
+
+import ApiTable from "@/components/api-table/api-table.tsx";
+
+
+# `irys.withdrawAll()`
+
+Withdraws the the user's entire account balance. The unit is the `token` parameter supplied when creating the `Irys` object. If you have balances in more than one token, you must re-instantiate the `Irys` object for each token.
+
+## Returns
+
+<ApiTable columns={[
+	{ header: "Type", key: "type", span: 2 },
+	{ header: "Description", key: "description", span: 10 },
+]} data={[
+		{ type: "string", description: "Either a 400 or 200 code." },
+]}/>
+
+
+```json
+400 - something went wrong
+
+200 - Ok
+response.data = {
+	requested, // the requested amount,
+	fee, // the reward required by the network (network fee)
+	final, // total cost to your account (requested + fee)
+	tx-id, // the ID of the withdrawal transaction
+}
+```
+
+## Example
+
+```ts
+try {
+	const irys = await getIrys();
+	const tx = await irys.withdrawAll();
+} catch (e) {
+	console.log("Error withdrawing funds ", e);
+}
+```

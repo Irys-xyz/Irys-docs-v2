@@ -1,0 +1,57 @@
+---
+description: Returns the receipt associated with the supplied transaction ID
+---
+
+import { Callout } from "nextra-theme-docs";
+import ApiTable from "@/components/api-table/api-table.tsx";
+
+# `irys.utils.getReceipt(transactionId)`
+
+Returns the receipt associated with the supplied transaction ID, or an error if no receipt is found.
+
+## Parameters
+
+<ApiTable columns={[
+	{ header: "Name", key: "name", span: 3 },
+	{ header: "Type", key: "type", span: 2 },
+	{ header: "Description", key: "description", span: 7 },
+]} data={[
+	  { name: "transactionId", type: "string", description: "The transaction ID associated with the receipt." },
+]}/>
+
+## Returns
+
+<ApiTable columns={[
+	{ header: "Type", key: "type", span: 2 },
+	{ header: "Description", key: "description", span: 10 },
+]} data={[
+	  { name: "response", type: "object", description: "A receipt in the form of a JSON object with the following values." },
+]}/>
+
+```json
+response = {
+	id, // Transaction ID (used to download the data)
+	timestamp, // Timestamp (UNIX milliseconds) of when the transaction was created and verified
+	version, // The version of this JSON file, currently 1.0.0
+	public, // Public key of the bundler node used
+	signature, // A signed deep hash of the JSON receipt
+	deadlineHeight, // The block number by which the transaction must be finalized
+	block, // Deprecated
+	validatorSignatures, // Deprecated
+	verify, // An async function used to verify the receipt at any time
+}
+```
+
+## Example
+
+```js
+const irys = await getIrys();
+
+try {
+	const transactionID = "i9tgbHsr6c1sxryAQ-SLM2rfQAYRuyap7RmGgH28mI4"; // Your transaction ID
+	const receipt = await irys.utils.getReceipt(transactionID);
+	console.log(receipt);
+} catch (e) {
+	console.log("Error getting receipt ", e);
+}
+```

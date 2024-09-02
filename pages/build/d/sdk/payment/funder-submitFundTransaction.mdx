@@ -1,0 +1,54 @@
+---
+description: Returns the receipt associated with the supplied transaction id
+---
+
+import { Callout } from "nextra-theme-docs";
+import ApiTable from "@/components/api-table/api-table.tsx";
+
+# `irys.funder.submitFundTransaction(txID)`
+
+Tells the network to re-evaluate a funding transaction.
+
+## Parameters
+
+<ApiTable columns={[
+	{ header: "Name", key: "name", span: 2 },
+	{ header: "Type", key: "type", span: 2 },
+	{ header: "Description", key: "description", span: 8 },
+]} data={[
+	  { name: "txId", type: "string", description: "The ID of the funding transaction to re-evaluate." },
+]}/>
+
+
+## Returns
+
+<ApiTable columns={[
+	{ header: "Type", key: "type", span: 2 },
+	{ header: "Description", key: "description", span: 10 },
+]} data={[
+	  { name: "response", type: "object", description: "A JSON object with the following values." },
+]}/>
+
+```json
+response = {
+	id, // The transaction ID of the fund transfer
+	quantity, // How much is being transferred
+	reward, // The amount taken by the network as a fee
+	target, // The address the funds were sent to
+};
+```
+
+## Example
+
+```js
+const irys = await getIrys();
+
+try {
+	// First get a receipt
+	const fundTx = await irys.fund(irys.utils.toAtomic(0.05));
+	const response = await irys.funder.submitFundTransaction(fundTx.id);
+
+} catch (e) {
+	console.log("Error funding ", e);
+}
+```
