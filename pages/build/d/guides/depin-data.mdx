@@ -59,7 +59,7 @@ Or through the [Irys SDK](/build/d/sdk/installing-the-sdk):
 ```ts
 
 const uploadDePINData = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
  
 	const fileToUpload = "./depin_data.json";
 	const tags = [{ name: "Content-Type", value: "application/json" }];
@@ -88,7 +88,7 @@ Here’s how you might tag a data upload:
 
 ```ts
 const uploadDePINData = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
  
 	const fileToUpload = "./depin_data.json";
 	const tags = [{ name: "Content-Type", value: "application/json" },

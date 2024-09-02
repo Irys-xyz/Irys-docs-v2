@@ -25,7 +25,7 @@ In this guide, you'll create a SuperMon NFT that evolves during gameplay. The NF
 1. You start uploading a single transaction. This becomes the head of your transaction chain:
 
 ```js
-const irys = await getIrys();
+const irys = await getIrysBundler();
 const receiptOne = await irys.upload("First TX");
 console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```

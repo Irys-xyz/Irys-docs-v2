@@ -93,7 +93,7 @@ const generateManifest = async () => {
 		map.set(`foo${i}.gif`, txIds[i]);
 	}
 
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	const manifest = await irys.uploader.generateManifest({ items: map });
 	const tags = [

@@ -28,7 +28,7 @@ Basic workflow.
 ```js
 const createSignUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	// Create the transaction
 	const tx = irys.createTransaction("Hirys World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
@@ -50,7 +50,7 @@ Serialize a transaction and recreate it later.
 ```js
 const serializationUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	// Create the transaction
 	const tx1 = irys.createTransaction("Hirys World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
@@ -82,7 +82,7 @@ First, generate an anchor and use that to create a transaction with your data. T
 ```js
 const deterministicIDUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	// Generate 32 bytes through Buffer.from(anchor)
 	const anchor = randomBytes(16).toString("hex");

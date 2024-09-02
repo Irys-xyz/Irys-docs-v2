@@ -44,18 +44,16 @@ The Irys SDK reduces dependency bloat by providing dedicated packages for each t
 The following code is for using ethereum only, we [also have examples covering all supported tokens](/build/d/sdk/import-configure). 
 
 ```ts
-import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
-
-const getIrys = async () => {
+import EthereumBundlerIrys from "@irys-network/bundler-ethereum";
+ 
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
-
-  const irysClient  = await EthereumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
-
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+ 
+  const irysBundler  = await EthereumBundlerIrys().withWallet(process.env.PRIVATE_KEY);
+ 
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
@@ -132,7 +130,7 @@ You can upload a group of files as a single transaction from both the server and
 
 ```js
 const uploadFolder = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	// Upload an entire folder
 	const folderToUpload = "./my-images/"; // Path to folder

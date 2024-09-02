@@ -36,7 +36,7 @@ const generateCID = async (content) => {
 };
 
 const uploadToIrysWithCID = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	const dataToUpload = "Irys + IPFS Content ID";
 	const contentID = await generateCID(dataToUpload);
@@ -96,7 +96,7 @@ import fetch from "node-fetch";
 import { fileTypeFromBuffer } from "file-type";
 
 const uploadToIrysWithCID = async (dataToUpload, contentType, contentID) => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 
 	const tags = [
 		{ name: "Content-Type", value: contentType },
