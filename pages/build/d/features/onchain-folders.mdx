@@ -69,6 +69,10 @@ This example:
 3.  Creates a manifest mapping the transactions to paths.
 4.  Permanently uploads the manifest using Irys.
 
+<Callout type="info" emoji="ℹ️">
+	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+</Callout>
+
 ```ts
 // Get the most recent 'totalIds' number TXs tagged 'image/gif'
 const getTxIds = async () => {

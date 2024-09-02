@@ -45,6 +45,10 @@ You can choose to upfront fund where you cover the cost of future uploads, or us
 
 Upfront funding reduces the number of transactions required when uploading. You fund once and then when uploading, payment is deducted directly from your account. You can also [withdraw](./withdrawBalance) any excess balance if needed.
 
+<Callout type="info" emoji="ℹ️">
+	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+</Callout>
+
 ```js
 try {
   const irys = await getIrysBundler();

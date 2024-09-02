@@ -24,9 +24,9 @@ IPFS and Irys take a different approach to identifying data, IPFS uses Content I
 To upload data to Irys using a CID, embed it as the value of the `IPFS-CID` tag when uploading data.
 
 <Callout type="info" emoji="ℹ️">
-	This code example generates a CID using the `ipfs-only-hash` package which uses the SHA-256 algorithm by default. IPFS
-	also allows CIDs to be generated using SHA3 and Blake2, all of which are supported when uploading to Irys.
+	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
+
 
 ```js
 import IPFS from "ipfs-only-hash";
@@ -53,6 +53,11 @@ const uploadToIrysWithCID = async () => {
 	console.log(`Content ID URL https://gateway.irys.xyz/ipfs/${contentID}`);
 };
 ```
+
+<Callout type="info" emoji="ℹ️">
+	This code example generates a CID using the `ipfs-only-hash` package which uses the SHA-256 algorithm by default. IPFS
+	also allows CIDs to be generated using SHA3 and Blake2, all of which are supported when uploading to Irys.
+</Callout>
 
 ## Downloading with a CID
 

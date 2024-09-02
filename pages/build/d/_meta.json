@@ -1,7 +1,6 @@
 {
 	"quickstart": "Quickstart",
 	"features": "Features",
-	"network": "Network",
 	"sdk": "SDK",
 	"irys-in-the-browser" : "Irys in the Browser",
 	"storage-cli": "Storage CLI",

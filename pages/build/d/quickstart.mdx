@@ -14,22 +14,11 @@ Irys is currently in private testnet. At mainnet launch, all uploaded data will 
 
 ## Installing
 
-Install using npm or yarn:
+Install using npm:
 
-
-<Tabs items={['npm', 'yarn']}>
-  <Tabs.Tab>
 ```console
-npm install @irys-network/bundler-client
+@irys-network/bundler-ethereum
 ```
-	</Tabs.Tab>
-  <Tabs.Tab>
-```console
-yarn add @irys-network/bundler-client
-```	
-	</Tabs.Tab>
-</Tabs>
-
 
 <Callout type="info" emoji="ℹ️">
 	If you get a warning saying `bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)` during
@@ -41,7 +30,7 @@ yarn add @irys-network/bundler-client
 
 The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your import statements and connection code will differ depending on the token used for payment.
 
-The following code is for using ethereum only, we [also have examples covering all supported tokens](/build/d/sdk/import-configure). 
+The following code is for using ethereum only, we [also have examples covering all supported tokens](/build/d/sdk/install-configure). 
 
 ```ts
 import EthereumBundlerIrys from "@irys-network/bundler-ethereum";

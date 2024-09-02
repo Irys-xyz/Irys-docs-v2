@@ -77,7 +77,18 @@ const iconMapping = {
     src: "/assets/rive/learn/efficient-sampling.riv",
     animation: "Hover",
   },
-
+  "Bundler": { // Placeholder
+    src: "/assets/rive/build/guides.riv",
+    animation: "GuidesAnim",
+  },
+  "Gateway": { // Placeholder
+    src: "/assets/rive/build/guides.riv",
+    animation: "GuidesAnim",
+  },
+  "Miner": { // Placeholder
+    src: "/assets/rive/build/guides.riv",
+    animation: "GuidesAnim",
+  },
   "Protocol-Overview": {
     src: "/assets/rive/learn/protocol-overview.riv",
     animation: "Hover",

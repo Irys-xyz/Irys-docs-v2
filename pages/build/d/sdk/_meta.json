@@ -1,6 +1,5 @@
 {
-	"installing": "Installing the SDK",
-	"import-configure": "Importing & Configuring",
+	"install-configure": "Installing & Configuring",
 	"payment": "Payment API",
 	"upload": "Upload API",
 	"utils": "Utility API",

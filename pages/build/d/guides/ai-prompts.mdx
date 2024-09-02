@@ -107,6 +107,10 @@ irys upload myPrompt.json \
 
 Or [SDK](/build/d/sdk/upload/uploadFile):
 
+<Callout type="info" emoji="ℹ️">
+	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+</Callout>
+
 ```ts 
 const uploadMetadata = async () => {
 	const irys = await getIrysBundler();

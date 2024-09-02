@@ -25,6 +25,10 @@ After calling `tx.sign()`, you can access the transaction ID via `tx.id`, this f
 
 Basic workflow.
 
+<Callout type="info" emoji="ℹ️">
+	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+</Callout>
+
 ```js
 const createSignUpload = async () => {
 	// Get a reference to a pre-configured Irys object

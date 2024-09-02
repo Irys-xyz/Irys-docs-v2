@@ -7,29 +7,23 @@ import Heading from "@/components/Heading";
 
 # Irys in The Browser
 
-Working with Irys in the browser is similar to working with our server-side SDK, however
-there are a few differences which are demonstrated below.
+The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your install statements, import and connection code will differ depending on the token used for payment and the provider used.
 
 <Callout emoji="🚀">
 	If you're using Irys with React and `npx create-react-app`, you will need to [follow some extra setup
 	steps](/build/d/guides/irys-react).
 </Callout>
 
-## Installing
-
-Install using npm:
-
-```console
-npm install @irys-network/bundler-client
-```
-
-or yarn:
-
-```console
-yarn add @irys-network/bundler-client
-```
 
 ### Ethers v5
+
+Installing:
+
+```console
+npm install @irys-network/web-bundler-ethereum @irys-network/web-bundler-ethereum-ethers-v5
+```
+
+Importing & Configuring:
 
 ```js
 import WebEthereumBundlerIrys from "@irys-network/web-bundler-ethereum";
@@ -46,6 +40,14 @@ const getWebIrysBundler = async (): Promise<void> => {
 
 ### Ethers v6
 
+Installing:
+
+```console
+npm install @irys-network/web-bundler-ethereum @irys-network/web-bundler-ethereum-ethers-v6
+```
+
+Importing & Configuring:
+
 ```ts
 import WebEthereumBundlerIrys from "@irys-network/web-bundler-ethereum";
 import Ethersv6Adapter from "@irys-network/web-bundler-ethereum-ethers-v6";
@@ -59,4 +61,32 @@ const getWebIrysBundler = async (): Promise<void> => {
 };
 ```
 
+### Viem  v2
 
+Installing:
+
+```console
+npm install @irys-network/web-bundler-ethereum @irys-network/web-bundler-ethereum-viem-v2
+```
+
+Importing & Configuring:
+
+```ts
+import WebEthereumBundlerIrys from "@irys-network/web-bundler-ethereum";
+import Viemv2Adapter  from "@irys-network/web-bundler-ethereum-viem-v2"
+
+const getWebIrysBundler = async (): Promise<void> => {
+    const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
+
+	const provider = createWalletClient({
+		account,
+		chain: sepolia,
+		transport: custom(window.ethereum),
+	});
+    
+    const irys = await WebEthereumBundlerIrys().withProvider(Viemv2Adapter(provider));
+    console.log(`Connected to WebIrys from ${irys.address}`);
+    
+    return getWebIrysBundler;
+};
+```
