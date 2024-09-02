@@ -22,10 +22,10 @@ Returns the connected wallet's balance.
 ## Example
 
 ```js
-const irys = await getIrysBundler();
+const irys = await getBalance();
 
 // Get loaded balance in atomic units
-const atomicBalance = await irys.getLoadedBalance();
+const atomicBalance = await irys.getBalance();
 console.log(`Node balance (atomic units) = ${atomicBalance}`);
 
 // Convert balance to standard

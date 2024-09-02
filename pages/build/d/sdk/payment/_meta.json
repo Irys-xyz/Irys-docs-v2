@@ -3,6 +3,6 @@
 	"funder-submitFundTransaction": "submitFundTransaction()",
 	"withdrawBalance": "withdrawBalance()",
 	"withdrawAll": "withdrawAll()",
-	"getLoadedBalance": "getLoadedBalance()",
+	"getBalance": "getBalance()",
 	"getPrice": "getPrice()"
 }
