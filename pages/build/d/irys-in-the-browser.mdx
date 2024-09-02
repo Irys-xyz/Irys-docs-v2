@@ -26,12 +26,12 @@ npm install @irys-network/web-bundler-ethereum @irys-network/web-bundler-ethereu
 Importing & Configuring:
 
 ```js
-import WebEthereumBundlerIrys from "@irys-network/web-bundler-ethereum";
+import EthereumBundlerWebIrys from "@irys-network/web-bundler-ethereum";
 import Ethersv5Adapter from "@irys-network/web-bundler-ethereum-ethers-v5";
 
 const getWebIrysBundler = async (): Promise<void> => {
-		let provider = window.ethereum;
-    const irys = await WebEthereumBundlerIrys().withProvider(Ethersv5Adapter(provider));
+	let provider = window.ethereum;
+    const irys = await EthereumBundlerWebIrys().withProvider(Ethersv5Adapter(provider));
     console.log(`Connected to WebIrys from ${irys.address}`);
     
     return getWebIrysBundler;
@@ -49,12 +49,12 @@ npm install @irys-network/web-bundler-ethereum @irys-network/web-bundler-ethereu
 Importing & Configuring:
 
 ```ts
-import WebEthereumBundlerIrys from "@irys-network/web-bundler-ethereum";
+import EthereumBundlerWebIrys from "@irys-network/web-bundler-ethereum";
 import Ethersv6Adapter from "@irys-network/web-bundler-ethereum-ethers-v6";
 
 const getWebIrysBundler = async (): Promise<void> => {
     const provider = new ethers.BrowserProvider(window.ethereum)
-    const irys = await WebEthereumBundlerIrys().withProvider(Ethersv6Adapter(provider));
+    const irys = await EthereumBundlerWebIrys().withProvider(Ethersv6Adapter(provider));
     console.log(`Connected to WebIrys from ${irys.address}`);
     
     return getWebIrysBundler;
@@ -72,8 +72,9 @@ npm install @irys-network/web-bundler-ethereum @irys-network/web-bundler-ethereu
 Importing & Configuring:
 
 ```ts
-import WebEthereumBundlerIrys from "@irys-network/web-bundler-ethereum";
-import Viemv2Adapter  from "@irys-network/web-bundler-ethereum-viem-v2"
+import { EthereumBundlerWebIrys } from "@irys-network/web-bundler-ethereum";
+import { Viemv2Adapter } from "@irys-network/web-bundler-ethereum-viem-v2"
+
 
 const getWebIrysBundler = async (): Promise<void> => {
     const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
@@ -83,8 +84,13 @@ const getWebIrysBundler = async (): Promise<void> => {
 		chain: sepolia,
 		transport: custom(window.ethereum),
 	});
+
+    const publicClient = createPublicClient({
+        chain: sepolia,
+        transport: custom(window.ethereum)
+    });
     
-    const irys = await WebEthereumBundlerIrys().withProvider(Viemv2Adapter(provider));
+    const irys = await EthereumBundlerWebIrys().withProvider(Viemv2Adapter(provider, { publicClient }));
     console.log(`Connected to WebIrys from ${irys.address}`);
     
     return getWebIrysBundler;
