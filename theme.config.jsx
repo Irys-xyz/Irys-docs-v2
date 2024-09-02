@@ -119,9 +119,21 @@ const iconMapping = {
     src: "/assets/rive/build/04 SDK.riv",
     animation: "SDKAnim ",
   },
+  "Irys-in-the-Browser": { // Placeholder
+    src: "/assets/rive/build/07 Guides.riv",
+    animation: "GuidesAnim ",
+  },
   "Storage-CLI": {
     src: "/assets/rive/build/05 Storage CLI.riv",
     animation: "StorageAnim",
+  },
+  "REST-API": { // Placeholder
+    src: "/assets/rive/build/07 Guides.riv",
+    animation: "GuidesAnim ",
+  },
+  "Downloading": { // Placeholder
+    src: "/assets/rive/build/07 Guides.riv",
+    animation: "GuidesAnim ",
   },
   Querying: {
     src: "/assets/rive/build/06 Querying.riv",
@@ -170,20 +182,24 @@ export default {
           <span>{title}</span>
         </div>
       ) : (
-        <div
-          className="flex items-center gap-2 !rounded-md w-full px-2 py-2"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {icon && (
-            <RiveIcon
-              src={icon.src}
-              animation={icon.animation}
-              hovered={hovered}
-            />
-          )}
-          <span>{title}</span>
-        </div>
+<div
+  className="flex justify-start items-center gap-2 !rounded-md w-full py-2"
+  onMouseEnter={handleMouseEnter}
+  onMouseLeave={handleMouseLeave}
+  style={{ paddingLeft: 0 }} // Override padding for the entire item
+>
+  {icon && (
+    <RiveIcon
+      src={icon.src}
+      animation={icon.animation}
+      hovered={hovered}
+      className="ml-0" // Ensure the icon starts at the left
+    />
+  )}
+  <span className="pl-2">{title}</span> {/* Adjust padding to create spacing from the icon */}
+</div>
+
+
       );
     },
   },
