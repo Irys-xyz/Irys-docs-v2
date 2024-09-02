@@ -38,7 +38,12 @@ try {
 You can also add tags via the [CLI's](/build/d/storage-cli/installation) `-t` option, followed by a series of name / value pairs
 
 ```console
-irys upload myImage.png -t tagName1 tagValue1 tagName2 tagValue2 -n testnet -t matic -w bf20......c9885307
+irys upload myImage.png \
+  -n testnet \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --tags tagName1 tagValue1 tagName2 tagValue2 \
+  --provider-url https://rpc.sepolia.dev
 ```
 
 ## Additional Uses
