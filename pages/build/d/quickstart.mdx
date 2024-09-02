@@ -73,7 +73,7 @@ Fund your account on the Irys network using any of our [supported tokens](/build
 
 ```js
 const fundNode = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 	try {
 		const fundTx = await irys.fund(irys.utils.toAtomic(0.05));
 		console.log(`Successfully funded ${irys.utils.fromAtomic(fundTx.quantity)} ${irys.token}`);
@@ -89,7 +89,7 @@ const fundNode = async () => {
 
 ```js
 const uploadData = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 	const dataToUpload = "hirys world.";
 	try {
 		const receipt = await irys.upload(dataToUpload);
@@ -104,7 +104,7 @@ const uploadData = async () => {
 
 ```js
 const uploadFile = async () => {
-	const irys = await getIrys();
+	const irys = await getIrysBundler();
 	// Your file
 	const fileToUpload = "./myImage.png";
 

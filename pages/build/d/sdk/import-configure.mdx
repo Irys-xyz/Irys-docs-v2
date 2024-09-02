@@ -12,288 +12,285 @@ The Irys SDK reduces dependency bloat by providing dedicated packages for each t
 Select the appropriate code from the options below when starting your project.
 
 <div className="flex justify-center text-center mt-5">
-[APTOS](#aptos) | [ALGOrand](#algorand) | [Arbitrum](#arbitrum) | [Avalanche C-Chain](#avalanche-c-chain) | [Berachain](#berachain) | [Binance Coin](#binance-coin) | [Boba](#boba) | [Boba-eth](#boba-eth) | [Chainlink](#chainlink) | [Eclipse](#eclipse) | [Ethereum](#ethereum) | [Base Ethereum](#base-ethereum) | [Linea Ethereum](#linea-ethereum) | [Scroll Ethereum](#scroll-ethereum) | [Fantom](#fantom) | [IoTeX](#iotex) | [Near](#near) | [Polygon](#polygon) | [Solana](#solana) | [USDC (on Ethereum)](#usdc-on-ethereum) | [USDC (on Polygon)](#usdc-on-polygon)
+[APTOS](#aptos) |  [Arbitrum](#arbitrum) | [Avalanche C-Chain](#avalanche-c-chain) | [Berachain](#berachain) | [Binance Coin](#binance-coin) | [Chainlink](#chainlink) | [Eclipse](#eclipse) | [Ethereum](#ethereum) | [Base Ethereum](#base-ethereum) | [Linea Ethereum](#linea-ethereum) | [Scroll Ethereum](#scroll-ethereum) | [IoTeX](#iotex) | [Polygon](#polygon) | [Solana](#solana) | [USDC (on Ethereum)](#usdc-on-ethereum) | [USDC (on Polygon)](#usdc-on-polygon)
 </div>
 
 ## Aptos
 
 ```ts
-import AptosNodeIrys from "@irys-network/node-bundler-aptos";
+import AptosBundlerIrys from "@irys-network/bundler-aptos";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await AptosNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await AptosBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
-## Algorand
-
-```ts
-TODO
-```
 
 ## Arbitrum
 
 ```ts
-import ArbitrumNodeIrys from "@irys-network/node-bundler-ethereum";
+import ArbitrumBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await ArbitrumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await ArbitrumBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
 ## Avalanche C-Chain
 
 ```ts
-TODO
+import AvalancheBundlerIrys from "@irys-network/bundler-ethereum";
+
+const getIrysBundler = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irysBundler  = await AvalancheBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
+
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
+};
 ```
 
 ## Berachain
 
 ```ts
-import BeraNodeIrys from "@irys-network/node-bundler-ethereum";
+import BeraBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await BeraNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await BeraBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
 ## Binance Coin
 
 ```ts
-TODO
+import BNBBundlerIrys from "@irys-network/bundler-ethereum";
+
+const getIrysBundler = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irysBundler  = await BNBBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
+
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
+};
 ```
 
-## Boba
-
-```ts
-TODO
-```
-
-## Boba-eth
-
-```ts
-TODO
-```
 
 ## Chainlink
 
 ```ts
-import ChainlinkNodeIrys from "@irys-network/node-bundler-ethereum";
+import ChainlinkBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await ChainlinkNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await ChainlinkBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
 ## Eclipse
 
 ```ts
+import EclipseBundlerIrys from "@irys-network/bundler-solana";
+
+const getIrysBundler = async () => {
+  // RPC URLs change often, use a recent one from https://chainlist.org/
+  const providerUrl = "";
+
+  const irysBundler  = await EclipseBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
+
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
+};
 
 ```
 
 ## Ethereum
 
 ```ts
-import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
+import EthereumBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await EthereumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await EthereumBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
 ## Base Ethereum
 
 ```ts
-import BaseEthNodeIrys from "@irys-network/node-bundler-ethereum";
+import BaseEthBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await BaseEthNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await BaseEthBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
 ## Linea Ethereum
 
 ```ts
-import LineaEthNodeIrys from "@irys-network/node-bundler-ethereum";
+import LineaEthBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await LineaEthNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await LineaEthBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
 ## Scroll Ethereum
 
 ```ts
-import ScrollEthNodeIrys from "@irys-network/node-bundler-ethereum";
+import ScrollEthBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await ScrollEthNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await ScrollEthBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
-## Fantom
-
-```ts
-TODO
-```
 
 ## IoTeX
 
 ```ts
-import IotexNodeIrys from "@irys-network/node-bundler-ethereum";
+import IotexBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await IotexNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await IotexBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
-## Near
-
-```ts
-TODO
-```
 
 ## Polygon
 
 ```ts
-import MaticNodeIrys from "@irys-network/node-bundler-ethereum";
+import MaticBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await MaticNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await MaticBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
+
 ```
 
 ## Solana
 
 ```ts
-import SolanaNodeIrys from "@irys-network/node-bundler-solana";
+import SolanaBundlerIrys from "@irys-network/bundler-solana";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await SolanaNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await SolanaBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
+
 ```
 
 ## USDC (on Ethereum)
 
 ```ts
-import USDCEthNodeIrys from "@irys-network/node-bundler-ethereum";
+import USDCEthBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await USDCEthNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await USDCEthBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 
 ## USDC (on Polygon)
 
 ```ts
-import USDCPolygonNodeIrys from "@irys-network/node-bundler-ethereum";
+import USDCPolygonBundlerIrys from "@irys-network/bundler-ethereum";
 
-const getIrys = async () => {
+const getIrysBundler = async () => {
   // RPC URLs change often, use a recent one from https://chainlist.org/
   const providerUrl = "";
 
-  const irysClient  = await USDCPolygonNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+  const irysBundler  = await USDCPolygonBundlerIrys()
+    .withWallet(process.env.PRIVATE_KEY);
 
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+  console.log(`Connected to Irys from ${irysBundler.address}`);
+  return irysBundler;
 };
 ```
 

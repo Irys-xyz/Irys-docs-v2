@@ -32,8 +32,7 @@ const getIrys = async () => {
   const providerUrl = "";
 
   const irysClient  = await EthereumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
+    .withWallet(process.env.PRIVATE_KEY);
 
   console.log(`Connected to Irys from ${irysClient.address}`);
   return irysClient;

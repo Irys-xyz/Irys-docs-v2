@@ -9,7 +9,6 @@ Troubleshooting common errors during installation and use.
 Errors:
 
 - [bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)](#bigint)
-- [Error: Using Irys testnet requires a dev/testnet RPC to be configured](#testnet-rpc)
 - [Error: Not enough balance for transaction](#insufficient-balance)
 - [Error: Transaction simulation failed: Blockhash not found](#blockhash-not-found)
 
@@ -45,49 +44,6 @@ Most UNIX distributions come with Python installed. To install C++ build tools, 
 ```console
 sudo apt-get install build-essential
 ```
-
-## Testnet RPC
-
-**Error message**: Error: Using Irys testnet requires a dev/testnet RPC to be configured
-
-When using our testnet, you must provide the URL an RPC for the chain you're using.
-
-For example, this will throw an error:
-
-```ts
-import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
-
-const getIrys = async () => {
-  // RPC URLs change often, use a recent one from https://chainlist.org/
-  const providerUrl = "";
-
-  const irysClient  = await EthereumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
-};
-```
-
-But this will not:
-
-```ts
-import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
-
-const getIrys = async () => {
-  // RPC URLs change often, use a recent one from https://chainlist.org/
-  const providerUrl = "";
-
-  const irysClient  = await EthereumNodeIrys()
-    .withWallet(process.env.PRIVATE_KEY)
-    .withRpc(providerUrl);
-
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
-};
-```
-
-As RPC URLs change frequently, users should always choose an up-to-date one from [https://chainlist.org/](https://chainlist.org/)
 
 ## Insufficient Balance
 
