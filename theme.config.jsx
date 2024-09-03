@@ -2,29 +2,9 @@
 import NavOptions from "./components/nav-options/nav-options";
 import Footer from "./components/footer/footer";
 import { useRouter } from "next/router";
-import {
-  MdOutlineVerified,
-  MdOutlineStorage,
-  MdOutlineMenuBook,
-  MdOutlineViewList,
-  MdOutlineSwapHoriz,
-  MdOutlineViewQuilt,
-  MdFlipToBack,
-  MdDataObject,
-  MdDataset,
-  MdOutlineCropFree,
-  MdOutlineQuestionMark,
-  MdOutlineBlurOn,
-  MdOutlineAccountTree,
-  MdOutlineBolt,
-  MdOutlineBubbleChart,
-  MdOutlineBuild,
-} from "react-icons/md";
 import React from "react";
 
 import IrysInteractiveEye from "./components/irys-logo/irys-logo";
-import Rive from "@rive-app/react-canvas";
-import SimpleRiveViewer from "./components/SimpleRiveViewer";
 import RiveIcon from "./components/rive/rive.tsx";
 
 const FooterWrapper = () => {
@@ -41,7 +21,7 @@ const iconMapping = {
     animation: "WhatIsIrysAnim",
   },
   "What-is-a-Datachain?": {
-    src: "/assets/rive/learn/why-irys-exist.riv",
+    src: "/assets/rive/learn/what-is-a-datachain.riv",
     animation: "Hover",
   },
   "Why-Irys-Exists": {
@@ -78,16 +58,16 @@ const iconMapping = {
     animation: "Hover",
   },
   "Bundler": { // Placeholder
-    src: "/assets/rive/build/guides.riv",
-    animation: "GuidesAnim",
+    src: "/assets/rive/build/bundler.riv",
+    animation: "Hover",
   },
   "Gateway": { // Placeholder
-    src: "/assets/rive/build/guides.riv",
-    animation: "GuidesAnim",
+    src: "/assets/rive/learn/gateway.riv",
+    animation: "Hover",
   },
   "Miners": { // Placeholder
-    src: "/assets/rive/build/guides.riv",
-    animation: "GuidesAnim",
+    src: "/assets/rive/learn/mining.riv",
+    animation: "Hover",
   },
   "Protocol-Overview": {
     src: "/assets/rive/learn/protocol-overview.riv",
@@ -142,8 +122,8 @@ const iconMapping = {
     animation: "StorageAnim",
   },
   "REST-API": { // Placeholder
-    src: "/assets/rive/build/guides.riv",
-    animation: "GuidesAnim",
+    src: "/assets/rive/build/rest-api.riv",
+    animation: "Hover",
   },
   "Downloading": { // Placeholder
     src: "/assets/rive/build/guides.riv",
