@@ -32,9 +32,9 @@ npm install \
 Importing & Configuring:
 
 ```js
-import WebUploader from "@irys/web-upload";
-import WebEthereum from "@irys/web-upload-ethereum";
-import EthereumEthersv5 from "@irys/web-upload-ethereum-ethers-v5";
+import { WebUploader } from "@irys/web-upload";
+import { WebEthereum } from "@irys/web-upload-ethereum";
+import { EthereumEthersv5 } from "@irys/web-upload-ethereum-ethers-v5";
 
 const getIrysUploader = async () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -58,9 +58,9 @@ npm install \
 Importing & Configuring:
 
 ```js
-import WebUploader from "@irys/web-upload";
-import WebEthereum from "@irys/web-upload-ethereum";
-import EthereumEthersv6 from "@irys/web-upload-ethereum-ethers-v6";
+import { WebUploader } from "@irys/web-upload";
+import { WebEthereum } from "@irys/web-upload-ethereum";
+import { EthereumEthersv6 } from "@irys/web-upload-ethereum-ethers-v6";
 
 const getIrysUploader = async () => {
   const provider = new ethers.BrowserProvider(window.ethereum);
@@ -84,9 +84,9 @@ npm install \
 Importing & Configuring:
 
 ```js
-import WebUploader from "@irys/web-upload";
-import WebEthereum from "@irys/web-upload-ethereum";
-import EthereumViemv2 from "@irys/web-upload-ethereum-viem-v2";
+import { WebUploader } from "@irys/web-upload";
+import { WebEthereum } from "@irys/web-upload-ethereum";
+import { EthereumViemv2 } from "@irys/web-upload-ethereum-viem-v2";
 
 const getIrysUploader = async () => {
   const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
