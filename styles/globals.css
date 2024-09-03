@@ -822,7 +822,6 @@ button.btn.try-out__btn {
   @apply placeholder:!text-[#535353] dark:!bg-[#111111] dark:!border-[#4D4D4D];
 }
 
-
 /* Ensure no padding or margin is applied to sidebar items */
 /* Ensure no padding or margin is applied to top-level sidebar items */
 #__next aside > div > div > ul > li > div,
@@ -840,4 +839,6 @@ button.btn.try-out__btn {
   margin-left: 0 !important; /* Keep margin left at 0 if not needed */
 }
 
-
+.microlight {
+  @apply !bg-[#111111]/70 dark:!bg-[#111111];
+}
