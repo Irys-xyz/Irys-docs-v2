@@ -11,125 +11,84 @@ The Irys SDK reduces dependency bloat by providing dedicated packages for each t
 
 Choose the code for your provider:
 
-<div className="flex justify-center text-center mt-5">
-[Ethers v5](#ethers-v5) |  [Ethers v6](#ethers-v6) | [Viem v2](#viem-v2) | [Solana](#solana) | [Aptos](#aptos) | 
-</div>
-
 <Callout emoji="🚀">
 	If you're using Irys with React and `npx create-react-app`, you will need to [follow some extra setup
 	steps](/build/d/guides/irys-react).
 </Callout>
 
-## EVM Chains
 
-When connecting to EVM chains, install and import 
-- One package for the payment token and signing cryptography.
-- One package for the provider. 
-
-As provider setup varies per package, we've provided complete copy and paste code for most popular packages below. 
-
-Each of the code examples below is configured to use the Ethereum token:
-
-```ts
-import EthereumBundlerWebIrys from "@irys-network/web-bundler-ethereum";
-const irys = await EthereumBundlerWebIrys().withProvider(...);
-```
-
-If you're using a different token, replace the above with one from this table.
-
-| Token              | Package                          | Class                    |
-|--------------------|----------------------------------|--------------------------|
-| Arbitrum           | `@irys-network/bundler-ethereum` | `ArbitrumBundlerIrys`    |
-| Avalanche C-Chain  | `@irys-network/bundler-ethereum` | `AvalancheBundlerIrys`   |
-| Berachain          | `@irys-network/bundler-ethereum` | `BeraBundlerIrys`        |
-| BNB                | `@irys-network/bundler-ethereum` | `BNBBundlerIrys`         |
-| Chainlink          | `@irys-network/bundler-ethereum` | `ChainlinkBundlerIrys`   |
-| Ethereum           | `@irys-network/bundler-ethereum` | `EthereumBundlerIrys`    |
-| Base Ethereum      | `@irys-network/bundler-ethereum` | `BaseEthBundlerIrys`     |
-| Linea Ethereum     | `@irys-network/bundler-ethereum` | `LineaEthBundlerIrys`    |
-| Scroll Ethereum    | `@irys-network/bundler-ethereum` | `ScrollEthBundlerIrys`   |
-| IoTeX              | `@irys-network/bundler-ethereum` | `IotexBundlerIrys`       |
-| Polygon            | `@irys-network/bundler-ethereum` | `MaticBundlerIrys`       |
-| USDC (on Ethereum) | `@irys-network/bundler-ethereum` | `USDCEthBundlerIrys`     |
-| USDC (on Polygon)  | `@irys-network/bundler-ethereum` | `USDCPolygonBundlerIrys` |
-
-
-### Ethers v5
+## Ethers v5
 
 Installing:
 
 ```console
 npm install \
-    @irys-network/web-bundler-ethereum \
-    @irys-network/web-bundler-ethereum-ethers-v5 \
+    @irys/web-upload \
+    @irys/web-upload-ethereum \
+    @irys/web-upload-ethereum-ethers-v5 \
     ethers@5
 ```
 
 Importing & Configuring:
 
 ```js
-import EthereumBundlerWebIrys from "@irys-network/web-bundler-ethereum";
-import Ethersv5Adapter from "@irys-network/web-bundler-ethereum-ethers-v5";
+import WebUploader from "@irys/web-upload";
+import WebEthereum from "@irys/web-upload-ethereum";
+import EthereumEthersv5 from "@irys/web-upload-ethereum-ethers-v5";
 
-const getWebIrysBundler => {
-  try {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const webBundlerIrys = await WebEthereumBundlerIrys().withProvider(Ethersv5Adapter(provider));
-    console.log(`Connected from ${webBundlerIrys.address}`);
-
-    return webBundlerIrys;
-  } catch (error) {
-    console.error("Error connecting", error);
-    throw new Error("Error connecting ");
-  }
+const getIrysUploader = async () => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumEthersv5(provider));
+  return irysUploader;
 };
 ```
 
-### Ethers v6
+## Ethers v6
 
 Installing:
 
 ```console
 npm install \
-    @irys-network/web-bundler-ethereum \
-    @irys-network/web-bundler-ethereum-ethers-v6 \
+    @irys/web-upload \
+    @irys/web-upload-ethereum \
+    @irys/web-upload-ethereum-ethers-v6 \
     ethers@6
 ```
 
 Importing & Configuring:
 
-```ts
-import EthereumBundlerWebIrys from "@irys-network/web-bundler-ethereum";
-import Ethersv6Adapter from "@irys-network/web-bundler-ethereum-ethers-v6";
+```js
+import WebUploader from "@irys/web-upload";
+import WebEthereum from "@irys/web-upload-ethereum";
+import EthereumEthersv6 from "@irys/web-upload-ethereum-ethers-v6";
 
-const getWebIrysBundler = async (): Promise<void> => {
-    const provider = new ethers.BrowserProvider(window.ethereum)
-    const irys = await EthereumBundlerWebIrys().withProvider(Ethersv6Adapter(provider));
-    console.log(`Connected from ${irys.address}`);
-    
-    return getWebIrysBundler;
+const getIrysUploader = async () => {
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumEthersv6(provider));
+  return irysUploader;
 };
 ```
 
-### Viem v2
+## Viem v2
 
 Installing:
 
 ```console
 npm install \
-    @irys-network/web-bundler-ethereum \
-    @irys-network/web-bundler-ethereum-viem-v2 \
+    @irys/web-upload \
+    @irys/web-upload-ethereum \
+    @irys/web-upload-viem-v2 \
     viem
 ```
 
 Importing & Configuring:
 
-```ts
-import { EthereumBundlerWebIrys } from "@irys-network/web-bundler-ethereum";
-import { Viemv2Adapter } from "@irys-network/web-bundler-ethereum-viem-v2"
+```js
+import WebUploader from "@irys/web-upload";
+import WebEthereum from "@irys/web-upload-ethereum";
+import EthereumViemv2 from "@irys/web-upload-ethereum-viem-v2";
 
-
-const getWebIrysBundler = async (): Promise<void> => {
+const getIrysUploader = async () => {
   const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
 
   const provider = createWalletClient({
@@ -138,150 +97,7 @@ const getWebIrysBundler = async (): Promise<void> => {
     transport: custom(window.ethereum),
   });
 
-  const webIrysBundler = await WebEthereumBundlerIrys().withProvider(Viemv2Adapter(provider));
-  console.log(`Connected from ${irys.webIrysBundler}`);
-
-  return getWebIrysBundler;
+  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumViemv2(provider));
+  return irysUploader;
 };
 ```
-
-## Solana
-
-When using Solana, there is only a single Irys package that needs to be installed, `@irys-network/web-bundler-solana`.
-
-[Solana's wallet-adapter library](https://solana.com/developers/cookbook/wallets/connect-wallet-react) make it easy to manage wallet connections. 
-
-Installing:
-
-```console
-npm install \
-    @irys-network/web-bundler-solana \
-    @solana/wallet-adapter-base \
-    @solana/wallet-adapter-react \
-    @solana/wallet-adapter-react-ui \
-    @solana/wallet-adapter-wallets \
-    @solana/web3.js 
-```
-
-Importing & Configuring:
-
-The Solana library uses the React provider pattern. Start by setting up a top-level file named `ClientProviders.tsx` that wraps all your child components. 
-
-```ts filename="ClientProviders.js"
-"use client";
-
-import { ReactNode, useMemo } from "react";
-import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
-import {
-  WalletModalProvider,
-} from "@solana/wallet-adapter-react-ui";
-import { clusterApiUrl } from "@solana/web3.js";
-
-require("@solana/wallet-adapter-react-ui/styles.css");
-
-export default function ClientProviders({ children }: { children: ReactNode }) {
-  const network = WalletAdapterNetwork.Devnet;
-
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-  const wallets = useMemo(
-    () => [new UnsafeBurnerWalletAdapter()],
-    [network]
-  );
-
-  return (
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          {children}
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
-  );
-}
-```
-
-Then load this component via `layout.tsx`:
-
-```ts filename="layout.tsx"
-import type { Metadata } from "next";
-import ClientProviders from "@/app/components/ClientProviders";
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={vt323.className}>
-        <ClientProviders>
-          {children}
-        </ClientProviders>
-      </body>
-    </html>
-  );
-}
-```
-
-Finally create a component called `ConnectIrys.tsx` that connects to an Irys Bundler. 
-
-```ts filename="ConnectIrys.tsx"
-"use client";
-import { useState } from "react";
-import { useWallet } from "@solana/wallet-adapter-react"; 
-import WebSolanaBundlerIrys from "@irys-network/web-bundler-solana";
-
-const getWebIrysBundler = async (wallet: any): Promise<string> => {
-  try {
-    const irys = await WebSolanaBundlerIrys().withProvider(wallet);
-    console.log(`Connected to WebIrys from ${irys.address}`);
-    return `Connected to WebIrys from ${irys.address}`;
-  } catch (error) {
-    console.error("Error connecting to WebIrys:", error);
-    throw new Error("Error connecting to WebIrys");
-  }
-};
-
-const ConnectIrys = (): JSX.Element => {
-  const wallet = useWallet();
-  const [isConnected, setIsConnected] = useState<boolean>(false);
-
-  const connectToIrys = async () => {
-    if (!wallet) {
-      console.log("Wallet not connected");
-      return;
-    }
-
-    try {
-      const message = await getWebIrysBundler(wallet);
-      console.log(message);
-      setIsConnected(true);
-    } catch (error) {
-      console.log("Error connecting to WebIrys");
-    }
-  };
-
-  return (
-    <div>
-      <button onClick={connectToIrys}>
-        {isConnected ? "Connected to WebIrys" : "Connect WebIrys"}
-      </button>
-    </div>
-  );
-};
-
-export default ConnectIrys;
-```
-
-## Aptos
-
-Start by scaffolding a blank Aptos project using [`npx create-aptos-dapp`](https://aptos.dev/en/build/create-aptos-dapp).
-
-Then install the Irys package:
-
-```console
-npm install @irys-network/web-bundler-aptos
-```
-

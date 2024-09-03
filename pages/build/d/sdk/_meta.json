@@ -1,5 +1,5 @@
 {
-	"install-configure": "Installing & Configuring",
+	"setup": "Installing, Importing & Configuring",
 	"payment": "Payment API",
 	"upload": "Upload API",
 	"utils": "Utility API",

@@ -8,7 +8,7 @@ import { Callout } from "nextra-theme-docs";
 # Irys SDK
 
 <Callout type="info" emoji="ℹ️">
-Irys is currently in private testnet. At mainnet launch, all uploaded data will be migrated from testnet to mainnet. Transactions IDs will not change. 
+Irys is currently in private testnet. At mainnet launch, all data uploaded to bundlers will be migrated from testnet to mainnet, with no changes to transaction IDs.
 </Callout>
 
 
@@ -17,7 +17,7 @@ Irys is currently in private testnet. At mainnet launch, all uploaded data will 
 Install using npm:
 
 ```console
-@irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 <Callout type="info" emoji="ℹ️">
@@ -30,25 +30,17 @@ Install using npm:
 
 The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your import statements and connection code will differ depending on the token used for payment.
 
-The following code is for using ethereum only, we [also have examples covering all supported tokens](/build/d/sdk/install-configure). 
+The following code is for using ethereum only, we [also have examples covering all supported tokens](/build/d/sdk/setup). 
 
 ```ts
 import Uploader from "@irys/upload";
-import Ethereum from "@irys/upload-ethereum";
+import { Ethereum } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
   return irysUploader;
 };
 ```
-
-### Provider URLs
-
-Use the `providerUrl` parameter to specify an RPC provider, this is required.
-
-<Callout type="info" emoji="ℹ️">
-	When working with Aptos, use "testnet" | "devnet" instead of a URL.
-</Callout>
 
 ## Funding Irys
 

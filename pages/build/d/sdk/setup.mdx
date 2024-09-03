@@ -5,7 +5,7 @@ description: Importing and configuring the SDK
 import { Tab, Tabs, Callout } from "nextra-theme-docs";
 
 
-# Importing & Configuring
+# Installing, Importing & Configuring
 
 The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your install statements, import and connection code will differ depending on the token used for payment.
 
@@ -27,7 +27,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Aptos from "@irys/upload-aptos";
+import { Aptos } from "@irys/upload-aptos";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Aptos).withWallet(process.env.PRIVATE_KEY);
@@ -48,7 +48,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Arbitrum from "@irys/upload-ethereum";
+import { Arbitrum } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Arbitrum).withWallet(process.env.PRIVATE_KEY);
@@ -68,7 +68,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Avalanche from "@irys/upload-ethereum";
+import { Avalanche } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Avalanche).withWallet(process.env.PRIVATE_KEY);
@@ -88,7 +88,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Bera from "@irys/upload-ethereum";
+import { Bera } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Bera).withWallet(process.env.PRIVATE_KEY);
@@ -108,7 +108,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import BNB from "@irys/upload-ethereum";
+import { BNB } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(BNB).withWallet(process.env.PRIVATE_KEY);
@@ -129,7 +129,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Chainlink from "@irys/upload-ethereum";
+import { Chainlink } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Chainlink).withWallet(process.env.PRIVATE_KEY);
@@ -149,7 +149,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Eclipse from "@irys/upload-solana";
+import { Eclipse } from "@irys/upload-solana";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Eclipse).withWallet(process.env.PRIVATE_KEY);
@@ -169,7 +169,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Ethereum from "@irys/upload-ethereum";
+import { Ethereum } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
@@ -189,7 +189,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import BaseEth from "@irys/upload-ethereum";
+import { BaseEth } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(BaseEth).withWallet(process.env.PRIVATE_KEY);
@@ -209,7 +209,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import LineaEth from "@irys/upload-ethereum";
+import { LineaEth } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(LineaEth).withWallet(process.env.PRIVATE_KEY);
@@ -229,7 +229,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import ScrollEth from "@irys/upload-ethereum";
+import { ScrollEth } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(ScrollEth).withWallet(process.env.PRIVATE_KEY);
@@ -249,7 +249,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Iotex from "@irys/upload-ethereum";
+import { Iotex } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Iotex).withWallet(process.env.PRIVATE_KEY);
@@ -270,7 +270,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Matic from "@irys/upload-ethereum";
+import { Matic } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Matic).withWallet(process.env.PRIVATE_KEY);
@@ -290,7 +290,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import Solana from "@irys/upload-solana";
+import { Solana } from "@irys/upload-solana";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Solana).withWallet(process.env.PRIVATE_KEY);
@@ -310,7 +310,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import USDCEth from "@irys/upload-ethereum";
+import { USDCEth } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(USDCEth).withWallet(process.env.PRIVATE_KEY);
@@ -330,7 +330,7 @@ Importing & Configuring:
 
 ```ts
 import Uploader from "@irys/upload";
-import USDCPolygon from "@irys/upload-ethereum";
+import { USDCPolygon } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(USDCPolygon).withWallet(process.env.PRIVATE_KEY);
