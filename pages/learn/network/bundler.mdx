@@ -1,5 +1,5 @@
 ---
-description: Bundlers group multiple transactions together into a single transaction.
+description: Bundlers enable any number of data transactions to be uploaded at once. 
 ---
 
 # Bundlers
@@ -7,6 +7,8 @@ description: Bundlers group multiple transactions together into a single transac
 Bundlers enable any number of data transactions to be uploaded at once. 
 
 ## Bundles
+
+The most common way to upload data to Irys is to first connect to a bundler and then call one of its upload functions. 
 
 Bundlers group multiple transactions together into a single transaction before posting to the blockchain. They allow for infinite transaction scaling - as up to 2^256 transactions to be stored in a single bundle. 
 

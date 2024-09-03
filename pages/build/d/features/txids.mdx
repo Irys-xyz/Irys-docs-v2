@@ -1,0 +1,28 @@
+---
+description: Transaction IDs uniquely identify transaction on Irys
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# Transaction IDs
+
+Transaction IDs uniquely identify transactions on Irys. When you upload data via a [Bundler](/learn/network/bundler), you receive a [receipt](/build/d/features/receipts) containing the transaction ID, this serves as a reference for retrieving or verifying that data.
+
+## Encoding
+
+Transaction IDs are base58 encoded.
+
+<Callout type="info" emoji="ℹ️">
+	Base58 is a binary-to-text encoding scheme that is commonly used in Bitcoin and Solana. It uses an alphabet of 58 characters, which is the same as the Base64 encoding scheme, but omits the characters `0`, `O`, `I`, and `l` to avoid confusion between similar-looking letters and numbers.
+</Callout>
+
+## Downloading Data with Transaction IDs
+
+Use your unique transaction ID to download data from our [gateway](/learn/network/gateway) using a URL in the format
+
+`https://gateway.irys.xyz/:transactionId`
+
+**Example**
+
+`https://gateway.irys.xyz/CO9EpX0lekJEfXUOeXncUmMuG8eEp5WJHXl9U9yZUYA`
+

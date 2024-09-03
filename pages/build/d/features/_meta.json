@@ -4,6 +4,7 @@
 	"mutability": "Mutability",
 	"onchain-folders": "Onchain Folders",
 	"balance-approvals": "Balance Approvals",
+	"txids": "Transaction IDs",
 	"manual-tx": "Manually Creating a Tx",
 	"ipfs-cid": "Using IPFS CIDs",
 	"receipts": "Receipts"
