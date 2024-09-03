@@ -57,13 +57,13 @@ irys upload depin_data.json \
 Or through the [Irys SDK](/build/d/sdk/installing-the-sdk):
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```ts
 
 const uploadDePINData = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
  
 	const fileToUpload = "./depin_data.json";
 	const tags = [{ name: "Content-Type", value: "application/json" }];
@@ -92,7 +92,7 @@ Here’s how you might tag a data upload:
 
 ```ts
 const uploadDePINData = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
  
 	const fileToUpload = "./depin_data.json";
 	const tags = [{ name: "Content-Type", value: "application/json" },

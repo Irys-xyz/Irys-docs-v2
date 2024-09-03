@@ -19,7 +19,7 @@ These three techniques are all equally effective options.
 ## JavaScript
 
 <Callout type="info" emoji="ℹ️">
-	The following `getIrysBundler()` function is for using the Ethereum token only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/install-configure). 
+	The following `getIrysUploader()` function is for using the Ethereum token only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/install-configure). 
 </Callout>
 
 ```js
@@ -27,7 +27,7 @@ import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 import dotenv from "dotenv";
 dotenv.config();
 
-const getIrysBundler = async () => {
+const getIrysUploader = async () => {
   const irysClient  = await EthereumNodeIrys().withWallet(process.env.PRIVATE_KEY);
 
   console.log(`Connected to Irys from ${irysClient.address}`);
@@ -35,7 +35,7 @@ const getIrysBundler = async () => {
 };
 
 const checkBalance = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 
 	// Get loaded balance in atomic units
 	const atomicBalance = await irys.getLoadedBalance();

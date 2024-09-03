@@ -59,11 +59,11 @@ Uploads of less than 100 KiB are are free. For larger uploads, you'll need to [f
 ## Example
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```js
-const irys = await getIrysBundler();
+const irys = await getIrysUploader();
 
 // Upload an entire folder
 const folderToUpload = "./my-images/"; // Path to folder

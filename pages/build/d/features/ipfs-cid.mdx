@@ -24,7 +24,7 @@ IPFS and Irys take a different approach to identifying data, IPFS uses Content I
 To upload data to Irys using a CID, embed it as the value of the `IPFS-CID` tag when uploading data.
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 
@@ -36,7 +36,7 @@ const generateCID = async (content) => {
 };
 
 const uploadToIrysWithCID = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 
 	const dataToUpload = "Irys + IPFS Content ID";
 	const contentID = await generateCID(dataToUpload);
@@ -101,7 +101,7 @@ import fetch from "node-fetch";
 import { fileTypeFromBuffer } from "file-type";
 
 const uploadToIrysWithCID = async (dataToUpload, contentType, contentID) => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 
 	const tags = [
 		{ name: "Content-Type", value: contentType },

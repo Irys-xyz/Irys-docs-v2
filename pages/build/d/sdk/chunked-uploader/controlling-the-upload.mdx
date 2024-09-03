@@ -18,11 +18,11 @@ To resume an upload from a new uploader instance, you must use the same:
 ## `uploader.pause()` and `uploader.resume()`
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```js
-const irys = await getIrysBundler();
+const irys = await getIrysUploader();
 
 // When uploading smaller files, it's common to use the await keyword before
 // uploadData() or uploadTransaction(). This causes execution to pause until the file

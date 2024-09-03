@@ -36,15 +36,16 @@ const getIrys = async () => {
 To This:
 
 <Callout type="info" emoji="ℹ️"> 
-	The following code is for ethereum only, [we also have examples](/build/d/irys-in-the-browser) covering all supported tokens.
+	The following code is for ethereum only, [we also have examples](/build/d/sdk/install-configure) covering all supported tokens.
 </Callout>
 
 ```ts
-import EthereumBundlerIrys from "@irys-network/bundler-ethereum";
- 
-const getIrysBundler = async () => {
-	const irysBundler  = await EthereumBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-	return irysBundler;
+import Uploader from "@irys/upload";
+import Ethereum from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 

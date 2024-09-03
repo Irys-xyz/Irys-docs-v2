@@ -33,11 +33,11 @@ Converts from atomic to standard units.
 ## Example
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```js
-const irys = await getIrysBundler();
+const irys = await getIrysUploader();
 
 const atomicBalance = await irys.getLoadedBalance();
 const convertedBalance = irys.utils.fromAtomic(atomicBalance).toString();

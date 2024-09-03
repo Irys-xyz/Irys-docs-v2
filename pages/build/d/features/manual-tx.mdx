@@ -26,13 +26,13 @@ After calling `tx.sign()`, you can access the transaction ID via `tx.id`, this f
 Basic workflow.
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```js
 const createSignUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 
 	// Create the transaction
 	const tx = irys.createTransaction("Hirys World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
@@ -54,7 +54,7 @@ Serialize a transaction and recreate it later.
 ```js
 const serializationUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 
 	// Create the transaction
 	const tx1 = irys.createTransaction("Hirys World!", { tags: [{ name: "Content-Type", value: "text/plain" }] });
@@ -86,7 +86,7 @@ First, generate an anchor and use that to create a transaction with your data. T
 ```js
 const deterministicIDUpload = async () => {
 	// Get a reference to a pre-configured Irys object
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 
 	// Generate 32 bytes through Buffer.from(anchor)
 	const anchor = randomBytes(16).toString("hex");

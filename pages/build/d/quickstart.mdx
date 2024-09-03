@@ -33,13 +33,12 @@ The Irys SDK reduces dependency bloat by providing dedicated packages for each t
 The following code is for using ethereum only, we [also have examples covering all supported tokens](/build/d/sdk/install-configure). 
 
 ```ts
-import EthereumBundlerIrys from "@irys-network/bundler-ethereum";
- 
-const getIrysBundler = async () => {
-  const irysBundler  = await EthereumBundlerIrys().withWallet(process.env.PRIVATE_KEY);
- 
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+import Uploader from "@irys/upload";
+import Ethereum from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -57,7 +56,7 @@ Fund your account on the Irys network using any of our [supported tokens](/build
 
 ```js
 const fundNode = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 	try {
 		const fundTx = await irys.fund(irys.utils.toAtomic(0.05));
 		console.log(`Successfully funded ${irys.utils.fromAtomic(fundTx.quantity)} ${irys.token}`);
@@ -73,7 +72,7 @@ const fundNode = async () => {
 
 ```js
 const uploadData = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 	const dataToUpload = "hirys world.";
 	try {
 		const receipt = await irys.upload(dataToUpload);
@@ -88,7 +87,7 @@ const uploadData = async () => {
 
 ```js
 const uploadFile = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 	// Your file
 	const fileToUpload = "./myImage.png";
 
@@ -112,11 +111,10 @@ You can upload a group of files as a single transaction from both the server and
 	`https://gateway.irys.xyz/:transactionId` or `https://gateway.irys.xyz/:manifestId/:fileName`
 </Callout>
 
-### Server
 
 ```js
 const uploadFolder = async () => {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 
 	// Upload an entire folder
 	const folderToUpload = "./my-images/"; // Path to folder
@@ -132,23 +130,6 @@ const uploadFolder = async () => {
 		console.log("Error uploading file ", e);
 	}
 };
-```
-
-### Browser
-
-```ts
-const webIrys = await getWebIrys();
-
-const files: File[] = [];
-const tags: { name: string; value: string }[][] = [];
-
-// Convert Files to TaggedFiles
-const taggedFiles = files.map((f: TaggedFile, i: number) => {
-	f.tags = tags[i];
-	return f;
-});
-
-const response = await webIrys.uploadFolder(taggedFiles);
 ```
 
 ## 3rd-Party Build Tools

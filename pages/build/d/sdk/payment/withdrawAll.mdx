@@ -35,12 +35,12 @@ response.data = {
 ## Example
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```ts
 try {
-	const irys = await getIrysBundler();
+	const irys = await getIrysUploader();
 	const tx = await irys.withdrawAll();
 } catch (e) {
 	console.log("Error withdrawing funds ", e);

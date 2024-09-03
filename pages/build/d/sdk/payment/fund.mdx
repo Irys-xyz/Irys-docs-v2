@@ -46,12 +46,12 @@ You can choose to upfront fund where you cover the cost of future uploads, or us
 Upfront funding reduces the number of transactions required when uploading. You fund once and then when uploading, payment is deducted directly from your account. You can also [withdraw](./withdrawBalance) any excess balance if needed.
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```js
 try {
-  const irys = await getIrysBundler();
+  const irys = await getIrysUploader();
 
   const fundTx = await irys.fund(irys.utils.toAtomic(0.05));
   console.log(
@@ -68,7 +68,7 @@ try {
 
 ```js
 try {
-  const irys = await getIrysBundler();
+  const irys = await getIrysUploader();
 
   const pathToFile = "./myNFT.png";
   const { size } = await fs.promises.stat(pathToFile);
@@ -95,7 +95,7 @@ The `multiplier` parameter multiplies the fees we allow the network to take, in 
 
 ```js
 try {
-  const irys = await getIrysBundler();
+  const irys = await getIrysUploader();
 
   const fundTx = await irys.fund(irys.utils.toAtomic(0.05), 1.2);
   console.log(
@@ -115,10 +115,9 @@ When transferring tokens we use public RPCs. Sometimes these can be slow to conf
 ```ts
 import EthereumNodeIrys from "@irys-network/node-bundler-ethereum";
 
-const getIrysBundler = async () => {
-  const irysClient  = await EthereumNodeIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysClient.address}`);
-  return irysClient;
+const getIrysUploader = async () => {
+  const rpcUrl = "";
+  const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY).withRpc(rpcUrl);
+  return irysUploader;
 };
 ```

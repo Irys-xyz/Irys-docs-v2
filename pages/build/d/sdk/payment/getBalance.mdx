@@ -22,11 +22,11 @@ Returns the connected wallet's balance.
 ## Example
 
 <Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysBundler()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/install-configure).  
 </Callout>
 
 ```js
-const irys = await getIrysBundler();
+const irys = await getIrysUploader();
 
 // Get loaded balance in atomic units
 const atomicBalance = await irys.getBalance();

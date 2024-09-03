@@ -20,19 +20,18 @@ Select the appropriate code from the options below when starting your project.
 Installing:
 
 ```console
-npm install @irys-network/bundler-aptos
+npm install @irys/upload @irys/upload-aptos
 ```
 
 Importing & Configuring:
 
 ```ts
-import AptosBundlerIrys from "@irys-network/bundler-aptos";
+import Uploader from "@irys/upload";
+import Aptos from "@irys/upload-aptos";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await AptosBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Aptos).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -42,19 +41,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import ArbitrumBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import Arbitrum from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await ArbitrumBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Arbitrum).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -63,19 +61,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import AvalancheBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import Avalanche from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await AvalancheBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Avalanche).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -84,19 +81,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import BeraBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import Bera from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await BeraBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Bera).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -105,19 +101,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import BNBBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import BNB from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await BNBBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(BNB).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -127,19 +122,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import ChainlinkBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import Chainlink from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await ChainlinkBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Chainlink).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -148,21 +142,19 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-solana
+npm install @irys/upload @irys/upload-solana
 ```
 
 Importing & Configuring:
 
 ```ts
-import EclipseBundlerIrys from "@irys-network/bundler-solana";
+import Uploader from "@irys/upload";
+import Eclipse from "@irys/upload-solana";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await EclipseBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Eclipse).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
-
 ```
 
 ## Ethereum
@@ -170,19 +162,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import EthereumBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import Ethereum from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await EthereumBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -191,19 +182,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import BaseEthBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import BaseEth from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await BaseEthBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(BaseEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -212,19 +202,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import LineaEthBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import LineaEth from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await LineaEthBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(LineaEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -233,19 +222,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import ScrollEthBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import ScrollEth from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await ScrollEthBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(ScrollEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -254,19 +242,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import IotexBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import Iotex from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await IotexBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Iotex).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -276,21 +263,19 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import MaticBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import Matic from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await MaticBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Matic).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
-
 ```
 
 ## Solana
@@ -298,21 +283,19 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-solana
+npm install @irys/upload @irys/upload-solana
 ```
 
 Importing & Configuring:
 
 ```ts
-import SolanaBundlerIrys from "@irys-network/bundler-solana";
+import Uploader from "@irys/upload";
+import Solana from "@irys/upload-solana";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await SolanaBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Solana).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
-
 ```
 
 ## USDC (on Ethereum)
@@ -320,19 +303,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import USDCEthBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import USDCEth from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await USDCEthBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(USDCEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
@@ -341,19 +323,18 @@ const getIrysBundler = async () => {
 Installing:
 
 ```console
-npm install @irys-network/bundler-ethereum
+npm install @irys/upload @irys/upload-ethereum
 ```
 
 Importing & Configuring:
 
 ```ts
-import USDCPolygonBundlerIrys from "@irys-network/bundler-ethereum";
+import Uploader from "@irys/upload";
+import USDCPolygon from "@irys/upload-ethereum";
 
-const getIrysBundler = async () => {
-  const irysBundler  = await USDCPolygonBundlerIrys().withWallet(process.env.PRIVATE_KEY);
-
-  console.log(`Connected to Irys from ${irysBundler.address}`);
-  return irysBundler;
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(USDCPolygon).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
 };
 ```
 
