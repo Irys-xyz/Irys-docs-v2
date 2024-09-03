@@ -54,7 +54,6 @@ If you're using a different token, replace the above with one from this table.
 | USDC (on Polygon)  | `@irys-network/bundler-ethereum` | `USDCPolygonBundlerIrys` |
 
 
-
 ### Ethers v5
 
 Installing:
@@ -72,12 +71,17 @@ Importing & Configuring:
 import EthereumBundlerWebIrys from "@irys-network/web-bundler-ethereum";
 import Ethersv5Adapter from "@irys-network/web-bundler-ethereum-ethers-v5";
 
-const getWebIrysBundler = async (): Promise<void> => {
-	let provider = window.ethereum;
-    const irys = await EthereumBundlerWebIrys().withProvider(Ethersv5Adapter(provider));
-    console.log(`Connected to WebIrys from ${irys.address}`);
-    
-    return getWebIrysBundler;
+const getWebIrysBundler => {
+  try {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const webBundlerIrys = await WebEthereumBundlerIrys().withProvider(Ethersv5Adapter(provider));
+    console.log(`Connected from ${webBundlerIrys.address}`);
+
+    return webBundlerIrys;
+  } catch (error) {
+    console.error("Error connecting", error);
+    throw new Error("Error connecting ");
+  }
 };
 ```
 
@@ -101,7 +105,7 @@ import Ethersv6Adapter from "@irys-network/web-bundler-ethereum-ethers-v6";
 const getWebIrysBundler = async (): Promise<void> => {
     const provider = new ethers.BrowserProvider(window.ethereum)
     const irys = await EthereumBundlerWebIrys().withProvider(Ethersv6Adapter(provider));
-    console.log(`Connected to WebIrys from ${irys.address}`);
+    console.log(`Connected from ${irys.address}`);
     
     return getWebIrysBundler;
 };
@@ -126,23 +130,18 @@ import { Viemv2Adapter } from "@irys-network/web-bundler-ethereum-viem-v2"
 
 
 const getWebIrysBundler = async (): Promise<void> => {
-    const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
+  const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
 
-	const provider = createWalletClient({
-		account,
-		chain: sepolia,
-		transport: custom(window.ethereum),
-	});
+  const provider = createWalletClient({
+    account,
+    chain: sepolia,
+    transport: custom(window.ethereum),
+  });
 
-    const publicClient = createPublicClient({
-        chain: sepolia,
-        transport: custom(window.ethereum)
-    });
-    
-    const irys = await EthereumBundlerWebIrys().withProvider(Viemv2Adapter(provider, { publicClient }));
-    console.log(`Connected to WebIrys from ${irys.address}`);
-    
-    return getWebIrysBundler;
+  const webIrysBundler = await WebEthereumBundlerIrys().withProvider(Viemv2Adapter(provider));
+  console.log(`Connected from ${irys.webIrysBundler}`);
+
+  return getWebIrysBundler;
 };
 ```
 
