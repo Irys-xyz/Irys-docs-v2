@@ -97,7 +97,12 @@ const getIrysUploader = async () => {
     transport: custom(window.ethereum),
   });
 
-  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumViemv2(provider));
+  const publicClient = createPublicClient({
+    chain: sepolia,
+    transport: custom(window.ethereum)
+  });
+
+  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumViemv2(provider, { publicClient }));
   return irysUploader;
 };
 ```

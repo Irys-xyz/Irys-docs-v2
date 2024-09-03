@@ -35,19 +35,20 @@ const getIrys = async () => {
 
 To This:
 
-<Callout type="info" emoji="ℹ️"> 
-	The following code is for ethereum only, [we also have examples](/build/d/sdk/setup) covering all supported tokens.
-</Callout>
 
 ```ts
-import Uploader from "@irys/upload";
-import Ethereum from "@irys/upload-ethereum";
+import { Uploader } from "@irys/upload";
+import { Ethereum } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
   return irysUploader;
 };
 ```
+
+<Callout type="info" emoji="ℹ️"> 
+	The above code is for ethereum only, [we also have examples](/build/d/sdk/setup) covering all supported tokens.
+</Callout>
 
 ### Browser
 
@@ -70,26 +71,21 @@ const getWebIrys = async () => {
 
 To This:
 
-<Callout type="info" emoji="ℹ️"> 
-	The following code is for ethereum with ethers v5 only, [we also have examples](/build/d/sdk/setup) covering all supported tokens and providers.
-</Callout>
-
 ```ts
-import WebEthereumBundlerIrys from "@irys-network/web-bundler-ethereum";
-import Ethersv5Adapter from "@irys-network/web-bundler-ethereum-ethers-v5";
-import { ethers } from "ethers";
-
-const getWebIrysBundler = async () => {
-  try {
-		const provider = new ethers.providers.Web3Provider(window.ethereum);
-		const irys = await WebEthereumBundlerIrys().withProvider(Ethersv5Adapter(provider));
-		return irys;
-  } catch (error) {
-    console.error("Error connecting to WebIrys:", error);
-    throw new Error("Error connecting to WebIrys");
-  }
+import { WebUploader } from "@irys/web-upload";
+import { WebEthereum } from "@irys/web-upload-ethereum";
+import { EthereumEthersv5 } from "@irys/web-upload-ethereum-ethers-v5";
+ 
+const getIrysUploader = async () => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumEthersv5(provider));
+  return irysUploader;
 };
 ```
+
+<Callout type="info" emoji="ℹ️"> 
+	The above code is for ethereum with ethers v5 only, [we also have examples](/build/d/irys-in-the-browser) covering all supported tokens and providers.
+</Callout>
 
 ## Support
 
