@@ -1,43 +1,28 @@
 ---
-description: Onchain folders create logical groupings of files. 
+description: Onchain folders create logical groupings of files.
 ---
 
 import { Callout } from "nextra-theme-docs";
 
-
 # Onchain Folders
 
-You can create onchain folders, or logical groupings of files, using Irys's path manifests. You can create them using any transaction on Irys, even ones you didn't create yourself.
+Onchain folders are powerful way to organize transactions on Irys. Use them to reference onchain data by logical names instead of transaction IDs.
 
-Path manifests map paths to transaction IDs. Use them to create logical groupings of transactions, even transactions you didn’t create yourself.
+<img
+  className="border border-[#FEF4EE] rounded mt-5 w-5/6 rounded-2xl"
+  src="/build/img/onchain-folders.png"
+/>
 
-<img className="border border-[#FEF4EE] rounded mt-5 w-full" src="/build/img/onchain-folders.png" />
+## Why Use Onchain Folders?
 
-## Creating
+- **Logical Grouping**: Create organized and readable structures for onchain data.
+- **Human-Readable Referencing**: Replace transaction IDs with logical names, improving accessibility.
+- **Cross-Ownership Grouping**: Include any transactions on Irys, even if they weren’t created by you.
+- **Flexibility**: Add new files to existing folders at any time.
 
-To create a path manifest:
+## How The Irys Gateway Resolves Onchain Folders
 
-1. Create a JavaScript `Map` object where each entry maps a unique transaction ID to a unique path. Paths are arbitrary; you can use anything that conforms to valid URL syntax.
-2. Create a `Manifest` object by passing the `Map` object to `irys.uploader.generateManifest()`.
-3. Upload the `Manifest` object to Irys.
-
-```ts
-const map = new Map();
-map.set("foo.png", "DSfHGmnhb7AN3xY3VUCykl-2xKiQcqXrsSP9zpzQQmY");
-
-const manifest = await irys.uploader.generateManifest({ items: map });
-
-const tags = [
-	{ name: "Type", value: "manifest" },
-	{ name: "Content-Type", value: "application/x.irys-manifest+json" },
-];
-const receipt = await irys.upload(JSON.stringify(manifest), { tags });
-const manifestId = receipt.id;
-```
-
-## Resolving
-
-Upon uploading a manifest, you get a [receipt](/build/d/features/receipts) containing a manifest ID. To download transactions in a path manifest, request them from the Irys gateway using a URL formatted as:
+Each onchain folder is uniquely identifiable by a manifest ID. To download transactions in an onchain folder, request them from the Irys gateway using a URL formatted as:
 
 `https://gateway.irys.xyz/:manifestId/:pathName`
 
@@ -60,66 +45,137 @@ You can download the first entry using:
 
 `https://gateway.irys.xyz/W1UbYAZ08egXgm9_kCw24ZZPAfdu8LQB7jc_Vx8fwv4/foo1.png`
 
+## Creating Onchain Folders
 
-## Manually Creating a Path Manifest
+### Automatically
 
-Use path manifests to create a logical grouping of transactions, even transactions you didn’t create yourself.
+When you upload groups of files using the Irys SDK's `uploadFolder()` function or the CLI's `upload-dir` command, an onchain folder for you is automatically created for you. The return value contains the manifest ID, which can be combined with the original file names as above.
 
-This example:
+### Manually
 
-1.  Uses 10 existing transaction IDs.
-2.  Groups the transactions using a `Map` object.
-3.  Creates a manifest mapping the transactions to paths.
-4.  Permanently uploads the manifest using Irys.
+To manually create an onchain folder:
 
-<Callout type="info" emoji="ℹ️">
-	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/setup).  
-</Callout>
+1. Create a JavaScript `Map` object where each entry maps a unique transaction ID to a unique path. (Paths are arbitrary; you can use anything that conforms to valid URL syntax.)
+2. Create a `Manifest` object by passing the `Map` object to `irys.uploader.generateManifest()`.
+3. Upload the `Manifest` object to Irys.
 
 ```ts
-// Get the most recent 'totalIds' number TXs tagged 'image/gif'
-const getTxIds = async () => {
-	const txIds = [
-			'DSfHGmnhb7AN3xY3VUCykl-2xKiQcqXrsSP9zpzQQmY',
-			'vW3jH4kpL8mT9rXsUo7dE1cXfP5qY1kJzG2j6V8a3n9',
-			'9cJ5KzY8rV2mL0N1Xg4T7wBqP3hD6fFz0o2v9u3E5i1',
-			'P3jH8mT5r0N2L6Xy7K1zQ4oV9cE2fFzJ5w8u0d3i1g6',
-			'r9X0L4T2m5K8P1H6V7o3zYQfE9wC2j0i3u5D6F7n8g',
-			'K2mL7T5r1X8P0H9V3zY4oE6fFzJ2w8u0d3i1g9n5C7',
-			'T5r8X0L4m1P2H7V9o3zY6fE2fJ0wC5u3i1g9D7n8K',
-			'6V7K0T5r1X2P8H9m3zY4oE2fFzJ5w8u0d1i9g7n3C',
-			'm1X2T7P5r8H9V0o3zY4fE6fFzJ2w8u0d3i1g9n7C',
-			'P8L7m1T0X2H9V3o4zY5E6fFzJ2w8u0d3i1g9n7K8C'
-		];
-	return txIds;
+const map = new Map();
+map.set("foo.png", "DSfHGmnhb7AN3xY3VUCykl-2xKiQcqXrsSP9zpzQQmY");
+map.set("bar.png", "DSfHGmnhb7AN3xY3VUCykl-2xKiQcqXrsSP9zpzPPmY");
+
+const manifest = await irys.uploader.generateManifest({ items: map });
+
+const tags = [
+  { name: "Type", value: "manifest" },
+  { name: "Content-Type", value: "application/x.irys-manifest+json" },
+];
+const receipt = await irys.upload(JSON.stringify(manifest), { tags });
+const manifestId = receipt.id;
+```
+
+## Mutable Onchain Folders
+
+Mutable onchain folders let you add new files to an existing folder after it’s created. By using a single, static URL that always points to the most recent version, you can expand an NFT collection, add updated documents, or manage evolving datasets without needing to change the original reference. This approach ensures consistency while allowing dynamic updates over time, with the security that only the original creator can modify the folder's contents.
+
+### How to Create Mutable Onchain Folders
+
+1. **Upload the Initial Folder**: Use the SDK's `uploadFolder()` to upload your initial set of files. This will create a base manifest ID that uniquely identifies the folder.
+
+2. **Reference Files Using a Mutable URL**: Reference files in this folder using a URL formatted as `https://gateway.irys.xyz/mutable/:manifestId/:fileName`. This URL will always resolve to the most recent version of the folder.
+
+3. **Upload New Files**: When you need to add new files, upload them individually using `uploadFile()` or any other appropriate method.
+
+4. **Create a New Path Manifest**: Manually create a new path manifest that includes both the original files and any new files as outlined above.
+
+5. **Tag the New Manifest**: Upload the new path manifest to Irys, tagging it with `Root-TX` equal to the original manifest ID. This links the new manifest to the original folder, ensuring the mutable URL remains consistent.
+
+6. **Access the Updated Folder**: The URL `https://gateway.irys.xyz/mutable/:manifestId/:fileName` will now point to the latest version of the folder, including all newly added files.
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Ethereum } from "@irys/upload-ethereum";
+import "dotenv/config";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Ethereum).withWallet(
+    process.env.PRIVATE_KEY
+  );
+  return irysUploader;
 };
 
-// Generate a manifest containing 10 Tx IDs
-const generateManifest = async () => {
-	const txIds: string[] = getTxIds();
-	const map = new Map();
-	for (let i = 0; i < txIds.length; i++) {
-		map.set(`foo${i}.gif`, txIds[i]);
-	}
-
-	const irys = await getIrysUploader();
-
-	const manifest = await irys.uploader.generateManifest({ items: map });
-	const tags = [
-		{ name: "Type", value: "manifest" },
-		{ name: "Content-Type", value: "application/x.irys-manifest+json" },
-	];
-	const receipt = await irys.upload(JSON.stringify(manifest), { tags });
-	const manifestId = receipt.id;
-
-	map.forEach((value, key) => {
-		console.log(`https://gateway.irys.xyz/${manifestId}/${key}`);
-	});
+const downloadOriginalManifest = async (
+  originalManifestId: string
+): Promise<Manifest> => {
+  try {
+    const response = await fetch(
+      `https://gateway.irys.xyz/${originalManifestId}`
+    );
+    if (!response.ok) throw new Error("Failed to fetch original manifest");
+    return response.json();
+  } catch (error) {
+    console.error("Error downloading original manifest", error);
+    throw error;
+  }
 };
 
-async function main(): Promise<void> {
-	await generateManifest();
-}
+const appendToManifest = (
+  originalManifest: Manifest,
+  newFiles: Map<string, string>
+): Manifest => {
+  newFiles.forEach((txId, fileName) => {
+    originalManifest.paths[fileName] = { id: txId };
+  });
+  return originalManifest;
+};
 
-main().catch(console.error);
+const uploadManifest = async (
+  manifest: Manifest,
+  originalManifestId: string
+): Promise<void> => {
+  const irysUploader = await getIrysUploader();
+
+  const manifestTags = [
+    { name: "Type", value: "manifest" },
+    { name: "Content-Type", value: "application/x.irys-manifest+json" },
+    { name: "Root-TX", value: originalManifestId },
+  ];
+
+  try {
+    const manifestResponse = await irysUploader.upload(
+      JSON.stringify(manifest),
+      { tags: manifestTags }
+    );
+    console.log(
+      `Manifest uploaded ==> https://testnet-gateway.irys.xyz/mutable/${originalManifestId}`
+    );
+  } catch (e) {
+    console.error("Error uploading manifest", e);
+  }
+};
+
+const main = async () => {
+  try {
+    // Your original manifest ID
+    const originalManifestId = "FB2ribOuiNdJAkYRVEzigSHDOgiwmvoKsxJk3hvKwpE";
+
+    // Step 1: Download the original manifest
+    const originalManifest = await downloadOriginalManifest(originalManifestId);
+
+    // Step 2: Prepare new files to add to the manifest
+    const newFiles = new Map<string, string>();
+    newFiles.set("new-1.png", "transaction_id_1");
+    newFiles.set("new-2.png", "transaction_id_2");
+
+    // Step 3: Append new files to the manifest
+    const updatedManifest = appendToManifest(originalManifest, newFiles);
+
+    // Step 4: Upload the updated manifest
+    await uploadManifest(updatedManifest, originalManifestId);
+  } catch (e) {
+    console.error("Error in main execution", e);
+  }
+};
+
+main();
 ```

@@ -12,10 +12,9 @@ The Irys SDK reduces dependency bloat by providing dedicated packages for each t
 Choose the code for your provider:
 
 <Callout emoji="🚀">
-	If you're using Irys with React and `npx create-react-app`, you will need to [follow some extra setup
-	steps](/build/d/guides/irys-react).
+  If you're using Irys with React and `npx create-react-app`, you will need to
+  [follow some extra setup steps](/build/d/guides/irys-react).
 </Callout>
-
 
 ## Ethers v5
 
@@ -25,7 +24,6 @@ Installing:
 npm install \
     @irys/web-upload \
     @irys/web-upload-ethereum \
-    @irys/web-upload-ethereum-ethers-v5 \
     ethers@5
 ```
 
@@ -34,11 +32,11 @@ Importing & Configuring:
 ```js
 import { WebUploader } from "@irys/web-upload";
 import { WebEthereum } from "@irys/web-upload-ethereum";
-import { EthereumEthersv5 } from "@irys/web-upload-ethereum-ethers-v5";
 
 const getIrysUploader = async () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumEthersv5(provider));
+  const irysUploader = await WebUploader(WebEthereum).withProvider(provider);
+
   return irysUploader;
 };
 ```
@@ -64,7 +62,9 @@ import { EthereumEthersv6 } from "@irys/web-upload-ethereum-ethers-v6";
 
 const getIrysUploader = async () => {
   const provider = new ethers.BrowserProvider(window.ethereum);
-  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumEthersv6(provider));
+  const irysUploader = await WebUploader(WebEthereum).withProvider(
+    EthereumEthersv6(provider)
+  );
   return irysUploader;
 };
 ```
@@ -89,7 +89,9 @@ import { WebEthereum } from "@irys/web-upload-ethereum";
 import { EthereumViemv2 } from "@irys/web-upload-ethereum-viem-v2";
 
 const getIrysUploader = async () => {
-  const [account] = await window.ethereum.request({ method: "eth_requestAccounts" });
+  const [account] = await window.ethereum.request({
+    method: "eth_requestAccounts",
+  });
 
   const provider = createWalletClient({
     account,
@@ -99,10 +101,12 @@ const getIrysUploader = async () => {
 
   const publicClient = createPublicClient({
     chain: sepolia,
-    transport: custom(window.ethereum)
+    transport: custom(window.ethereum),
   });
 
-  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumViemv2(provider, { publicClient }));
+  const irysUploader = await WebUploader(WebEthereum).withProvider(
+    EthereumViemv2(provider, { publicClient })
+  );
   return irysUploader;
 };
 ```

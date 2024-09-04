@@ -142,8 +142,8 @@ const iconMapping = {
     animation: "TroubleshootingAnim",
   },
   Migrating: {
-    src: "/assets/rive/build/troubleshooting.riv",
-    animation: "TroubleshootingAnim",
+    src: "/assets/rive/build/migrating.riv",
+    animation: "MigratingAnim",
   },
 };
 
