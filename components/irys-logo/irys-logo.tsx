@@ -16,6 +16,7 @@ const IrysInteractiveEye = () => {
     const handleMouseMove = (e: any) => {
       const container = containerRef.current;
       if (!container) return;
+      if (typeof window !== "undefined" && window?.innerWidth < 768) return;
 
       const { left, top, width, height } = (
         container as any
@@ -66,6 +67,18 @@ const IrysInteractiveEye = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
+  }, []);
+
+  useEffect(() => {
+    // on mobile devices, leave the circle in the center
+    window.addEventListener("resize", () => {
+      if (typeof window !== "undefined" && window?.innerWidth < 768) {
+        setCirclePosition({
+          left: "40%",
+          top: "55%",
+        });
+      }
+    });
   }, []);
 
   return (
