@@ -58,13 +58,13 @@ Importing & Configuring:
 ```js
 import { WebUploader } from "@irys/web-upload";
 import { WebEthereum } from "@irys/web-upload-ethereum";
-import { EthereumEthersv6 } from "@irys/web-upload-ethereum-ethers-v6";
+import { EthersV6Adapter } from "@irys/web-upload-ethereum-ethers-v6";
+import { ethers } from "ethers";
 
 const getIrysUploader = async () => {
   const provider = new ethers.BrowserProvider(window.ethereum);
-  const irysUploader = await WebUploader(WebEthereum).withProvider(
-    EthereumEthersv6(provider)
-  );
+  const irysUploader = await WebUploader(WebEthereum).withAdapter(EthersV6Adapter(provider));
+
   return irysUploader;
 };
 ```
@@ -89,9 +89,7 @@ import { WebEthereum } from "@irys/web-upload-ethereum";
 import { EthereumViemv2 } from "@irys/web-upload-ethereum-viem-v2";
 
 const getIrysUploader = async () => {
-  const [account] = await window.ethereum.request({
-    method: "eth_requestAccounts",
-  });
+  const [account] = await window.ethereum.request({ method: "eth_requestAccounts",});
 
   const provider = createWalletClient({
     account,
@@ -104,9 +102,8 @@ const getIrysUploader = async () => {
     transport: custom(window.ethereum),
   });
 
-  const irysUploader = await WebUploader(WebEthereum).withProvider(
-    EthereumViemv2(provider, { publicClient })
-  );
+  const irysUploader = await WebUploader(WebEthereum).withAdapter(ViemV2Adapter(provider, { publicClient }));
+
   return irysUploader;
 };
 ```
