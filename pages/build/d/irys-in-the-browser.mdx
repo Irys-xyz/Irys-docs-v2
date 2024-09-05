@@ -1,5 +1,5 @@
 ---
-description: Using the WebIrys class to interact with Irys from the browser
+description: Using the Irys class to interact with Irys from the browser
 ---
 
 import { Callout } from "nextra-theme-docs";
@@ -106,4 +106,191 @@ const getIrysUploader = async () => {
 
   return irysUploader;
 };
+```
+
+## Solana
+
+When using Solana, there is only a single Irys package that needs to be installed, `@irys-network/web-bundler-solana`.
+
+[Solana's wallet-adapter library](https://solana.com/developers/cookbook/wallets/connect-wallet-react) make it easy to manage wallet connections.
+
+Installing:
+
+```console
+npm install \
+   @irys-network/web-bundler-solana \
+   @solana/wallet-adapter-base \
+   @solana/wallet-adapter-react \
+   @solana/wallet-adapter-react-ui \
+   @solana/wallet-adapter-wallets \
+   @solana/web3.js
+```
+
+Importing & Configuring:
+
+The Solana library uses the React provider pattern. Start by setting up a top-level file named `ClientProviders.tsx` that wraps all your child components.
+
+```ts filename="app/components/ClientProviders.js"
+"use client";
+
+import { ReactNode, useMemo } from "react";
+import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import { clusterApiUrl } from "@solana/web3.js";
+
+require("@solana/wallet-adapter-react-ui/styles.css");
+
+export default function ClientProviders({ children }: { children: ReactNode }) {
+ const network = WalletAdapterNetwork.Devnet;
+
+ const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+ const wallets = useMemo(
+   () => [new UnsafeBurnerWalletAdapter()],
+   [network]
+ );
+
+ return (
+   <ConnectionProvider endpoint={endpoint}>
+     <WalletProvider wallets={wallets} autoConnect>
+       <WalletModalProvider>
+         {children}
+       </WalletModalProvider>
+     </WalletProvider>
+   </ConnectionProvider>
+ );
+}
+```
+
+Then load this component via `layout.tsx`:
+
+```ts filename="layout.tsx"
+import type { Metadata } from "next";
+import ClientProviders from "@/app/components/ClientProviders";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+
+export default function RootLayout({
+ children,
+}: Readonly<{
+ children: React.ReactNode;
+}>) {
+ return (
+   <html lang="en">
+     <body className={inter.className}>
+       <ClientProviders>
+         {children}
+       </ClientProviders>
+     </body>
+   </html>
+ );
+}
+```
+
+First create a component to connect to your Solana wallet:
+
+```ts filename="app/components/ConnectSolana.tsx"
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { WalletMultiButton, WalletDisconnectButton } from "@solana/wallet-adapter-react-ui";
+
+import "@solana/wallet-adapter-react-ui/styles.css";
+
+const ConnectSolana: React.FC = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  // Prevent hydration errors by ensuring this runs only on the client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
+  return (
+    <div className="border-2 border-primary rounded-2xl p-4 w-full max-w-md">
+      {/* Solana wallet connect button */}
+      <div className="mr-5">
+        <WalletMultiButton />
+      </div>
+      {/* Solana wallet disconnect button */}
+      <div className="ml-5">
+        <WalletDisconnectButton />
+      </div>
+    </div>
+  );
+};
+
+export default ConnectSolana;
+```
+
+Then create a component called `ConnectIrys.tsx` that connects to an Irys Bundler.
+
+```ts filename="app/components/ConnectIrys.tsx"
+"use client";
+
+import { useState } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import WebSolanaBundlerIrys from "@irys-network/web-bundler-solana";
+
+const getIrysUploader = async (wallet: any): Promise<string> => {
+ try {
+   const irys = await WebSolanaBundlerIrys().withProvider(wallet);
+   console.log(`Connected to Irys from ${irys.address}`);
+   return `Connected to Irys from ${irys.address}`;
+ } catch (error) {
+   console.error("Error connecting to Irys:", error);
+   throw new Error("Error connecting to Irys");
+ }
+};
+
+const ConnectIrys = (): JSX.Element => {
+ const wallet = useWallet();
+ const [isConnected, setIsConnected] = useState<boolean>(false);
+
+ const connectToIrys = async () => {
+   if (!wallet) {
+     console.log("Wallet not connected");
+     return;
+   }
+
+   try {
+     const message = await getIrysUploader(wallet);
+     console.log(message);
+     setIsConnected(true);
+   } catch (error) {
+     console.log("Error connecting to Irys");
+   }
+ };
+
+ return (
+   <div>
+     <button onClick={connectToIrys}>
+       {isConnected ? "Connected to Irys" : "Connect Irys"}
+     </button>
+   </div>
+ );
+};
+
+export default ConnectIrys;
+```
+
+And load them all through your `page.tsx` file:
+
+```ts filename="page.tsx"
+import Image from "next/image";
+import ConnectSolana from "./components/ConectSolana";
+import ConnectIrys from "./components/ConnectIrys";
+
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col justify-around items-center p-24 bg-black">
+      <ConnectSolana />
+      <ConnectIrys />
+    </main>
+  );
+}
 ```
