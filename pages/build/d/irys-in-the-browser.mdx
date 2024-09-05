@@ -110,7 +110,6 @@ const getIrysUploader = async () => {
 
 ## Solana
 
-When using Solana, there is only a single Irys package that needs to be installed, `@irys-network/web-bundler-solana`.
 
 [Solana's wallet-adapter library](https://solana.com/developers/cookbook/wallets/connect-wallet-react) make it easy to manage wallet connections.
 
@@ -118,12 +117,13 @@ Installing:
 
 ```console
 npm install \
-   @irys-network/web-bundler-solana \
-   @solana/wallet-adapter-base \
-   @solana/wallet-adapter-react \
-   @solana/wallet-adapter-react-ui \
-   @solana/wallet-adapter-wallets \
-   @solana/web3.js
+    @irys/web-upload \
+    @irys/web-upload-solana
+    @solana/wallet-adapter-base \
+    @solana/wallet-adapter-react \
+    @solana/wallet-adapter-react-ui \
+    @solana/wallet-adapter-wallets \
+    @solana/web3.js
 ```
 
 Importing & Configuring:
@@ -234,13 +234,14 @@ Then create a component called `ConnectIrys.tsx` that connects to an Irys Bundle
 
 import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import WebSolanaBundlerIrys from "@irys-network/web-bundler-solana";
-
-const getIrysUploader = async (wallet: any): Promise<string> => {
+import { WebUploader } from "@irys/web-upload";
+import { WebSolana } from "@irys/web-upload-solana";
+  
+const getIrysUploader = async (wallet: any) => {
  try {
-   const irys = await WebSolanaBundlerIrys().withProvider(wallet);
-   console.log(`Connected to Irys from ${irys.address}`);
-   return `Connected to Irys from ${irys.address}`;
+   const irysUploader = await WebUploader(WebSolana).withProvider(wallet);
+    
+   return irysUploader; 
  } catch (error) {
    console.error("Error connecting to Irys:", error);
    throw new Error("Error connecting to Irys");
@@ -258,8 +259,8 @@ const ConnectIrys = (): JSX.Element => {
    }
 
    try {
-     const message = await getIrysUploader(wallet);
-     console.log(message);
+     const irysUploader = await getIrysUploader(wallet);
+     console.log(`Connected to Irys from ${irysUploader.address}`);
      setIsConnected(true);
    } catch (error) {
      console.log("Error connecting to Irys");
