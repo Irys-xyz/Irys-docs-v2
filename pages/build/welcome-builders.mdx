@@ -1,44 +1,53 @@
 ---
 description: Welcome to the Irys private testnet
 ---
+  
+import ChatBubbleIcon from "../../components/svg/chat-bubble-icon"
+  
 
-A Note From Our Founder:
-
-<div className="text-4xl font-bold italic leading-loose mb-6 mt-5">
-  “Hirys, and welcome to our private testnet—you’re dangerously early.
+<div className="flex items-center gap-3 mt-8">
+  <ChatBubbleIcon />
+  <p className="text-black dark:text-white">A Note From Our Founder:</p>
 </div>
 
-<div className="text-base leading-relaxed">
+<style>
+{
+  `.nextra-breadcrumb {
+  display: none;
+  }`
+}
+</style>
+
+<div className="text-4xl font-bold italic mb-10 mt-10 dark:text-white text-black">
+<p>“Hirys, and welcome to our private testnet—</p><p className="mt-3">you’re dangerously early.”</p>
+</div>
+
+<div className="text-base leading-relaxed dark:text-[#BABABA]">
   If you’re wondering who we are, let me fill you in. We’re Irys, the world’s first programmable datachain.
 </div>
 
-<div className="text-base leading-relaxed mt-4">
-  <strong>Datachain</strong> means we’re an L1 that incentivizes storage.
+<div className="text-base leading-relaxed mt-4 dark:text-[#BABABA]">
+  <strong className="dark:text-white text-black">Datachain</strong> means we’re an L1 that incentivizes storage.
 </div>
 
-<div className="text-base leading-relaxed mt-4">
-  <strong>Programmable</strong> means that data on Irys is composable. On Irys, smart contracts will be able to natively <strong>access</strong> (read), <strong>manipulate</strong> (validate, reference, or evolve), and <strong>write</strong> back to the storage layer (output)—all within a single protocol.
+<div className="text-base leading-relaxed mt-4 dark:text-[#BABABA]">
+  <strong className="dark:text-white text-black">Programmable</strong> means that data on Irys is composable. On Irys, smart contracts will be able to natively <strong className="dark:text-white text-black">access</strong> (read), <strong className="dark:text-white text-black">manipulate</strong> (validate, reference, or evolve), and <strong className="dark:text-white text-black">write</strong> back to the storage layer (output)—all within a single protocol.
 </div>
 
-<div className="text-base leading-relaxed mt-4">
+<div className="text-base leading-relaxed mt-4 dark:text-[#BABABA]">
   Our private testnet is live as of September 2nd, 2024, starting with support for permanent data uploads. Over the coming weeks, we’ll be rolling out the IrysVM, temporary data, and programmable data."
 </div>
 
-<div className="flex text-base leading-relaxed mt-10 mb-6 w-full justify-center">
+<div className="flex text-base leading-relaxed mt-10 mb-6 w-full justify-start">
   <div>
     <img 
-      src="/build/img/josh-sig-black.png" 
+      src="/build/img/josh-sig.png" 
       alt="Josh Benaron Signature" 
-      className="block dark:hidden" 
-    />
-    <img 
-      src="/build/img/josh-sig-white.png" 
-      alt="Josh Benaron Signature" 
-      className="hidden dark:block" 
+      className="invert dark:invert-0" 
     />
   </div>
 </div>
 
-<div className="text-base leading-relaxed">
-  PS: If you have any questions, hit us up in <a href="https://discord.gg/irys" className="underline">Discord</a>.
+<div className="text-base leading-relaxed pt-6">
+  PS: If you have any questions, hit us up in <a href="https://discord.gg/irys" className="underline text-[#5865F2]">Discord</a>.
 </div>
