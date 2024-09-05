@@ -10,14 +10,14 @@ import { Callout } from "nextra-theme-docs";
 Uploads a group of files to Irys in a single transaction.
 
 See:
-- [`Irys`](#irysuploadfolderfoldertoupload-tags): For uploading a folder on the server.
-- [`WebIrys`](#webirysuploadfoldertaggedfile): For uploading a folder from the browser. 
+- [NodeJS](#nodejs): For uploading a folder on the server.
+- [Browser](#browser): For uploading a folder from the browser. 
 
 ## Funding
 
 Uploads of less than 100 KiB are are free. For larger uploads, you'll need to [fund your account first](/build/d/sdk/payment/fund). 
 
-## `irys.uploadFolder(folderToUpload, tags)`
+## NodeJS
 
 ## Parameters
 
@@ -27,9 +27,9 @@ Uploads of less than 100 KiB are are free. For larger uploads, you'll need to [f
 	{ header: "Description", key: "description", span: 7 },
 ]} data={[
 	  { name: "folderToUpload", type: "string", description: "Path to the folder being uploaded." },
-		{ name: "indexFile", type: "string", description: "(optional) The name of an index file also included in the folder you upload. If provided, this index file will load when a user requests `https://gateway.irys.xyz/:manifestId`." },
-		{ name: "batchSize", type: "number", description: "(optional) The number of files to upload at once." },
-		{ name: "keepDeleted", type: "boolean", description: "(optional) Whether to keep now deleted items from previous uploads. When you upload a folder, the file names are indexed and saved. If you then re-upload that same folder, Irys will only upload new files added since the previous upload. In the case where you delete files from your source directory, this flag tells Irys whether to keep those deleted files in the index or remove them." },
+		{ name: "indexFile", type: "string", description: "(Optional) The name of an index file also included in the folder you upload. If provided, this index file will load when a user requests `https://gateway.irys.xyz/:manifestId`." },
+		{ name: "batchSize", type: "number", description: "(Optional) The number of files to upload at once." },
+		{ name: "keepDeleted", type: "boolean", description: "(Optional) Whether to keep now deleted items from previous uploads. When you upload a folder, the file names are indexed and saved. If you then re-upload that same folder, Irys will only upload new files added since the previous upload. In the case where you delete files from your source directory, this flag tells Irys whether to keep those deleted files in the index or remove them." },
 ]}/>
 
 
@@ -80,7 +80,7 @@ try {
 }
 ```
 
-## `webIrys.uploadFolder(TaggedFile[])`
+## Browser
 
 Pass an array of `File` objects.
 
@@ -93,9 +93,9 @@ Pass an array of `File` objects.
 	{ header: "Description", key: "description", span: 8 },
 ]} data={[
 	  { name: "files", type: "TaggedFile[]", description: "Path to the folder being uploaded." },
-		{ name: "indexFileRelPath", type: "string", description: "(optional) Your own throwaway JWK to use for signing (i.e if you want to use the same one for more than one set of uploads)." },
-		{ name: "throwawayKey", type: "number", description: "(optional) The number of files to upload at once." },
-		{ name: "seperateManifestTx", type: "boolean", description: "(optional) If true, the manifest transaction will be excluded from the bundle making its tags indexable and queryable." },
+		{ name: "indexFileRelPath", type: "string", description: "(Optional) Your own throwaway JWK to use for signing (i.e if you want to use the same one for more than one set of uploads)." },
+		{ name: "throwawayKey", type: "number", description: "(Optional) The number of files to upload at once." },
+		{ name: "seperateManifestTx", type: "boolean", description: "(Optional) If true, the manifest transaction will be excluded from the bundle making its tags indexable and queryable." },
 ]}/>
 
 ## Returns
@@ -124,7 +124,7 @@ Pass an array of `File` objects.
 ## Example
 
 ```ts
-const webIrys = await getWebIrys();
+const irysUploader = await getIrysUploader();
 
 const files: File[] = [];
 const tags: { name: string; value: string }[][] = [];
@@ -144,7 +144,7 @@ const uploadOptions = {
 	throwawayKey: myKey,
 	seperateManifestTx: true,
 };
-const response = await webIrys.uploadFolder(taggedFiles, uploadOptions);
+const response = await irysUploader.uploadFolder(taggedFiles, uploadOptions);
 ```
 
 ## Returns

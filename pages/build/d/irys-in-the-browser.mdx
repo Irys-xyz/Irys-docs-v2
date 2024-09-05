@@ -3,7 +3,6 @@ description: Using the Irys class to interact with Irys from the browser
 ---
 
 import { Callout } from "nextra-theme-docs";
-import Heading from "@/components/Heading";
 
 # Irys in The Browser
 
@@ -16,7 +15,29 @@ Choose the code for your provider:
   [follow some extra setup steps](/build/d/guides/irys-react).
 </Callout>
 
-## Ethers v5
+
+## EVM Chains
+
+When connecting from an EVM chain, your connection code will differ based on the token you're using. The examples below use Ethereum and the `WebEthereum` class. To change tokens, use one from the following list. 
+
+| Token             | Class Name       |
+| ----------------- | ---------------- |
+| Polygon           | `WebMatic`       |
+| Binance Coin      | `WebBNB`         |
+| Avalanche C-Chain | `WebAvalanche`   |
+| Base Ethereum     | `WebBaseEth`     |
+| USDC (on Ethereum)| `WebUSDCEth`     |
+| Arbitrum          | `WebArbitrum`    |
+| Chainlink         | `WebChainlink`   |
+| USDC (on Polygon) | `WebUSDCPolygon` |
+| Berachain         | `WebBera`        |
+| Scroll Ethereum   | `WebScrollEth`   |
+| Linea Ethereum    | `WebLineaEth`    |
+| IoTeX             | `WebIotex`       |
+| Ethereum          | `WebEthereum`    |
+
+
+### Ethers v5
 
 Installing:
 
@@ -41,7 +62,7 @@ const getIrysUploader = async () => {
 };
 ```
 
-## Ethers v6
+### Ethers v6
 
 Installing:
 
@@ -69,7 +90,7 @@ const getIrysUploader = async () => {
 };
 ```
 
-## Viem v2
+### Viem v2
 
 Installing:
 
@@ -109,9 +130,6 @@ const getIrysUploader = async () => {
 ```
 
 ## Solana
-
-
-[Solana's wallet-adapter library](https://solana.com/developers/cookbook/wallets/connect-wallet-react) make it easy to manage wallet connections.
 
 Installing:
 
@@ -188,9 +206,10 @@ export default function RootLayout({
 }
 ```
 
-First create a component to connect to your Solana wallet:
+[Solana's wallet-adapter library](https://solana.com/developers/cookbook/wallets/connect-wallet-react) make it easy to manage wallet connections. Create a component using this library to connect to a Solana wallet:
 
 ```ts filename="app/components/ConnectSolana.tsx"
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -227,9 +246,10 @@ const ConnectSolana: React.FC = () => {
 export default ConnectSolana;
 ```
 
-Then create a component called `ConnectIrys.tsx` that connects to an Irys Bundler.
+Then create a component called `ConnectIrys.tsx` that connects to an Irys bundler.
 
 ```ts filename="app/components/ConnectIrys.tsx"
+
 "use client";
 
 import { useState } from "react";
@@ -294,4 +314,132 @@ export default function Home() {
     </main>
   );
 }
+```
+
+## Aptos
+
+Start by scaffolding a blank Aptos project using [`npx create-aptos-dapp`](https://aptos.dev/en/build/create-aptos-dapp).
+
+Next, install the following packages needed by Irys:
+
+```console
+npm install \
+    @irys/web-upload \
+    @irys/web-upload-aptos \
+    axios
+```
+
+Replace your `App.tsx` file with the following:
+
+```tsx
+import React, { useState } from "react";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { WebUploader } from "@irys/web-upload";
+import { WebAptos } from "@irys/web-upload-aptos";
+
+// Radix UI Components
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Header } from "@/components/Header";
+
+function App() {
+  const { connected } = useWallet();
+  const wallet = useWallet();
+  const [irysStatus, setIrysStatus] = useState("Not connected");
+
+  const connectIrys = async () => {
+    console.log("connect irys called");
+    console.log({wallet})
+    try {
+      // const irysUploader = await WebUploader(WebAptos).withProvider(wallet);
+      // console.log({irysUploader})
+
+      setIrysStatus(`Connected to Irys: ${irysUploader.address}`);
+    } catch (error) {
+      console.error("Error connecting to Irys:", error);
+      setIrysStatus("Error connecting to Irys");
+    }
+  };
+
+  return (
+    <>
+      <Header />
+      <div className="flex items-center justify-center flex-col">
+        <Card className="mt-6">
+          <CardHeader>
+            {connected ? (
+              <CardTitle>
+                <button onClick={connectIrys}>
+                  {irysStatus === "Not connected" ? "Connect Irys" : irysStatus}
+                </button>
+              </CardTitle>
+            ) : (
+              <CardTitle>To get started, connect a wallet</CardTitle>
+            )}
+          </CardHeader>
+        </Card>
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+```
+
+The `npx create-aptos-dapp` CLI uses React + Vite. Vite does not automatically polyfill Node.js core modules like crypto, stream, os, or path. To fix compatibility issues, install the necessary polyfill packages:
+
+```bash
+npm install --save-dev \
+    crypto-browserify \
+    stream-browserify \
+    os-browserify \
+    path-browserify \
+    vite-plugin-node-polyfills
+```
+
+Modify your `vite.config.js` to use `vite-plugin-node-polyfills` to handle the polyfills required for Node.js core modules:
+
+```ts
+import path from "path";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    nodePolyfills({
+      // Enable polyfills for specific globals and modules
+      globals: {
+        Buffer: true,
+        global: true,
+        process: true,
+      },
+      protocolImports: true, // Polyfill node: protocol imports
+    }),
+  ],
+  resolve: {
+    alias: {
+      // Polyfill Node.js core modules
+      crypto: "crypto-browserify",
+      stream: "stream-browserify",
+      os: "os-browserify/browser",
+      path: "path-browserify",
+      "@": path.resolve(__dirname, "./frontend"), 
+    },
+  },
+  build: {
+    outDir: "dist", // Output directory
+  },
+  server: {
+    open: true, 
+  },
+});
+```
+
+After making these changes, restart your development server:
+
+```bash
+npm run dev
 ```

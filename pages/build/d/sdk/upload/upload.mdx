@@ -5,7 +5,7 @@ description: Uploads data
 import { Callout } from "nextra-theme-docs";
 import ApiTable from "@/components/api-table/api-table.tsx";
 
-# `irys.upload(data, tags)`
+# `upload(data, tags?, anchor?)`
 
 Uploads data to Irys.
 
@@ -17,8 +17,8 @@ Uploads data to Irys.
 	{ header: "Description", key: "description", span: 8 },
 ]} data={[
 	  { name: "data", type: "string | Buffer | Readable", description: "The data to upload." },
-		{ name: "tags", type: "Tag[]", description: "Optional [metatags](/build/d/features/tags)." },
-		{ name: "anchor", type: "string", description: "(optional) Random value used to prevent data item ID collisions, used with deterministic data item IDs only." },
+		{ name: "tags", type: "Tag[]", description: "(Optional) [metatags](/build/d/features/tags)." },
+		{ name: "anchor", type: "string", description: "(Optional) Random value used to prevent data item ID collisions, used with deterministic data item IDs only." },
 ]}/>
 
 ## Returns

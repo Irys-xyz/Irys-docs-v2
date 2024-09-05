@@ -5,7 +5,7 @@ description: Uploads a file
 import { Callout } from "nextra-theme-docs";
 import ApiTable from "@/components/api-table/api-table.tsx";
 
-# `irys.uploadFile(fileName, tags)`
+# `uploadFile(fileName, tags?)`
 
 Uploads a file to Irys.
 
@@ -17,7 +17,7 @@ Uploads a file to Irys.
 	{ header: "Description", key: "description", span: 8 },
 ]} data={[
 	  { name: "fileName", type: "string ", description: "Name of the file to upload." },
-		{ name: "tags", type: "Tag[]", description: "Optional [metatags](/build/d/features/tags)." },
+		{ name: "tags", type: "Tag[]", description: "(Optional) [metatags](/build/d/features/tags)." },
 ]}/>
 
 
@@ -27,8 +27,7 @@ Uploads a file to Irys.
 	{ header: "Type", key: "type", span: 2 },
 	{ header: "Description", key: "description", span: 10 },
 ]} data={[
-	  { name: "response", type: "object", description: "A receipt as a JSON object with the following values." },
-		{ name: "anchor", type: "string", description: "(optional) Random value used to prevent data item ID collisions, used with deterministic data item IDs only." },
+	  { name: "response", type: "object", description: "A receipt as a JSON object with the following values." }
 ]}/>
 
 ```json
