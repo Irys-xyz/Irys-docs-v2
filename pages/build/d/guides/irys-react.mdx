@@ -11,93 +11,136 @@ import { Callout } from "nextra-theme-docs";
 	instead](./vite).
 </Callout>
 
-Irys is fully compatible with React, however, if you’re using `npx create-react-app` to create your project, you will need to do some additional configuration and installation. This guide details how to create a new React project and add Irys support, if you already have a React project open, free to skip down a few steps.
+Irys is fully compatible with React, however, if you’re using `npx create-react-app` to create your project, you will need to do some additional configuration and installation. This guide details how to create a new React project and add Irys support. If you already have a React project, skip the first step.
+
+## Step 1: Create a New React Project
 
 Create a new directory for your project, cd into it, and create your React project:
 
-```console
+```bash
 mkdir irys-react
 cd irys-react
 npx create-react-app .
 ```
 
-Install the Irys SDK and ethers:
+## Step 2: Install the Irys SDK, Ethers, and Axios
 
-```console
+```bash
 npm install \
     @irys/web-upload \
     @irys/web-upload-ethereum \
     @irys/web-upload-ethereum-ethers-v6 \
-    ethers@6
+    ethers@6 \
+    axios
 ```
 
-In your `App.js` file write an initialization function that sets up a `WebIrys` object. The following code shows how to use ethers5, if you're using [a different provider](/build/d/irys-in-the-browser#supported-providers) make sure to specify it when creating the `wallet`.
+## Step 3: Initialize the Irys Uploader
 
-```js
-import { providers } from "ethers";
-import { WebIrys } from "@irys-network/bundler-client";
+In your `App.js` file, write an initialization function that sets up an Irys uploader. The following code shows how to use ethers6. We also have code examples for [different providers](/build/d/irys-in-the-browser).
+
+```ts
+import React, { useState } from "react";
+import { ethers } from "ethers";
+import { WebUploader } from "@irys/web-upload";
+import { WebEthereum } from "@irys/web-upload-ethereum";
+import { EthersV6Adapter } from "@irys/web-upload-ethereum-ethers-v6";
 
 function App() {
-	const initialiseIrys = async () => {
-		await window.ethereum.enable();
-		const provider = new providers.Web3Provider(window.ethereum);
-		const wallet = { name: "ethersv5", provider: provider };
-		const network = "testnet"; 
-		const token = "ethereum";
-		const webIrys = new WebIrys({ network, token, wallet });
-		await webIrys.ready();
-		return webIrys;
-	};
+  const [walletStatus, setWalletStatus] = useState("Not connected");
+  const [irysStatus, setIrysStatus] = useState("Not connected");
 
-	return <div className="App">Irys Test</div>;
+  const connectWallet = async () => {
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+      setWalletStatus(`Connected: ${address}`);
+    } catch (error) {
+      console.error("Error connecting to wallet:", error);
+      setWalletStatus("Error connecting to wallet");
+    }
+  };
+
+  const connectIrys = async () => {
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const irysUploader = await WebUploader(WebEthereum).withAdapter(EthersV6Adapter(provider));
+      setIrysStatus(`Connected to Irys: ${irysUploader.address}`);
+    } catch (error) {
+      console.error("Error connecting to Irys:", error);
+      setIrysStatus("Error connecting to Irys");
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={connectWallet}>Connect Wallet</button>
+      <p>{walletStatus}</p>
+      <button onClick={connectIrys}>Connect Irys</button>
+      <p>{irysStatus}</p>
+    </div>
+  );
 }
 
 export default App;
 ```
 
-Viewing that page, you'll get a bunch of errors saying `BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default`.
+When you try to run the app, you see this similar to this `BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default`.
 
-To fix this you'll need to include NodeJS polyfills which are no longer included by default.
+To fix this, you'll need to include Node.js polyfills that are not included by default.
 
-Install first react-app-rewired, a package that allows for editing of the webpack config file to fix polyfill issue. Then install the missing dependencies.
+## Step 4: Install React-App-Rewired and Polyfills
 
-```
+Install react-app-rewired, a package that allows you to customize the Webpack configuration to handle the polyfills, and the missing dependencies:
+
+```bash
 npm install react-app-rewired
 npm install --save-dev crypto-browserify stream-browserify assert stream-http https-browserify os-browserify url buffer process
 npm install browserify-zlib path-browserify path
+npm install node-polyfill-webpack-plugin --save-dev
 ```
 
-At the root level of your project, create a new file called config-overrides.js and paste the following in:
+## Step 5: Create the Webpack Configuration Override
 
-```js
+At the root level of your project, create a new file called `config-overrides.js` and paste the following:
+
+```ts
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = function override(config) {
-	const fallback = config.resolve.fallback || {};
-	config.resolve.alias = { ...(config?.resolve?.alias ?? {}), stream: "stream-browserify" };
-	Object.assign(fallback, {
-		crypto: require.resolve("crypto-browserify"),
-		stream: require.resolve("stream-browserify"),
-		assert: require.resolve("assert"),
-		http: require.resolve("stream-http"),
-		https: require.resolve("https-browserify"),
-		os: require.resolve("os-browserify"),
-		url: require.resolve("url"),
-		zlib: require.resolve("browserify-zlib"),
-	});
-	config.resolve.fallback = fallback;
-	config.plugins = (config.plugins || []).concat([
-		new webpack.ProvidePlugin({
-			process: "process/browser",
-			Buffer: ["buffer", "Buffer"],
-		}),
-	]);
+  config.plugins = (config.plugins || []).concat([
+    new NodePolyfillPlugin(),
+    new webpack.ProvidePlugin({
+      process: "process/browser.js", 
+    }),
+  ]);
 
-	return config;
+  const fallback = config.resolve.fallback || {};
+  Object.assign(fallback, {
+    crypto: require.resolve("crypto-browserify"),
+    stream: require.resolve("stream-browserify"),
+    assert: require.resolve("assert"),
+    http: require.resolve("stream-http"),
+    https: require.resolve("https-browserify"),
+    os: require.resolve("os-browserify"),
+    url: require.resolve("url"),
+    zlib: require.resolve("browserify-zlib"),
+    buffer: require.resolve("buffer"),
+    path: require.resolve("path-browserify"),
+  });
+
+  config.resolve.fallback = fallback;
+  config.resolve.extensions = [".js", ".jsx", ".json", ".mjs", ".wasm", ".css"];
+
+  return config;
 };
 ```
 
-Override package.json to include the new webpack configuration. Look for this code block
+## Step 6: Update package.json Scripts
+
+Modify your `package.json` to use the new Webpack configuration. Look for this code block:
 
 ```json
  "scripts": {
@@ -117,7 +160,15 @@ and replace it with this block:
    "test": "react-app-rewired test",
    "eject": "react-scripts eject"
 },
-
 ```
 
-Quit React server and restart it with `npm run start` you should be good to go.
+## Step 7: Restart Your React App
+
+Quit the React development server if it's running and restart it:
+
+```bash
+npm start
+```
+
+You should now be good to go! Your React app is set up with all necessary polyfills and is ready to use the Irys SDK.
+
