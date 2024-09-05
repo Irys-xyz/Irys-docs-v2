@@ -24,7 +24,11 @@ npx create-react-app .
 Install the Irys SDK and ethers:
 
 ```console
-npm install @irys-network/bundler-client ethers@5
+npm install \
+    @irys/web-upload \
+    @irys/web-upload-ethereum \
+    @irys/web-upload-ethereum-ethers-v6 \
+    ethers@6
 ```
 
 In your `App.js` file write an initialization function that sets up a `WebIrys` object. The following code shows how to use ethers5, if you're using [a different provider](/build/d/irys-in-the-browser#supported-providers) make sure to specify it when creating the `wallet`.

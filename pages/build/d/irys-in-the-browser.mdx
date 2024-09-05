@@ -86,7 +86,7 @@ Importing & Configuring:
 ```js
 import { WebUploader } from "@irys/web-upload";
 import { WebEthereum } from "@irys/web-upload-ethereum";
-import { EthereumViemv2 } from "@irys/web-upload-ethereum-viem-v2";
+import { ViemV2Adapter } from "@irys/web-upload-ethereum-viem-v2";
 
 const getIrysUploader = async () => {
   const [account] = await window.ethereum.request({ method: "eth_requestAccounts",});
