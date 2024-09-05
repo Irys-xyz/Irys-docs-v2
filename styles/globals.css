@@ -842,3 +842,19 @@ button.btn.try-out__btn {
 .microlight {
   @apply !bg-[#111111]/70 dark:!bg-[#111111];
 }
+
+.nextra-sidebar-container {
+  @apply border-r border-[#ececec] dark:border-[#1a1a1a] transition-none;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar {
+  @apply h-screen;
+}
+
+/* .nx-mx-auto.nx-flex {
+  @apply divide-x divide-[#1a1a1a];
+} */

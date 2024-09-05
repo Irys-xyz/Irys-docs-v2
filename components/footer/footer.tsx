@@ -79,11 +79,11 @@ const Footer = ({ bgColor }: Props) => {
       ? "border-white/20"
       : bgColor === "white"
       ? "border-black/20"
-      : "dark:border-white/20 border-black/20";
+      : "dark:border-[#1A1A1A] border-[#ececec]";
 
   return (
     <footer
-      className={`flex flex-col gap-28 py-20 w-full px-4 md:px-4 2xl:px-0 border-t ${borderClass} mt-10 ${bgClass}`}
+      className={`flex flex-col gap-28 py-20 w-full px-4 md:px-4 2xl:px-0 border-t ${borderClass} ${bgClass}`}
     >
       <div
         className={`flex flex-col md:flex-row justify-between ${textClass} light gap-y-20 max-w-[1440px] mx-auto w-full`}
