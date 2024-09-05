@@ -181,10 +181,10 @@ export default {
         </div>
       ) : (
         <div
-          className="flex justify-start items-center gap-2 !rounded-md w-full py-2"
+          className="flex justify-start items-center gap-2 !rounded-md w-full"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          style={{ paddingLeft: 0 }} // Override padding for the entire item
+          style={{ paddingLeft: 0, paddingTop: "4px", paddingBottom: "4px" }} // Override padding for the entire item
         >
           {icon && (
             <RiveIcon

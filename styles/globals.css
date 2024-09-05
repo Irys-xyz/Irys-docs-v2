@@ -858,3 +858,46 @@ button.btn.try-out__btn {
 /* .nx-mx-auto.nx-flex {
   @apply divide-x divide-[#1a1a1a];
 } */
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li.open
+  > div {
+  @apply !ml-[6px];
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li
+  > button
+  > div
+  > span {
+  @apply !text-xs;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li
+  > a
+  > div
+  > span {
+  @apply !text-xs;
+}
