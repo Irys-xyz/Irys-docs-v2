@@ -6,9 +6,13 @@ import { Callout } from "nextra-theme-docs";
 
 # Mutability
 
-You can simulate "mutability" on Irys using mutable references. With mutable references you create a single, static URL that is linked to a sequential series of transactions. You can add a new transaction to the series at any time, and the URL will always resolve to the most recent transaction in the chain.
+Data on Irys is immutable. However, you can simulate mutability on using mutable references. 
 
-<img className="border border-[#FEF4EE] rounded mt-5  lg:w-5/6 w-full" src="/build/img/mutable-references.png" />
+With mutable references you create a single, static URL that is linked to a sequential series of transactions. You can add a new transaction to the series at any time, and the URL will always resolve to the most recent transaction in the chain.
+
+<div className="flex w-full justify-center">
+  <img className="border border-[#FEF4EE] rounded mt-5  lg:w-5/6 w-full" src="/build/img/mutable-references.png" />
+</div>
 
 To create a mutable reference:
 
@@ -19,8 +23,8 @@ To create a mutable reference:
 </Callout>
 
 ```js
-const irys = await getIrysUploader();
-const receiptOne = await irys.upload("First TX");
+const irysUploader = await getIrysUploader();
+const receiptOne = await irysUploader.upload("First TX");
 console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```
 
@@ -28,7 +32,7 @@ console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 
 ```js
 const tags = [{ name: "Root-TX", value: receiptOne.id }];
-const receiptTwo = await irys.upload("Second TX", { tags: tags });
+const receiptTwo = await irysUploader.upload("Second TX", { tags: tags });
 console.log(`TX 2 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```
 
@@ -41,7 +45,7 @@ The original URL (`https://gateway.irys.xyz/mutable/:txId`) now resolves to the 
 
 ## Granularity
 
-Mutable references are based on Irys’ millisecond-accurate timestamps. You can publish multiple sequential updates to a given transaction and be confident the transaction served by the `/mutable/` endpoint will always be the most recent chronological one.
+Mutable references are based on Irys’s millisecond-accurate timestamps. You can publish multiple sequential updates to a given transaction and be confident the transaction served by the `/mutable/` endpoint will always be the most recent chronological one.
 
 ## Versions
 
