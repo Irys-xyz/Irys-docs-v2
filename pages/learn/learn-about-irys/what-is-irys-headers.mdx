@@ -1,0 +1,54 @@
+---
+description: Irys is the first L1 programmable datachain, optimizing data storage and execution, enabling new onchain web services and dynamic applications.
+---
+
+import Link from "next/link"
+
+# What is Irys?
+
+<div className="grid grid-cols-12 gap-x-5 gap-y-5 my-10">
+{
+	[
+		{
+			"title": "What is a Datachain?",
+			"illustration": "/illustrations/sized-down/rocket.png",
+			"href": "/learn/learn-about-irys/what-is-datachain"
+		},
+		{
+			"title": "Programmable Data",
+			"illustration": "/illustrations/sized-down/pencil.png",
+			"href": "/learn/why-build-on-irys/programmable-data"
+		},
+		{
+			"title": "Protocol Overview",
+			"illustration": "/illustrations/sized-down/detective.png",
+			"href": "/learn/protocol/protocol-overview"
+		},
+		{
+			"title": "Build on Irys",
+			"illustration": "/illustrations/sized-down/portal.png",
+			"href": "/build/welcome-builders"
+		}
+	].map(({ title, illustration, href }) => (
+		<Link href={href} key={title} className="col-span-12 cursor-pointer hover:dark:bg-white/10 group flex justify-between lg:col-span-6 dark:bg-[#111111] h-36 rounded-xl font-bold text-xl overflow-hidden dark:border-0 border">
+		
+				<p className="py-9 px-7 whitespace-nowrap">{title}</p>
+				<img
+					src={illustration}
+					className="group-hover:scale-110 transition-all"
+				/>
+			
+		</Link>
+	))
+}
+
+</div> 
+
+<div className="flex flex-col md:flex-row items-center mt-5">
+	<span>
+		Irys is the first L1 programmable datachain, designed to optimize data storage and execution. By combining storage and execution, it significantly increases the usefulness of blockspace, enabling a wider range of web services to come onchain that aren’t possible right now.
+
+    	Irys empowers developers to create and innovate like never before. With Irys, builders can eliminate dependencies, integrate efficient onchain data, and unlock new possibilities for dynamic, real-time applications—all within a unified platform.
+    </span>
+
+</div>
