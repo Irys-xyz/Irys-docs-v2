@@ -10,6 +10,10 @@ The Irys testnet is now live with support for permanent data uploads, and tempor
 
 At mainnet launch, all data uploaded to bundlers will be migrated from testnet to mainnet, with no changes to transaction IDs.
 
+<Callout type="info" emoji="ℹ️">
+If you're not ready to migrate yet, you do not have to do anything. Irys's bundlers and gateway for Arweave will continue to operate as normal. 
+</Callout>
+
 ## How to Migrate
 
 The new Irys Bundler SDK reduces dependency bloat by providing dedicated packages for each token. Previously, Irys used a single import statement and connection code regardless of token, with our new SDK, code is unique per token.
