@@ -68,7 +68,7 @@ const uploadData = async () => {
 	const dataToUpload = "hirys world.";
 	try {
 		const receipt = await irysUploader.upload(dataToUpload);
-		console.log(`Data uploaded ==> https://gateway.irysUploader.xyz/${receipt.id}`);
+		console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
 	} catch (e) {
 		console.log("Error when uploading ", e);
 	}
