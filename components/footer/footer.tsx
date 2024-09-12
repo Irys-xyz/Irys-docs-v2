@@ -28,7 +28,7 @@ const FOOTER_OPTIONS: FooterOption[] = [
         title: "What is A Datachain?",
         href: "/learn-about-irys/what-is-datachain",
       },
-      { title: "Build With Us!", href: "/build-with-us" },
+      { title: "Build With Us!", href: "/build/welcome-builders" },
     ],
   },
   {
