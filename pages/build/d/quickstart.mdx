@@ -47,7 +47,7 @@ const getIrysUploader = async () => {
 Fund your account on the Irys network using any of our [supported tokens](/build/d/features/supported-tokens):
 
 ```js
-const fundNode = async () => {
+const fundAccount = async () => {
 	const irysUploader = await getIrysUploader();
 	try {
 		const fundTx = await irysUploader.fund(irysUploader.utils.toAtomic(0.05));

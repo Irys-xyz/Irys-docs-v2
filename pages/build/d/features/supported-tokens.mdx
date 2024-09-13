@@ -6,6 +6,8 @@ description: Pay for your upload with most popular tokens.
 
 Iyrs supports most popular tokens for paying for uploads.
 
+## Testnet
+
 On our testnet, you can pay for uploads in any of these tokens:
 
 | Token / Blockchain | Token | Parameter Value | Node Support   | Browser Support   |
@@ -31,13 +33,42 @@ On our testnet, you can pay for uploads in any of these tokens:
 | Solana             | SOL   | solana          | yes            | yes               |
 | USDC (on Ethereum) | USDC  | usdc-eth        | yes            | yes               |
 | USDC (on Polygon)  | USDC  | usdc-polygon    | yes            | yes               |
+| USDC (on Solana)   | USDC  | usdc-solana     | yes            | yes               |
 
+
+
+## Devnet 
+
+On devnet, uploads are paid for with free faucet tokens. Data is deleted after ~60 days.
+
+| Token / Blockchain        | Token | Parameter Value | `Irys` Support | `WebIrys` Support |
+| ------------------------- | ----- | --------------- | -------------- | ----------------- |
+| Aptos                     | APT   | aptos           | yes            | yes               |
+| Algorand                  | ALGO  | algorand        | yes            | no                |
+| Arbitrum                  | ETH   | arbitrum        | yes            | yes               |
+| Avalanche C-Chain         | AVAX  | avalanche       | yes            | yes               |
+| Berachain                 | BERA  | bera            | yes            | yes               |
+| Binance Coin              | BNB   | bnb             | yes            | yes               |
+| Chainlink                 | LINK  | chainlink       | yes            | yes               |
+| Ethereum (Sepolia)        | ETH   | ethereum        | yes            | yes               |
+| Base Ethereum (Sepolia)   | ETH   | base-eth        | yes            | yes               |
+| Linea Ethereum (Sepolia)  | ETH   | linea-eth       | yes            | yes               |
+| Scroll Ethereum (Sepolia) | ETH   | scroll-eth      | yes            | yes               |
+| IoTeX                     | IoTeX | iotex           | yes            | yes               |
+| Near                      | NEAR  | near            | yes            | yes               |
+| Polygon (Amoy)            | AMOY  | matic           | yes            | yes               |
+| Solana                    | SOL   | solana          | yes            | yes               |
+| USDC (on Ethereum)        | USDC  | usdc-eth        | yes            | yes               |
+| USDC (on Polygon)         | USDC  | usdc-polygon    | yes            | yes               |
+| USDC (on Solana)          | USDC  | usdc-solana     | yes            | yes               |
 
 ## Connecting to Irys
 
 The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your import statements and connection code will differ depending on the token used for payment.
 
 The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/setup). 
+
+## Testnet
 
 ```ts
 import { Uploader } from "@irys/upload";
@@ -48,3 +79,6 @@ const getIrysUploader = async () => {
   return irysUploader;
 };
 ```
+
+## Devnet
+

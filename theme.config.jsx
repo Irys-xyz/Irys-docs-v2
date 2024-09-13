@@ -105,7 +105,7 @@ const iconMapping = {
     src: "/assets/rive/build/features.riv",
     animation: "Features Anim",
   },
-  Network: {
+  Networks: { // Placeholder
     src: "/assets/rive/build/features.riv",
     animation: "Features Anim",
   },
@@ -121,11 +121,11 @@ const iconMapping = {
     src: "/assets/rive/build/storage-cli.riv",
     animation: "StorageAnim",
   },
-  "REST-API": { // Placeholder
+  "REST-API": { 
     src: "/assets/rive/build/rest-api.riv",
     animation: "Hover",
   },
-  "Downloading": { // Placeholder
+  "Downloading": { 
     src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },

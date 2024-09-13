@@ -16,18 +16,28 @@ Uploads an entire directory of files.
 	{ header: "Option", key: "type", span: 3 },
 	{ header: "Description", key: "description", span: 9 },
 ]} data={[
-	  { type: "-n", description: "The network to check, use `testnet`." },
+	  { type: "-n", description: "The network to check, `testnet` or `devnet`, defaults to `testnet`." },
     { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
     { type: "-w", description: "Your private key." },
     { type: "--index-file", description: "Name of the file to use as an index for manifests." },
     { type: "--provider-url", description: "RPC URL to use." },
 ]}/>
 
-## Example
+## Examples
+
+### Testnet
 
 ```console
 irys upload-dir ./myImages \
-  -n testnet \
+  -t ethereum \
+  -w bf20......c9885307 
+```
+
+### Devnet
+
+```console
+irys upload-dir ./myImages \
+  -n devnet \
   -t ethereum \
   -w bf20......c9885307 \
   --provider-url https://rpc.sepolia.dev

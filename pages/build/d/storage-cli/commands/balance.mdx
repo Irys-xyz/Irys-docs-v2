@@ -15,17 +15,26 @@ Returns the amount of funds available on the specified node. Provide your public
 	{ header: "Option", key: "type", span: 3 },
 	{ header: "Description", key: "description", span: 9 },
 ]} data={[
-	  { type: "-n", description: "The network to check, use `testnet`." },
+	  { type: "-n", description: "The network to check, `testnet` or `devnet`, defaults to `testnet`." },
     { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
     { type: "--provider-url", description: "RPC URL to use. " },
 ]}/>
 
-## Example
+## Examples
+
+### Testnet
 
 ```console
 irys balance 0x591B5Ce7cA10a55A9B5d1516eF89693D5b3586b8 \
   -t ethereum \
-  -n testnet \
+```
+
+### Devnet
+
+```console
+irys balance 0x591B5Ce7cA10a55A9B5d1516eF89693D5b3586b8 \
+  -t ethereum \
+  -n devnet \
   --provider-url https://rpc.sepolia.dev
 ```
 

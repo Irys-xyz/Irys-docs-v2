@@ -15,19 +15,27 @@ Not all calls to `withdraw` will post immediately to your account, some blockcha
 
 ## Parameters
 
-
-
 <ApiTable columns={[
 	{ header: "Option", key: "type", span: 3 },
 	{ header: "Description", key: "description", span: 9 },
 ]} data={[
-	  { type: "-n", description: "The network to check, use `testnet`." },
+	  { type: "-n", description: "The network to check, `testnet` or `devnet`, defaults to `testnet`." },
     { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
     { type: "-w", description: "Your private key." },
     { type: "--provider-url", description: "RPC URL to use." },
 ]}/>
 
-## Example
+## Examples
+
+### Testnet
+
+```console
+irys withdraw 1000000000000000 \
+  -t ethereum \
+  -w bf20......c9885307 
+```
+
+### Devnet
 
 ```console
 irys withdraw 1000000000000000 \
