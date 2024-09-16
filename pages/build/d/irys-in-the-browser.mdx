@@ -350,8 +350,8 @@ function App() {
     console.log("connect irys called");
     console.log({wallet})
     try {
-      // const irysUploader = await WebUploader(WebAptos).withProvider(wallet);
-      // console.log({irysUploader})
+      const irysUploader = await WebUploader(WebAptos).withProvider(wallet);
+      console.log({irysUploader})
 
       setIrysStatus(`Connected to Irys: ${irysUploader.address}`);
     } catch (error) {
