@@ -57,15 +57,15 @@ const iconMapping = {
     src: "/assets/rive/learn/efficient-sampling.riv",
     animation: "Hover",
   },
-  "Bundler": { // Placeholder
+  "Bundler": { 
     src: "/assets/rive/build/bundler.riv",
     animation: "Hover",
   },
-  "Gateway": { // Placeholder
+  "Gateway": { 
     src: "/assets/rive/learn/gateway.riv",
     animation: "Hover",
   },
-  "Miners": { // Placeholder
+  "Miners": { 
     src: "/assets/rive/learn/mining.riv",
     animation: "Hover",
   },
@@ -105,17 +105,17 @@ const iconMapping = {
     src: "/assets/rive/build/features.riv",
     animation: "Features Anim",
   },
-  Networks: { // Placeholder
-    src: "/assets/rive/build/features.riv",
-    animation: "Features Anim",
+  Networks: { 
+    src: "/assets/rive/build/networks.riv",
+    animation: "NetworksAnim",
   },
   SDK: {
     src: "/assets/rive/build/sdk.riv",
     animation: "SDKAnim ",
   },
-  "Irys-in-the-Browser": { // Placeholder
-    src: "/assets/rive/build/guides.riv",
-    animation: "GuidesAnim",
+  "Irys-in-the-Browser": { 
+    src: "/assets/rive/build/browser.riv",
+    animation: "BrowserAnim",
   },
   "Storage-CLI": {
     src: "/assets/rive/build/storage-cli.riv",
