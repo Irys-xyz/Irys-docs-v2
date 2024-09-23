@@ -105,7 +105,7 @@ const iconMapping = {
     src: "/assets/rive/build/features.riv",
     animation: "Features Anim",
   },
-  Networks: { 
+  "Testnet-/-Devnet": { 
     src: "/assets/rive/build/networks.riv",
     animation: "NetworksAnim",
   },
