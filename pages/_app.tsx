@@ -10,6 +10,7 @@ import Analytics from "../components/Analytics";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import useGoogleTagManager from "../hooks/useGoogleTagManager";
+import AskCookbook from "../components/AskCookbook";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} key={1} />
         <Analytics key={2} />
       </ThemeProvider>
+      <AskCookbook />
     </>
   );
 }
