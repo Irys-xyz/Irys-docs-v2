@@ -6,9 +6,14 @@
 	"irys-in-the-browser" : "Irys in the Browser",
 	"storage-cli": "Storage CLI",
 	"rest-api": "REST API",
+	"guides": "Guides",
 	"downloading": "Downloading",
 	"graphql": "Querying",
-	"guides": "Guides",
+	"github_link": {
+    "title": "Explorer",
+    "href": "https://explorer.irys.xyz",
+    "newWindow": true
+  },
 	"troubleshooting": "Troubleshooting",
 	"migrating": "Migrating"
 }

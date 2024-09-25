@@ -109,6 +109,10 @@ const iconMapping = {
     src: "/assets/rive/build/networks.riv",
     animation: "NetworksAnim",
   },
+  Explorer: { 
+    src: "/assets/rive/build/networks.riv",
+    animation: "NetworksAnim",
+  },
   SDK: {
     src: "/assets/rive/build/sdk.riv",
     animation: "SDKAnim ",
