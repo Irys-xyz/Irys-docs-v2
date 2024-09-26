@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useGoogleTagManager();
 
+  
   return (
     <>
       <ThemeProvider attribute="class">
