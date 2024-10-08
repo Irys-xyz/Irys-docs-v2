@@ -57,15 +57,15 @@ const iconMapping = {
     src: "/assets/rive/learn/efficient-sampling.riv",
     animation: "Hover",
   },
-  "Bundler": { 
+  "Bundler": {
     src: "/assets/rive/build/bundler.riv",
     animation: "Hover",
   },
-  "Gateway": { 
+  "Gateway": {
     src: "/assets/rive/learn/gateway.riv",
     animation: "Hover",
   },
-  "Miners": { 
+  "Miners": {
     src: "/assets/rive/learn/mining.riv",
     animation: "Hover",
   },
@@ -105,11 +105,11 @@ const iconMapping = {
     src: "/assets/rive/build/features.riv",
     animation: "Features Anim",
   },
-  "Testnet-/-Devnet": { 
+  "Testnet-/-Devnet": {
     src: "/assets/rive/build/networks.riv",
     animation: "NetworksAnim",
   },
-  Explorer: { 
+  Explorer: {
     src: "/assets/rive/build/explorer.riv",
     animation: "Hover",
   },
@@ -117,7 +117,7 @@ const iconMapping = {
     src: "/assets/rive/build/sdk.riv",
     animation: "SDKAnim ",
   },
-  "Irys-in-the-Browser": { 
+  "Irys-in-the-Browser": {
     src: "/assets/rive/build/browser.riv",
     animation: "BrowserAnim",
   },
@@ -125,11 +125,11 @@ const iconMapping = {
     src: "/assets/rive/build/storage-cli.riv",
     animation: "StorageAnim",
   },
-  "REST-API": { 
+  "REST-API": {
     src: "/assets/rive/build/rest-api.riv",
     animation: "Hover",
   },
-  "Downloading": { 
+  "Downloading": {
     src: "/assets/rive/build/guides.riv",
     animation: "GuidesAnim",
   },
@@ -235,6 +235,7 @@ export default {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/irys-open-graph.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="/irys-open-graph.jpg" />
         <script type="application/ld+json">
           {`{
             "@context" : "https://schema.org",
