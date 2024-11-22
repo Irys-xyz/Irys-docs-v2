@@ -7,12 +7,14 @@ import { Callout } from "nextra-theme-docs";
 
 # Irys SDK
 
-<Callout type="info" emoji="ℹ️">
+{/* <Callout type="info" emoji="ℹ️">
 Irys is currently in alpha testnet. At mainnet launch, all data uploaded to bundlers will be migrated from testnet to mainnet, with no changes to transaction IDs.
-</Callout>
+</Callout> */}
 
 
-## Installing (using Ethereum)
+## Installing
+
+This example uses ETH for payment. You can use any of the [supported tokens](/build/d/features/supported-tokens).
 
 Install using npm:
 
@@ -20,13 +22,13 @@ Install using npm:
 npm install @irys/upload @irys/upload-ethereum
 ```
 
-<Callout type="info" emoji="ℹ️">
+{/* <Callout type="info" emoji="ℹ️">
 	If you get a warning saying `bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)` during
 	install, it can be safely ignored. For details on how make it go away, see our [troubleshooting
 	guide](/build/d/troubleshooting#bigint).
-</Callout>
+</Callout> */}
 
-## Importing & Connecting
+## Connecting to network
 
 The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your import statements and connection code will differ depending on the token used for payment.
 
