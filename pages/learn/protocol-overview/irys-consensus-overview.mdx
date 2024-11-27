@@ -1,0 +1,112 @@
+---
+description: Irys integrates staking and useful Proof of Work to ensure decentralized mining, reliable storage, and data availability. 
+---
+# Irys Consensus Overview
+
+## Overview
+
+Irys uses a consensus mechanism that combines **useful Proof of Work (uPoW)** with **staking**, aligning mining efforts with meaningful contributions to the network. Miners don’t just compete to produce blocks; they also commit to storing verifiable data, ensuring data availability and economic accountability.
+
+This system ties mining rewards directly to miners’ ability to maintain and prove access to historical data, while staking reinforces their commitments through financial penalties for noncompliance. 
+
+The result is a secure, scalable, and efficient consensus model designed to support reliable onchain data storage.
+
+## Why Staking Matters
+
+### Reliable Long-Term Data
+
+Miners pledge responsibility for 16TB partitions, ensuring historical data remains available and verifiable. 
+
+Periodic validation checks incentivize ongoing compliance, linking mining rewards directly to reliable storage contributions.
+
+### Economic Accountability
+
+Miners must lock $IRYS tokens as collateral, signaling their commitment to the network and creating clear economic consequences for failing to uphold their responsibilities. If a miner neglects their storage duties or acts maliciously, they forfeit their stake, protecting the network’s integrity.
+
+In practice, networks that incorporate staking observe far less adversarial behavior compared to systems relying solely on Proof of Work. This alignment of economic incentives reinforces Irys’s mission of building a trustworthy, reliable, and secure protocol for developers.
+
+
+### Purpose-Driven Mining
+
+Mining on Irys isn’t just about expending energy to solve arbitrary computations. It’s about contributing to the protocol’s purpose. Useful Proof of Work transforms computational effort into a tool for verifying storage integrity, ensuring that:
+
+- Miners actively prove they are maintaining their assigned partitions.
+- Every computation aligns with the protocol’s goal of secure, accessible, and verifiable data storage.
+
+This approach shifts the focus from wasteful energy consumption to meaningful work, integrating mining with the protocol’s foundational mission. By tying block production directly to storage validation, Irys ensures efficiency without compromise.
+
+
+### Supporting Network Growth
+
+The hybrid model integrates uPoW and staking to scale efficiently alongside network demands.
+
+Miners and developers benefit from stable block rewards, predictable costs, and a system that grows with increasing storage needs.
+
+
+## How It Works
+
+Irys’s consensus mechanism operates through four distinct steps:
+
+### Step 1: Staking and Pledging
+
+Miners stake $IRYS tokens as collateral, signaling their commitment to the network. They then pledge resources to specific 16TB partitions of data, which are mapped to their mining addresses.
+
+- **Partition Assignment**
+    
+    Once a pledge is made, the protocol assigns a Partition ID, enabling the miner to prepare the partition through Matrix Packing and begin actively mining.
+    
+- **Economic Accountability**
+    
+    Staked tokens are forfeited if miners fail to meet their commitments, ensuring reliability. Unassigned pledges are returned, maintaining an organized storage onboarding process.
+    
+
+### Step 2: Data Storage Commitment
+
+Miners pledge storage to the network by assigning their resources to specific partitions. Each partition is actively mined, and rewards are distributed proportionally based on the miner’s contribution to the network’s total storage capacity.
+
+For example:
+
+- A miner responsible for 10% of the network’s partitions can expect to earn approximately 10% of the block rewards.
+
+To safeguard decentralization, the protocol enforces a strict cap: no single miner can exceed 10% of the network’s hashpower, which is directly tied to the number of partitions they mine. 
+
+This mechanism prevents any miner from accumulating disproportionate influence, ensuring the network remains balanced and resilient.
+
+
+### Step 3: Useful Proof of Work
+
+Useful Proof of Work is the process of continuous sampling by miners, who generate cryptographic storage proofs tied to their assigned data.
+
+It functions through: 
+
+- **Continuous Proof Generation**
+    
+    Miners actively validate their assigned partitions by generating storage proofs. These proofs serve as cryptographic evidence of their ongoing storage commitments.
+    
+- **Block Production**
+    
+    When a miner generates a valid storage proof that meets the network’s difficulty requirements, they can produce a block and broadcast it for validation. Other miners verify the proof, and upon acceptance, the miner earns block rewards.
+    
+- **Economic Accountability**
+    
+    Miners who fail to maintain storage face penalties, as the system detects failures within narrow proving windows. This discourages adversarial behavior and ensures reliable performance.
+    
+
+
+### Step 4: Reward Distribution
+
+Once a block is produced and validated, rewards are distributed to miners based on their storage contributions.
+
+This ensures the following:
+
+- **Proportional Rewards**
+    
+    Miners responsible for larger shares of the network’s storage earn proportionally larger rewards.
+    
+- **Incentive Alignment**
+    
+    Reliable miners who consistently generate valid storage proofs receive steady rewards, reinforcing long-term engagement and network stability.
+    
+
+This alignment between mining activity and reward distribution ensures that the network’s storage demands are met while keeping participation economically viable.
+

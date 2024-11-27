@@ -1,0 +1,113 @@
+---
+description: Programmable data embeds logic into onchain assets, enabling automated, reliable execution for decentralized smart contracts. 
+---
+
+# Programmable Data
+
+## Range Specification
+
+To interact with Irys’s ledger data during smart contract execution, each transaction specifies the range of data chunks it requires. These ranges are designed to align with Ethereum’s **EIP-2930 access lists**, ensuring compatibility and efficient interoperability with existing developer tooling.
+
+The format for specifying ranges is:
+
+```jsx
+<partition_index>:<offset>:<chunk_count>
+```
+
+- **partition_index**: (26 bytes) The index of the partition in the Publish Ledger containing the first chunk.
+- **offset**: (4 bytes) The starting chunk offset within the partition.
+- **chunk_count**: (2 bytes) The number of sequential chunks to retrieve starting from the offset.
+
+This structure allows precise targeting of data stored within Irys’s partitions, enabling efficient data retrieval for execution.
+
+## Pricing for Programmable Data
+
+### Base Fee
+
+Unpacking and deserializing data for IrysVM incurs computational overhead, which is mitigated through a **base fee** to prevent spam. 
+
+During the testnet phase:
+
+- The base fee for **1MB of Programmable Data** is **$0.01**.
+- Programmable Data transactions have a minimum cost of **$0.01**.
+
+This pricing ensures affordability while maintaining system integrity.
+
+### Congestion pricing / Priority Fees
+
+Dynamic pricing adjusts access costs to Irys’s data ledgers based on market demand and network congestion, inspired by Ethereum’s fee adjustment model.
+
+With testnet block times of **30 seconds**, the network can process up to **7,500 chunks per block** (at 250 chunks/second). Each chunk represents **256KiB of data**.
+
+- **Increase:**
+    
+    If more than **50%** of block capacity is used, the base fee scales linearly up to **+12.5%** when all **7,500 chunks** are consumed.
+    
+- **Decrease**:
+
+    If no chunks are used, the base fee decreases by up to **-12.5%** per block, with a **minimum floor of $0.01** and no upper limit.
+
+    
+
+This congestion pricing model avoids unpredictable spikes in costs, providing developers with **consistent economic efficiency**, even during peak demand.
+
+
+## Data Availability & Synchronization
+
+Irys ensures robust data availability through an efficient synchronization mechanism that leverages both peer-to-peer sharing and miner-based retrieval. This multi-layered approach guarantees data accessibility under all conditions.
+
+### Peer-to-Peer Broadcasting
+
+Nodes broadcast Programmable Data (PD) transactions to their peers, marking whether they already possess the requested chunks.
+
+Peers that lack chunks can request them directly from broadcasting nodes.
+
+### Request and Response
+
+Broadcasting nodes track which peers need the chunks and send them upon availability.
+
+Receiving peers rebroadcast transactions, tracking peers that lack chunks to maintain propagation.
+
+### Fallback to Miners
+
+If a peer fails to receive chunks within a predefined propagation delay (**200ms for testnet**), it queries miners responsible for the relevant partitions.
+
+The ledger identifies replicas, and the node randomly selects a partition for retrieval.
+
+This fallback ensures reliable access, even under heavy network demand.
+
+
+## Verifying Data for Execution
+
+Transaction validation for Programmable Data involves verifying the integrity and availability of the requested chunks. Nodes can retrieve and validate chunks through several pathways:
+
+### Cached Unpacked Chunks
+
+Nodes leverage previously cached, verified chunks validated against their Merkle roots, ensuring readiness for IrysVM execution.
+
+### Local Packed Chunks
+
+If the node mines the partition containing the requested chunks but only has packed versions, it performs the following steps:
+
+1. Generates the entropy for the specified chunk range.
+2. Unpacks the chunks using the computed entropy.
+3. Builds a Merkle root from the unpacked chunks.
+4. Looks up the transaction that posted the chunks using the block index.
+5. Compares the computed Merkle root with the one stored in the transaction.
+6. If valid, shares unpacked chunks with peers lacking them.
+
+### Received Unpacked Chunks
+
+When receiving unpacked chunks from peers, the node validates the data by:
+
+1. Following steps 4–5 from the "Local Packed Chunks" process.
+
+### Requesting Chunks from Miners
+
+If the node cannot retrieve chunks through caching or peers within the expected propagation delay (**D** = 200ms for testnet):
+
+1. The node queries the ledger to identify partitions responsible for storing the chunks.
+2. It selects a partition replica at random and requests the chunks.
+3. If the chunks are provided in a packed state, the node unpacks them and validates using steps 4–6 from the "Local Packed Chunks" process.
+
+This comprehensive validation ensures the accuracy and reliability of programmable data before execution, maintaining the **integrity of smart contract interactions**.

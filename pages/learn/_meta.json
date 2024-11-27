@@ -1,10 +1,8 @@
 {
-	"learn-about-irys": "LEARN ABOUT IRYS",
-	"why-build-on-irys": "WHY BUILD ON IRYS",
-	"mining-on-irys": "MINING ON IRYS",
-	"network": "NETWORK",
-	"protocol": "PROTOCOL",
-	"economics": "ECONOMICS",
+	"what": "What",
+	"why": "Why",
+	"network-overview": "Network Overview",
+	"protocol-overview": "Protocol Overview",
 	"build-with-us": {
 		"display": "hidden"
 	}

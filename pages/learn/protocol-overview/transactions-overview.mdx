@@ -1,0 +1,74 @@
+---
+description: Irys uses multi-blocklanes to handle data, token, and compute transactions separately, ensuring scalability and cost predictability. 
+---
+
+# Transactions Overview
+
+## Overview
+    
+Transactions on Irys are **declarations of intent**—tools users and developers rely on to interact with the network. Regardless of the type, every transaction is handled through a system designed to keep costs low and performance high.
+
+At the core of this system is a key innovation: **multiple blocklanes**. Unlike traditional blockchains, where all transaction types compete for space and resources, Irys divides operations into specialized lanes. 
+
+Each blocklane on Irys is optimized for its specific purpose—whether it’s processing a token transfer, storing data, or running a smart contract. This means that each transaction type runs exactly where it needs to, without competing with unrelated operations.
+
+By dedicating resources to specific tasks, Irys ensures that:
+
+- **Token transfers remain fast**, even during heavy network usage.
+- **Data uploads are affordable**, no matter how much information is being stored.
+- **Smart contracts execute reliably**, with predictable performance and costs.
+
+## Why Transactions Matters
+
+The way a blockchain handles transactions determines how efficient, reliable, and scalable it can truly be. On many platforms, a single blocklane is forced to process everything—value transfers, storage, computation—leading to bottlenecks, rising fees, and inconsistent performance. Irys solves this by dividing transactions into **multiple blocklanes**, each optimized for a specific purpose.
+
+### Efficiency
+
+On traditional chains, storage and computation transactions compete for space, leading to delays and inflated fees. 
+
+Irys’s separate blocklanes eliminate this conflict, so storage transactions don’t slow down token transfers, and computation tasks don’t drive up storage costs.
+
+### Predictable Costs
+
+Irys ensures that each transaction type is priced according to its actual resource use. Storage fees are calculated upfront with stable pricing models, while compute fees adjust dynamically based on demand. 
+
+This means you **always** know exactly what you’re paying for.
+
+### Scalability
+
+As demand grows, Irys’s multi-blocklane architecture allows each type of transaction to scale independently. This means that an influx of data uploads doesn’t slow down token transfers or execution tasks. 
+
+Irys adapts to growth without compromising performance.
+
+        
+## Types of Transactions
+
+### Value Transfers
+
+- **What It Does**: Enables the movement of tokens between accounts.
+- **How It Works**: Value transfers are processed in a dedicated blocklane optimized for speed and efficiency. This blocklane is purpose-built to handle token movement without being slowed by storage or computation operations.
+
+### Data Transactions
+
+- **What It Does**: Writes data directly to Irys’s storage layer.
+- **How It Works**: Data transactions allow users to upload information to Irys’s multi-ledger architecture. The process begins in the Submit Ledger, where data is temporarily held for validation. Each chunk of data associated with a transaction must be uploaded, and ingress proofs generated, ensuring that the data is securely logged and verifiable. Think of it as a checkpoint where data establishes its place on the network before advancing.
+    
+    Once verified, the data is promoted to the Publish Ledger, where it becomes permanent and backed by cryptographic proofs (Merkle roots). Users pay a one-time upfront fee based on the storage duration and size, ensuring cost predictability. After promotion, data is replicated across the network, becoming part of a globally accessible, resilient system ready for integration into programmable data applications.
+    
+    Matrix Packing optimizes this process by structuring data for efficient verification and accessibility, reducing the computational burden on miners and ensuring scalability even as network demands grow.
+    
+### Compute Transactions
+
+- **What It Does**: Running smart contracts operations through Irys’s execution layer—the IrysVM.
+- **How It Works**: Compute transactions are processed through IrysVM, the execution layer built to handle onchain logic and smart contracts. These transactions interact directly with data stored in the Publish Ledger, eliminating the need for external systems. Fees are based on the computational demand of the transaction, and a dynamic adjustment mechanism ensures that the network remains efficient during high usage periods. When demand exceeds a certain threshold, fees increase incrementally, prioritizing important transactions without disrupting the network or inflating costs.
+
+### Stake Transactions
+
+- **What It Does**: Activates a miner’s address for network participation.
+
+- **How It Works**: By locking a specific amount of $IRYS tokens, miners activate their addresses and gain access to mining operations. This stake is effectively collateral. If miners don’t play by the rules or fail to maintain performance, they stand to lose it. This alignment of incentives keeps the network secure and dependable.
+
+### Pledge Transactions
+
+- **What It Does**: Locks in a miner’s responsibility for specific storage partitions.
+- **How It Works**: Every pledge transaction links a miner to a specific 16TB partition. During Matrix Packing, the miner’s unique identifier is embedded directly into the partition, creating a permanent record of who’s responsible for the data. Miners put up collateral to cover their storage commitments, and if they fail—by losing data or neglecting their role—they forfeit their pledge. This ensures data availability and makes accountability more than just a promise—it’s built into the system.

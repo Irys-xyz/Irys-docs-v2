@@ -1,0 +1,14 @@
+---
+description: Bundling optimizes blockchain uploads, combining multiple data transactions to reduce costs and support scalability for Web3.
+---
+
+# Bundling Transactions
+
+On Irys, uploading data is designed for scalability and efficiency through **bundlers**. Bundlers combine multiple transactions into a single package, called a **bundle**, and post it as one transaction to the network.
+
+Here’s how bundlers simplify and scale transactions:
+
+1. Within each bundle, individual transactions are referred to as **DataItems**. Each DataItem retains key properties found in regular data transactions—such as owner, data, tags, target, signature, and ID—allowing them to remain identifiable and functional within the bundle.
+2. Bundlers take on the reward costs for the entire bundle, meaning individual DataItems don’t need to include transaction fees. This structure keeps costs manageable while allowing developers to upload extensive datasets without incurring expensive fees on a per-transaction basis.
+3. By centralizing transaction fees at the bundle level, bundlers enable applications to cover their users' transaction costs if they choose. This opens up new possibilities for user-friendly, frictionless experiences.
+4. Bundling allows Irys to handle large data volumes without overwhelming the network, making it possible to build high-frequency or data-intensive applications at scale.

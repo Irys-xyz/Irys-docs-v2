@@ -1,0 +1,32 @@
+---
+description: IrysVM bridges onchain storage and computation, enabling affordable, integrated smart contract execution directly within the ledger.
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
+# Why IrysVM
+
+<div className="w-full mt-5 flex justify-center items-center bg-[#222222] rounded-xl">
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/irysvm.riv"
+			width={1920}
+			height={1080}
+			stateMachine="IrysVM"
+		/>
+	</div>
+</div>
+
+## What is IrysVM?
+
+IrysVM is the virtual machine at the heart of Irys, built to make smart contracts and data work together efficiently and directly. While most blockchains treat data storage and smart contract execution as two separate functions, IrysVM integrates them under a single network. This lets smart contracts interact directly with data in ways that simply aren’t possible on other platforms.
+
+IrysVM offers the same benefits as an Ethereum Virtual Machine, but with a unique advantage: it’s built for direct access to Irys’s data ledgers
+
+## Why IrysVM Matters
+
+The main advantage of IrysVM is that it allows developers to attach specific properties to data and have them be programmable, making it useful across applications without requiring that programability and data storage reside in separate protocols. In practical terms, this means data on Irys can carry out tasks like enforcing ownership rights, automating royalties, managing access permissions, verifying uploaded data, and effectively executing any pre-defined instructions within the smart contract.
+
+For developers, it opens up a straightforward path to building applications where data is more than just stored information—it’s functional, adaptable, and cheap to work with.
+
+Additionally, with IrysVM’s design, storage and smart contract transactions are kept on separate processing lanes. This prevents the typical competition for blockspace that can drive up costs on other blockchains. Developers gain predictable transaction costs and stability, even as storage needs increase, making it simpler to scale applications over time.
