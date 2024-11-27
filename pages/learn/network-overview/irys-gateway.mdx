@@ -1,0 +1,20 @@
+---
+description: The Irys Gateway provides fast, organized, queryable access to network data via GraphQL or REST APIs for developers.
+---
+
+# Irys Gateway
+
+The **Irys Gateway** is the interface that provides organized, reliable access to data on the network:
+
+## Indexing
+The gateway continuously indexes all transaction metadata on Irys, ensuring that each item stored on the network is easily accessible. Bundles are indexed at a granular level to facilitate precise access and retrieval across multiple datasets.
+
+## Querying
+Users can search data with customized queries using GraphQL or REST APIs. Irys also supports advanced search options by allowing users to assign custom metadata tags for each data upload.
+
+## Serving Data
+**Data retrieval is prioritized by the gateway to maintain efficiency:**
+
+- The gateway first checks its own local cache for recently accessed data.
+- If data is not found locally, the gateway checks Irys’s broader optimistic cache for stored but less frequently accessed data.
+- Finally, it accesses the miners’ network, reinforcing the availability and integrity of data across the system.

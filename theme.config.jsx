@@ -16,11 +16,15 @@ const FooterWrapper = () => {
 
 // Create a mapping for the sub-items
 const iconMapping = {
-  "What-is-Irys?": {
+  "What-Irys-Is": {
     src: "/assets/rive/learn/what-is-irys.riv",
     animation: "WhatIsIrysAnim",
   },
-  "What-is-a-Datachain?": {
+  "What-Irys-Isn't": {
+    src: "/assets/rive/learn/what-is-irys.riv",
+    animation: "Hover",
+  },
+  "What-a-Datachain-Is": {
     src: "/assets/rive/learn/what-is-a-datachain.riv",
     animation: "Hover",
   },
@@ -33,15 +37,19 @@ const iconMapping = {
     animation: "Hover",
   },
 
+  "Why-Programmable-Data": {
+    src: "/assets/rive/learn/programable-data.riv",
+    animation: "Hover",
+  },
   "Programmable-Data": {
     src: "/assets/rive/learn/programable-data.riv",
     animation: "Hover",
   },
-  Verifiability: {
+  "Why-Verifiability": {
     src: "/assets/rive/learn/verifiability.riv",
     animation: "Hover",
   },
-  IrysVM: {
+  "Why-IrysVM": {
     src: "/assets/rive/learn/irys-vm.riv",
     animation: "Hover",
   },
@@ -49,43 +57,43 @@ const iconMapping = {
     src: "/assets/rive/learn/running-a-node.riv",
     animation: "Hover",
   },
-  "Matrix-Packing": {
+  "Matrix-Packaging-Overview": {
     src: "/assets/rive/learn/2d-packaging.riv",
     animation: "Hover",
   },
-  "Efficient-Sampling": {
+  "Efficient-Sampling-Overview": {
     src: "/assets/rive/learn/efficient-sampling.riv",
     animation: "Hover",
   },
-  "Bundler": {
+  "Bundling-Transactions": {
     src: "/assets/rive/build/bundler.riv",
     animation: "Hover",
   },
-  "Gateway": {
+  "Irys-Gateway": {
     src: "/assets/rive/learn/gateway.riv",
     animation: "Hover",
   },
-  "Miners": {
+  "Becoming-a-Miner-on-Irys": {
     src: "/assets/rive/learn/mining.riv",
     animation: "Hover",
   },
-  "Protocol-Overview": {
-    src: "/assets/rive/learn/protocol-overview.riv",
-    animation: "Hover",
-  },
-  Partitions: {
+  // "Protocol-Overview": {
+  //   src: "/assets/rive/learn/protocol-overview.riv",
+  //   animation: "Hover",
+  // },
+  "Partitions-Overview": {
     src: "/assets/rive/learn/partitions.riv",
     animation: "Hover",
   },
-  Ledgers: {
+  "Ledgers-Overview": {
     src: "/assets/rive/learn/ledgers.riv",
     animation: "Hover",
   },
-  Transactions: {
+  "Transactions-Overview": {
     src: "/assets/rive/learn/transactions.riv",
     animation: "Hover",
   },
-  "Proof-of-Work-+-Staking": {
+  "Irys-Consensus-Overview": {
     src: "/assets/rive/learn/proof-of-work.riv",
     animation: "Hover",
   },

@@ -1,0 +1,105 @@
+---
+description: Efficient Sampling ensures miners fulfill storage commitments, offering reliable, scalable, and cost-efficient data validation. 
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
+# Efficient Sampling Overview
+
+<div className="flex flex-col md:flex-row w-full justify-start items-center mt-5">
+	<div className="w-full">
+		<SimpleRiveViewer
+			src="/protocol-animations/efficient-sampling.riv"
+			width={1920}
+			height={1080}
+			stateMachine="EfficientSampling"
+		/>
+	</div>
+</div>
+
+## Overview
+
+Efficient Sampling is Irys’s method for verifying that miners are fulfilling their storage commitments accurately and consistently. By systematically validating data across partitions, it ensures data reliability without placing unnecessary strain on miners or the network.
+
+At its core, Efficient Sampling allows miners to participate using affordable hardware while maintaining the rigorous standards required for blockchain storage. By verifying stored data in organized cycles, the network remains efficient and scalable, benefiting miners and developers alike.
+
+## Why Efficient Sampling Matters
+
+Efficient Sampling tackles key challenges in blockchain storage verification, offering benefits that support miners, developers, and the network as a whole:
+
+### Cost Efficiency
+
+Efficient Sampling reduces the hardware and computational costs of verifying large storage volumes.
+
+Miners can rely on standard HDDs rather than expensive specialized equipment, lowering both the barrier to entry and operational expenses.
+
+
+### Scalability
+
+By organizing validation into logical, non-overlapping cycles, Efficient Sampling ensures that even as storage demands grow, verification remains consistent and manageable. 
+
+For instance, a 16TB partition is methodically divided into 200MB ranges, sampled in a way that prevents redundant checks while maintaining complete coverage.
+
+
+### Reliability
+
+Each range in a partition is systematically sampled, ensuring no data is overlooked or unverifiable.
+
+This systematic approach guarantees that stored data remains accessible and trustworthy, giving developers confidence in the integrity of their applications.
+
+
+### Incentivized Mining
+
+Miners are rewarded for consistent uptime and verifiable storage, aligning incentives with network stability.
+
+By reducing costs and rewarding reliability, Efficient Sampling ensures mining remains profitable and encourages long-term participation.
+
+
+## How Efficient Sampling Works
+
+Efficient Sampling verifies storage commitments using a structured process designed to balance performance, cost, and reliability. 
+
+Its design enables verification of a 16TB partition within a 24-hour sampling window, which aligns with the time required to sequentially read the entire drive. This ensures that the system operates at the theoretical maximum efficiency for verifying storage.
+
+### Step 1: Partition Ranges
+
+Each 16TB partition is divided into 200MB ranges to balance efficient verification with complete partition coverage.
+
+
+### Step 2: List Creation
+
+Two lists are maintained for tracking progress:
+
+- **Unsampled Ranges**: Tracks ranges awaiting verification.
+- **Sampled Ranges**: Tracks ranges that have been validated within the current cycle.
+
+
+### Step 3: Random Range Selection
+
+A range is randomly selected from the unsampled list.
+
+Randomization ensures unbiased verification and prevents miners from predicting or avoiding specific checks.
+
+
+### Step 4: Verification Process
+
+The selected range is read and validated against cryptographic proofs created during Matrix Packaging.
+
+This ensures the range is intact and adheres to the miner’s storage commitments.
+
+
+### Step 5: List Updates
+
+Once a range is verified, it is moved to the sampled list.
+
+This process avoids repeating checks within the same cycle and ensures all ranges are eventually covered.
+
+
+### Step 6: Cycle Reset
+
+When all ranges in a partition have been sampled, the sampled and unsampled lists are swapped, and the process restarts. 
+
+This guarantees ongoing, thorough verification across every partition.
+
+
+By operating within the theoretical limits of 16TB HDD performance, Efficient Sampling optimizes verification without unnecessary overhead, making it a foundational component of Irys’s storage infrastructure.

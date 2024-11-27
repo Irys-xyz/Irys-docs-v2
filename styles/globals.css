@@ -901,3 +901,15 @@ button.btn.try-out__btn {
   > span {
   @apply !text-xs;
 }
+
+#__next > div > div > aside > div > div > div > ul > li > button > div > span {
+  @apply !uppercase
+}
+
+#__next > div > div > article > main > ul > li {
+  @apply !mt-4;
+}
+
+#__next > div > div > article > main > ul > li > p {
+  @apply !mt-2;
+}

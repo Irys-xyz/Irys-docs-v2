@@ -1,0 +1,82 @@
+---
+description: Verifiability guarantees data reliability, using cryptographic proofs to ensure trust, accessibility, and integrity onchain.
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
+# Why Verifiability
+
+<div className="w-full mt-5 flex justify-center items-center bg-[#222222] rounded-xl">
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/verifiability.riv"
+			width={1920}
+			height={1080}
+			stateMachine="Verifiability"
+		/>
+	</div>
+</div>
+
+## Why
+
+Verifiability is a vector for building trust in decentralized systems. It ensures that data is accurate, available, and reliable. Embedding this into a system from scratch is no small feat. For first-generation datachains, adding verifiability later often came at a steep cost: they were forced to compromise between performance and reliability, sacrificing one for the other.
+
+**The problem with this is:**
+
+- Increased verifiability has typically led to slower data access, as verification demands heavy computational resources.
+- And at times, data has even been lost, undermining the promise of “permanent” storage.
+
+While some chains might offer partial verification—such as verifying data between miners—they rarely extend verifiability across the entire stack. Extending verifiability to cover users, miners, and the data itself is far more complex. This gap leaves trust incomplete and undermines the system’s promise of reliability.
+
+Without **true** verifiability, permanence is, at best, an optimistic claim.
+
+## Multi-Ledger Cycle
+
+All data on Irys goes through a multi-step process to establish reliability. The process begins in the **Submit Ledger**, a temporary holding area where incoming data is uploaded by users and verified by the protocol.Once data has been verified as uploaded in the Submit ledger, it’s “promoted” to the **Publish Ledger**, where it gains permanent status. This promotion comes with a Ingress proofs—a certification that the data was accurately uploaded and that a responsible party is accountable for its storage. This process confirms both the **reliability** of the data and its **accessibility across the network.**
+
+## The Role of Matrix Packaging
+
+Matrix Packaging serves as the protocol’s mechanism for verifying that each miner contributes unique and provable storage capacity to the network. 
+
+By embedding unique cryptographic properties into each partition, Matrix Packaging creates economic incentives for miners to store unique copies of data rather than attempting to recompute them on demand.
+
+This approach achieves two key outcomes:
+
+- **Economic Viability**: Matrix Packaging ensures that storing unique copies of data is economical—and provable—for miners to maintain their storage commitments.
+- **Trust Through Validation**: The process actively validates that miners are maintaining unique, intact copies of their assigned data. This discourages adversarial behaviors such as duplication or neglect, reinforcing trust across the network.
+
+Matrix Packaging bridges miner incentives and network reliability, creating a system where data storage is both efficient and provable—enabling scalable and actionable verifiability.
+
+## Enabling Programmable Data
+
+Verifiability is central to Irys’s ability to support programmable data across applications. For data to function reliably in a decentralized ecosystem, it must come with provable guarantees of its origin, availability, and integrity. 
+
+Irys achieves these guarantees through a multi-step process:
+
+### Proof of Upload
+
+	When new data is uploaded to the network or shared between miners, each miner generates a cryptographic **proof of ingress**. These proofs serve as verifiable records, ensuring data has been accurately uploaded, logged, and replicated.
+	
+	Each ingress proof includes:
+	
+	- A Merkle Root that establishes the data’s inclusion in the Submit Ledger, cryptographically linking it to the network's storage framework.
+	- Metadata that specifies the miner responsible, the partition storing the data, and the time of submission, creating an immutable chain of accountability.
+	
+### Data Availability
+	
+	Miners storing data are subject to periodic, randomized sampling challenges. Each challenge requires miners to produce:
+	
+	- A valid hash of specific data ranges, verifying that the data remains intact.
+	- A timestamped response, demonstrating timely access and proving active maintenance.
+	
+	This process ensures that miners are continually validating the availability of their stored partitions, preventing data loss.
+	
+### Embedded Properties
+
+	Once data transitions to the **Publish Ledger**, it is equipped with embedded cryptographic proofs and programmable metadata. This metadata defines properties such as:
+	
+	- Ownership rights (e.g., wallet addresses linked to the data).
+	- Access controls (e.g., permissions for specific contracts or users).
+	- Royalties or other monetization rules encoded for automatic enforcement.
+	
+	Data with embedded properties allow smart contracts to directly reference and enforce data rules without requiring external systems.

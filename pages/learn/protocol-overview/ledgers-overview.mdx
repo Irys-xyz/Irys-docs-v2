@@ -1,0 +1,134 @@
+---
+description: Irys’s multi-ledger architecture manages storage by segregating data for scalability, efficiency, and cost-effective onchain solutions. 
+---
+
+import SimpleRiveViewer from "@/components/SimpleRiveViewer";
+
+# Ledgers Overview
+
+<div className="w-full mt-5 flex justify-center items-center bg-[#222222] rounded-xl">
+	<div className="w-full md:w-1/2">
+		<SimpleRiveViewer
+			src="/protocol-animations/multiple-ledgers.riv"
+			width={1920}
+			height={1080}
+			stateMachine="MultipleLedgers"
+
+		/>
+	</div>
+</div>
+
+## What Ledgers Do
+    
+Irys’s multi-ledger system divides data based on how long it’s needed and what it’s meant to do. Unlike the single-ledger approach of most blockchains, Irys takes a more efficient and flexible route.
+
+### Submit Ledger
+
+The first stop for data on Irys. 
+
+Here, data is held temporarily during a probation period. If the data doesn’t meet the upload criteria within the allotted time, it’s cleared—keeping the network efficient and ensuring that only high-quality data progresses.
+
+**This process serves two key purposes:**
+
+- **Preserving Ledger Integrity** → Incomplete uploads are filtered out, preventing gaps in the permanent ledger and ensuring reliable data availability for applications.
+- **Detecting Miner Data Loss** → By identifying miners who fail to maintain uploaded data, the protocol can replace them with new miners. This proactive replacement increases the durability of stored data and ensures that permanent data remains reliably accessible for validating programmable data contract execution.
+
+Data that successfully completes this stage moves on to the Publish Ledger for permanent, verifiable storage.
+
+### Publish Ledger
+
+The Publish Ledger is where data that meets all standards is promoted for long-term, verifiable storage.
+
+While data resides in the Submit Ledger, miners storing that data circulate proofs of ingress—cryptographic certifications verifying that the data has been successfully uploaded and replicated across the network. Once enough ingress-proofs are collected, the transaction is eligible for promotion to the permanent ledger. This process not only verifies that the data has been uploaded correctly but also ensures multiple copies exist across the network. 
+
+These assurances form the foundation of data availability in the permanent ledger and provide the consensus guarantees essential for **enabling programmable data.**
+
+## Why Ledgers Matter
+
+Irys’s use of multiple ledgers is a deliberate solution to persistent blockchain storage challenges:
+
+### Scalability
+        
+Irys’s multi-ledger system addresses scalability by dividing data into purpose-specific ledgers, preventing congestion and bottlenecks. This design ensures that storage and execution activities remain independent, so smart contracts and storage transactions don’t directly compete for space.
+
+However, scalability isn’t just about slicing data into separate ledgers. True scalability comes from Irys’s ability to manage its network resources proactively. Combined with Matrix Packing, Irys’s use of capacity partitions allows the protocol to onboard storage resources ahead of demand. This means that as ledgers grow, the network doesn’t have to wait for new miners to join or add resources—those resources are already available.
+
+This dynamic capacity ensures that Irys can ingress large amounts of data rapidly, providing developers with a consistent and efficient experience, even as demand increases.
+    
+### Cost Efficiency
+        
+Users only pay for the storage they need. The Submit Ledger serves a specific role in the protocol as a temporary holding area for new data, while the Publish Ledger provides secure, permanent storage for data requiring long-term reliability.
+
+As the network evolves, additional term ledgers with defined durations will be introduced, offering developers even more options to optimize costs by tailoring storage to their exact needs.
+
+Unlike other systems where costs fluctuate unpredictably, Irys anchors its pricing to the physical cost of storing data, not the volatile ups and downs of token markets. 
+
+This pricing model provides developers with affordable, predictable access to onchain storage without compromising performance or scalability.
+
+### Data Integrity
+        
+Every piece of data in Irys’s ledgers is made tamper-proof through the use of cryptography—Merkle trees, whose roots are included with each storage transaction. This ensures that data cannot be altered without detection and remains accessible across the network.
+
+To address the most common cause of data loss—hardware failures—Irys maintains multiple replicas of data distributed globally. This redundancy ensures that data remains intact and available, even in the face of localized disruption.
+
+Miners are held accountable for preserving data through economic commitments, backed by staked tokens and penalties for noncompliance. This combination of cryptographic proofs, global replication, and miner accountability ensures that data on Irys is consistently verifiable and reliable for developers who depend on it.
+    
+### Adaptability
+        
+Irys’s ledger system is designed to expand with the needs of developers. As new storage requirements arise, additional ledgers can be created, avoiding rigid, one-size-fits-all models and enabling storage solutions tailored to specific demands. 
+
+This means that the longer the network exists, **the more valuable it becomes.** 
+        
+## How Ledgers Work
+    
+Irys’s ledger system is designed to manage data efficiently from submission to permanent storage, ensuring reliability, verifiability, and scalability at every step.
+
+### Replication Across Partitions
+
+Data in the Publish Ledger is replicated across multiple partitions, ensuring resilience against data loss and maintaining availability during programmable data execution.
+
+This replication model applies not only to the permanent ledger but also to the active portion of the Submit Ledger. By distributing data globally across partitions, Irys ensures:
+
+- Fault tolerance, even in the face of localized disruptions.
+- Rapid retrieval and availability for developers working with programmable data.
+
+### Entry to the Submit Ledger
+
+All data begins in the Submit Ledger, which acts as the network’s entry point. Here, the protocol provides the storage needed to receive uploads and generate ingress-proofs—cryptographic evidence that verifies data has been successfully uploaded to the network.
+
+To advance from the Submit Ledger, data must:
+
+- Have sufficient ingress-proofs circulated by the miners storing it.
+- Be backed by funds to pay for storage costs.
+
+### Promotion to the Publish Ledger
+
+Once data has enough ingress-proofs and meets all requirements, it is promoted to the Publish Ledger. This step ensures:
+
+- Data becomes part of the permanent ledger.
+- Verifiability and availability are guaranteed through the network’s cryptographic and economic commitments.
+
+The active portion of the Submit Ledger is also replicated across multiple partitions, providing redundancy and safeguarding against potential disruptions.
+
+### Continuous Integrity Checks
+
+Miners are central to ensuring the reliability and verifiability of data stored on Irys. They achieve this through mechanisms integrated directly into the mining process:
+
+#### Constant Proof Generation
+    
+    As part of mining, every miner generates storage proofs to demonstrate they are actively maintaining their assigned data. These proofs are evaluated by the network, and only those meeting the network’s difficulty threshold allow miners to produce a block and earn rewards.
+    
+#### Challenge-Response System
+    
+    If a miner’s integrity is called into question, the protocol allows any participant to issue a storage challenge. The miner must respond within a limited window by producing a valid proof that confirms they are actively storing the required data.
+    
+    The system is designed to prevent miners from retrieving data from elsewhere or repacking it on demand, as this would take too long and miss the proving window—resulting in the miner’s economic commitments being slashed.
+    
+
+This system creates a strong disincentive for adversarial behavior, ensuring that miners maintain their storage commitments consistently. It establishes a reliable, self-regulating framework that underpins the reliability of Irys’s network.
+
+### Scalability Through Modular Expansion
+
+As data demands grow, Irys can create new ledgers tailored to specific needs. This modularity enables the network to scale efficiently without compromising performance or reliability.
+
+Combined with the dynamic management of capacity partitions, this approach ensures that the network is always prepared to handle increasing data volumes, maintaining smooth operations and a reliable developer experience.
