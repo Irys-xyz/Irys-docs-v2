@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} key={1} />
         <Analytics key={2} />
       </ThemeProvider>
-      {/* <AskCookbook /> */}
+      <AskCookbook />
     </>
   );
 }
