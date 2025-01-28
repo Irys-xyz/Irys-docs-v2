@@ -1,0 +1,30 @@
+# Connecting to the testnet
+
+## Network RPC
+
+Node: [testnet-rpc.irys.xyz](http://testnet-rpc.irys.xyz)
+
+Wallet: [wallet.irys.xyz](https://wallet.irys.xyz/)
+
+Explorer: [testnet-explorer.irys.xyz](https://testnet-explorer.irys.xyz/)
+
+The chain is EVM compatible so you can use all standard EVM tooling including Metamask. The network also has custom endpoints for all datachain related activity.
+
+## Chain info
+
+Ticker: IRYS
+Atomic unit: mIRYS (mini IRYS)
+Decimals: 18
+Chain ID: 1270
+EVM compatible JSON-RPC URL: https://testnet-rpc.irys.xyz/v1/execution-rpc
+
+
+### Connecting with Ethers
+```ts
+const irysClient = await new IrysClient("https://testnet-rpc.irys.xyz/v1")
+const provider = irysClient.api.rpcProvider
+// or
+const provider = new JsonRpcProvider("https://testnet-rpc.irys.xyz/v1/execution-rpc")
+
+const balance = await provider.getBalance("<address>")
+```
