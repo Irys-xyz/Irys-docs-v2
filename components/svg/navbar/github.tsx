@@ -19,7 +19,7 @@ const GithubIcon = (props: SVGProps<SVGSVGElement>) => (
     </g>
     <defs>
       <clipPath>
-        <rect width={20} height={20} fill="white" />
+        <rect width={20} height={20} fill="currentColor" />
       </clipPath>
     </defs>
   </svg>

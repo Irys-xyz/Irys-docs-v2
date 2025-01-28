@@ -27,19 +27,19 @@ const NavItem: React.FC<NavItemProps> = ({
   const baseClasses =
     "group cursor-pointer flex items-center justify-center gap-2 rounded-lg px-4 py-2";
   const hoverClasses =
-    "dark:hover:bg-[#FF8451] hover:bg-[#FF8451] hover:text-white dark:hover:text-white";
+    "dark:hover:bg-[#51FFD6] hover:bg-[#51FFD6] hover:text-black dark:hover:text-black";
   const textColorClasses =
     "dark:text-[#BABABA] text-[#2C2C2C] group-hover:text-white";
   const darkBackgroundClasses = "bg-[#F2F2F2] dark:bg-[#090909]";
   const highlightClasses = isHighlighted
-    ? `font-bold cursor-pointer text-white bg-[#111111] px-4 py-2 flex gap-2 items-center justify-center rounded-lg ${hoverClasses} ${className}`
+    ? `font-bold cursor-pointer text-white bg-[#111111] px-4 py-2 flex gap-2 group-hover:!text-black items-center justify-center rounded-lg ${hoverClasses} ${className}`
     : `${baseClasses} ${hoverClasses} ${textColorClasses} ${darkBackgroundClasses} ${className}`;
 
   return (
     <li className={highlightClasses} onClick={onClick}>
       <Icon
         className={
-          isHighlighted ? "text-white" : "text-[#4F4F4F] group-hover:text-white"
+          isHighlighted ? "" : "text-[#4F4F4F] group-hover:text-black"
         }
       />
       {text && <p className="hidden md:flex">{text}</p>}

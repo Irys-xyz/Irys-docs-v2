@@ -212,7 +212,7 @@ export default {
     },
   },
   // logo: <IrysLogoText width={65} />,
-  logo: <IrysInteractiveEye />,
+  logo: <img src="/assets/logo.svg" alt="Irys Logo" width={120} />,
   // project: {
   //   link: "https://github.com/Irys-xyz/",
   // },
@@ -241,9 +241,9 @@ export default {
         <meta property="og:site_name" content="Irys" />
         <meta property="og:url" content="https://docs.irys.xyz" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/irys-open-graph.jpg" />
+        <meta property="og:image" content="/irys-open-graph.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/irys-open-graph.jpg" />
+        <meta name="twitter:image" content="/irys-open-graph.png" />
         <script type="application/ld+json">
           {`{
             "@context" : "https://schema.org",

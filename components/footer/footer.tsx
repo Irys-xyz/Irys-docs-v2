@@ -66,20 +66,20 @@ const Footer = ({ bgColor }: Props) => {
     bgColor === "black"
       ? "bg-black"
       : bgColor === "white"
-      ? "bg-white"
-      : "dark:bg-black bg-white";
+        ? "bg-white"
+        : "dark:bg-black bg-white";
   const textClass =
     bgColor === "black"
       ? "text-white"
       : bgColor === "white"
-      ? "text-black"
-      : "dark:text-white text-black";
+        ? "text-black"
+        : "dark:text-white text-black";
   const borderClass =
     bgColor === "black"
       ? "border-white/20"
       : bgColor === "white"
-      ? "border-black/20"
-      : "dark:border-[#1A1A1A] border-[#ececec]";
+        ? "border-black/20"
+        : "dark:border-[#1A1A1A] border-[#ececec]";
 
   return (
     <footer
@@ -89,14 +89,14 @@ const Footer = ({ bgColor }: Props) => {
         className={`flex flex-col md:flex-row justify-between ${textClass} light gap-y-20 max-w-[1440px] mx-auto w-full`}
       >
         <div className="md:col-span-4 lg:col-span-4 col-span-12 ml-5">
-          <Image
+          {/* <Image
             src={SvgIrysLogo}
             alt="Irys Logo"
             width={99}
-            className={`invert ${
-              bgColor === "black" ? "invert-0" : "dark:invert-0"
-            }`}
-          />
+           
+          /> */}
+          <img src="/assets/logo.svg" alt="Irys Logo" width={180} className={`invert ${bgColor === "black" ? "invert-0" : "dark:invert-0"
+            }`} />
         </div>
         <div className="flex gap-20 flex-col md:flex-row ml-5">
           {FOOTER_OPTIONS.map((option) => (
@@ -115,9 +115,8 @@ const Footer = ({ bgColor }: Props) => {
         className={`flex flex-col gap-8 md:gap-14 w-full max-w-[1440px] mx-auto ${textClass}`}
       >
         <div
-          className={`dark:bg-[#0B0B0B] bg-[#F5F5F5] grid grid-cols-12 rounded-xl w-full ${
-            bgColor === "black" ? "!bg-[#0B0B0B]" : "bg-[#F5F5F5]"
-          }`}
+          className={`dark:bg-[#0B0B0B] bg-[#F5F5F5] grid grid-cols-12 rounded-xl w-full ${bgColor === "black" ? "!bg-[#0B0B0B]" : "bg-[#F5F5F5]"
+            }`}
         >
           <div className="col-span-12 md:col-span-6 flex gap-4 flex-col p-7 md:p-12">
             <h2 className="text-3xl font-bold text-center md:text-start">
