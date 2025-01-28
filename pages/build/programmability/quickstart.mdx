@@ -1,0 +1,57 @@
+# Quickstart
+
+This covers how to make use of Irys's `@irys/js` package but you can also use all ETH tooling for developing apps on Irys.
+
+## Install
+
+```shell
+yarn install @irys/js
+```
+
+## Create the client
+
+```js
+const irysClient = await new IrysClient("https://testnet-rpc.irys.xyz/v1")
+```
+
+## Create and post a data transaction
+
+```js
+// Creates transaction
+const tx = irysClient.createTransaction({...})
+
+// Generates merkle tree for the data
+await tx.prepareChunks(<data>)
+
+// Signs the transaction with the private key
+const signedTx = await tx.sign(<key>)
+
+// Uploads the transaction header
+await tx.uploadHeader()
+
+// Uploads the data
+await tx.uploadChunks(<data>)
+```
+
+## Create a set of Programmable Data read ranges
+
+```js
+const accessList = await irysClient.programmable_data
+    .read(<transaction id>, <start offset>, <length>)
+    .read(<transaction id>, <start offset 2>, <length 2>)
+    ...
+    .toAccessList()
+```
+
+## Add them to a EVM Transaction
+```ts
+    import { Wallet } from "ethers";
+    const wallet = new Wallet(<key>, irysClient.api.rpcProvider)
+    const evmTransaction = {
+        accessList: [accessList],
+        type: 2 // type must be EIP-1559 or higher
+        ....
+    }
+    await wallet.sendTransaction(evmTransaction);
+
+``

@@ -1,5 +1,10 @@
 {
 	"welcome-builders": "WELCOME BUILDERS!",
 	"d": "ONCHAIN STORAGE",
-	"programmability": "PROGRAMMABILITY"
+	"programmability": "PROGRAMMABILITY",
+	"github_link": {
+		"title": "Explorer",
+		"href": "https://explorer.irys.xyz",
+		"newWindow": true
+	}
 }

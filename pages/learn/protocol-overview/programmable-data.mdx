@@ -6,7 +6,7 @@ description: Programmable data embeds logic into onchain assets, enabling automa
 
 ## Range Specification
 
-To interact with Irys’s ledger data during smart contract execution, each transaction specifies the range of data chunks it requires. These ranges are designed to align with Ethereum’s **EIP-2930 access lists**, ensuring compatibility and efficient interoperability with existing developer tooling.
+To interact with Irys’s ledger data during smart contract execution, each transaction specifies the range of data chunks it requires (A chunk range specifier). These ranges are designed to align with Ethereum’s **EIP-2930 access lists**, ensuring compatibility and efficient interoperability with existing developer tooling.
 
 The format for specifying ranges is:
 
@@ -19,6 +19,19 @@ The format for specifying ranges is:
 - **chunk_count**: (2 bytes) The number of sequential chunks to retrieve starting from the offset.
 
 This structure allows precise targeting of data stored within Irys’s partitions, enabling efficient data retrieval for execution.
+
+In addition, Programmable Data also offers *Byte Read Ranges*, which build on top of chunk read ranges to provide easy access to specific parts of a transaction's data.
+
+the format for a byte read range is:
+```jsx
+<index>:<chunk_offset>:<byte_offset>:<length>
+```
+-
+- **partition_index**: (26 bytes) The index of the partition in the Publish Ledger containing the first chunk.
+- **offset**: (4 bytes) The starting chunk offset within the partition.
+- **chunk_count**: (2 bytes) The number of sequential chunks to retrieve starting from the offset.
+
+
 
 ## Pricing for Programmable Data
 
