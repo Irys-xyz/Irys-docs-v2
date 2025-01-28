@@ -1,0 +1,87 @@
+import { Callout } from "nextra-theme-docs";
+
+# Programmable data quickstart
+<Callout type="info" emoji="ℹ️">
+	This guide assumes you're decently familiar with solidity smart contract development.
+</Callout>
+
+#### Create a programmable data smart contract
+
+
+Programmable data is a feature leveraged through Solidity smart contracts via a custom precompile.\
+We have a library contract to provide a cleaner API to use programmable data [here](https://github.com/Irys-xyz/precompile-libraries/)
+
+A full example Foundry project [here](https://github.com/Irys-xyz/irys/blob/master/fixtures/contracts/src/IrysProgrammableDataBasic.sol)
+
+And an example E2E test using `@irys/js` [here](https://github.com/Irys-xyz/irys-js/blob/master/tests/programmableData.ts)
+
+
+To use this library, first create a Solidity contract that inherits `ProgrammableData`:
+
+```sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// you will need to set up path remapping and clone the repository as a submodule,
+// or copy the library files locally
+
+import "@irys/precompile-libraries/libraries/ProgrammableData.sol";
+
+contract ProgrammableDataBasic is ProgrammableData {
+    bytes public storedData;
+
+    function readPdBytesIntoStorage() public {
+        (bool success, bytes memory data) = readBytes();
+        require(success, "reading bytes failed");
+        // write bytes to storage
+        storedData = data;
+    }
+
+    function getStorage() public view returns (bytes memory) {
+        return storedData;
+    }
+}
+```
+
+You then need to deploy your smart contract as normal.
+
+To create a programmable data transaction (which will allow use of the ProgrammableData precompile), follow the following steps:
+
+#### Create a set of Programmable Data read ranges
+
+```ts
+const accessList = await irysClient.programmable_data
+    .read(transactionId, startOffset, length)
+    .toAccessList();
+```
+This range will read bytes `startOffset` -> `startOffset + length` of `transactionId`'s data.
+
+<Callout type="info" emoji="ℹ️">
+	Only transactions uploaded to the permanent ledger (ledgerId 0) can be read using programmable data.\
+    DataItems uploaded through Irys' bundlers are currently not supported (but will be!)
+</Callout>
+
+
+#### Add them to a execution Transaction
+This should be a transaction aiming to call the `readPdBytesIntoStorage` method of the contract. 
+
+<Callout type="info" emoji="ℹ️">
+	You will be charged for every chunk you request, even if you don't read them.\
+    So only attach a programmable data access list to a transaction that will use them!
+</Callout>
+
+```ts
+    import { Wallet } from "ethers";
+    const wallet = new Wallet(<key>, irysClient.api.rpcProvider)
+    const evmTransaction = {
+        accessList: [accessList],
+        type: 2 // type must be EIP-1559 or higher
+        ....
+    }
+    await wallet.sendTransaction(evmTransaction);
+
+```
+Once the transaction processes, you can call the `getStorage` contract method, which should return the data you specified in your programmable data read range.\
+Note that you will pay normal rates for storing data in smart contract storage slots.
+
+
