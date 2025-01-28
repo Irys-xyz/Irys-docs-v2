@@ -1,0 +1,15 @@
+# Addresses
+Irys uses two address formats, one base58 encoded (i.e `2QZrWyPPi4XukwiJQrVmUvuPQ57F`) known as the `Irys address`, and one hex encoded (i.e `0x64f1a2829e0e698c18e7792d6e74f67d89aa0a32`), the `Execution address` - which is a traditional EVM address.\
+Both address types are cross-convertable, with the execution address being a hex encoding of the decoded Irys address bytes.\
+`@irys/js` has some conversion utilities you can use:
+
+```ts
+import {irysToExecAddr, execToIrysAddr } from "@irys/js/common/utils"
+
+const irysAddress = "2QZrWyPPi4XukwiJQrVmUvuPQ57F";
+const execAddress = "0x64f1a2829e0e698c18e7792d6e74f67d89aa0a32"
+irysToExecAddr(irysAddress) //  "0x64f1a2829e0e698c18e7792d6e74f67d89aa0a32"
+execToIrysAddr(execAddress) //  "2QZrWyPPi4XukwiJQrVmUvuPQ57F"
+```
+
+Irys & execution addresses are derived using the same private key, so your Irys execution address will be identical to your usual EVM one.

@@ -20,6 +20,10 @@ EVM compatible JSON-RPC URL: https://testnet-rpc.irys.xyz/v1/execution-rpc
 
 ### Connecting with Ethers
 ```ts
+const irysClient = await new IrysClient("https://testnet-rpc.irys.xyz/v1")
+const provider = irysClient.api.rpcProvider
+// or
 const provider = new JsonRpcProvider("https://testnet-rpc.irys.xyz/v1/execution-rpc")
+
 const balance = await provider.getBalance("<address>")
 ```

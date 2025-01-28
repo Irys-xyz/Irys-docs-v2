@@ -1,0 +1,68 @@
+import { Callout } from "nextra-theme-docs";
+
+# Quickstart
+
+This covers how to make use of Irys's `@irys/js` package, but you can also use all EVM compatible tooling for developing apps on Irys.
+
+## Install
+
+```shell
+yarn install @irys/js
+```
+
+## Grab some tokens!
+The testnet faucet can be found [here](https://irys.xyz/faucet)
+
+## Create the client
+
+```js
+const irysClient = await new IrysClient("https://testnet-rpc.irys.xyz/v1")
+```
+## Get your Irys address
+
+<Callout type="info" emoji="ℹ️">
+	Irys uses the same private keys as Ethereum
+</Callout>
+
+```ts
+const { irys: irysAddress } = irysClient.account.getAddresses("private key") 
+```
+For more information about addresses, see [Addresses](/build/programmability/js/addresses)
+
+## Check your balance
+
+```ts
+const balancemIrys = await irysClient.account.getBalance("address") // you can use either your Irys or execution address!
+```
+This gets your balance in `mIrys` (mini-irys), which you can think of as our version of `wei`
+
+
+## Create and post a data transaction
+
+```ts
+// Create a transaction
+const tx = irysClient.createTransaction({...}) // the args are optional
+
+// Generates merkle tree for the data
+await tx.prepareChunks(<data>);
+
+// Check the price (in mIrys) for uploading your transaction.
+// Irys transactions have two fees, a term and a perm fee. 
+// perm is only for if you want to store your data permanently (i.e ledger 0)
+// Testnet currently only supports `perm` transactions.
+
+const { termFee, permFee } = await tx.getFees();
+
+// get the combined fee
+const fee = await tx.getFee();
+
+// Sign the transaction with your private key
+const signedTx = await tx.sign(<key>);
+
+// Upload the transaction header
+await signedTx.uploadHeader();
+
+// Upload the data
+await signedTx.uploadChunks(<data>);
+```
+
