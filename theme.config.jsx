@@ -212,7 +212,7 @@ export default {
     },
   },
   // logo: <IrysLogoText width={65} />,
-  logo: <img src="/assets/logo.svg" alt="Irys Logo" width={120} />,
+  logo: <img src="/assets/logo.svg" alt="Irys Logo" width={120} className="invert dark:invert-0" />,
   // project: {
   //   link: "https://github.com/Irys-xyz/",
   // },
